@@ -1,0 +1,3 @@
+import type {Match} from '../../lib/sim/types';
+export function StatusBadge({match}:{match:Match|null}){const source=match?.resultSource;const text=source==='OFFICIAL'?'官方赛果':source==='MANUAL'?'我的选择':source==='SIMULATION'?'模拟结果':'待决定';const tone=source==='OFFICIAL'?'official':source==='MANUAL'?'manual':source==='SIMULATION'?'simulated':'upcoming';return <span className={`status-badge ${tone}`}>{text}</span>}
+export function TeamStatusBadge({wins,losses}:{wins:number;losses:number}){const status=wins>=3?'已晋级':losses>=3?'已淘汰':'比赛中';return <span className={`status-badge ${wins>=3?'qualified':losses>=3?'eliminated':'alive'}`}>{status}</span>}
