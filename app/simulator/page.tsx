@@ -11,6 +11,7 @@ import {PlayInBracket} from '../../components/tournament/play-in-bracket';
 import {KnockoutBracket} from '../../components/tournament/knockout-bracket';
 import {ChampionCard} from '../../components/tournament/champion-card';
 import {ProbabilityBar} from '../../components/tournament/probability-bar';
+import {teams} from '../../lib/sim/data';
 
 const stageNames={PLAY_IN:'入围赛',SWISS:'瑞士轮',KNOCKOUT:'淘汰赛',CHAMPION:'世界冠军'} as const;
 const steps=[{id:'play-in',name:'入围赛'},{id:'swiss',name:'瑞士轮'},{id:'quarterfinals',name:'四分之一决赛'},{id:'semifinals',name:'半决赛'},{id:'final',name:'总决赛'},{id:'champion',name:'冠军'}];
@@ -24,7 +25,7 @@ export default function Simulator(){
  const [sampleCount,setSampleCount]=useState(0);
  const [error,setError]=useState('');
  const [busy,setBusy]=useState(false);
- useEffect(()=>{try{const raw=localStorage.getItem('worlds2026-session');if(raw)queueMicrotask(()=>setSession(JSON.parse(raw)))}catch{}},[]);
+ useEffect(()=>{try{const raw=localStorage.getItem('worlds2026-session');if(!raw)return;const saved=JSON.parse(raw) as SimulationSession;const currentIds=teams.map(t=>t.id).sort().join('|');const savedIds=Object.keys(saved.ratingSnapshot??{}).sort().join('|');if(savedIds!==currentIds){localStorage.setItem('worlds2026-session-previous-roster',raw);localStorage.removeItem('worlds2026-session');queueMicrotask(()=>setError('参赛名单已更新，旧模拟已保存在此浏览器中。请创建新模拟以使用最新队伍。'));return}queueMicrotask(()=>setSession(saved))}catch{}},[]);
  const state=session?.tournamentState;
  const current=useMemo(()=>state?.matches.filter(m=>m.stage===state.stage&&m.round===state.round)??[],[state]);
  function update(fn:(s:SimulationSession)=>SimulationSession){if(!session)return;try{const next=fn(session);setSession(next);localStorage.setItem('worlds2026-session',JSON.stringify(next));setOdds(null);setError('')}catch(e){setError(e instanceof Error?e.message:'操作失败')}}
@@ -35,7 +36,7 @@ export default function Simulator(){
  function fork(id:string){if(!session)return;if(!window.confirm('将创建独立假设场景，原官方结果会保存在浏览器中。继续吗？'))return;localStorage.setItem('worlds2026-official-baseline',JSON.stringify(session));update(s=>forkOfficialScenario(s,id))}
  function reset(){if(!session||!window.confirm('重置本局会清除当前赛果。确定重新开始吗？'))return;update(s=>createSession(s.strengthSource,s.ratingSnapshot,s.tierListSnapshot,s.randomSeed));window.scrollTo({top:0,behavior:'smooth'})}
  function simulateStage(){update(s=>{const start=s.tournamentState.stage;let next=s;let guard=0;while(next.tournamentState.stage===start&&guard++<6){next=advance(simulateRemaining(next))}return next})}
- if(!session||!state)return <main className="shell"><div className="page-head"><div><div className="eyebrow">SIMULATOR</div><h1>还没有模拟会话</h1><p>选择系统模型或建立自己的 Tier List，即可开始。</p></div><Link href="/simulator/new" className="button">创建模拟</Link></div></main>;
+ if(!session||!state)return <main className="shell"><div className="page-head"><div><div className="eyebrow">SIMULATOR</div><h1>还没有模拟会话</h1><p>选择系统模型或建立自己的 Tier List，即可开始。</p></div><Link href="/simulator/new" className="button">创建模拟</Link></div>{error&&<p role="alert" className="notice">{error}</p>}</main>;
  const all=state.matches;const playIn=all.filter(m=>m.stage==='PLAY_IN');const knockout=all.filter(m=>m.stage==='KNOCKOUT');const completed=all.filter(m=>m.status==='COMPLETE').length;const progress=progressIndex(state);
  return <main className="shell simulator-page">
   <section className="simulator-status"><div><div className="eyebrow">WORLDS 2026 · SCENARIO {session.id.slice(0,8).toUpperCase()}</div><h1>{stageTitle(state)}</h1><p>{stageDescription(state)}</p></div><div className="simulator-model"><span>实力模型</span><strong>{session.strengthSource==='SYSTEM_MODEL'?`系统 ${session.systemModelVersion}`:'自定义 TIER LIST'}</strong><small>手动赛果与随机模拟可同时使用</small></div></section>

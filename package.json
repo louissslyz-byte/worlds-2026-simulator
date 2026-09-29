@@ -15,7 +15,7 @@
     "db:generate": "drizzle-kit generate",
     "typecheck": "tsc --noEmit",
     "test": "tsx tests/run.mjs",
-    "build:vercel": "next build"
+    "build:vercel": "next build --webpack"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

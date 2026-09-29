@@ -2,7 +2,14 @@ import assert from 'node:assert/strict';
 import {createSession,applyResult,simulateRemaining,advance,simulateEntireWorlds,editPreviousRound,forkOfficialScenario} from '../lib/sim/engine.ts';
 import {SystemRatingProvider,defaultTierList,generateRatingsFromTierList,gameProbability,validateTierList} from '../lib/sim/ratings.ts';
 import {runMonteCarloFromState} from '../lib/sim/monteCarlo.ts';
+import {teams} from '../lib/sim/data.ts';
 try{
+ assert.equal(teams.length,19);assert.equal(new Set(teams.map(t=>t.id)).size,19);
+ assert.deepEqual(teams.filter(t=>t.region==='LPL').sort((a,b)=>a.seed-b.seed).map(t=>t.id),['AL','BLG','TES','IG']);
+ assert.deepEqual(teams.filter(t=>t.region==='LCK').sort((a,b)=>a.seed-b.seed).map(t=>t.id),['GEN','HLE','T1','DK']);
+ assert.deepEqual(teams.filter(t=>t.region==='LEC').sort((a,b)=>a.seed-b.seed).map(t=>t.id),['G2','MKOI','KC']);
+ assert.deepEqual(teams.filter(t=>t.playIn).map(t=>t.id),['KC','MVK','LCS#3','CBLOL#2']);
+ assert.ok(!teams.some(t=>t.id==='JDG'));
  const ratings=new SystemRatingProvider().getRatings();
  const base=createSession('SYSTEM_MODEL',ratings,undefined,42);
  const full=simulateEntireWorlds(base);assert.ok(full.tournamentState.champion);assert.equal(full.simulationStatus,'COMPLETE');
