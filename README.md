@@ -30,3 +30,7 @@ GPR 是官方队伍实力数据。单局、Bo3、Bo5 和夺冠概率均由本站
 Vercel 使用 Next.js 预设、Node.js 22.x，`vercel.json` 以 `pnpm build:vercel` 构建。当前产品无需运行时 API Key 或环境变量；官方 GPR 和 10 万次模拟结果随仓库发布。推送到 GitHub `main` 后，已连接的 Vercel 项目会自动构建并发布。直接访问或刷新 `/simulator` 等路由应由 Next.js 正常处理。
 
 发布后检查 `/`、`/rankings`、`/simulator/new`、`/simulator`、`/methodology`、`/teams/gen`，并测试队徽、自定义 Tier、手动结果保留及完整模拟。概率是模型估计，不代表官方预测或确定赛果。
+
+### 当前数据更新
+
+队伍身份集中在 `lib/sim/teamSnapshot.ts`，官方 GPR 在 `lib/sim/gprSnapshot.ts`。更新后运行 `pnpm update-worlds-data` 验证并生成 100,000 次概率，再通过检查和生产构建。完整流程与种子假设见 [数据说明](docs/data-sources.md)。当前模型 `gpr-prob-v1.1` 使用启发式 k=0.85，尚未历史校准。

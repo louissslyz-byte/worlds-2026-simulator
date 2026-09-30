@@ -23,3 +23,7 @@
 | RED | [LoL Esports CDN](https://static.lolesports.com/teams/1631820575924_red-2021-worlds.png) | 128×128 |
 | DK | [LoL Esports CDN](https://static.lolesports.com/teams/1673260049703_DPlusKIALOGO11.png) | 128×128 |
 | JDG | [LoL Esports CDN](https://static.lolesports.com/teams/1627457924722_29.png) | 128×128 |
+
+## 2026-09-30 新确认队伍
+
+LYON、TLAW、C9、LOS 的队徽来自 LoL Esports Worlds 赛事页引用的 static.lolesports.com 原图，经官方 Akamai 图片端点缩小为 128px，保存于 public/team-logos。来源：https://lolesports.com/en-US/tournament/115660540725177488/overview 。所有队徽继续使用 TeamLogo 加载和 fallback。

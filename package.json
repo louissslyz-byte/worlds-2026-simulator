@@ -16,7 +16,9 @@
     "typecheck": "tsc --noEmit",
     "test": "tsx tests/run.mjs",
     "odds:generate": "node --import tsx scripts/generate-odds.mjs",
-    "build:vercel": "next build --webpack"
+    "build:vercel": "next build --webpack",
+    "data:validate": "node --import tsx scripts/validate-data.mjs",
+    "update-worlds-data": "pnpm data:validate && pnpm odds:generate"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

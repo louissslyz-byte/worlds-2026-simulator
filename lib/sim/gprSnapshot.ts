@@ -1,12 +1,14 @@
 /** Verified against Riot's public 2026 Current GPR table on 2026-09-30.
  * This checked-in snapshot avoids a remote request on every page view.
- * Unassigned regional seed placeholders deliberately have no GPR entry.
+ * All 18 confirmed Worlds identities are matched; the final TBD seat has no GPR entry.
  */
 export const riotGprSnapshot = {
  sourceUrl:'https://lolesports.com/en-US/gpr/2026/current',
  sourceUpdatedAt:'2026-09-29',
  fetchedAt:'2026-09-30',
- strengthVersion:'riot-gpr-2026-09-29',
+ snapshotUpdatedAt:'2026-09-30',
+ source:'Riot Global Power Rankings',
+ strengthVersion:'riot-gpr-2026-09-29-v2',
  entries:{
   HLE:{rank:1,score:1540},
   GEN:{rank:2,score:1519},
@@ -22,5 +24,9 @@ export const riotGprSnapshot = {
   MKOI:{rank:18,score:1317},
   CFO:{rank:18,score:1317},
   MVK:{rank:28,score:1247},
+  LYON:{rank:6,score:1443},
+  TLAW:{rank:12,score:1364},
+  C9:{rank:16,score:1335},
+  LOS:{rank:41,score:1174},
  } satisfies Record<string,{rank:number;score:number}>,
 } as const;

@@ -1,5 +1,7 @@
 import type {SimulationSession} from './types';
 import {riotGprSnapshot} from './gprSnapshot';
+import {worldsTeamSnapshot} from './teamSnapshot';
+import {ratingConfig} from './ratingConfig';
 import {worlds2026} from './worlds2026';
 
 /** Hash of every input that can affect a conditional simulation. Not a security hash. */
@@ -9,7 +11,7 @@ export function tournamentStateHash(session:SimulationSession):string {
  const state=session.tournamentState;
  const input=JSON.stringify({strengthSource:session.strengthSource,systemModelVersion:session.systemModelVersion,
   ratingSnapshot:session.ratingSnapshot,tierListSnapshot:session.tierListSnapshot,
-  randomSeed:session.randomSeed,tournamentState:{stage:state.stage,round:state.round,
+  randomSeed:session.randomSeed,seedAssignments:session.seedAssignments,teamSnapshot:worldsTeamSnapshot,gprSnapshot:riotGprSnapshot,modelParameters:ratingConfig,tournamentState:{stage:state.stage,round:state.round,
    matches:state.matches.map(m=>({id:m.id,stage:m.stage,round:m.round,teamA:m.teamA,teamB:m.teamB,
     format:m.format,scoreA:m.scoreA,scoreB:m.scoreB,winner:m.winner,status:m.status,
     resultSource:m.resultSource,locked:m.locked})),swissRecords:state.swissRecords,

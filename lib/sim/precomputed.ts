@@ -9,6 +9,8 @@ import {tournamentStateHash} from './oddsMetadata';
 export const precomputedOdds: {
  probabilities:Record<string,number>;
  knockoutProbabilities:Record<string,number>;
+ semifinalProbabilities:Record<string,number>;
+ finalProbabilities:Record<string,number>;
  iterations:number;
  metadata:typeof odds.metadata;
 }=odds;

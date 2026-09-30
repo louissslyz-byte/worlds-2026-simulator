@@ -1,9 +1,9 @@
 export type StrengthSource = 'SYSTEM_MODEL' | 'CUSTOM_TIER_LIST';
 export type Tier = 'S'|'A'|'B'|'C'|'D';
-export type Team = { id:string; name:string; shortName:string; logo:string; region:string; seed:number; playIn:boolean; rating:number; slug:string; confirmed:boolean; officialGprRank?:number; officialGprScore?:number; gprUpdatedAt?:string; gprSource?:string };
+export type Team = { id:string; name:string; shortName:string; logo:string; region:string; seed:number; officialSeed:number|null; playIn:boolean; rating:number; slug:string; confirmed:boolean; qualificationStatus:'CONFIRMED'|'TBD'; gprKey:string|null; source:string; sourceUrl:string; sourceUpdatedAt:string; snapshotUpdatedAt:string; officialGprRank?:number; officialGprScore?:number; gprUpdatedAt?:string; gprSource?:string };
 export type TierList = Record<Tier,string[]>;
 export type ResultSource = 'OFFICIAL'|'MANUAL'|'SIMULATION'|null;
 export type Stage = 'PLAY_IN'|'SWISS'|'KNOCKOUT';
 export type Match = { id:string; stage:Stage; round:number; label:string; teamA:string; teamB:string; format:1|3|5; scoreA:number|null; scoreB:number|null; winner:string|null; status:'UNDECIDED'|'COMPLETE'; resultSource:ResultSource; modelProbabilityA:number; modelProbabilityB:number; locked:boolean };
 export type TournamentState = { stage:Stage|'CHAMPION'; round:number; matches:Match[]; swissRecords:Record<string,{wins:number;losses:number}>; swissQualified:string[]; swissEliminated:string[]; champion:string|null; playInWinner:string|null };
-export type SimulationSession = { id:string; createdAt:string; strengthSource:StrengthSource; systemModelVersion?:string; tierListSnapshot?:TierList; ratingSnapshot:Record<string,number>; tournamentState:TournamentState; randomSeed:number; rngState:number; simulationStatus:'ACTIVE'|'COMPLETE'; scenarioMode:boolean };
+export type SimulationSession = { id:string; createdAt:string; strengthSource:StrengthSource; systemModelVersion?:string; tierListSnapshot?:TierList; seedAssignments?:Record<string,number>; ratingSnapshot:Record<string,number>; tournamentState:TournamentState; randomSeed:number; rngState:number; simulationStatus:'ACTIVE'|'COMPLETE'; scenarioMode:boolean };
