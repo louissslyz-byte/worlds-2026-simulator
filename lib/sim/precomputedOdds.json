@@ -44,9 +44,9 @@
   "metadata": {
     "simulationCount": 100000,
     "requestedCount": 100000,
-    "generatedAt": "2026-09-30T08:39:53.288Z",
+    "generatedAt": "2026-09-30T10:12:29.556Z",
     "modelVersion": "gpr-elo-v1.0",
     "strengthVersion": "riot-gpr-2026-09-29",
-    "tournamentStateHash": "1eb369e6-42a"
+    "tournamentStateHash": "17fff94a-360"
   }
 }
