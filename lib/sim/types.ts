@@ -1,6 +1,6 @@
 export type StrengthSource = 'SYSTEM_MODEL' | 'CUSTOM_TIER_LIST';
 export type Tier = 'S'|'A'|'B'|'C'|'D';
-export type Team = { id:string; name:string; shortName:string; logo:string; region:string; seed:number; playIn:boolean; rating:number; slug:string; confirmed:boolean };
+export type Team = { id:string; name:string; shortName:string; logo:string; region:string; seed:number; playIn:boolean; rating:number; slug:string; confirmed:boolean; officialGprRank?:number; officialGprScore?:number; gprUpdatedAt?:string; gprSource?:string };
 export type TierList = Record<Tier,string[]>;
 export type ResultSource = 'OFFICIAL'|'MANUAL'|'SIMULATION'|null;
 export type Stage = 'PLAY_IN'|'SWISS'|'KNOCKOUT';

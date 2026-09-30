@@ -3,6 +3,6 @@ export const worlds2026 = {
   winsToAdvance: 3, lossesToEliminate: 3, knockoutTeams: 8,
   seriesFormats: { playIn: 5, swissEarly: 1, swissDecider: 3, knockout: 5 } as const,
   drawRestrictions: { noRematch: true, avoidSameRegion: true, seedRestriction: false },
-  modelVersion: 'demo-elo-1.0',
-  dataStatus: '参赛名单依据 LoL Esports 更新；未确定席位以赛区和种子号占位。系统评分与模拟概率由本站生成，非 Riot 官方预测',
+  modelVersion: 'gpr-elo-v1.0',
+  dataStatus: '已确认队伍使用 Riot GPR 快照；未确认种子席位使用既有模拟评分。比赛与夺冠概率由本站计算。',
 } as const;

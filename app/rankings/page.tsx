@@ -1,13 +1,21 @@
 import Link from 'next/link';
 import {teams} from '../../lib/sim/data';
-import {createSession} from '../../lib/sim/engine';
-import {runMonteCarloFromState} from '../../lib/sim/monteCarlo';
 import {SystemRatingProvider} from '../../lib/sim/ratings';
+import {precomputedOdds,assertPrecomputedOddsCurrent} from '../../lib/sim/precomputed';
+import {formatProbability} from '../../lib/sim/oddsConfig';
+import {riotGprSnapshot} from '../../lib/sim/gprSnapshot';
 import {TeamIdentity} from '../../components/tournament/team-identity';
 import {ProbabilityBar} from '../../components/tournament/probability-bar';
+import {DataStatus} from '../../components/tournament/data-status';
 
 export default function Rankings(){
- const list=[...teams].sort((a,b)=>b.rating-a.rating);
- const odds=runMonteCarloFromState(createSession('SYSTEM_MODEL',new SystemRatingProvider().getRatings(),undefined,2026),300,2026);
- return <main className="shell"><div className="page-head"><div><div className="eyebrow">WORLDS 2026 / 战队实力</div><h1>系统实力榜</h1><p>点击队伍查看选手名单。评分与夺冠概率来自本站模拟模型，未定种子以赛区席位表示。</p></div><Link className="button" href="/simulator/new">用这套实力开始模拟</Link></div><div className="panel rankings-desktop"><div style={{overflowX:'auto'}}><table className="data-table"><thead><tr><th>排名</th><th>队伍</th><th>赛区</th><th>种子</th><th>模型评分</th><th>夺冠概率</th></tr></thead><tbody>{list.map((t,i)=>{const championship=odds.probabilities[t.id]??0;return <tr key={t.id}><td className="rank-num">{String(i+1).padStart(2,'0')}</td><td><Link className="rank-team-cell" href={`/teams/${t.slug}`}><TeamIdentity teamId={t.id} size={34} showName showRegion={false}/></Link></td><td><span className="region-badge">{t.region}</span></td><td>#{t.seed}{!t.confirmed&&<small> · 待定</small>}</td><td className="accent"><b>{t.rating}</b></td><td className="rank-prob-cell"><strong>{(championship*100).toFixed(1)}%</strong><ProbabilityBar a={championship}/></td></tr>})}</tbody></table></div></div><div className="rankings-mobile">{list.map((t,i)=>{const championship=odds.probabilities[t.id]??0;return <Link className="mobile-ranking-row" href={`/teams/${t.slug}`} key={t.id}><span className="rank-num">{String(i+1).padStart(2,'0')}</span><TeamIdentity teamId={t.id} size={34} showName showRegion/><span className="mobile-ranking-metrics"><strong>{t.rating}</strong><small>夺冠 {(championship*100).toFixed(1)}%</small><ProbabilityBar a={championship}/></span></Link>})}</div><p className="note">LCS 与 CBLOL 的队伍和种子顺序尚未完成对应，因此暂用席位占位。夺冠概率来自 300 次模拟；进入模拟器后可随赛果更新。</p></main>;
+ assertPrecomputedOddsCurrent();
+ const ratings=new SystemRatingProvider().getRatings();
+ const list=[...teams].sort((a,b)=>ratings[b.id]-ratings[a.id]);
+ return <main className="shell"><div className="page-head"><div><div className="eyebrow">WORLDS 2026 / 实力榜</div><h1>系统实力榜</h1><p>Riot GPR 是官方实力数据；模型评分和夺冠概率由本站计算。未确定队伍的席位使用回退评分。</p></div><Link className="button" href="/simulator/new">用系统模型开始 →</Link></div>
+  <DataStatus/>
+  <div className="panel rankings-desktop"><table className="data-table"><thead><tr><th>模型排名</th><th>队伍</th><th>赛区</th><th>种子</th><th>官方 GPR</th><th>模型评分</th><th>夺冠概率</th></tr></thead><tbody>{list.map((t,i)=>{const p=precomputedOdds.probabilities[t.id]??0;return <tr key={t.id}><td className="rank-num">{String(i+1).padStart(2,'0')}</td><td><Link className="rank-team-cell" href={`/teams/${t.slug}`}><TeamIdentity teamId={t.id} size={34} showName showRegion={false}/></Link></td><td><span className="region-badge">{t.region}</span></td><td>#{t.seed}{!t.confirmed&&<small> · 待定</small>}</td><td>{t.officialGprRank?<span className="gpr-score"><strong>#{t.officialGprRank}</strong><small>{t.officialGprScore} 分</small></span>:<span className="data-fallback">待定 · 回退</span>}</td><td className="accent"><b>{ratings[t.id].toFixed(1)}</b></td><td className="rank-prob-cell"><strong>{formatProbability(p)}</strong><ProbabilityBar a={p} label={`${t.shortName} 夺冠概率 ${formatProbability(p)}`}/></td></tr>})}</tbody></table></div>
+  <div className="rankings-mobile">{list.map((t,i)=>{const p=precomputedOdds.probabilities[t.id]??0;return <Link className="mobile-ranking-row" href={`/teams/${t.slug}`} key={t.id}><span className="rank-num">{String(i+1).padStart(2,'0')}</span><TeamIdentity teamId={t.id} size={34} showName showRegion/><span className="mobile-ranking-metrics"><strong>{formatProbability(p)}</strong><small>{t.officialGprRank?`GPR #${t.officialGprRank} · ${t.officialGprScore}`:'GPR 待定 · 回退'}</small><ProbabilityBar a={p} label={`${t.shortName} 夺冠概率 ${formatProbability(p)}`}/></span></Link>})}</div>
+  <p className="fine">官方 GPR 快照：<a href={riotGprSnapshot.sourceUrl} target="_blank" rel="noopener noreferrer">LoL Esports ↗</a>。GPR 分数不是夺冠概率。</p>
+ </main>;
 }
