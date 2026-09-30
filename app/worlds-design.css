@@ -129,3 +129,4 @@ body:has(.is-champion-view) .footer{color:#a0b1bd;border-color:#30424f}
 @keyframes stage-reveal{from{opacity:.6}to{opacity:1}}
 @media(max-width:700px){.roster-strip{grid-template-columns:repeat(6,minmax(0,1fr))}.roster-slot{grid-column:span 2}.roster-slot:nth-child(4),.roster-slot:nth-child(5){grid-column:span 3}}
 @media(prefers-reduced-motion:reduce){.tournament-stage{animation:none}}
+.is-champion-view .stage-navigation button.is-active .stage-nav-copy small{color:var(--text-secondary)}
