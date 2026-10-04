@@ -3,8 +3,8 @@ import type {Team} from './types';
 export const teamSnapshotMetadata={
  source:'LoL Esports Worlds qualifying teams',
  sourceUrl:'https://lolesports.com/en-US/tournament/115660540725177488/overview',
- sourceUpdatedAt:'2026-09-30',snapshotUpdatedAt:'2026-09-30',
- version:'worlds-teams-2026-09-30-v2',
+ sourceUpdatedAt:'2026-10-05',snapshotUpdatedAt:'2026-10-05',
+ version:'worlds-teams-2026-10-05-v3',
  seedSource:'LPL/LCK/LEC: previously user-confirmed order; LCP: completed regional results. LCS/CBLOL: official seed unknown.',
 };
 // The numeric seed is the configurable simulation assumption, never an official
@@ -20,10 +20,10 @@ const rows:Row[]=[
  ['CFO','CTBC Flying Oyster','LCP',2,1665,2],['MVK','MVK Esports','LCP',3,1620,3],
  ['LYON','LYON','LCS',1,1730,null],['TLAW','Team Liquid Alienware','LCS',2,1680,null],
  ['C9','Cloud9 Kia','LCS',3,1635,null],['LOS','LOS','CBLOL',1,1600,null],
- ['TBD-CBLOL','CBLOL 待定队伍','CBLOL',2,1575,null],
+ ['FUR','FURIA','CBLOL',2,1575,null],
 ];
 export const worldsTeamSnapshot:Team[]=rows.map(([id,name,region,seed,rating,officialSeed])=>{
- const confirmed=id!=='TBD-CBLOL';
+ const confirmed=true;
  return {id,name,shortName:confirmed?id:'TBD',slug:id.toLowerCase(),region,seed,officialSeed,rating,
   playIn:(region==='LEC'||region==='LCP'||region==='LCS')?seed===3:region==='CBLOL'&&seed===2,
   confirmed,qualificationStatus:confirmed?'CONFIRMED':'TBD',gprKey:confirmed?id:null,

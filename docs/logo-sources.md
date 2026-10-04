@@ -1,5 +1,7 @@
 # 战队 Logo 来源
 
+2026-10-05：新增 FURIA，来自官网 Worlds 晋级名单引用的 [FURIA 官方素材](https://static.lolesports.com/teams/FURIA---black.png)，经同一 Akamai 服务缩为 128×128，保存为 `public/team-logos/fur.png`。
+
 图片来自 LoL Esports 官方页面引用的战队素材，经官方图片服务缩至最多 128 像素，保存于 `public/team-logos/`。各队 Logo 仍归相应权利人所有，仅用于识别示例战队。未来替换正式参赛队时应重新核对品牌素材。
 
 | 队伍 | 原始素材 | 本地尺寸 |
