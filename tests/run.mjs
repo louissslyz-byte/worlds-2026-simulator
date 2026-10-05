@@ -1,3 +1,4 @@
+import './team-profile.mjs';
 import {validateSnapshots} from '../lib/sim/validateSnapshots.ts';
 import {GprProbabilityModel} from '../lib/sim/gprProbability.ts';
 import {defaultSeedAssignments} from '../lib/sim/seedAssignments.ts';
