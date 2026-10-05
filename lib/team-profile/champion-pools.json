@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-05",
+  "checkedAt": "2026-10-06",
   "pools": {
     "GEN:TOP": {
       "status": "VERIFIED",
@@ -3103,6 +3103,157 @@
       "snapshotDate": "2026-10-05",
       "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
     },
+    "AL:SUPPORT": {
+      "status": "VERIFIED",
+      "scopeId": "lpl-2026-stage3",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/3323/season-ALL/split-ALL/tournament-LPL%202026%20Split%203/champion-ALL/",
+        "checkedAt": "2026-10-06",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/3323/season-ALL/split-ALL/tournament-LPL%202026%20Split%203/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/3323/season-ALL/split-ALL/tournament-LPL%202026%20Grand%20Finals/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/82967/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/82968/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/82969/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/82970/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "COMPLETE",
+      "stats": [
+        {
+          "championId": "Camille",
+          "championName": "Camille",
+          "gamesPlayed": 6,
+          "wins": 4
+        },
+        {
+          "championId": "Rell",
+          "championName": "Rell",
+          "gamesPlayed": 7,
+          "wins": 5
+        },
+        {
+          "championId": "Shen",
+          "championName": "Shen",
+          "gamesPlayed": 6,
+          "wins": 4
+        },
+        {
+          "championId": "Karma",
+          "championName": "Karma",
+          "gamesPlayed": 6,
+          "wins": 5
+        },
+        {
+          "championId": "Seraphine",
+          "championName": "Seraphine",
+          "gamesPlayed": 6,
+          "wins": 1
+        },
+        {
+          "championId": "Milio",
+          "championName": "Milio",
+          "gamesPlayed": 5,
+          "wins": 2
+        },
+        {
+          "championId": "Neeko",
+          "championName": "Neeko",
+          "gamesPlayed": 5,
+          "wins": 3
+        },
+        {
+          "championId": "Lux",
+          "championName": "Lux",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championId": "Bard",
+          "championName": "Bard",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Poppy",
+          "championName": "Poppy",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Nautilus",
+          "championName": "Nautilus",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Lulu",
+          "championName": "Lulu",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Renata",
+          "championName": "Renata Glasc",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "TahmKench",
+          "championName": "Tahm Kench",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "LPL 2026 Split 3",
+          "sourceUrl": "https://gol.gg/players/player-stats/3323/season-ALL/split-ALL/tournament-LPL%202026%20Split%203/champion-ALL/",
+          "totalGames": 36,
+          "totalWins": 22
+        },
+        {
+          "tournament": "LPL 2026 Grand Finals",
+          "sourceUrl": "https://gol.gg/players/player-stats/3323/season-ALL/split-ALL/tournament-LPL%202026%20Grand%20Finals/champion-ALL/",
+          "totalGames": 16,
+          "totalWins": 9
+        }
+      ],
+      "snapshotDate": "2026-10-06",
+      "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
+    },
     "BLG:TOP": {
       "status": "VERIFIED",
       "scopeId": "lpl-2026-stage3",
@@ -5164,6 +5315,157 @@
       "snapshotDate": "2026-10-05",
       "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
     },
+    "G2:TOP": {
+      "status": "VERIFIED",
+      "scopeId": "lec-2026-summer",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/1310/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Season/champion-ALL/",
+        "checkedAt": "2026-10-06",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/1310/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Season/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/1310/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/champion/champion-matchlist/169/season-S16/split-ALL/tournament-/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "LeagueLab · 第三赛段逐局统计",
+          "url": "https://leaguelab.cc/en/games/LOLTMNT04_190200?league=LEC",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "LeagueLab · 第三赛段逐局统计",
+          "url": "https://leaguelab.cc/en/games/LOLTMNT04_190202?league=LEC",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "COMPLETE",
+      "stats": [
+        {
+          "championId": "Kled",
+          "championName": "Kled",
+          "gamesPlayed": 4,
+          "wins": 3
+        },
+        {
+          "championId": "KSante",
+          "championName": "K'Sante",
+          "gamesPlayed": 4,
+          "wins": 3
+        },
+        {
+          "championId": "Rumble",
+          "championName": "Rumble",
+          "gamesPlayed": 4,
+          "wins": 3
+        },
+        {
+          "championId": "Ambessa",
+          "championName": "Ambessa",
+          "gamesPlayed": 3,
+          "wins": 3
+        },
+        {
+          "championId": "Olaf",
+          "championName": "Olaf",
+          "gamesPlayed": 3,
+          "wins": 3
+        },
+        {
+          "championId": "Vayne",
+          "championName": "Vayne",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "TwistedFate",
+          "championName": "Twisted Fate",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Yorick",
+          "championName": "Yorick",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Anivia",
+          "championName": "Anivia",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Jayce",
+          "championName": "Jayce",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Galio",
+          "championName": "Galio",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Gnar",
+          "championName": "Gnar",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Camille",
+          "championName": "Camille",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Zaahen",
+          "championName": "Zaahen",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Shen",
+          "championName": "Shen",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "LEC 2026 Summer Season",
+          "sourceUrl": "https://gol.gg/players/player-stats/1310/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Season/champion-ALL/",
+          "totalGames": 21,
+          "totalWins": 14
+        },
+        {
+          "tournament": "LEC 2026 Summer Playoffs",
+          "sourceUrl": "https://gol.gg/players/player-stats/1310/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+          "totalGames": 10,
+          "totalWins": 9
+        }
+      ],
+      "snapshotDate": "2026-10-06",
+      "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
+    },
     "G2:JUNGLE": {
       "status": "VERIFIED",
       "scopeId": "lec-2026-summer",
@@ -5902,6 +6204,133 @@
       "snapshotDate": "2026-10-05",
       "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
     },
+    "MKOI:MID": {
+      "status": "VERIFIED",
+      "scopeId": "lec-2026-summer",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/3544/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Season/champion-ALL/",
+        "checkedAt": "2026-10-06",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/3544/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Season/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/3544/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-matchlist/3544/season-ALL/split-ALL/tournament-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "COMPLETE",
+      "stats": [
+        {
+          "championId": "Orianna",
+          "championName": "Orianna",
+          "gamesPlayed": 4,
+          "wins": 1
+        },
+        {
+          "championId": "Ryze",
+          "championName": "Ryze",
+          "gamesPlayed": 7,
+          "wins": 3
+        },
+        {
+          "championId": "Viktor",
+          "championName": "Viktor",
+          "gamesPlayed": 4,
+          "wins": 1
+        },
+        {
+          "championId": "Galio",
+          "championName": "Galio",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "Akali",
+          "championName": "Akali",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "Cassiopeia",
+          "championName": "Cassiopeia",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Anivia",
+          "championName": "Anivia",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "Taliyah",
+          "championName": "Taliyah",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Yone",
+          "championName": "Yone",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championId": "Sylas",
+          "championName": "Sylas",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Ahri",
+          "championName": "Ahri",
+          "gamesPlayed": 4,
+          "wins": 3
+        },
+        {
+          "championId": "Syndra",
+          "championName": "Syndra",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Lissandra",
+          "championName": "Lissandra",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "LEC 2026 Summer Season",
+          "sourceUrl": "https://gol.gg/players/player-stats/3544/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Season/champion-ALL/",
+          "totalGames": 22,
+          "totalWins": 10
+        },
+        {
+          "tournament": "LEC 2026 Summer Playoffs",
+          "sourceUrl": "https://gol.gg/players/player-stats/3544/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+          "totalGames": 15,
+          "totalWins": 9
+        }
+      ],
+      "snapshotDate": "2026-10-06",
+      "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
+    },
     "MKOI:BOT": {
       "status": "VERIFIED",
       "scopeId": "lec-2026-summer",
@@ -6295,6 +6724,272 @@
       "snapshotDate": "2026-10-05",
       "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
     },
+    "KC:JUNGLE": {
+      "status": "VERIFIED",
+      "scopeId": "lec-2026-summer",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/3406/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Season/champion-ALL/",
+        "checkedAt": "2026-10-06",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/3406/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Season/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/3406/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83074/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83075/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83076/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "COMPLETE",
+      "stats": [
+        {
+          "championId": "Vi",
+          "championName": "Vi",
+          "gamesPlayed": 6,
+          "wins": 4
+        },
+        {
+          "championId": "JarvanIV",
+          "championName": "Jarvan IV",
+          "gamesPlayed": 4,
+          "wins": 4
+        },
+        {
+          "championId": "Qiyana",
+          "championName": "Qiyana",
+          "gamesPlayed": 4,
+          "wins": 3
+        },
+        {
+          "championId": "LeeSin",
+          "championName": "Lee Sin",
+          "gamesPlayed": 4,
+          "wins": 3
+        },
+        {
+          "championId": "MonkeyKing",
+          "championName": "Wukong",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "Nocturne",
+          "championName": "Nocturne",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Skarner",
+          "championName": "Skarner",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Poppy",
+          "championName": "Poppy",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "XinZhao",
+          "championName": "Xin Zhao",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Naafiri",
+          "championName": "Naafiri",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Pantheon",
+          "championName": "Pantheon",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Trundle",
+          "championName": "Trundle",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "DrMundo",
+          "championName": "Dr. Mundo",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "LEC 2026 Summer Season",
+          "sourceUrl": "https://gol.gg/players/player-stats/3406/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Season/champion-ALL/",
+          "totalGames": 20,
+          "totalWins": 18
+        },
+        {
+          "tournament": "LEC 2026 Summer Playoffs",
+          "sourceUrl": "https://gol.gg/players/player-stats/3406/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+          "totalGames": 11,
+          "totalWins": 4
+        }
+      ],
+      "snapshotDate": "2026-10-06",
+      "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
+    },
+    "KC:MID": {
+      "status": "VERIFIED",
+      "scopeId": "lec-2026-summer",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/5264/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Season/champion-ALL/",
+        "checkedAt": "2026-10-06",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/5264/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Season/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/5264/season-S16/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83074/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83075/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83076/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "COMPLETE",
+      "stats": [
+        {
+          "championId": "Syndra",
+          "championName": "Syndra",
+          "gamesPlayed": 5,
+          "wins": 5
+        },
+        {
+          "championId": "Cassiopeia",
+          "championName": "Cassiopeia",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "Viktor",
+          "championName": "Viktor",
+          "gamesPlayed": 4,
+          "wins": 3
+        },
+        {
+          "championId": "Ryze",
+          "championName": "Ryze",
+          "gamesPlayed": 5,
+          "wins": 4
+        },
+        {
+          "championId": "Sylas",
+          "championName": "Sylas",
+          "gamesPlayed": 4,
+          "wins": 3
+        },
+        {
+          "championId": "Orianna",
+          "championName": "Orianna",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championId": "Anivia",
+          "championName": "Anivia",
+          "gamesPlayed": 3,
+          "wins": 3
+        },
+        {
+          "championId": "Taliyah",
+          "championName": "Taliyah",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Akali",
+          "championName": "Akali",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Ahri",
+          "championName": "Ahri",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Leblanc",
+          "championName": "LeBlanc",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "LEC 2026 Summer Season",
+          "sourceUrl": "https://gol.gg/players/player-stats/5264/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Season/champion-ALL/",
+          "totalGames": 20,
+          "totalWins": 18
+        },
+        {
+          "tournament": "LEC 2026 Summer Playoffs",
+          "sourceUrl": "https://gol.gg/players/player-stats/5264/season-S16/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+          "totalGames": 11,
+          "totalWins": 4
+        }
+      ],
+      "snapshotDate": "2026-10-06",
+      "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
+    },
     "KC:BOT": {
       "status": "VERIFIED",
       "scopeId": "lec-2026-summer",
@@ -6408,6 +7103,169 @@
         }
       ],
       "snapshotDate": "2026-10-05",
+      "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
+    },
+    "KC:SUPPORT": {
+      "status": "VERIFIED",
+      "scopeId": "lec-2026-summer",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/4500/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Season/champion-ALL/",
+        "checkedAt": "2026-10-06",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/4500/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Season/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/4500/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83074/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83075/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83076/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "COMPLETE",
+      "stats": [
+        {
+          "championId": "Leona",
+          "championName": "Leona",
+          "gamesPlayed": 4,
+          "wins": 4
+        },
+        {
+          "championId": "Shen",
+          "championName": "Shen",
+          "gamesPlayed": 3,
+          "wins": 3
+        },
+        {
+          "championId": "Bard",
+          "championName": "Bard",
+          "gamesPlayed": 4,
+          "wins": 2
+        },
+        {
+          "championId": "Camille",
+          "championName": "Camille",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Neeko",
+          "championName": "Neeko",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Rell",
+          "championName": "Rell",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Nautilus",
+          "championName": "Nautilus",
+          "gamesPlayed": 2,
+          "wins": 0
+        },
+        {
+          "championId": "Seraphine",
+          "championName": "Seraphine",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "Renata",
+          "championName": "Renata Glasc",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Rakan",
+          "championName": "Rakan",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Milio",
+          "championName": "Milio",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Lux",
+          "championName": "Lux",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Lulu",
+          "championName": "Lulu",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Velkoz",
+          "championName": "Vel'Koz",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Alistar",
+          "championName": "Alistar",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Yuumi",
+          "championName": "Yuumi",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Karma",
+          "championName": "Karma",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "LEC 2026 Summer Season",
+          "sourceUrl": "https://gol.gg/players/player-stats/4500/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Season/champion-ALL/",
+          "totalGames": 20,
+          "totalWins": 18
+        },
+        {
+          "tournament": "LEC 2026 Summer Playoffs",
+          "sourceUrl": "https://gol.gg/players/player-stats/4500/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+          "totalGames": 11,
+          "totalWins": 4
+        }
+      ],
+      "snapshotDate": "2026-10-06",
       "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
     },
     "TSW:TOP": {
@@ -7875,6 +8733,139 @@
       "snapshotDate": "2026-10-05",
       "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
     },
+    "MVK:BOT": {
+      "status": "VERIFIED",
+      "scopeId": "lcp-2026-split3",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/5166/season-ALL/split-Summer/tournament-LCP%202026%20Split%203/champion-ALL/",
+        "checkedAt": "2026-10-06",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/5166/season-ALL/split-Summer/tournament-LCP%202026%20Split%203/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-matchlist/5166/season-ALL/split-ALL/tournament-LCP%202026%20Split%203/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Winrate.gg · 第三赛段逐局记录",
+          "url": "https://winrate.gg/pro/player/harky",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "COMPLETE",
+      "stats": [
+        {
+          "championId": "Ezreal",
+          "championName": "Ezreal",
+          "gamesPlayed": 4,
+          "wins": 2
+        },
+        {
+          "championId": "Corki",
+          "championName": "Corki",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "Ashe",
+          "championName": "Ashe",
+          "gamesPlayed": 4,
+          "wins": 2
+        },
+        {
+          "championId": "Taliyah",
+          "championName": "Taliyah",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Lucian",
+          "championName": "Lucian",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Jhin",
+          "championName": "Jhin",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Galio",
+          "championName": "Galio",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Cassiopeia",
+          "championName": "Cassiopeia",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Syndra",
+          "championName": "Syndra",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Sivir",
+          "championName": "Sivir",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Kalista",
+          "championName": "Kalista",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "LeeSin",
+          "championName": "Lee Sin",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Caitlyn",
+          "championName": "Caitlyn",
+          "gamesPlayed": 2,
+          "wins": 0
+        },
+        {
+          "championId": "Xayah",
+          "championName": "Xayah",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Xerath",
+          "championName": "Xerath",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "LCP 2026 Split 3",
+          "sourceUrl": "https://gol.gg/players/player-stats/5166/season-ALL/split-Summer/tournament-LCP%202026%20Split%203/champion-ALL/",
+          "totalGames": 28,
+          "totalWins": 13
+        }
+      ],
+      "snapshotDate": "2026-10-06",
+      "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
+    },
     "MVK:SUPPORT": {
       "status": "VERIFIED",
       "scopeId": "lcp-2026-split3",
@@ -9152,6 +10143,165 @@
       "snapshotDate": "2026-10-05",
       "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
     },
+    "C9:TOP": {
+      "status": "PARTIAL",
+      "scopeId": "lcs-2026-summer",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/3434/season-ALL/split-ALL/tournament-LCS%202026%20Summer/champion-ALL/",
+        "checkedAt": "2026-10-06",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/3434/season-ALL/split-ALL/tournament-LCS%202026%20Summer/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/3434/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "LeagueLab · 第三赛段逐局统计",
+          "url": "https://leaguelab.cc/en/players/thanatos",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83292/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83292/page-summary/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Post-Match Team · 逐局赛果表",
+          "url": "https://www.reddit.com/r/leagueoflegends/comments/1wx1832/cloud9_vs_lyon_lcs_2026_summer_playoffs_lower/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "PARTIAL",
+      "stats": [
+        {
+          "championId": "Rumble",
+          "championName": "Rumble",
+          "gamesPlayed": 6,
+          "wins": 3
+        },
+        {
+          "championId": "Ambessa",
+          "championName": "Ambessa",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "Gnar",
+          "championName": "Gnar",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "Renekton",
+          "championName": "Renekton",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Corki",
+          "championName": "Corki",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Aatrox",
+          "championName": "Aatrox",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Jayce",
+          "championName": "Jayce",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Volibear",
+          "championName": "Volibear",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "KSante",
+          "championName": "K'Sante",
+          "gamesPlayed": 4,
+          "wins": 3
+        },
+        {
+          "championId": "Malphite",
+          "championName": "Malphite",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Olaf",
+          "championName": "Olaf",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Camille",
+          "championName": "Camille",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Kennen",
+          "championName": "Kennen",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Jax",
+          "championName": "Jax",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Varus",
+          "championName": "Varus",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "LCS 2026 Summer",
+          "sourceUrl": "https://gol.gg/players/player-stats/3434/season-ALL/split-ALL/tournament-LCS%202026%20Summer/champion-ALL/",
+          "totalGames": 17,
+          "totalWins": 10
+        },
+        {
+          "tournament": "LCS 2026 Summer Playoffs",
+          "sourceUrl": "https://gol.gg/players/player-stats/3434/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+          "totalGames": 14,
+          "totalWins": 8
+        }
+      ],
+      "snapshotDate": "2026-10-06",
+      "note": "仅汇总已核验记录；后续补录不重复计算同一比赛。",
+      "missingSegments": [],
+      "reason": "尚未核对完整的季后赛 / 资格赛个人出场记录，可能缺少最近系列赛。"
+    },
     "C9:JUNGLE": {
       "status": "VERIFIED",
       "scopeId": "lcs-2026-summer",
@@ -9260,6 +10410,141 @@
       ],
       "snapshotDate": "2026-10-05",
       "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
+    },
+    "C9:MID": {
+      "status": "PARTIAL",
+      "scopeId": "lcs-2026-summer",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/4861/season-ALL/split-ALL/tournament-LCS%202026%20Summer/",
+        "checkedAt": "2026-10-06",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/4861/season-ALL/split-ALL/tournament-LCS%202026%20Summer/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/4861/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83292/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83292/page-summary/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Post-Match Team · 逐局赛果表",
+          "url": "https://www.reddit.com/r/leagueoflegends/comments/1wx1832/cloud9_vs_lyon_lcs_2026_summer_playoffs_lower/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "PARTIAL",
+      "stats": [
+        {
+          "championId": "Ryze",
+          "championName": "Ryze",
+          "gamesPlayed": 4,
+          "wins": 1
+        },
+        {
+          "championId": "Sylas",
+          "championName": "Sylas",
+          "gamesPlayed": 4,
+          "wins": 4
+        },
+        {
+          "championId": "Orianna",
+          "championName": "Orianna",
+          "gamesPlayed": 6,
+          "wins": 4
+        },
+        {
+          "championId": "Akali",
+          "championName": "Akali",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "Yone",
+          "championName": "Yone",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championId": "Cassiopeia",
+          "championName": "Cassiopeia",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Locke",
+          "championName": "Locke",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Ahri",
+          "championName": "Ahri",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Syndra",
+          "championName": "Syndra",
+          "gamesPlayed": 4,
+          "wins": 3
+        },
+        {
+          "championId": "Viktor",
+          "championName": "Viktor",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Aurora",
+          "championName": "Aurora",
+          "gamesPlayed": 2,
+          "wins": 0
+        },
+        {
+          "championId": "Vex",
+          "championName": "Vex",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "LCS 2026 Summer",
+          "sourceUrl": "https://gol.gg/players/player-stats/4861/season-ALL/split-ALL/tournament-LCS%202026%20Summer/",
+          "totalGames": 17,
+          "totalWins": 10
+        },
+        {
+          "tournament": "LCS 2026 Summer Playoffs",
+          "sourceUrl": "https://gol.gg/players/player-stats/4861/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/champion-ALL/",
+          "totalGames": 14,
+          "totalWins": 8
+        }
+      ],
+      "snapshotDate": "2026-10-06",
+      "note": "仅汇总已核验记录；后续补录不重复计算同一比赛。",
+      "missingSegments": [],
+      "reason": "尚未核对完整的季后赛 / 资格赛个人出场记录，可能缺少最近系列赛。"
     },
     "C9:BOT": {
       "status": "VERIFIED",
@@ -9375,6 +10660,141 @@
       ],
       "snapshotDate": "2026-10-05",
       "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
+    },
+    "C9:SUPPORT": {
+      "status": "PARTIAL",
+      "scopeId": "lcs-2026-summer",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/1301/season-ALL/split-ALL/tournament-LCS%202026%20Summer/champion-ALL/",
+        "checkedAt": "2026-10-06",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/1301/season-ALL/split-ALL/tournament-LCS%202026%20Summer/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/1301/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83292/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83292/page-summary/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Post-Match Team · 逐局赛果表",
+          "url": "https://www.reddit.com/r/leagueoflegends/comments/1wx1832/cloud9_vs_lyon_lcs_2026_summer_playoffs_lower/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "PARTIAL",
+      "stats": [
+        {
+          "championId": "Bard",
+          "championName": "Bard",
+          "gamesPlayed": 4,
+          "wins": 0
+        },
+        {
+          "championId": "Nautilus",
+          "championName": "Nautilus",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "Renata",
+          "championName": "Renata Glasc",
+          "gamesPlayed": 4,
+          "wins": 4
+        },
+        {
+          "championId": "Leona",
+          "championName": "Leona",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championId": "Karma",
+          "championName": "Karma",
+          "gamesPlayed": 4,
+          "wins": 4
+        },
+        {
+          "championId": "Camille",
+          "championName": "Camille",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Shen",
+          "championName": "Shen",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Rakan",
+          "championName": "Rakan",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "Milio",
+          "championName": "Milio",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Seraphine",
+          "championName": "Seraphine",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Lulu",
+          "championName": "Lulu",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championId": "Neeko",
+          "championName": "Neeko",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "LCS 2026 Summer",
+          "sourceUrl": "https://gol.gg/players/player-stats/1301/season-ALL/split-ALL/tournament-LCS%202026%20Summer/champion-ALL/",
+          "totalGames": 17,
+          "totalWins": 10
+        },
+        {
+          "tournament": "LCS 2026 Summer Playoffs",
+          "sourceUrl": "https://gol.gg/players/player-stats/1301/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+          "totalGames": 14,
+          "totalWins": 8
+        }
+      ],
+      "snapshotDate": "2026-10-06",
+      "note": "仅汇总已核验记录；后续补录不重复计算同一比赛。",
+      "missingSegments": [],
+      "reason": "尚未核对完整的季后赛 / 资格赛个人出场记录，可能缺少最近系列赛。"
     },
     "LOS:TOP": {
       "status": "VERIFIED",
@@ -9610,6 +11030,133 @@
         }
       ],
       "snapshotDate": "2026-10-05",
+      "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
+    },
+    "LOS:MID": {
+      "status": "VERIFIED",
+      "scopeId": "cblol-2026-split2",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/4234/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+        "checkedAt": "2026-10-06",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/4234/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-matchlist/4234/season-ALL/split-ALL/tournament-/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-matchlist/4234/season-ALL/split-ALL/tournament-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83090/page-summary/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "COMPLETE",
+      "stats": [
+        {
+          "championId": "Ryze",
+          "championName": "Ryze",
+          "gamesPlayed": 6,
+          "wins": 4
+        },
+        {
+          "championId": "Orianna",
+          "championName": "Orianna",
+          "gamesPlayed": 5,
+          "wins": 5
+        },
+        {
+          "championId": "Taliyah",
+          "championName": "Taliyah",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Syndra",
+          "championName": "Syndra",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Cassiopeia",
+          "championName": "Cassiopeia",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Viktor",
+          "championName": "Viktor",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Aurora",
+          "championName": "Aurora",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Hwei",
+          "championName": "Hwei",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Galio",
+          "championName": "Galio",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Ahri",
+          "championName": "Ahri",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Akali",
+          "championName": "Akali",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "TwistedFate",
+          "championName": "Twisted Fate",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "CBLOL 2026 Split 2",
+          "sourceUrl": "https://gol.gg/players/player-stats/4234/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+          "totalGames": 15,
+          "totalWins": 12
+        },
+        {
+          "tournament": "CBLOL 2026 Split 2 Playoffs",
+          "sourceUrl": "https://gol.gg/players/player-matchlist/4234/season-ALL/split-ALL/tournament-/",
+          "totalGames": 9,
+          "totalWins": 6
+        }
+      ],
+      "snapshotDate": "2026-10-06",
       "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
     },
     "LOS:BOT": {
@@ -9865,15 +11412,654 @@
       ],
       "snapshotDate": "2026-10-05",
       "note": "按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。"
+    },
+    "FUR:TOP": {
+      "status": "PARTIAL",
+      "scopeId": "cblol-2026-split2",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/3116/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+        "checkedAt": "2026-10-05",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/3116/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/3116/season-S16/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/champion-ALL/",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "PARTIAL",
+      "stats": [
+        {
+          "championId": "Jayce",
+          "championName": "Jayce",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Volibear",
+          "championName": "Volibear",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Camille",
+          "championName": "Camille",
+          "gamesPlayed": 4,
+          "wins": 3
+        },
+        {
+          "championId": "KSante",
+          "championName": "K'Sante",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "Sion",
+          "championName": "Sion",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Vayne",
+          "championName": "Vayne",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Gnar",
+          "championName": "Gnar",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Galio",
+          "championName": "Galio",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Ambessa",
+          "championName": "Ambessa",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "Olaf",
+          "championName": "Olaf",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championId": "Ornn",
+          "championName": "Ornn",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Gwen",
+          "championName": "Gwen",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Jax",
+          "championName": "Jax",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Rumble",
+          "championName": "Rumble",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "CBLOL 2026 Split 2",
+          "sourceUrl": "https://gol.gg/players/player-stats/3116/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+          "totalGames": 15,
+          "totalWins": 10
+        },
+        {
+          "tournament": "CBLOL 2026 Split 2 Playoffs",
+          "sourceUrl": "https://gol.gg/players/player-stats/3116/season-S16/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/champion-ALL/",
+          "totalGames": 12,
+          "totalWins": 7
+        }
+      ],
+      "snapshotDate": "2026-10-05",
+      "note": "仅汇总已核验记录；后续补录不重复计算同一比赛。",
+      "missingSegments": [],
+      "reason": "尚未核对完整的季后赛 / 资格赛个人出场记录，可能缺少最近系列赛。"
+    },
+    "FUR:JUNGLE": {
+      "status": "PARTIAL",
+      "scopeId": "cblol-2026-split2",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/4776/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+        "checkedAt": "2026-10-05",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/4776/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/4776/season-S16/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/champion-ALL/",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "PARTIAL",
+      "stats": [
+        {
+          "championId": "Poppy",
+          "championName": "Poppy",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "JarvanIV",
+          "championName": "Jarvan IV",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Pantheon",
+          "championName": "Pantheon",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Vi",
+          "championName": "Vi",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Graves",
+          "championName": "Graves",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Skarner",
+          "championName": "Skarner",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Nasus",
+          "championName": "Nasus",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Nocturne",
+          "championName": "Nocturne",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Olaf",
+          "championName": "Olaf",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Trundle",
+          "championName": "Trundle",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "XinZhao",
+          "championName": "Xin Zhao",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Naafiri",
+          "championName": "Naafiri",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "MonkeyKing",
+          "championName": "Wukong",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Sejuani",
+          "championName": "Sejuani",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "CBLOL 2026 Split 2",
+          "sourceUrl": "https://gol.gg/players/player-stats/4776/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+          "totalGames": 13,
+          "totalWins": 10
+        },
+        {
+          "tournament": "CBLOL 2026 Split 2 Playoffs",
+          "sourceUrl": "https://gol.gg/players/player-stats/4776/season-S16/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/champion-ALL/",
+          "totalGames": 8,
+          "totalWins": 6
+        }
+      ],
+      "snapshotDate": "2026-10-05",
+      "note": "仅汇总已核验记录；后续补录不重复计算同一比赛。",
+      "missingSegments": [],
+      "reason": "尚未核对完整的季后赛 / 资格赛个人出场记录，可能缺少最近系列赛。"
+    },
+    "FUR:MID": {
+      "status": "PARTIAL",
+      "scopeId": "cblol-2026-split2",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/2709/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+        "checkedAt": "2026-10-05",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/2709/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/2709/season-S16/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/champion-ALL/",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "PARTIAL",
+      "stats": [
+        {
+          "championId": "Ryze",
+          "championName": "Ryze",
+          "gamesPlayed": 6,
+          "wins": 5
+        },
+        {
+          "championId": "Galio",
+          "championName": "Galio",
+          "gamesPlayed": 4,
+          "wins": 3
+        },
+        {
+          "championId": "Syndra",
+          "championName": "Syndra",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championId": "Akali",
+          "championName": "Akali",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Locke",
+          "championName": "Locke",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Viktor",
+          "championName": "Viktor",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championId": "Annie",
+          "championName": "Annie",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championId": "Ahri",
+          "championName": "Ahri",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Leblanc",
+          "championName": "LeBlanc",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "TwistedFate",
+          "championName": "Twisted Fate",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Taliyah",
+          "championName": "Taliyah",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "CBLOL 2026 Split 2",
+          "sourceUrl": "https://gol.gg/players/player-stats/2709/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+          "totalGames": 15,
+          "totalWins": 10
+        },
+        {
+          "tournament": "CBLOL 2026 Split 2 Playoffs",
+          "sourceUrl": "https://gol.gg/players/player-stats/2709/season-S16/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/champion-ALL/",
+          "totalGames": 12,
+          "totalWins": 7
+        }
+      ],
+      "snapshotDate": "2026-10-05",
+      "note": "仅汇总已核验记录；后续补录不重复计算同一比赛。",
+      "missingSegments": [],
+      "reason": "尚未核对完整的季后赛 / 资格赛个人出场记录，可能缺少最近系列赛。"
+    },
+    "FUR:BOT": {
+      "status": "PARTIAL",
+      "scopeId": "cblol-2026-split2",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/4976/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+        "checkedAt": "2026-10-05",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/4976/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/4976/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/champion-ALL/",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "PARTIAL",
+      "stats": [
+        {
+          "championId": "Ezreal",
+          "championName": "Ezreal",
+          "gamesPlayed": 7,
+          "wins": 5
+        },
+        {
+          "championId": "Caitlyn",
+          "championName": "Caitlyn",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championId": "Lucian",
+          "championName": "Lucian",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Cassiopeia",
+          "championName": "Cassiopeia",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Sylas",
+          "championName": "Sylas",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Kaisa",
+          "championName": "Kai'Sa",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Corki",
+          "championName": "Corki",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Sivir",
+          "championName": "Sivir",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Yunara",
+          "championName": "Yunara",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Ashe",
+          "championName": "Ashe",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Kalista",
+          "championName": "Kalista",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championId": "Xayah",
+          "championName": "Xayah",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Jhin",
+          "championName": "Jhin",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Zeri",
+          "championName": "Zeri",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Aphelios",
+          "championName": "Aphelios",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "CBLOL 2026 Split 2",
+          "sourceUrl": "https://gol.gg/players/player-stats/4976/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+          "totalGames": 15,
+          "totalWins": 10
+        },
+        {
+          "tournament": "CBLOL 2026 Split 2 Playoffs",
+          "sourceUrl": "https://gol.gg/players/player-stats/4976/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/champion-ALL/",
+          "totalGames": 12,
+          "totalWins": 7
+        }
+      ],
+      "snapshotDate": "2026-10-05",
+      "note": "仅汇总已核验记录；后续补录不重复计算同一比赛。",
+      "missingSegments": [],
+      "reason": "尚未核对完整的季后赛 / 资格赛个人出场记录，可能缺少最近系列赛。"
+    },
+    "FUR:SUPPORT": {
+      "status": "PARTIAL",
+      "scopeId": "cblol-2026-split2",
+      "source": {
+        "label": "Games of Legends · 第三赛段统计",
+        "url": "https://gol.gg/players/player-stats/2329/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+        "checkedAt": "2026-10-06",
+        "kind": "SECONDARY"
+      },
+      "sources": [
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/2329/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/players/player-stats/2329/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/champion-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/champion/champion-matchlist/92/season-ALL/split-ALL/tournament-/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/champion/champion-matchlist/144/season-ALL/split-ALL/tournament-ALL/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        },
+        {
+          "label": "Games of Legends · 第三赛段统计",
+          "url": "https://gol.gg/game/stats/83087/page-fullstats/",
+          "checkedAt": "2026-10-06",
+          "kind": "SECONDARY"
+        }
+      ],
+      "completeness": "PARTIAL",
+      "stats": [
+        {
+          "championId": "Bard",
+          "championName": "Bard",
+          "gamesPlayed": 3,
+          "wins": 3
+        },
+        {
+          "championId": "Karma",
+          "championName": "Karma",
+          "gamesPlayed": 4,
+          "wins": 3
+        },
+        {
+          "championId": "Shen",
+          "championName": "Shen",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championId": "Milio",
+          "championName": "Milio",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Camille",
+          "championName": "Camille",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Alistar",
+          "championName": "Alistar",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Leona",
+          "championName": "Leona",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championId": "Lulu",
+          "championName": "Lulu",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Seraphine",
+          "championName": "Seraphine",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championId": "Renata",
+          "championName": "Renata Glasc",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Thresh",
+          "championName": "Thresh",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championId": "Yuumi",
+          "championName": "Yuumi",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "segments": [
+        {
+          "tournament": "CBLOL 2026 Split 2",
+          "sourceUrl": "https://gol.gg/players/player-stats/2329/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202/champion-ALL/",
+          "totalGames": 15,
+          "totalWins": 10
+        },
+        {
+          "tournament": "CBLOL 2026 Split 2 Playoffs",
+          "sourceUrl": "https://gol.gg/players/player-stats/2329/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/champion-ALL/",
+          "totalGames": 6,
+          "totalWins": 5
+        }
+      ],
+      "snapshotDate": "2026-10-06",
+      "note": "仅汇总已核验记录；后续补录不重复计算同一比赛。",
+      "missingSegments": [],
+      "reason": "尚未核对完整的季后赛 / 资格赛个人出场记录，可能缺少最近系列赛。"
     }
   },
   "availability": {
     "status": "UNAVAILABLE",
-    "reason": "该选手的完整第三赛段数据尚未核验。",
+    "reason": "该选手暂无已核验的第三赛段英雄记录。",
     "attemptedSources": [
       "https://gol.gg/",
       "https://liquipedia.net/leagueoflegends/"
     ],
-    "notes": "统计来源为第三方 GOL，不属于 Riot 官方统计。无法取得完整覆盖时不发布部分英雄池。"
+    "notes": "统计来源为第三方，不属于 Riot 官方统计。覆盖尚不完整时明确标记部分数据。"
   }
 }

@@ -23,8 +23,9 @@ export type RegularSeasonStanding = {
 };
 export type ChampionStat = {championId:string; championName:string; gamesPlayed:number; wins:number};
 export type ChampionPool = {
- status:'VERIFIED'|'UNAVAILABLE'; scopeId:string; source:Source|null;
- completeness:'COMPLETE'|'UNVERIFIED'; stats:ChampionStat[]; reason?:string;
+ status:'VERIFIED'|'PARTIAL'|'UNAVAILABLE'; scopeId:string; source:Source|null;
+ completeness:'COMPLETE'|'PARTIAL'|'UNVERIFIED'; stats:ChampionStat[]; reason?:string;
+ missingSegments?:string[];
  sources?:Source[]; snapshotDate?:string; note?:string;
  segments?:{tournament:string;sourceUrl:string;totalGames:number;totalWins:number}[];
 };

@@ -32,21 +32,29 @@ const chunks=[];
    if(games.length)chunks.push({tournament,sourceUrl:sourceRows.url,totalGames:games.length,totalWins:games.filter(r=>r.won).length,stats:[...stats.values()]});
   }
  }
- if(chunks.length!==required.length){unavailable.push(player.playerId);continue;}
+ if(!chunks.length){unavailable.push(player.playerId);continue;}
  // Older cached player pages can omit recent series. If a complete player
  // participation record cannot be reconciled with the official match snapshot,
- // keep it unpublished; don't assume either missing games or substitutions.
+ // publish reviewed records as partial; never invent missing games or substitutions.
  const officialGames=officialMatches.filter(m=>m.teamA===team.id||m.teamB===team.id).reduce((n,m)=>n+m.scoreA+m.scoreB,0);
  const postseasonGames=team.region==='LCP'?chunks[0].totalGames:chunks.slice(1).reduce((n,s)=>n+s.totalGames,0);
- if(postseasonGames<officialGames){unavailable.push(player.playerId);continue;}
+ const missingSegments=required.filter(tournament=>!chunks.some(chunk=>chunk.tournament===tournament));
+ const partial=missingSegments.length>0||postseasonGames<officialGames;
  const combined=new Map();
  for(const chunk of chunks)for(const stat of chunk.stats){
   const champion=championMap.get(norm(stat.championName));if(!champion)throw Error(`Unknown champion: ${stat.championName}`);
   const existing=combined.get(champion.id)??{championId:champion.id,championName:champion.name,gamesPlayed:0,wins:0};
   existing.gamesPlayed+=stat.gamesPlayed;existing.wins+=stat.wins;combined.set(champion.id,existing);
  }
- const sources=[...new Set(chunks.map(s=>s.sourceUrl))].map(url=>({label:'Games of Legends · 第三赛段统计',url,checkedAt:'2026-10-05',kind:'SECONDARY'}));
- pools[player.id]={status:'VERIFIED',scopeId:stage3Scopes[team.region].id,source:sources[0],sources,completeness:'COMPLETE',stats:[...combined.values()],segments:chunks.map(c=>({tournament:c.tournament,sourceUrl:c.sourceUrl,totalGames:c.totalGames,totalWins:c.totalWins})),snapshotDate:'2026-10-05',note:'按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。'};
+ const snapshotDate=chunks.reduce((latest,c)=>c.checkedAt&&c.checkedAt>latest?c.checkedAt:latest,'2026-10-05');
+ const sources=[...new Set(chunks.flatMap(s=>s.sourceUrls??[s.sourceUrl]))].map(url=>({label:url.startsWith('https://leaguelab.cc/')?'LeagueLab · 第三赛段逐局统计':url.startsWith('https://winrate.gg/')?'Winrate.gg · 第三赛段逐局记录':url.startsWith('https://www.reddit.com/')?'Post-Match Team · 逐局赛果表':'Games of Legends · 第三赛段统计',url,checkedAt:snapshotDate,kind:'SECONDARY'}));
+ pools[player.id]={status:'VERIFIED',scopeId:stage3Scopes[team.region].id,source:sources[0],sources,completeness:'COMPLETE',stats:[...combined.values()],segments:chunks.map(c=>({tournament:c.tournament,sourceUrl:c.sourceUrl,totalGames:c.totalGames,totalWins:c.totalWins})),snapshotDate,note:'按来源当前记录汇总；仍在进行的联赛将随后续比赛更新。'};
+ if(partial){
+  pools[player.id].status='PARTIAL';pools[player.id].completeness='PARTIAL';pools[player.id].missingSegments=missingSegments;
+  pools[player.id].reason=missingSegments.length?`尚未收录：${missingSegments.join('、')}。`:'尚未核对完整的季后赛 / 资格赛个人出场记录，可能缺少最近系列赛。';
+  pools[player.id].note='仅汇总已核验记录；后续补录不重复计算同一比赛。';
+ }
 }
-fs.writeFileSync('lib/team-profile/champion-pools.json',JSON.stringify({checkedAt:'2026-10-05',pools,availability:{status:'UNAVAILABLE',reason:'该选手的完整第三赛段数据尚未核验。',attemptedSources:['https://gol.gg/','https://liquipedia.net/leagueoflegends/'],notes:'统计来源为第三方 GOL，不属于 Riot 官方统计。无法取得完整覆盖时不发布部分英雄池。'}},null,2)+'\n');
-console.log(JSON.stringify({verified:Object.keys(pools).length,unavailable}));
+const checkedAt=Object.values(pools).reduce((latest,p)=>p.snapshotDate>latest?p.snapshotDate:latest,'2026-10-05');
+fs.writeFileSync('lib/team-profile/champion-pools.json',JSON.stringify({checkedAt,pools,availability:{status:'UNAVAILABLE',reason:'该选手暂无已核验的第三赛段英雄记录。',attemptedSources:['https://gol.gg/','https://liquipedia.net/leagueoflegends/'],notes:'统计来源为第三方，不属于 Riot 官方统计。覆盖尚不完整时明确标记部分数据。'}},null,2)+'\n');
+console.log(JSON.stringify({verified:Object.values(pools).filter(p=>p.status==='VERIFIED').length,partial:Object.values(pools).filter(p=>p.status==='PARTIAL').length,unavailable}));

@@ -29,7 +29,8 @@ export default async function PlayerProfile({params}:{params:Promise<{slug:strin
   <section className={styles.section} aria-labelledby="champion-pool-title">
    <div className={styles.sectionHead}><div><div className="eyebrow">STAGE 3 CHAMPION POOL</div><h2 id="champion-pool-title">第三赛段英雄池</h2></div></div>
    <p className={styles.note}>{scope.label} · {scope.includes.join(' + ')}</p>
-   {pool.status==='VERIFIED'&&pool.completeness==='COMPLETE'?<>
+   {pool.stats.length>0&&(pool.status==='VERIFIED'||pool.status==='PARTIAL')?<>
+    {pool.status==='PARTIAL'&&<p className={styles.note}><strong>部分数据 · {pool.stats.reduce((n,stat)=>n+stat.gamesPlayed,0)} 场已核验</strong><br/>{pool.reason} 下方场次和胜率仅按已收录比赛计算。</p>}
     <table className={styles.poolTable}><thead><tr><th scope="col">英雄</th><th scope="col">场次</th><th scope="col">胜率</th></tr></thead>
      <tbody>{sortedChampionStats(pool.stats).map(stat=><tr key={stat.championId}><td><span className={styles.championIdentity}><ChampionIcon championId={stat.championId} championName={stat.championName}/>{stat.championName}</span></td><td>{stat.gamesPlayed}</td><td>{championWinRate(stat)}</td></tr>)}</tbody>
     </table><p className={styles.note}>快照核对：{pool.snapshotDate} · {pool.note}</p>

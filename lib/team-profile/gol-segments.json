@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-05",
+  "checkedAt": "2026-10-06",
   "segments": [
     {
       "sourceUrl": "https://gol.gg/players/player-stats/1115/season-ALL/split-ALL/tournament-LCK%202026%20Rounds%203-4/champion-ALL/",
@@ -9983,6 +9983,1255 @@
         }
       ],
       "valid": true
+    },
+    {
+      "sourceUrl": "https://gol.gg/players/player-stats/3323/season-ALL/split-ALL/tournament-LPL%202026%20Grand%20Finals/champion-ALL/",
+      "player": "Kael",
+      "totalGames": 16,
+      "totalWins": 9,
+      "stats": [
+        {
+          "championName": "Neeko",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championName": "Seraphine",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championName": "Milio",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championName": "Lux",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Karma",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Renata Glasc",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Lulu",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Tahm Kench",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Nautilus",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Rell",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "valid": true,
+      "checkedAt": "2026-10-06",
+      "sourceUrls": [
+        "https://gol.gg/players/player-stats/3323/season-ALL/split-ALL/tournament-LPL%202026%20Grand%20Finals/champion-ALL/",
+        "https://gol.gg/game/stats/82967/page-fullstats/",
+        "https://gol.gg/game/stats/82968/page-fullstats/",
+        "https://gol.gg/game/stats/82969/page-fullstats/",
+        "https://gol.gg/game/stats/82970/page-fullstats/"
+      ],
+      "reviewedAdditionalGames": [
+        {
+          "champion": "Nautilus",
+          "won": true,
+          "url": "https://gol.gg/game/stats/82967/page-fullstats/"
+        },
+        {
+          "champion": "Seraphine",
+          "won": true,
+          "url": "https://gol.gg/game/stats/82968/page-fullstats/"
+        },
+        {
+          "champion": "Milio",
+          "won": false,
+          "url": "https://gol.gg/game/stats/82969/page-fullstats/"
+        },
+        {
+          "champion": "Rell",
+          "won": true,
+          "url": "https://gol.gg/game/stats/82970/page-fullstats/"
+        }
+      ]
+    },
+    {
+      "sourceUrl": "https://gol.gg/players/player-stats/3406/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+      "player": "Yike",
+      "totalGames": 11,
+      "totalWins": 4,
+      "stats": [
+        {
+          "championName": "Jarvan IV",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Wukong",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Naafiri",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Pantheon",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Vi",
+          "gamesPlayed": 2,
+          "wins": 0
+        },
+        {
+          "championName": "Lee Sin",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Qiyana",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Trundle",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Skarner",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Dr. Mundo",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "valid": true,
+      "checkedAt": "2026-10-06",
+      "sourceUrls": [
+        "https://gol.gg/players/player-stats/3406/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+        "https://gol.gg/game/stats/83074/page-fullstats/",
+        "https://gol.gg/game/stats/83075/page-fullstats/",
+        "https://gol.gg/game/stats/83076/page-fullstats/"
+      ],
+      "reviewedAdditionalGames": [
+        {
+          "champion": "Skarner",
+          "won": false,
+          "url": "https://gol.gg/game/stats/83074/page-fullstats/"
+        },
+        {
+          "champion": "Vi",
+          "won": false,
+          "url": "https://gol.gg/game/stats/83075/page-fullstats/"
+        },
+        {
+          "champion": "Dr. Mundo",
+          "won": false,
+          "url": "https://gol.gg/game/stats/83076/page-fullstats/"
+        }
+      ]
+    },
+    {
+      "sourceUrl": "https://gol.gg/players/player-stats/5264/season-S16/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+      "player": "kyeahoo",
+      "totalGames": 11,
+      "totalWins": 4,
+      "stats": [
+        {
+          "championName": "Ryze",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championName": "Sylas",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Anivia",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Akali",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Ahri",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Orianna",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Viktor",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "LeBlanc",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "valid": true,
+      "checkedAt": "2026-10-06",
+      "sourceUrls": [
+        "https://gol.gg/players/player-stats/5264/season-S16/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+        "https://gol.gg/game/stats/83074/page-fullstats/",
+        "https://gol.gg/game/stats/83075/page-fullstats/",
+        "https://gol.gg/game/stats/83076/page-fullstats/"
+      ],
+      "reviewedAdditionalGames": [
+        {
+          "champion": "Viktor",
+          "won": false,
+          "url": "https://gol.gg/game/stats/83074/page-fullstats/"
+        },
+        {
+          "champion": "Ryze",
+          "won": false,
+          "url": "https://gol.gg/game/stats/83075/page-fullstats/"
+        },
+        {
+          "champion": "LeBlanc",
+          "won": false,
+          "url": "https://gol.gg/game/stats/83076/page-fullstats/"
+        }
+      ]
+    },
+    {
+      "sourceUrl": "https://gol.gg/players/player-stats/4500/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+      "player": "Busio",
+      "totalGames": 11,
+      "totalWins": 4,
+      "stats": [
+        {
+          "championName": "Seraphine",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Rell",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Lulu",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "VelKoz",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Bard",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Milio",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Alistar",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Yuumi",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Nautilus",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Karma",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "valid": true,
+      "checkedAt": "2026-10-06",
+      "sourceUrls": [
+        "https://gol.gg/players/player-stats/4500/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+        "https://gol.gg/game/stats/83074/page-fullstats/",
+        "https://gol.gg/game/stats/83075/page-fullstats/",
+        "https://gol.gg/game/stats/83076/page-fullstats/"
+      ],
+      "reviewedAdditionalGames": [
+        {
+          "champion": "Yuumi",
+          "won": false,
+          "url": "https://gol.gg/game/stats/83074/page-fullstats/"
+        },
+        {
+          "champion": "Nautilus",
+          "won": false,
+          "url": "https://gol.gg/game/stats/83075/page-fullstats/"
+        },
+        {
+          "champion": "Karma",
+          "won": false,
+          "url": "https://gol.gg/game/stats/83076/page-fullstats/"
+        }
+      ]
+    },
+    {
+      "sourceUrl": "https://gol.gg/players/player-stats/1310/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+      "player": "BrokenBlade",
+      "totalGames": 10,
+      "totalWins": 9,
+      "stats": [
+        {
+          "championName": "Camille",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championName": "Rumble",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championName": "Olaf",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "KSante",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Zaahen",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Ambessa",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Kled",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Shen",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "valid": true,
+      "checkedAt": "2026-10-06",
+      "sourceUrls": [
+        "https://gol.gg/players/player-stats/1310/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+        "https://gol.gg/champion/champion-matchlist/169/season-S16/split-ALL/tournament-/",
+        "https://leaguelab.cc/en/games/LOLTMNT04_190200?league=LEC",
+        "https://leaguelab.cc/en/games/LOLTMNT04_190202?league=LEC"
+      ],
+      "reviewedAdditionalGames": [
+        {
+          "champion": "Ambessa",
+          "won": true,
+          "url": "https://gol.gg/champion/champion-matchlist/169/season-S16/split-ALL/tournament-/"
+        },
+        {
+          "champion": "Kled",
+          "won": true,
+          "url": "https://leaguelab.cc/en/games/LOLTMNT04_190200?league=LEC"
+        },
+        {
+          "champion": "Shen",
+          "won": true,
+          "url": "https://leaguelab.cc/en/games/LOLTMNT04_190202?league=LEC"
+        }
+      ]
+    },
+    {
+      "sourceUrl": "https://gol.gg/players/player-stats/3544/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+      "player": "jojopyun",
+      "totalGames": 15,
+      "totalWins": 9,
+      "stats": [
+        {
+          "championName": "Ahri",
+          "gamesPlayed": 4,
+          "wins": 3
+        },
+        {
+          "championName": "Ryze",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championName": "Yone",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Anivia",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championName": "Galio",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Akali",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Syndra",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Lissandra",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "valid": true,
+      "checkedAt": "2026-10-06",
+      "sourceUrls": [
+        "https://gol.gg/players/player-stats/3544/season-ALL/split-ALL/tournament-LEC%202026%20Summer%20Playoffs/champion-ALL/",
+        "https://gol.gg/players/player-matchlist/3544/season-ALL/split-ALL/tournament-ALL/"
+      ],
+      "reviewedAdditionalGames": [
+        {
+          "champion": "Ryze",
+          "won": false,
+          "url": "https://gol.gg/players/player-matchlist/3544/season-ALL/split-ALL/tournament-ALL/"
+        },
+        {
+          "champion": "Lissandra",
+          "won": false,
+          "url": "https://gol.gg/players/player-matchlist/3544/season-ALL/split-ALL/tournament-ALL/"
+        },
+        {
+          "champion": "Ahri",
+          "won": false,
+          "url": "https://gol.gg/players/player-matchlist/3544/season-ALL/split-ALL/tournament-ALL/"
+        }
+      ]
+    },
+    {
+      "sourceUrl": "https://gol.gg/players/player-stats/5166/season-ALL/split-Summer/tournament-LCP%202026%20Split%203/champion-ALL/",
+      "player": "Harky",
+      "totalGames": 28,
+      "totalWins": 13,
+      "stats": [
+        {
+          "championName": "Ezreal",
+          "gamesPlayed": 4,
+          "wins": 2
+        },
+        {
+          "championName": "Corki",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championName": "Ashe",
+          "gamesPlayed": 4,
+          "wins": 2
+        },
+        {
+          "championName": "Taliyah",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Lucian",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Jhin",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Galio",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Cassiopeia",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Syndra",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Sivir",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Kalista",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Lee Sin",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Caitlyn",
+          "gamesPlayed": 2,
+          "wins": 0
+        },
+        {
+          "championName": "Xayah",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Xerath",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "valid": true,
+      "tournament": "LCP 2026 Split 3",
+      "checkedAt": "2026-10-06",
+      "sourceUrls": [
+        "https://gol.gg/players/player-stats/5166/season-ALL/split-Summer/tournament-LCP%202026%20Split%203/champion-ALL/",
+        "https://gol.gg/players/player-matchlist/5166/season-ALL/split-ALL/tournament-LCP%202026%20Split%203/",
+        "https://winrate.gg/pro/player/harky"
+      ],
+      "reviewedAdditionalGames": [
+        {
+          "date": "2026-08-29",
+          "opponent": "CFO",
+          "championName": "Ashe",
+          "won": false,
+          "sourceUrl": "https://gol.gg/players/player-matchlist/5166/season-ALL/split-ALL/tournament-LCP%202026%20Split%203/"
+        },
+        {
+          "date": "2026-08-29",
+          "opponent": "CFO",
+          "championName": "Caitlyn",
+          "won": false,
+          "sourceUrl": "https://gol.gg/players/player-matchlist/5166/season-ALL/split-ALL/tournament-LCP%202026%20Split%203/"
+        },
+        {
+          "date": "2026-08-29",
+          "opponent": "CFO",
+          "championName": "Ezreal",
+          "won": true,
+          "sourceUrl": "https://gol.gg/players/player-matchlist/5166/season-ALL/split-ALL/tournament-LCP%202026%20Split%203/"
+        },
+        {
+          "date": "2026-08-29",
+          "opponent": "CFO",
+          "championName": "Syndra",
+          "won": false,
+          "sourceUrl": "https://gol.gg/players/player-matchlist/5166/season-ALL/split-ALL/tournament-LCP%202026%20Split%203/"
+        }
+      ]
+    },
+    {
+      "player": "Thanatos",
+      "tournament": "LCS 2026 Summer Playoffs",
+      "sourceUrl": "https://gol.gg/players/player-stats/3434/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+      "sourceUrls": [
+        "https://gol.gg/players/player-stats/3434/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+        "https://leaguelab.cc/en/players/thanatos"
+      ],
+      "checkedAt": "2026-10-06",
+      "totalGames": 11,
+      "totalWins": 7,
+      "stats": [
+        {
+          "championName": "Olaf",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Camille",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championName": "KSante",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Ambessa",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Rumble",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Kennen",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Jax",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Varus",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "player": "Feisty",
+      "tournament": "CBLOL 2026 Split 2 Playoffs",
+      "sourceUrl": "https://gol.gg/players/player-matchlist/4234/season-ALL/split-ALL/tournament-/",
+      "sourceUrls": [
+        "https://gol.gg/players/player-matchlist/4234/season-ALL/split-ALL/tournament-/",
+        "https://gol.gg/players/player-matchlist/4234/season-ALL/split-ALL/tournament-ALL/",
+        "https://gol.gg/game/stats/83090/page-summary/"
+      ],
+      "checkedAt": "2026-10-06",
+      "totalGames": 9,
+      "totalWins": 6,
+      "stats": [
+        {
+          "championName": "Ryze",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Orianna",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championName": "Aurora",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Hwei",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Galio",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Ahri",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Akali",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Twisted Fate",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "sourceUrl": "https://gol.gg/players/player-stats/2329/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/champion-ALL/",
+      "player": "JoJo",
+      "totalGames": 6,
+      "totalWins": 5,
+      "stats": [
+        {
+          "championName": "Karma",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Renata Glasc",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Seraphine",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Thresh",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Yuumi",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Shen",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "valid": true,
+      "tournament": "CBLOL 2026 Split 2 Playoffs",
+      "checkedAt": "2026-10-06",
+      "reviewedAdditionalGames": [
+        {
+          "date": "2026-09-26",
+          "opponent": "RED Canids",
+          "championName": "Thresh",
+          "won": true,
+          "sourceUrl": "https://gol.gg/champion/champion-matchlist/92/season-ALL/split-ALL/tournament-/"
+        },
+        {
+          "date": "2026-09-26",
+          "opponent": "RED Canids",
+          "championName": "Yuumi",
+          "won": true,
+          "sourceUrl": "https://gol.gg/champion/champion-matchlist/144/season-ALL/split-ALL/tournament-ALL/"
+        },
+        {
+          "date": "2026-09-26",
+          "opponent": "RED Canids",
+          "championName": "Shen",
+          "won": false,
+          "sourceUrl": "https://gol.gg/game/stats/83087/page-fullstats/"
+        }
+      ],
+      "sourceUrls": [
+        "https://gol.gg/players/player-stats/2329/season-ALL/split-ALL/tournament-CBLOL%202026%20Split%202%20Playoffs/champion-ALL/",
+        "https://gol.gg/champion/champion-matchlist/92/season-ALL/split-ALL/tournament-/",
+        "https://gol.gg/champion/champion-matchlist/144/season-ALL/split-ALL/tournament-ALL/",
+        "https://gol.gg/game/stats/83087/page-fullstats/"
+      ]
+    },
+    {
+      "player": "Thanatos",
+      "tournament": "LCS 2026 Summer Playoffs",
+      "sourceUrl": "https://gol.gg/players/player-stats/3434/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+      "sourceUrls": [
+        "https://gol.gg/players/player-stats/3434/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+        "https://leaguelab.cc/en/players/thanatos",
+        "https://gol.gg/game/stats/83292/page-fullstats/",
+        "https://gol.gg/game/stats/83292/page-summary/"
+      ],
+      "checkedAt": "2026-10-06",
+      "totalGames": 12,
+      "totalWins": 8,
+      "stats": [
+        {
+          "championName": "Olaf",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Camille",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championName": "KSante",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championName": "Ambessa",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Rumble",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Kennen",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Jax",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Varus",
+          "gamesPlayed": 1,
+          "wins": 1
+        }
+      ],
+      "valid": true,
+      "reviewedAdditionalGames": [
+        {
+          "date": "2026-10-03",
+          "opponent": "LYON",
+          "game": 1,
+          "championName": "KSante",
+          "won": true,
+          "sourceUrl": "https://gol.gg/game/stats/83292/page-fullstats/"
+        }
+      ]
+    },
+    {
+      "sourceUrl": "https://gol.gg/players/player-stats/4861/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/champion-ALL/",
+      "player": "Loki",
+      "totalGames": 12,
+      "totalWins": 8,
+      "stats": [
+        {
+          "championName": "Syndra",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championName": "Orianna",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championName": "Viktor",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Akali",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Yone",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Sylas",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Ryze",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Aurora",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "valid": true,
+      "tournament": "LCS 2026 Summer Playoffs",
+      "checkedAt": "2026-10-06",
+      "sourceUrls": [
+        "https://gol.gg/players/player-stats/4861/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/champion-ALL/",
+        "https://gol.gg/game/stats/83292/page-fullstats/",
+        "https://gol.gg/game/stats/83292/page-summary/"
+      ],
+      "reviewedAdditionalGames": [
+        {
+          "date": "2026-10-03",
+          "opponent": "LYON",
+          "game": 1,
+          "championName": "Orianna",
+          "won": true,
+          "sourceUrl": "https://gol.gg/game/stats/83292/page-fullstats/"
+        }
+      ]
+    },
+    {
+      "sourceUrl": "https://gol.gg/players/player-stats/1301/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+      "player": "Vulcan",
+      "totalGames": 12,
+      "totalWins": 8,
+      "stats": [
+        {
+          "championName": "Seraphine",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Lulu",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Rakan",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Renata Glasc",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Karma",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championName": "Shen",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Neeko",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Bard",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "valid": true,
+      "tournament": "LCS 2026 Summer Playoffs",
+      "checkedAt": "2026-10-06",
+      "sourceUrls": [
+        "https://gol.gg/players/player-stats/1301/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+        "https://gol.gg/game/stats/83292/page-fullstats/",
+        "https://gol.gg/game/stats/83292/page-summary/"
+      ],
+      "reviewedAdditionalGames": [
+        {
+          "date": "2026-10-03",
+          "opponent": "LYON",
+          "game": 1,
+          "championName": "Karma",
+          "won": true,
+          "sourceUrl": "https://gol.gg/game/stats/83292/page-fullstats/"
+        }
+      ]
+    },
+    {
+      "player": "Thanatos",
+      "tournament": "LCS 2026 Summer Playoffs",
+      "sourceUrl": "https://gol.gg/players/player-stats/3434/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+      "sourceUrls": [
+        "https://gol.gg/players/player-stats/3434/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+        "https://leaguelab.cc/en/players/thanatos",
+        "https://gol.gg/game/stats/83292/page-fullstats/",
+        "https://gol.gg/game/stats/83292/page-summary/",
+        "https://www.reddit.com/r/leagueoflegends/comments/1wx1832/cloud9_vs_lyon_lcs_2026_summer_playoffs_lower/"
+      ],
+      "checkedAt": "2026-10-06",
+      "totalGames": 14,
+      "totalWins": 8,
+      "stats": [
+        {
+          "championName": "Olaf",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Camille",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championName": "KSante",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championName": "Ambessa",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Rumble",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Kennen",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Jax",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Varus",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Gnar",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Jayce",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "valid": true,
+      "reviewedAdditionalGames": [
+        {
+          "date": "2026-10-03",
+          "opponent": "LYON",
+          "game": 1,
+          "championName": "KSante",
+          "won": true,
+          "sourceUrl": "https://gol.gg/game/stats/83292/page-fullstats/"
+        },
+        {
+          "date": "2026-10-03",
+          "opponent": "LYON",
+          "game": 2,
+          "championName": "Gnar",
+          "won": false,
+          "sourceUrl": "https://www.reddit.com/r/leagueoflegends/comments/1wx1832/cloud9_vs_lyon_lcs_2026_summer_playoffs_lower/",
+          "verificationNote": "Post-Match Team scoreboard; series winner and game durations cross-checked with GOL summary. Excludes comments."
+        },
+        {
+          "date": "2026-10-03",
+          "opponent": "LYON",
+          "game": 3,
+          "championName": "Jayce",
+          "won": false,
+          "sourceUrl": "https://www.reddit.com/r/leagueoflegends/comments/1wx1832/cloud9_vs_lyon_lcs_2026_summer_playoffs_lower/",
+          "verificationNote": "Post-Match Team scoreboard; series winner and game durations cross-checked with GOL summary. Excludes comments."
+        }
+      ]
+    },
+    {
+      "sourceUrl": "https://gol.gg/players/player-stats/4861/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/champion-ALL/",
+      "player": "Loki",
+      "totalGames": 14,
+      "totalWins": 8,
+      "stats": [
+        {
+          "championName": "Syndra",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championName": "Orianna",
+          "gamesPlayed": 3,
+          "wins": 2
+        },
+        {
+          "championName": "Viktor",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Akali",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Yone",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Sylas",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Ryze",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Aurora",
+          "gamesPlayed": 2,
+          "wins": 0
+        },
+        {
+          "championName": "Vex",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "valid": true,
+      "tournament": "LCS 2026 Summer Playoffs",
+      "checkedAt": "2026-10-06",
+      "sourceUrls": [
+        "https://gol.gg/players/player-stats/4861/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/champion-ALL/",
+        "https://gol.gg/game/stats/83292/page-fullstats/",
+        "https://gol.gg/game/stats/83292/page-summary/",
+        "https://www.reddit.com/r/leagueoflegends/comments/1wx1832/cloud9_vs_lyon_lcs_2026_summer_playoffs_lower/"
+      ],
+      "reviewedAdditionalGames": [
+        {
+          "date": "2026-10-03",
+          "opponent": "LYON",
+          "game": 1,
+          "championName": "Orianna",
+          "won": true,
+          "sourceUrl": "https://gol.gg/game/stats/83292/page-fullstats/"
+        },
+        {
+          "date": "2026-10-03",
+          "opponent": "LYON",
+          "game": 2,
+          "championName": "Aurora",
+          "won": false,
+          "sourceUrl": "https://www.reddit.com/r/leagueoflegends/comments/1wx1832/cloud9_vs_lyon_lcs_2026_summer_playoffs_lower/",
+          "verificationNote": "Post-Match Team scoreboard; series winner and game durations cross-checked with GOL summary. Excludes comments."
+        },
+        {
+          "date": "2026-10-03",
+          "opponent": "LYON",
+          "game": 3,
+          "championName": "Vex",
+          "won": false,
+          "sourceUrl": "https://www.reddit.com/r/leagueoflegends/comments/1wx1832/cloud9_vs_lyon_lcs_2026_summer_playoffs_lower/",
+          "verificationNote": "Post-Match Team scoreboard; series winner and game durations cross-checked with GOL summary. Excludes comments."
+        }
+      ]
+    },
+    {
+      "sourceUrl": "https://gol.gg/players/player-stats/1301/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+      "player": "Vulcan",
+      "totalGames": 14,
+      "totalWins": 8,
+      "stats": [
+        {
+          "championName": "Seraphine",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Lulu",
+          "gamesPlayed": 3,
+          "wins": 1
+        },
+        {
+          "championName": "Rakan",
+          "gamesPlayed": 2,
+          "wins": 1
+        },
+        {
+          "championName": "Renata Glasc",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Karma",
+          "gamesPlayed": 2,
+          "wins": 2
+        },
+        {
+          "championName": "Shen",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Neeko",
+          "gamesPlayed": 1,
+          "wins": 1
+        },
+        {
+          "championName": "Bard",
+          "gamesPlayed": 1,
+          "wins": 0
+        },
+        {
+          "championName": "Leona",
+          "gamesPlayed": 1,
+          "wins": 0
+        }
+      ],
+      "valid": true,
+      "tournament": "LCS 2026 Summer Playoffs",
+      "checkedAt": "2026-10-06",
+      "sourceUrls": [
+        "https://gol.gg/players/player-stats/1301/season-ALL/split-ALL/tournament-LCS%202026%20Summer%20Playoffs/",
+        "https://gol.gg/game/stats/83292/page-fullstats/",
+        "https://gol.gg/game/stats/83292/page-summary/",
+        "https://www.reddit.com/r/leagueoflegends/comments/1wx1832/cloud9_vs_lyon_lcs_2026_summer_playoffs_lower/"
+      ],
+      "reviewedAdditionalGames": [
+        {
+          "date": "2026-10-03",
+          "opponent": "LYON",
+          "game": 1,
+          "championName": "Karma",
+          "won": true,
+          "sourceUrl": "https://gol.gg/game/stats/83292/page-fullstats/"
+        },
+        {
+          "date": "2026-10-03",
+          "opponent": "LYON",
+          "game": 2,
+          "championName": "Lulu",
+          "won": false,
+          "sourceUrl": "https://www.reddit.com/r/leagueoflegends/comments/1wx1832/cloud9_vs_lyon_lcs_2026_summer_playoffs_lower/",
+          "verificationNote": "Post-Match Team scoreboard; series winner and game durations cross-checked with GOL summary. Excludes comments."
+        },
+        {
+          "date": "2026-10-03",
+          "opponent": "LYON",
+          "game": 3,
+          "championName": "Leona",
+          "won": false,
+          "sourceUrl": "https://www.reddit.com/r/leagueoflegends/comments/1wx1832/cloud9_vs_lyon_lcs_2026_summer_playoffs_lower/",
+          "verificationNote": "Post-Match Team scoreboard; series winner and game durations cross-checked with GOL summary. Excludes comments."
+        }
+      ]
     }
   ]
 }

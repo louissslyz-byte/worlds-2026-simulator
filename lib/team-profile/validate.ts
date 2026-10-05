@@ -15,8 +15,8 @@ export function validateRegularSeasonStanding(record:RegularSeasonStanding){
 }
 export function validateChampionPool(pool:ChampionPool,expectedScope:string){
  requireValue(pool.scopeId===expectedScope,'Champion pool scope mismatch');
- if(pool.status!=='VERIFIED'){requireValue(pool.stats.length===0,'Unverified pool must not publish statistics');return;}
- requireValue(pool.completeness==='COMPLETE'&&pool.source,'Verified pool requires a complete source');
+ if(pool.status==='UNAVAILABLE'){requireValue(pool.stats.length===0,'Unverified pool must not publish statistics');return;}
+ requireValue(((pool.status==='VERIFIED'&&pool.completeness==='COMPLETE')||(pool.status==='PARTIAL'&&pool.completeness==='PARTIAL'&&Boolean(pool.reason)))&&pool.source,'Verified pool requires a complete source; partial pool requires a coverage explanation');
  validateSource(pool.source);
  requireValue(pool.stats.length>0,'Verified pool cannot be an empty placeholder');
  const champions=new Set<string>();

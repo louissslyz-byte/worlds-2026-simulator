@@ -9,10 +9,19 @@ import {teamRosters,playerRoles} from '../lib/sim/rosters.ts';
 
 const coverage=validateTeamProfiles();assert.equal(coverage.teams,19);assert.equal(coverage.players,95);
 const allPlayers=profileTeams.flatMap(t=>profileRoster(t.id).slots.flatMap(s=>s.player?[s.player]:[]));
-assert.equal(allPlayers.filter(p=>championPool(p).status==='VERIFIED').length,79);
+assert.equal(allPlayers.filter(p=>championPool(p).status==='VERIFIED').length,87);
+assert.equal(allPlayers.filter(p=>championPool(p).status==='PARTIAL').length,8);
+assert.ok(allPlayers.every(p=>championPool(p).stats.length>0));
 const chovy=allPlayers.find(p=>p.playerId==='Chovy');
 assert.equal(championPool(chovy).stats.reduce((n,s)=>n+s.gamesPlayed,0),30);
-assert.equal(championPool(allPlayers.find(p=>p.playerId==='JoJo')).status,'UNAVAILABLE');
+assert.equal(championPool(allPlayers.find(p=>p.playerId==='JoJo')).status,'PARTIAL');
+for(const name of ['Thanatos','Loki','Vulcan','Guigo','Tatu','Tutsz','Ayu','JoJo']){
+ const pool=championPool(allPlayers.find(p=>p.playerId===name));assert.equal(pool.status,'PARTIAL');assert.equal(pool.completeness,'PARTIAL');assert.ok(pool.reason&&pool.source&&pool.stats.length);
+}
+assert.equal(championPool(allPlayers.find(p=>p.playerId==='Harky')).stats.reduce((n,s)=>n+s.gamesPlayed,0),28);
+assert.equal(championPool(allPlayers.find(p=>p.playerId==='Feisty')).segments.find(s=>s.tournament==='CBLOL 2026 Split 2 Playoffs').totalGames,9);
+assert.equal(championPool(allPlayers.find(p=>p.playerId==='Thanatos')).segments.find(s=>s.tournament==='LCS 2026 Summer Playoffs').totalGames,14);
+assert.equal(championPool(allPlayers.find(p=>p.playerId==='JoJo')).segments.find(s=>s.tournament==='CBLOL 2026 Split 2 Playoffs').totalGames,6);
 assert.deepEqual(teamsByRegion('LCK').map(t=>t.id),['GEN','HLE','T1','DK']);
 assert.ok(teamsByRegion('LCS').every(t=>t.worldsSeed===null));
 for(const team of profileTeams){
@@ -22,7 +31,7 @@ for(const team of profileTeams){
  const roster=profileRoster(team.id);assert.deepEqual(roster.slots.map(s=>s.role.key),playerRoles.map(r=>r.key));
  if(teamRosters[team.id])assert.deepEqual(roster.slots.map(s=>s.player.playerId),teamRosters[team.id].players);
  assert.ok(qualificationPath(team.id).length>0);
- for(const {player} of roster.slots)if(player){const pool=championPool(player);validateChampionPool(pool,stage3Scopes[team.region].id);if(pool.status==='VERIFIED'){assert.equal(pool.source.kind,'SECONDARY');assert.ok(pool.source.url.startsWith('https://gol.gg/'));assert.equal(pool.snapshotDate,'2026-10-05');}}
+ for(const {player} of roster.slots)if(player){const pool=championPool(player);validateChampionPool(pool,stage3Scopes[team.region].id);if(pool.status==='VERIFIED'){assert.equal(pool.source.kind,'SECONDARY');assert.ok(pool.source.url.startsWith('https://gol.gg/'));assert.ok(['2026-10-05','2026-10-06'].includes(pool.snapshotDate));}}
 }
 assert.equal(profileRoster('C9').slots[2].player.playerId,'Loki');assert.equal(profileRoster('C9').slots[3].player.playerId,'Tactical');
 assert.ok(stage3Scopes.LPL.includes.includes('区域资格赛'));
@@ -64,10 +73,25 @@ assert.equal(allPlayers.find(p=>p.playerId==='Ayu').birthDate.value,'2005-10-06'
 assert.equal(ageFromBirthDate('2005-10-06',new Date('2026-10-05T15:59:59Z')),20);
 assert.equal(ageFromBirthDate('2005-10-06',new Date('2026-10-05T16:00:00Z')),21);
 assert.equal(allPlayers.find(p=>p.playerId==='Yike').nationalities,undefined);
+assert.equal(coverage.names,95);assert.equal(coverage.birthDates,95);assert.equal(coverage.ages,95);assert.equal(coverage.nationalities,92);
+assert.equal(allPlayers.find(p=>p.playerId==='Curse').realName.value,'Raí Yamada');
+assert.equal(allPlayers.find(p=>p.playerId==='Saint').realName.value,'Kang Seong-in');
+assert.equal(allPlayers.find(p=>p.playerId==='Busio').nationalities,undefined);
+assert.equal(allPlayers.find(p=>p.playerId==='Dhokla').nationalities,undefined);
+for(const [name,games,wins] of [['Kael',16,9],['BrokenBlade',10,9],['Jojopyun',15,9],['Yike',11,4],['kyeahoo',11,4],['Busio',11,4]]){
+ const pool=championPool(allPlayers.find(p=>p.playerId===name));
+ assert.equal(pool.status,'VERIFIED');assert.equal(pool.snapshotDate,'2026-10-06');
+ const postseason=pool.segments.find(s=>/Playoffs|Grand Finals/.test(s.tournament));
+ assert.equal(postseason.totalGames,games);assert.equal(postseason.totalWins,wins);
+ assert.ok(pool.sources.length>2,'Keep newly reviewed game sources');
+}
 const source={label:'Test fixture only',url:'https://example.com',checkedAt:'2026-10-05',kind:'OFFICIAL'};
 const stats=[{championId:'Zed',championName:'Zed',gamesPlayed:8,wins:6},{championId:'Azir',championName:'Azir',gamesPlayed:8,wins:5},{championId:'Lux',championName:'Lux',gamesPlayed:2,wins:1}];
 assert.deepEqual(sortedChampionStats(stats).map(s=>s.championId),['Azir','Zed','Lux']);assert.equal(championWinRate(stats[0]),'75.0%');
 const verified={status:'VERIFIED',scopeId:'test',completeness:'COMPLETE',source,stats};validateChampionPool(verified,'test');
+const partial={...verified,status:'PARTIAL',completeness:'PARTIAL',reason:'Latest series not yet reviewed'};validateChampionPool(partial,'test');
+assert.throws(()=>validateChampionPool({...partial,reason:undefined},'test'),/coverage explanation/);
+assert.throws(()=>validateChampionPool({...partial,completeness:'COMPLETE'},'test'),/coverage explanation/);
 assert.throws(()=>validateChampionPool(verified,'other'),/scope/);
 assert.throws(()=>validateChampionPool({...verified,stats:[{...stats[0],wins:9}]},'test'),/wins/);
 assert.throws(()=>validateChampionPool({...verified,status:'UNAVAILABLE'},'test'),/Unverified/);
