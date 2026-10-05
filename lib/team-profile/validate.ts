@@ -1,12 +1,17 @@
-import {profileTeams,profileRoster,stage3Scopes,championPool} from './data';
-import {biographies} from './snapshot';
+import {profileTeams,profileRoster,stage3Scopes,championPool,profileBiographies,regularSeasonRecord} from './data';
 import {ageFromBirthDate} from './helpers';
 import results from './qualification-results.json';
-import type {ChampionPool,Source} from './types';
+import type {ChampionPool,RegularSeasonStanding,Source} from './types';
 
 function requireValue(ok:unknown,message:string):asserts ok{if(!ok)throw new Error(message);}
 function validateSource(source:Source){
  requireValue(/^https:\/\//.test(source.url)&&source.label&&/^\d{4}-\d{2}-\d{2}$/.test(source.checkedAt),'Invalid profile source');
+}
+export function validateRegularSeasonStanding(record:RegularSeasonStanding){
+ requireValue([record.wins,record.losses,record.rank].every(Number.isInteger)&&record.wins>=0&&record.losses>=0&&record.wins+record.losses>0&&record.rank>0,'Invalid regular season standing');
+ requireValue(typeof record.rankTied==='boolean'&&record.scope&&(record.group===null||typeof record.group==='string'),'Invalid regular season scope');
+ validateSource(record.source);if(record.recordSource)validateSource(record.recordSource);
+ if(record.stageRecord)requireValue([record.stageRecord.wins,record.stageRecord.losses].every(n=>Number.isInteger(n)&&n>=0)&&record.stageRecord.wins<=record.wins&&record.stageRecord.losses<=record.losses,'Invalid regular season stage record');
 }
 export function validateChampionPool(pool:ChampionPool,expectedScope:string){
  requireValue(pool.scopeId===expectedScope,'Champion pool scope mismatch');
@@ -31,6 +36,13 @@ export function validateTeamProfiles(){
  for(const team of profileTeams){
   requireValue(!teamIds.has(team.id),'Duplicate profile team');teamIds.add(team.id);
   requireValue(stage3Scopes[team.region],'Missing regional scope');
+  const regular=regularSeasonRecord(team.id);requireValue(regular,'Missing regular season standing');validateRegularSeasonStanding(regular);
+  if(team.region==='CBLOL'){
+   const series=results.cblolRegularSeason.filter(m=>m.teamA===team.id||m.teamB===team.id);
+   requireValue(series.length===7&&new Set(series.map(m=>m.teamA===team.id?m.teamB:m.teamA)).size===7,'Incomplete CBLOL regular season');
+   const wins=series.filter(m=>m.teamA===team.id?m.scoreA>m.scoreB:m.scoreB>m.scoreA).length;
+   requireValue(wins===regular.wins&&7-wins===regular.losses,'CBLOL standing and match results disagree');
+  }
   const roster=profileRoster(team.id);const slugs=new Set<string>();
   requireValue(roster.slots.length===5,'Invalid roster role count');
   for(const {player} of roster.slots){
@@ -38,12 +50,13 @@ export function validateTeamProfiles(){
    requireValue(!slugs.has(player.slug),'Duplicate player slug');slugs.add(player.slug);
    playerKeys.add(`${team.id}:${player.playerId}`);players++;
    for(const field of [player.realName,player.birthDate,player.reportedAge,player.nationalities]){
-    if(field){validateSource(field.source);requireValue(field.source.kind==='OFFICIAL','Biography field requires official confirmation');}
+    if(field){validateSource(field.source);requireValue(field.source.kind==='OFFICIAL'||/^https:\/\/(?:liquipedia\.net\/leagueoflegends\/|lol\.fandom\.com\/wiki\/)/.test(field.source.url),'Biography field requires an official or trusted wiki source');}
    }
    if(player.realName)names++;
    if(player.birthDate){requireValue(ageFromBirthDate(player.birthDate.value)!==null,'Invalid birth date');birthDates++;ages++;}
    else if(player.reportedAge){requireValue(Number.isInteger(player.reportedAge.value)&&player.reportedAge.value>=0&&player.reportedAge.value<120,'Invalid reported age');ages++;}
    if(player.nationalities){
+    if(player.nationalities.value.length>1)requireValue(player.nationalities.source.kind==='OFFICIAL','Multiple nationalities require official confirmation');
     const codes=new Set<string>();requireValue(player.nationalities.value.length>0,'Empty nationality');
     for(const nationality of player.nationalities.value){requireValue(/^[A-Z]{2}$/.test(nationality.countryCode)&&nationality.name&&!codes.has(nationality.countryCode),'Invalid nationality');codes.add(nationality.countryCode);}
     nationalities++;
@@ -51,7 +64,7 @@ export function validateTeamProfiles(){
    validateChampionPool(championPool(player),stage3Scopes[team.region].id);
   }
  }
- for(const key of Object.keys(biographies))requireValue(playerKeys.has(key),`Biography does not match current roster: ${key}`);
+ for(const key of Object.keys(profileBiographies))requireValue(playerKeys.has(key),`Biography does not match current roster: ${key}`);
  const matchIds=new Set<string>();
  for(const match of [...results.matches,...results.cblolRegularSeason]){
   requireValue(!matchIds.has(match.id),'Duplicate qualification match');matchIds.add(match.id);

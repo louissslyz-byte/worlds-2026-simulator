@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {profileTeams,profileRoster,teamsByRegion,qualificationPath,regularSeasonRecord,championPool,stage3Scopes} from '../lib/team-profile/data.ts';
+import {profileTeams,profileRoster,teamsByRegion,qualificationPath,regularSeasonRecord,regularSeasonSummary,championPool,stage3Scopes} from '../lib/team-profile/data.ts';
 import {ageFromBirthDate,countryFlag,sortedChampionStats,championWinRate} from '../lib/team-profile/helpers.ts';
-import {validateTeamProfiles,validateChampionPool} from '../lib/team-profile/validate.ts';
+import {validateTeamProfiles,validateChampionPool,validateRegularSeasonStanding} from '../lib/team-profile/validate.ts';
+import {biographies} from '../lib/team-profile/snapshot.ts';
 import {worldsTeamSnapshot} from '../lib/sim/teamSnapshot.ts';
 import {teamRosters,playerRoles} from '../lib/sim/rosters.ts';
 
@@ -42,7 +43,27 @@ assert.equal(ageFromBirthDate('2003-02-29'),null);assert.equal(ageFromBirthDate(
 assert.equal(countryFlag('KR'),'🇰🇷');assert.equal(countryFlag('XXZ'),'');
 assert.ok(qualificationPath('GEN').some(s=>s.opponent==='HLE'&&s.stage==='决赛'&&s.score[0]===3&&s.score[1]===1));
 assert.deepEqual([regularSeasonRecord('LOS').wins,regularSeasonRecord('LOS').losses],[6,1]);
-assert.equal(regularSeasonRecord('GEN'),null);
+assert.deepEqual([regularSeasonRecord('GEN').wins,regularSeasonRecord('GEN').losses,regularSeasonRecord('GEN').rank],[19,7,1]);
+assert.deepEqual(regularSeasonRecord('GEN').stageRecord,{wins:5,losses:3});
+assert.equal(regularSeasonRecord('IG').group,'涅槃组');assert.equal(regularSeasonRecord('IG').rank,2);
+assert.equal(regularSeasonRecord('KC').rank,1);assert.equal(regularSeasonRecord('FUR').rank,4);
+assert.equal(regularSeasonRecord('UNKNOWN'),null);
+assert.equal(regularSeasonSummary(regularSeasonRecord('CFO')),'3 胜 1 负 · 瑞士轮 · 并列第 2 名');
+for(const team of profileTeams)validateRegularSeasonStanding(regularSeasonRecord(team.id));
+assert.throws(()=>validateRegularSeasonStanding({...regularSeasonRecord('GEN'),wins:-1}),/standing/);
+assert.throws(()=>validateRegularSeasonStanding({...regularSeasonRecord('GEN'),rank:0}),/standing/);
+assert.throws(()=>validateRegularSeasonStanding({...regularSeasonRecord('GEN'),stageRecord:{wins:30,losses:1}}),/stage record/);
+for(const player of allPlayers){
+ const original=biographies[`${player.teamId}:${player.playerId}`];
+ for(const field of ['realName','birthDate','reportedAge','nationalities'])if(original?.[field])assert.deepEqual(player[field],original[field],'Preserve existing official biography fields');
+}
+assert.equal(allPlayers.find(p=>p.playerId==='Loki').birthDate.value,'2005-03-26');
+assert.equal(allPlayers.find(p=>p.playerId==='JoJo').realName.value,'Gabriel Dzelme de Oliveira');
+assert.equal(allPlayers.find(p=>p.playerId==='JoJo').role,'SUPPORT');
+assert.equal(allPlayers.find(p=>p.playerId==='Ayu').birthDate.value,'2005-10-06');
+assert.equal(ageFromBirthDate('2005-10-06',new Date('2026-10-05T15:59:59Z')),20);
+assert.equal(ageFromBirthDate('2005-10-06',new Date('2026-10-05T16:00:00Z')),21);
+assert.equal(allPlayers.find(p=>p.playerId==='Yike').nationalities,undefined);
 const source={label:'Test fixture only',url:'https://example.com',checkedAt:'2026-10-05',kind:'OFFICIAL'};
 const stats=[{championId:'Zed',championName:'Zed',gamesPlayed:8,wins:6},{championId:'Azir',championName:'Azir',gamesPlayed:8,wins:5},{championId:'Lux',championName:'Lux',gamesPlayed:2,wins:1}];
 assert.deepEqual(sortedChampionStats(stats).map(s=>s.championId),['Azir','Zed','Lux']);assert.equal(championWinRate(stats[0]),'75.0%');

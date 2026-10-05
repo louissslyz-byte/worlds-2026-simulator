@@ -1,4 +1,4 @@
-import {profileTeams,qualificationPath,regularSeasonRecord} from '../../lib/team-profile/data';
+import {profileTeams,qualificationPath,regularSeasonRecord,regularSeasonSummary} from '../../lib/team-profile/data';
 import {TeamLogo} from '../tournament/team-logo';
 import styles from './profile.module.css';
 
@@ -6,7 +6,11 @@ export function QualificationPath({team}:{team:typeof profileTeams[number]}){
  const path=qualificationPath(team.id);const regular=regularSeasonRecord(team.id);
  return <section className={styles.section} aria-labelledby="qualification-title">
   <div className={styles.sectionHead}><div><div className="eyebrow">ROAD TO WORLDS</div><h2 id="qualification-title">晋级之路</h2></div><span className="fine">真实赛果 · 日期按 CST</span></div>
-  {regular?<p className={styles.note}>常规赛：{regular.wins} 胜 {regular.losses} 负</p>:<p className={styles.note}>以下展示已核验的瑞士轮、资格赛与季后赛；常规赛完整战绩暂未核验。</p>}
+  {regular?<div className={styles.note}><p>{regular.scope}：{regularSeasonSummary(regular)}</p>
+   {regular.stageRecord&&<p>Rounds 3–4：{regular.stageRecord.wins} 胜 {regular.stageRecord.losses} 负。</p>}
+   {regular.note&&<p>{regular.note}</p>}
+   <a href={regular.source.url} target="_blank" rel="noopener noreferrer">常规赛积分榜 ↗</a>
+   {regular.recordSource&&<> · <a href={regular.recordSource.url} target="_blank" rel="noopener noreferrer">累计战绩 ↗</a></>}</div>:<p className={styles.note}>以下展示已核验的瑞士轮、资格赛与季后赛；常规赛完整战绩暂未核验。</p>}
   <ol className={styles.path}>
    {path.map((step,i)=>{
     const opponent=profileTeams.find(t=>t.id===step.opponent);const won=step.score[0]>step.score[1];

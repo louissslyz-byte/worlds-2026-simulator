@@ -38,7 +38,7 @@ export default async function PlayerProfile({params}:{params:Promise<{slug:strin
    <details className={styles.note}><summary>统计范围与来源</summary><p>不计入：{scope.excludes.join('、')}。</p><a href={scope.source.url} target="_blank" rel="noopener noreferrer">官方赛段说明 ↗</a></details>
   </section>
   <section className={styles.section} aria-labelledby="player-source-title"><h2 id="player-source-title">资料来源</h2>
-   {sources.length?<ul className={styles.sourceList}>{sources.map(source=><li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a> · {source.checkedAt}</li>)}</ul>:<p className={styles.note}>姓名、国籍和年龄尚无已核验的官方资料。</p>}
+   {sources.length?<ul className={styles.sourceList}>{sources.map(source=><li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a> · {source.checkedAt}</li>)}</ul>:<p className={styles.note}>姓名、国籍和年龄尚无已核验资料。</p>}
   </section>
  </main>;
 }

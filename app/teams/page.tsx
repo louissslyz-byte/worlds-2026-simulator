@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import {profileRegions,teamsByRegion,profileTeams} from '../../lib/team-profile/data';
+import {profileRegions,teamsByRegion,profileTeams,regularSeasonRecord,regularSeasonSummary} from '../../lib/team-profile/data';
 import {TeamLogo} from '../../components/tournament/team-logo';
 import styles from '../../components/team-profile/profile.module.css';
 export const metadata={title:'战队档案 · Worlds 2026'};
@@ -10,7 +10,7 @@ export default function TeamProfiles(){
   {profileRegions.map(region=><section id={`region-${region}`} className={styles.section} key={region} aria-labelledby={`title-${region}`}>
    <div className={styles.sectionHead}><h2 id={`title-${region}`}>{region}</h2><span className="fine">{teamsByRegion(region).length} 支队伍</span></div>
    <ul className={styles.teamList}>{teamsByRegion(region).map(team=><li key={team.id}><Link href={`/teams/${team.slug}`} className={styles.teamLink}>
-    <TeamLogo teamId={team.id} size={36}/><div className={styles.teamCopy}><strong>{team.shortName}</strong><small>{team.name}</small><small>{region}</small></div>
+    <TeamLogo teamId={team.id} size={36}/><div className={styles.teamCopy}><strong>{team.shortName}</strong><small>{team.name}</small><small>{region}</small><small>{regularSeasonRecord(team.id)?`常规赛${region==='LCK'?'（累计）':region==='LCP'?'（瑞士轮）':''}：${regularSeasonSummary(regularSeasonRecord(team.id)!)}`:'常规赛战绩与排名待核验'}</small></div>
     <span className={styles.seed}>{team.worldsSeed?`#${team.worldsSeed}`:<small>种子待定</small>}</span>
    </Link></li>)}</ul>
   </section>)}

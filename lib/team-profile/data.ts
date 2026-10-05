@@ -3,8 +3,16 @@ import {playerRoles,teamRosters} from '../sim/rosters';
 import {additionalRosters,biographies,official,officialRosterSources,secondary} from './snapshot';
 import results from './qualification-results.json';
 import poolsSnapshot from './champion-pools.json';
+import regularSnapshot from './regular-season.json';
+import supplementalSnapshot from './supplemental-biographies.json';
 import {playerSlug} from './helpers';
-import type {ChampionPool,ProfilePlayer,QualificationStep,Stage3Scope} from './types';
+import type {ChampionPool,PlayerBiography,ProfilePlayer,QualificationStep,RegularSeasonStanding,Stage3Scope} from './types';
+
+// Supplement missing fields only; preserve previously verified official values.
+const supplements=supplementalSnapshot.biographies as Record<string,PlayerBiography>;
+export const profileBiographies:Readonly<Record<string,PlayerBiography>>=Object.fromEntries(
+ [...new Set([...Object.keys(biographies),...Object.keys(supplements)])].map(key=>[key,{...supplements[key],...biographies[key]}]),
+);
 
 // Only objective identity fields cross into this module; internal strength and
 // configurable simulation seeds are deliberately not part of its public view.
@@ -22,7 +30,7 @@ export function profileRoster(teamId:string){
  const source=existing?(officialRosterSources[teamId]??secondary('现有公开阵容 · Liquipedia',existing.source)):extra?.source;
  const slots=playerRoles.map((role,i)=>{
   const playerId=names?.[i];
-  const player:ProfilePlayer|null=playerId?{id:`${teamId}:${role.key}`,slug:playerSlug(playerId),playerId,teamId,role:role.key,...biographies[`${teamId}:${playerId}`]}:null;
+  const player:ProfilePlayer|null=playerId?{id:`${teamId}:${role.key}`,slug:playerSlug(playerId),playerId,teamId,role:role.key,...profileBiographies[`${teamId}:${playerId}`]}:null;
   return {role,player};
  });
  return {slots,source,note:extra?.note??'当前公开阵容；Worlds 正式登记名单与首发仍待核验。'};
@@ -33,13 +41,12 @@ export function qualificationPath(teamId:string):QualificationStep[]{
   return {stage:m.stage,date:m.date,opponent:isA?m.teamB:m.teamA,score:(isA?[m.scoreA,m.scoreB]:[m.scoreB,m.scoreA]) as [number,number],source:official('LoL Esports 官方赛程',m.sourceUrl)};
  });
 }
-export function regularSeasonRecord(teamId:string){
- const matches=results.cblolRegularSeason.filter(m=>m.teamA===teamId||m.teamB===teamId);
- // The official CBLOL format is a seven-series single round robin. A paginated
-// or incomplete source must never be presented as a complete season record.
- if(matches.length!==7||new Set(matches.map(m=>m.teamA===teamId?m.teamB:m.teamA)).size!==7)return null;
- const wins=matches.filter(m=>m.teamA===teamId?m.scoreA>m.scoreB:m.scoreB>m.scoreA).length;
- return {wins,losses:7-wins,source:official('LoL Esports 官方赛程','https://lolesports.com/en-US/leagues/cblol-brazil')};
+export function regularSeasonRecord(teamId:string):RegularSeasonStanding|null{
+ return (regularSnapshot.records as Record<string,RegularSeasonStanding>)[teamId]??null;
+}
+export function regularSeasonSummary(record:RegularSeasonStanding){
+ const placement=`${record.group?`${record.group} · `:''}${record.rankTied?'并列':''}第 ${record.rank} 名`;
+ return `${record.wins} 胜 ${record.losses} 负 · ${placement}`;
 }
 const excluded=['Worlds','MSI','First Stand','前两个赛段','Esports World Cup','KeSPA Cup','其他杯赛'];
 export const stage3Scopes:Readonly<Record<string,Stage3Scope>>={

@@ -16,6 +16,11 @@ export type ProfilePlayer = PlayerBiography & {
 export type QualificationStep = {
  stage:string; date:string; opponent:string; score:[number,number]; source:Source;
 };
+export type RegularSeasonStanding = {
+ wins:number; losses:number; rank:number; rankTied:boolean; group:string|null;
+ scope:string; source:Source; recordSource?:Source; note?:string;
+ stageRecord?:{wins:number;losses:number};
+};
 export type ChampionStat = {championId:string; championName:string; gamesPlayed:number; wins:number};
 export type ChampionPool = {
  status:'VERIFIED'|'UNAVAILABLE'; scopeId:string; source:Source|null;

@@ -1,0 +1,318 @@
+{
+  "checkedAt": "2026-10-05",
+  "records": {
+    "GEN": {
+      "wins": 19,
+      "losses": 7,
+      "rank": 1,
+      "rankTied": false,
+      "group": "传奇组",
+      "scope": "2026 LCK 常规赛（累计）",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-US/tournament/115548147890329817/stage/115548147896621274",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      },
+      "recordSource": {
+        "label": "Liquipedia · LCK 常规赛累计积分榜",
+        "url": "https://liquipedia.net/leagueoflegends/LCK/2026/Rounds_3-4",
+        "checkedAt": "2026-10-05",
+        "kind": "SECONDARY"
+      },
+      "note": "含 Rounds 1–2 结转战绩；排名为传奇组最终排名。",
+      "stageRecord": {
+        "wins": 5,
+        "losses": 3
+      }
+    },
+    "HLE": {
+      "wins": 19,
+      "losses": 7,
+      "rank": 2,
+      "rankTied": false,
+      "group": "传奇组",
+      "scope": "2026 LCK 常规赛（累计）",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-US/tournament/115548147890329817/stage/115548147896621274",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      },
+      "recordSource": {
+        "label": "Liquipedia · LCK 常规赛累计积分榜",
+        "url": "https://liquipedia.net/leagueoflegends/LCK/2026/Rounds_3-4",
+        "checkedAt": "2026-10-05",
+        "kind": "SECONDARY"
+      },
+      "note": "含 Rounds 1–2 结转战绩；排名为传奇组最终排名。",
+      "stageRecord": {
+        "wins": 4,
+        "losses": 4
+      }
+    },
+    "T1": {
+      "wins": 17,
+      "losses": 9,
+      "rank": 3,
+      "rankTied": false,
+      "group": "传奇组",
+      "scope": "2026 LCK 常规赛（累计）",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-US/tournament/115548147890329817/stage/115548147896621274",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      },
+      "recordSource": {
+        "label": "Liquipedia · LCK 常规赛累计积分榜",
+        "url": "https://liquipedia.net/leagueoflegends/LCK/2026/Rounds_3-4",
+        "checkedAt": "2026-10-05",
+        "kind": "SECONDARY"
+      },
+      "note": "含 Rounds 1–2 结转战绩；排名为传奇组最终排名。",
+      "stageRecord": {
+        "wins": 3,
+        "losses": 5
+      }
+    },
+    "DK": {
+      "wins": 17,
+      "losses": 9,
+      "rank": 4,
+      "rankTied": false,
+      "group": "传奇组",
+      "scope": "2026 LCK 常规赛（累计）",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-US/tournament/115548147890329817/stage/115548147896621274",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      },
+      "recordSource": {
+        "label": "Liquipedia · LCK 常规赛累计积分榜",
+        "url": "https://liquipedia.net/leagueoflegends/LCK/2026/Rounds_3-4",
+        "checkedAt": "2026-10-05",
+        "kind": "SECONDARY"
+      },
+      "note": "含 Rounds 1–2 结转战绩；排名为传奇组最终排名。",
+      "stageRecord": {
+        "wins": 6,
+        "losses": 2
+      }
+    },
+    "BLG": {
+      "wins": 12,
+      "losses": 2,
+      "rank": 1,
+      "rankTied": false,
+      "group": "登峰组",
+      "scope": "2026 LPL 第三赛段",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-US/tournament/115616254668930796/stage/115616269722396460",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      }
+    },
+    "AL": {
+      "wins": 9,
+      "losses": 5,
+      "rank": 2,
+      "rankTied": false,
+      "group": "登峰组",
+      "scope": "2026 LPL 第三赛段",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-US/tournament/115616254668930796/stage/115616269722396460",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      }
+    },
+    "TES": {
+      "wins": 9,
+      "losses": 5,
+      "rank": 3,
+      "rankTied": false,
+      "group": "登峰组",
+      "scope": "2026 LPL 第三赛段",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-US/tournament/115616254668930796/stage/115616269722396460",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      }
+    },
+    "IG": {
+      "wins": 4,
+      "losses": 2,
+      "rank": 2,
+      "rankTied": false,
+      "group": "涅槃组",
+      "scope": "2026 LPL 第三赛段",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-US/tournament/115616254668930796/stage/115616269722396460",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      }
+    },
+    "KC": {
+      "wins": 9,
+      "losses": 0,
+      "rank": 1,
+      "rankTied": false,
+      "group": null,
+      "scope": "2026 LEC Summer",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-US/tournament/115548681802226458/stage/115548681802750747",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      }
+    },
+    "G2": {
+      "wins": 6,
+      "losses": 3,
+      "rank": 3,
+      "rankTied": false,
+      "group": null,
+      "scope": "2026 LEC Summer",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-US/tournament/115548681802226458/stage/115548681802750747",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      }
+    },
+    "MKOI": {
+      "wins": 4,
+      "losses": 5,
+      "rank": 6,
+      "rankTied": false,
+      "group": null,
+      "scope": "2026 LEC Summer",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-US/tournament/115548681802226458/stage/115548681802750747",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      }
+    },
+    "TSW": {
+      "wins": 3,
+      "losses": 0,
+      "rank": 1,
+      "rankTied": false,
+      "group": "瑞士轮",
+      "scope": "2026 LCP Split 3 瑞士轮",
+      "source": {
+        "label": "Liquipedia · LCP 瑞士轮积分榜",
+        "url": "https://liquipedia.net/leagueoflegends/LCP/2026/Split_3/Swiss_Stage",
+        "checkedAt": "2026-10-05",
+        "kind": "SECONDARY"
+      },
+      "note": "使用瑞士轮结束时的战绩与并列名次，不含后续种子决定赛。"
+    },
+    "CFO": {
+      "wins": 3,
+      "losses": 1,
+      "rank": 2,
+      "rankTied": true,
+      "group": "瑞士轮",
+      "scope": "2026 LCP Split 3 瑞士轮",
+      "source": {
+        "label": "Liquipedia · LCP 瑞士轮积分榜",
+        "url": "https://liquipedia.net/leagueoflegends/LCP/2026/Split_3/Swiss_Stage",
+        "checkedAt": "2026-10-05",
+        "kind": "SECONDARY"
+      },
+      "note": "使用瑞士轮结束时的战绩与并列名次，不含后续种子决定赛。"
+    },
+    "MVK": {
+      "wins": 3,
+      "losses": 1,
+      "rank": 2,
+      "rankTied": true,
+      "group": "瑞士轮",
+      "scope": "2026 LCP Split 3 瑞士轮",
+      "source": {
+        "label": "Liquipedia · LCP 瑞士轮积分榜",
+        "url": "https://liquipedia.net/leagueoflegends/LCP/2026/Split_3/Swiss_Stage",
+        "checkedAt": "2026-10-05",
+        "kind": "SECONDARY"
+      },
+      "note": "使用瑞士轮结束时的战绩与并列名次，不含后续种子决定赛。"
+    },
+    "LYON": {
+      "wins": 6,
+      "losses": 1,
+      "rank": 1,
+      "rankTied": false,
+      "group": null,
+      "scope": "2026 LCS Summer",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-US/tournament/115564797158840434/stage/115564797161986163",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      }
+    },
+    "TLAW": {
+      "wins": 6,
+      "losses": 1,
+      "rank": 2,
+      "rankTied": false,
+      "group": null,
+      "scope": "2026 LCS Summer",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-US/tournament/115564797158840434/stage/115564797161986163",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      }
+    },
+    "C9": {
+      "wins": 5,
+      "losses": 2,
+      "rank": 3,
+      "rankTied": false,
+      "group": null,
+      "scope": "2026 LCS Summer",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-US/tournament/115564797158840434/stage/115564797161986163",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      }
+    },
+    "LOS": {
+      "wins": 6,
+      "losses": 1,
+      "rank": 2,
+      "rankTied": false,
+      "group": null,
+      "scope": "2026 CBLOL Split 2",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-GB/tournament/115565671525288828/stage/115565671525813117",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      }
+    },
+    "FUR": {
+      "wins": 5,
+      "losses": 2,
+      "rank": 4,
+      "rankTied": false,
+      "group": null,
+      "scope": "2026 CBLOL Split 2",
+      "source": {
+        "label": "LoL Esports · 常规赛积分榜",
+        "url": "https://lolesports.com/en-GB/tournament/115565671525288828/stage/115565671525813117",
+        "checkedAt": "2026-10-05",
+        "kind": "OFFICIAL"
+      }
+    }
+  }
+}

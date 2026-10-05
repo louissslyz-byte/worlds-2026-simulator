@@ -1,0 +1,1071 @@
+{
+  "checkedAt": "2026-10-05",
+  "biographies": {
+    "C9:Tactical": {
+      "realName": {
+        "value": "Edward Ra",
+        "source": {
+          "label": "Liquipedia · Tactical",
+          "url": "https://liquipedia.net/leagueoflegends/Tactical",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2000-08-18",
+        "source": {
+          "label": "Liquipedia · Tactical",
+          "url": "https://liquipedia.net/leagueoflegends/Tactical",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "United States",
+            "countryCode": "US"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Tactical",
+          "url": "https://liquipedia.net/leagueoflegends/Tactical",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "FUR:Tutsz": {
+      "realName": {
+        "value": "Arthur Peixoto Machado",
+        "source": {
+          "label": "Liquipedia · Tutsz",
+          "url": "https://liquipedia.net/leagueoflegends/Tutsz",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2002-12-16",
+        "source": {
+          "label": "Liquipedia · Tutsz",
+          "url": "https://liquipedia.net/leagueoflegends/Tutsz",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "Brazil",
+            "countryCode": "BR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Tutsz",
+          "url": "https://liquipedia.net/leagueoflegends/Tutsz",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "FUR:Ayu": {
+      "realName": {
+        "value": "Andrey Saraiva",
+        "source": {
+          "label": "Liquipedia · Ayu",
+          "url": "https://liquipedia.net/leagueoflegends/Ayu",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2005-10-06",
+        "source": {
+          "label": "Liquipedia · Ayu",
+          "url": "https://liquipedia.net/leagueoflegends/Ayu",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "Brazil",
+            "countryCode": "BR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Ayu",
+          "url": "https://liquipedia.net/leagueoflegends/Ayu",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "MKOI:Jojopyun": {
+      "realName": {
+        "value": "Joseph Joon Pyun",
+        "source": {
+          "label": "Liquipedia · Jojopyun",
+          "url": "https://liquipedia.net/leagueoflegends/Jojopyun",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2004-10-01",
+        "source": {
+          "label": "Liquipedia · Jojopyun",
+          "url": "https://liquipedia.net/leagueoflegends/Jojopyun",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "Canada",
+            "countryCode": "CA"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Jojopyun",
+          "url": "https://liquipedia.net/leagueoflegends/Jojopyun",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "KC:Yike": {
+      "realName": {
+        "value": "Martin Sundelin",
+        "source": {
+          "label": "Liquipedia · Yike",
+          "url": "https://liquipedia.net/leagueoflegends/Yike",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2000-11-11",
+        "source": {
+          "label": "Liquipedia · Yike",
+          "url": "https://liquipedia.net/leagueoflegends/Yike",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "G2:BrokenBlade": {
+      "realName": {
+        "value": "Sergen Çelik",
+        "source": {
+          "label": "Liquipedia · BrokenBlade",
+          "url": "https://liquipedia.net/leagueoflegends/BrokenBlade",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2000-01-19",
+        "source": {
+          "label": "Liquipedia · BrokenBlade",
+          "url": "https://liquipedia.net/leagueoflegends/BrokenBlade",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "AL:Kael": {
+      "realName": {
+        "value": "Kim Jin-hong",
+        "source": {
+          "label": "Liquipedia · Kael",
+          "url": "https://liquipedia.net/leagueoflegends/Kael_%28Korean_player%29",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2004-02-11",
+        "source": {
+          "label": "Liquipedia · Kael",
+          "url": "https://liquipedia.net/leagueoflegends/Kael_%28Korean_player%29",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Kael",
+          "url": "https://liquipedia.net/leagueoflegends/Kael_%28Korean_player%29",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "C9:Thanatos": {
+      "realName": {
+        "value": "Park Seung-gyu",
+        "source": {
+          "label": "Liquipedia · Thanatos",
+          "url": "https://liquipedia.net/leagueoflegends/Thanatos",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2004-05-01",
+        "source": {
+          "label": "Liquipedia · Thanatos",
+          "url": "https://liquipedia.net/leagueoflegends/Thanatos",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Thanatos",
+          "url": "https://liquipedia.net/leagueoflegends/Thanatos",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "KC:kyeahoo": {
+      "realName": {
+        "value": "Kang Yea-hoo",
+        "source": {
+          "label": "Liquipedia · kyeahoo",
+          "url": "https://liquipedia.net/leagueoflegends/Kyeahoo",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2005-08-13",
+        "source": {
+          "label": "Liquipedia · kyeahoo",
+          "url": "https://liquipedia.net/leagueoflegends/Kyeahoo",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · kyeahoo",
+          "url": "https://liquipedia.net/leagueoflegends/Kyeahoo",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "KC:Busio": {
+      "realName": {
+        "value": "Alan Cwalina",
+        "source": {
+          "label": "Liquipedia · Busio",
+          "url": "https://liquipedia.net/leagueoflegends/Busio",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2003-10-23",
+        "source": {
+          "label": "Liquipedia · Busio",
+          "url": "https://liquipedia.net/leagueoflegends/Busio",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "C9:Vulcan": {
+      "realName": {
+        "value": "Philippe Laflamme",
+        "source": {
+          "label": "Liquipedia · Vulcan",
+          "url": "https://liquipedia.net/leagueoflegends/Vulcan",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "1999-04-20",
+        "source": {
+          "label": "Liquipedia · Vulcan",
+          "url": "https://liquipedia.net/leagueoflegends/Vulcan",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "Canada",
+            "countryCode": "CA"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Vulcan",
+          "url": "https://liquipedia.net/leagueoflegends/Vulcan",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "DK:Siwoo": {
+      "realName": {
+        "value": "Jeon Si-woo",
+        "source": {
+          "label": "Liquipedia · Siwoo",
+          "url": "https://liquipedia.net/leagueoflegends/Siwoo",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2007-11-24",
+        "source": {
+          "label": "Liquipedia · Siwoo",
+          "url": "https://liquipedia.net/leagueoflegends/Siwoo",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Siwoo",
+          "url": "https://liquipedia.net/leagueoflegends/Siwoo",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "DK:Smash": {
+      "realName": {
+        "value": "Sin Guem-jae",
+        "source": {
+          "label": "Liquipedia · Smash",
+          "url": "https://liquipedia.net/leagueoflegends/Smash",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2006-07-20",
+        "source": {
+          "label": "Liquipedia · Smash",
+          "url": "https://liquipedia.net/leagueoflegends/Smash",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Smash",
+          "url": "https://liquipedia.net/leagueoflegends/Smash",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "DK:Lucid": {
+      "realName": {
+        "value": "Choi Yong-hyeok",
+        "source": {
+          "label": "Liquipedia · Lucid",
+          "url": "https://liquipedia.net/leagueoflegends/Lucid",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2005-01-28",
+        "source": {
+          "label": "Liquipedia · Lucid",
+          "url": "https://liquipedia.net/leagueoflegends/Lucid",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Lucid",
+          "url": "https://liquipedia.net/leagueoflegends/Lucid",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "DK:Career": {
+      "realName": {
+        "value": "Oh Hyung-suk",
+        "source": {
+          "label": "Liquipedia · Career",
+          "url": "https://liquipedia.net/leagueoflegends/Career",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2004-08-29",
+        "source": {
+          "label": "Liquipedia · Career",
+          "url": "https://liquipedia.net/leagueoflegends/Career",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Career",
+          "url": "https://liquipedia.net/leagueoflegends/Career",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "GEN:Chovy": {
+      "realName": {
+        "value": "Jeong Ji-hoon",
+        "source": {
+          "label": "Liquipedia · Chovy",
+          "url": "https://liquipedia.net/leagueoflegends/Chovy",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2001-03-03",
+        "source": {
+          "label": "Liquipedia · Chovy",
+          "url": "https://liquipedia.net/leagueoflegends/Chovy",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Chovy",
+          "url": "https://liquipedia.net/leagueoflegends/Chovy",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "GEN:Ruler": {
+      "realName": {
+        "value": "Park Jae-hyuk",
+        "source": {
+          "label": "Liquipedia · Ruler",
+          "url": "https://liquipedia.net/leagueoflegends/Ruler",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "1998-12-29",
+        "source": {
+          "label": "Liquipedia · Ruler",
+          "url": "https://liquipedia.net/leagueoflegends/Ruler",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Ruler",
+          "url": "https://liquipedia.net/leagueoflegends/Ruler",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "HLE:Kanavi": {
+      "realName": {
+        "value": "Seo Jin-hyeok",
+        "source": {
+          "label": "Liquipedia · Kanavi",
+          "url": "https://liquipedia.net/leagueoflegends/Kanavi",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2000-11-02",
+        "source": {
+          "label": "Liquipedia · Kanavi",
+          "url": "https://liquipedia.net/leagueoflegends/Kanavi",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Kanavi",
+          "url": "https://liquipedia.net/leagueoflegends/Kanavi",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "HLE:Gumayusi": {
+      "realName": {
+        "value": "Lee Min-hyung",
+        "source": {
+          "label": "Liquipedia · Gumayusi",
+          "url": "https://liquipedia.net/leagueoflegends/Gumayushi",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2002-02-06",
+        "source": {
+          "label": "Liquipedia · Gumayusi",
+          "url": "https://liquipedia.net/leagueoflegends/Gumayushi",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Gumayusi",
+          "url": "https://liquipedia.net/leagueoflegends/Gumayushi",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "T1:Peyz": {
+      "realName": {
+        "value": "Kim Soo-hwan",
+        "source": {
+          "label": "Liquipedia · Peyz",
+          "url": "https://liquipedia.net/leagueoflegends/Peyz",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2005-12-05",
+        "source": {
+          "label": "Liquipedia · Peyz",
+          "url": "https://liquipedia.net/leagueoflegends/Peyz",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Peyz",
+          "url": "https://liquipedia.net/leagueoflegends/Peyz",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "AL:Breathe": {
+      "realName": {
+        "value": "Chen Chen",
+        "source": {
+          "label": "Liquipedia · Breathe",
+          "url": "https://liquipedia.net/leagueoflegends/Breathe",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2001-02-19",
+        "source": {
+          "label": "Liquipedia · Breathe",
+          "url": "https://liquipedia.net/leagueoflegends/Breathe",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "China",
+            "countryCode": "CN"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Breathe",
+          "url": "https://liquipedia.net/leagueoflegends/Breathe",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "BLG:Bin": {
+      "realName": {
+        "value": "Chen Zebin",
+        "source": {
+          "label": "Liquipedia · Bin",
+          "url": "https://liquipedia.net/leagueoflegends/Bin",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2003-09-28",
+        "source": {
+          "label": "Liquipedia · Bin",
+          "url": "https://liquipedia.net/leagueoflegends/Bin",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "China",
+            "countryCode": "CN"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Bin",
+          "url": "https://liquipedia.net/leagueoflegends/Bin",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "HLE:Zeus": {
+      "realName": {
+        "value": "Choi Woo-je",
+        "source": {
+          "label": "Liquipedia · Zeus",
+          "url": "https://liquipedia.net/leagueoflegends/Zeus",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2004-01-31",
+        "source": {
+          "label": "Liquipedia · Zeus",
+          "url": "https://liquipedia.net/leagueoflegends/Zeus",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Zeus",
+          "url": "https://liquipedia.net/leagueoflegends/Zeus",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "GEN:Duro": {
+      "realName": {
+        "value": "Joo Min-kyu",
+        "source": {
+          "label": "Liquipedia · Duro",
+          "url": "https://liquipedia.net/leagueoflegends/Duro",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2002-02-04",
+        "source": {
+          "label": "Liquipedia · Duro",
+          "url": "https://liquipedia.net/leagueoflegends/Duro",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Duro",
+          "url": "https://liquipedia.net/leagueoflegends/Duro",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "FUR:Guigo": {
+      "realName": {
+        "value": "Guilherme Ruiz",
+        "source": {
+          "label": "Liquipedia · Guigo",
+          "url": "https://liquipedia.net/leagueoflegends/GUIGO",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2002-01-28",
+        "source": {
+          "label": "Liquipedia · Guigo",
+          "url": "https://liquipedia.net/leagueoflegends/GUIGO",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "Brazil",
+            "countryCode": "BR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Guigo",
+          "url": "https://liquipedia.net/leagueoflegends/GUIGO",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "G2:SkewMond": {
+      "realName": {
+        "value": "Rudy Semaan",
+        "source": {
+          "label": "Liquipedia · SkewMond",
+          "url": "https://liquipedia.net/leagueoflegends/SkewMond",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2004-08-09",
+        "source": {
+          "label": "Liquipedia · SkewMond",
+          "url": "https://liquipedia.net/leagueoflegends/SkewMond",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "GEN:Kiin": {
+      "realName": {
+        "value": "Kim Ki-in",
+        "source": {
+          "label": "Liquipedia · Kiin",
+          "url": "https://liquipedia.net/leagueoflegends/Kiin",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "1999-05-28",
+        "source": {
+          "label": "Liquipedia · Kiin",
+          "url": "https://liquipedia.net/leagueoflegends/Kiin",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Kiin",
+          "url": "https://liquipedia.net/leagueoflegends/Kiin",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "C9:Loki": {
+      "realName": {
+        "value": "Lee Sang-min",
+        "source": {
+          "label": "Liquipedia · Loki",
+          "url": "https://liquipedia.net/leagueoflegends/Loki",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2005-03-26",
+        "source": {
+          "label": "Liquipedia · Loki",
+          "url": "https://liquipedia.net/leagueoflegends/Loki",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Loki",
+          "url": "https://liquipedia.net/leagueoflegends/Loki",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "LOS:Feisty": {
+      "realName": {
+        "value": "Jeong Seong-hoon",
+        "source": {
+          "label": "Liquipedia · Feisty",
+          "url": "https://liquipedia.net/leagueoflegends/Feisty",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2003-12-19",
+        "source": {
+          "label": "Liquipedia · Feisty",
+          "url": "https://liquipedia.net/leagueoflegends/Feisty",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Feisty",
+          "url": "https://liquipedia.net/leagueoflegends/Feisty",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "HLE:Delight": {
+      "realName": {
+        "value": "Yu Hwan-jung",
+        "source": {
+          "label": "Liquipedia · Delight",
+          "url": "https://liquipedia.net/leagueoflegends/Delight",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2002-09-12",
+        "source": {
+          "label": "Liquipedia · Delight",
+          "url": "https://liquipedia.net/leagueoflegends/Delight",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "South Korea",
+            "countryCode": "KR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Delight",
+          "url": "https://liquipedia.net/leagueoflegends/Delight",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "MVK:Harky": {
+      "realName": {
+        "value": "Nguyễn Văn Hữu",
+        "source": {
+          "label": "Liquipedia · Harky",
+          "url": "https://liquipedia.net/leagueoflegends/Harky",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2005-08-21",
+        "source": {
+          "label": "Liquipedia · Harky",
+          "url": "https://liquipedia.net/leagueoflegends/Harky",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "Vietnam",
+            "countryCode": "VN"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Harky",
+          "url": "https://liquipedia.net/leagueoflegends/Harky",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "FUR:Tatu": {
+      "realName": {
+        "value": "Pedro Seixas",
+        "source": {
+          "label": "Liquipedia · Tatu",
+          "url": "https://liquipedia.net/leagueoflegends/Tatu",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "2006-06-13",
+        "source": {
+          "label": "Liquipedia · Tatu",
+          "url": "https://liquipedia.net/leagueoflegends/Tatu",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "Brazil",
+            "countryCode": "BR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · Tatu",
+          "url": "https://liquipedia.net/leagueoflegends/Tatu",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    },
+    "FUR:JoJo": {
+      "realName": {
+        "value": "Gabriel Dzelme de Oliveira",
+        "source": {
+          "label": "Leaguepedia · JoJo (Gabriel Dzelme)",
+          "url": "https://lol.fandom.com/wiki/JoJo_(Gabriel_Dzelme)",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "birthDate": {
+        "value": "1998-11-11",
+        "source": {
+          "label": "Leaguepedia · JoJo (Gabriel Dzelme)",
+          "url": "https://lol.fandom.com/wiki/JoJo_(Gabriel_Dzelme)",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      },
+      "nationalities": {
+        "value": [
+          {
+            "name": "Brazil",
+            "countryCode": "BR"
+          }
+        ],
+        "source": {
+          "label": "Liquipedia · 巴西战队名单",
+          "url": "https://liquipedia.net/leagueoflegends/Portal:Teams/Americas",
+          "checkedAt": "2026-10-05",
+          "kind": "SECONDARY"
+        }
+      }
+    }
+  }
+}
