@@ -36,8 +36,8 @@
     "AL": 0.51611,
     "CFO": 0.25443,
     "C9": 0.10275,
-    "MVK": 0.00982,
-    "FUR": 0.00185
+    "FUR": 0.00185,
+    "MVK": 0.00982
   },
   "semifinalProbabilities": {
     "G2": 0.38749,
@@ -82,13 +82,13 @@
   },
   "iterations": 100000,
   "metadata": {
-    "teamSnapshotDate": "2026-10-05",
+    "teamSnapshotDate": "2026-10-11",
     "gprSnapshotDate": "2026-09-29",
     "simulationCount": 100000,
     "requestedCount": 100000,
-    "generatedAt": "2026-09-30T12:35:55.427Z",
+    "generatedAt": "2026-10-11T15:29:03.234Z",
     "modelVersion": "gpr-prob-v1.1",
     "strengthVersion": "riot-gpr-2026-09-29-v2",
-    "tournamentStateHash": "2711f396-337c"
+    "tournamentStateHash": "079b5427-4139"
   }
 }

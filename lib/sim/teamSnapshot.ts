@@ -3,9 +3,10 @@ import type {Team} from './types';
 export const teamSnapshotMetadata={
  source:'LoL Esports Worlds qualifying teams',
  sourceUrl:'https://lolesports.com/en-US/tournament/115660540725177488/overview',
- sourceUpdatedAt:'2026-10-05',snapshotUpdatedAt:'2026-10-05',
- version:'worlds-teams-2026-10-05-v3',
- seedSource:'LPL/LCK/LEC: previously user-confirmed order; LCP: completed regional results. LCS/CBLOL: official seed unknown.',
+ sourceUpdatedAt:'2026-10-11',snapshotUpdatedAt:'2026-10-11',
+ version:'worlds-teams-2026-10-11-v4',
+ seedSource:'LoL Esports Worlds 2026 Primer and official LCS/CBLOL finals results.',
+ seedSourceUrls:['https://lolesports.com/en-GB/news/worlds-2026-primer','https://lolesports.com/en-US/leagues/cblol-brazil%2Cfirst_stand%2Clck%2Clcs%2Clec%2Clpl%2Cmsi%2Cworlds','https://lolesports.com/pt-BR/leagues/cblol-brazil'],
 };
 // The numeric seed is the configurable simulation assumption, never an official
 // claim. An unknown officialSeed is displayed as TBD even for qualified teams.
@@ -18,9 +19,9 @@ const rows:Row[]=[
  ['G2','G2 Esports','LEC',1,1780,1],['MKOI','Movistar KOI','LEC',2,1690,2],
  ['KC','Karmine Corp','LEC',3,1650,3],['TSW','Team Secret Whales','LCP',1,1710,1],
  ['CFO','CTBC Flying Oyster','LCP',2,1665,2],['MVK','MVK Esports','LCP',3,1620,3],
- ['LYON','LYON','LCS',1,1730,null],['TLAW','Team Liquid Alienware','LCS',2,1680,null],
- ['C9','Cloud9 Kia','LCS',3,1635,null],['LOS','LOS','CBLOL',1,1600,null],
- ['FUR','FURIA','CBLOL',2,1575,null],
+ ['LYON','LYON','LCS',2,1730,2],['TLAW','Team Liquid Alienware','LCS',1,1680,1],
+ ['C9','Cloud9 Kia','LCS',3,1635,3],['LOS','LOS','CBLOL',1,1600,1],
+ ['FUR','FURIA','CBLOL',2,1575,2],
 ];
 export const worldsTeamSnapshot:Team[]=rows.map(([id,name,region,seed,rating,officialSeed])=>{
  const confirmed=true;

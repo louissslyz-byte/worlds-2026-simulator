@@ -23,7 +23,7 @@ assert.equal(championPool(allPlayers.find(p=>p.playerId==='Feisty')).segments.fi
 assert.equal(championPool(allPlayers.find(p=>p.playerId==='Thanatos')).segments.find(s=>s.tournament==='LCS 2026 Summer Playoffs').totalGames,14);
 assert.equal(championPool(allPlayers.find(p=>p.playerId==='JoJo')).segments.find(s=>s.tournament==='CBLOL 2026 Split 2 Playoffs').totalGames,6);
 assert.deepEqual(teamsByRegion('LCK').map(t=>t.id),['GEN','HLE','T1','DK']);
-assert.ok(teamsByRegion('LCS').every(t=>t.worldsSeed===null));
+assert.deepEqual(teamsByRegion('LCS').map(t=>[t.id,t.worldsSeed]),[['TLAW',1],['LYON',2],['C9',3]]);
 for(const team of profileTeams){
  const original=worldsTeamSnapshot.find(t=>t.id===team.id);
  assert.equal(team.name,original.name);assert.equal(team.worldsSeed,original.officialSeed);

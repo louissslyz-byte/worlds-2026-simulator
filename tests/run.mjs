@@ -26,7 +26,12 @@ try{
  assert.equal(ratings['FUR'],teams.find(t=>t.id==='FUR').rating);
  const empty=new RiotGprProvider({entries:{},sourceUrl:'',sourceUpdatedAt:'',strengthVersion:'empty'});assert.equal(empty.status,'FALLBACK');assert.equal(new GprRatingAdapter(empty).rating(teams[0]),teams[0].rating);
  const summary=validateSnapshots();assert.equal(summary.confirmed,19);assert.equal(summary.matched,18);assert.equal(summary.fallback,1);
- assert.equal(teams.find(t=>t.id==='C9').officialGprScore,1335);assert.equal(teams.find(t=>t.id==='C9').officialSeed,null);
+ assert.equal(teams.find(t=>t.id==='C9').officialGprScore,1335);assert.equal(teams.find(t=>t.id==='C9').officialSeed,3);
+ assert.deepEqual(teams.filter(t=>t.region==='LCS').sort((a,b)=>a.seed-b.seed).map(t=>t.id),['TLAW','LYON','C9']);
+ assert.deepEqual(teams.filter(t=>t.region==='CBLOL').sort((a,b)=>a.seed-b.seed).map(t=>t.id),['LOS','FUR']);
+ assert.ok(teams.every(t=>t.officialSeed===t.seed));
+ assert.deepEqual(defaultSeedAssignments,{});
+ assert.equal(teams.filter(t=>!t.playIn).length,15);
  assert.throws(()=>validateSnapshots([...teams.slice(0,18),teams[0]]),/Duplicate/);
  assert.throws(()=>validateSnapshots(teams.map((t,i)=>i===0?{...t,slug:teams[1].slug}:t)),/Duplicate/);
  assert.throws(()=>validateSnapshots(teams.slice(1)),/19 teams/);
@@ -39,11 +44,11 @@ try{
  assert.ok(probabilityModel.probability(1540,1519)<0.55);
  assert.throws(()=>new GprProbabilityModel(-1));assert.throws(()=>probabilityModel.probability(NaN,1500));
  for(const a of teams.filter(t=>t.officialGprScore)){for(const b of teams.filter(t=>t.officialGprScore)){assert.ok(Math.abs(gameProbability(ratings[a.id],ratings[b.id])-probabilityModel.probability(a.officialGprScore,b.officialGprScore))<1e-12)}}
- const alternateSeeds={...defaultSeedAssignments,LYON:3,C9:1,LOS:2,'FUR':1};
+ const alternateSeeds={...defaultSeedAssignments,LYON:3,TLAW:2,C9:1,LOS:2,'FUR':1};
  const alternate=simulateEntireWorlds(createSession('SYSTEM_MODEL',ratings,undefined,42,alternateSeeds));assert.ok(alternate.tournamentState.champion);assert.deepEqual(alternate.tournamentState.matches.filter(m=>m.stage==='PLAY_IN'&&m.round===1).flatMap(m=>[m.teamA,m.teamB]).sort(),['KC','MVK','LYON','LOS'].sort());
  assert.throws(()=>createSession('SYSTEM_MODEL',ratings,undefined,42,{...defaultSeedAssignments,C9:1}),/不重复/);
  const base=createSession('SYSTEM_MODEL',ratings,undefined,42);
- assertPrecomputedOddsCurrent();assert.equal(precomputedOdds.metadata.simulationCount,SIMULATION_COUNTS.production);assert.equal(precomputedOdds.metadata.teamSnapshotDate,'2026-10-05');assert.equal(precomputedOdds.metadata.gprSnapshotDate,'2026-09-29');
+ assertPrecomputedOddsCurrent();assert.equal(precomputedOdds.metadata.simulationCount,SIMULATION_COUNTS.production);assert.equal(precomputedOdds.metadata.teamSnapshotDate,'2026-10-11');assert.equal(precomputedOdds.metadata.gprSnapshotDate,'2026-09-29');
  const published=createSession('SYSTEM_MODEL',ratings,undefined,2026);assert.equal(precomputedOdds.metadata.tournamentStateHash,tournamentStateHash(published));
  assert.equal(formatProbability(0.0005),'<0.1%');assert.equal(formatProbability(0.184),'18.4%');
  const full=simulateEntireWorlds(base);assert.ok(full.tournamentState.champion);assert.equal(full.simulationStatus,'COMPLETE');
