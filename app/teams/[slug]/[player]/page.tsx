@@ -14,17 +14,16 @@ export default async function PlayerProfile({params}:{params:Promise<{slug:strin
  const player=slot.player;const age=playerAge(player);const pool=championPool(player);const scope=stage3Scopes[team.region];
  const fields=[player.realName,player.birthDate,player.reportedAge,player.nationalities];
  const sources=Array.from(new Map(fields.filter(Boolean).map(field=>[field!.source.url,field!.source])).values());
- return <main className={`shell ${styles.page}`}>
-  <header className={styles.hero}><Link className={styles.back} href={`/teams/${team.slug}`}>← {team.shortName} 战队档案</Link>
+ return <main className={`shell ${styles.page} ${styles.playerPage}`}>
+  <header className={styles.playerHeader}><Link className={styles.back} href={`/teams/${team.slug}`}>← {team.shortName} 战队档案</Link>
    <div className="eyebrow">PLAYER PROFILE · WORLDS 2026</div><div className={styles.playerHero}><PositionIcon role={player.role} label={slot.role.label}/><h1>{player.playerId}</h1></div>
-   <div className={styles.meta}><Link href={`/teams/${team.slug}`}>{team.name}</Link><span>{slot.role.label}</span></div>
+   <dl className={styles.playerFacts}>
+    <div><dt>真实姓名</dt><dd>{player.realName?.value??'未核验'}</dd></div>
+    <div><dt>国籍</dt><dd>{player.nationalities?player.nationalities.value.map(n=><span key={n.countryCode} className={styles.playerNationality}><span aria-hidden="true">{countryFlag(n.countryCode)}</span> {n.name}</span>):'未核验'}</dd></div>
+    <div><dt>年龄</dt><dd>{age===null?'暂无可核验资料':<span title={player.birthDate?`出生日期：${player.birthDate.value}`:`官方资料所载年龄 · ${player.reportedAge!.source.checkedAt} 核对`}>{age} 岁<span className={styles.playerFactLabel}>{player.birthDate?`，出生日期：${player.birthDate.value}`:`，官方资料所载年龄，${player.reportedAge!.source.checkedAt} 核对`}</span></span>}</dd></div>
+   </dl>
+   <div className={`${styles.meta} ${styles.playerTeamRole}`}><Link href={`/teams/${team.slug}`}>{team.name}</Link><span>{slot.role.label}</span></div>
   </header>
-  <dl className={styles.facts}>
-   <div><dt>真实姓名 / REAL NAME</dt><dd>{player.realName?.value??<span className={styles.unavailable}>未核验</span>}</dd></div>
-   <div><dt>国籍 / NATIONALITY</dt><dd>{player.nationalities?player.nationalities.value.map(n=><span key={n.countryCode} className={styles.nationality}><span aria-hidden="true">{countryFlag(n.countryCode)}</span> {n.name}</span>):<span className={styles.unavailable}>未核验</span>}</dd></div>
-   <div><dt>年龄 / AGE</dt><dd>{age===null?<span className={styles.unavailable}>暂无可核验资料</span>:<>{age} 岁{player.birthDate?<p className={styles.note}>出生日期：{player.birthDate.value}</p>:<p className={styles.note}>官方资料所载年龄 · {player.reportedAge!.source.checkedAt} 核对</p>}</>}</dd></div>
-   <div><dt>位置 / ROLE</dt><dd>{slot.role.label}</dd></div><div><dt>战队 / TEAM</dt><dd><Link href={`/teams/${team.slug}`}>{team.shortName}</Link></dd></div>
-  </dl>
   {player.notes?.map(note=><p className={styles.note} key={note}>{note}</p>)}
   <section className={styles.section} aria-labelledby="champion-pool-title">
    <div className={styles.sectionHead}><div><div className="eyebrow">STAGE 3 CHAMPION POOL</div><h2 id="champion-pool-title">第三赛段英雄池</h2></div></div>
