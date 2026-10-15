@@ -11,3 +11,20 @@ outputs
 work
 *.tsbuildinfo
 .env*
+
+# Local research/evidence is not deployment input. Git safety is checked separately.
+docs
+offline-worlds-stats
+**/team-profile-data.json
+**/*OraclesElixir*.csv
+**/p3a*-review
+**/p3b-review
+**/p3b1-review
+**/private-gol-research
+private-data
+lib/team-profile/gol-match-rows.json
+lib/team-profile/gol-segments.json
+*.pem
+*.key
+id_ed25519*
+id_rsa*

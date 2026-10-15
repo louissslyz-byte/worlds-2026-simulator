@@ -46,3 +46,22 @@ next-env.d.ts
 /outputs/
 /work/
 /.openai/
+
+# Private statistics/research inputs and local acceptance evidence.
+# These rules do not remove files already present in the Git index/history.
+**/offline-worlds-stats/
+**/team-profile-data.json
+**/*OraclesElixir*.csv
+**/p3a*-review/
+**/p3b-review/
+**/p3b1-review/
+**/private-gol-research/
+/private-data/
+/docs/p3a-local/
+/docs/Codex交接报告.md
+/docs/P3-A*完成报告.md
+/lib/team-profile/gol-match-rows.json
+/lib/team-profile/gol-segments.json
+*.key
+id_ed25519*
+id_rsa*

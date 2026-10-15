@@ -1,9 +1,11 @@
-// Converts reviewed public GOL snapshots; never changes simulation inputs.
+// Manual offline maintenance only. Source usage conditions remain unconfirmed.
 import fs from 'node:fs';
+import {privateGolResearchDirectory} from './private-gol-input.mjs';
 import {profileTeams,profileRoster,stage3Scopes} from '../lib/team-profile/data.ts';
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
-const segments=read('lib/team-profile/gol-segments.json').segments;
-const matchData=read('lib/team-profile/gol-match-rows.json').players;
+const research=privateGolResearchDirectory();
+const segments=read(`${research}/gol-segments.json`).segments;
+const matchData=read(`${research}/gol-match-rows.json`).players;
 const ids=read('lib/team-profile/gol-player-mapping.json');
 const officialMatches=read('lib/team-profile/qualification-results.json').matches;
 const champions=read(process.argv[2]??'lib/team-profile/champion-catalog.json').data;

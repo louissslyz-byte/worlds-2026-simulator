@@ -6,7 +6,7 @@ import styles from './profile.module.css';
 
 export function ProfileHeader({team}:{team:typeof profileTeams[number]}){
  return <header className={styles.hero}>
-  <Link className={styles.back} href="/teams">← 战队档案</Link>
+  <Link className={styles.back} href="/teams"><span aria-hidden="true">←</span> 返回战队档案列表</Link>
   <div className="eyebrow">TEAM PROFILE · WORLDS 2026</div>
   <div className={styles.identity}>
    <TeamLogo teamId={team.id} size={100}/>

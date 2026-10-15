@@ -1,3 +1,5 @@
+import {playerStatistics} from '../../../../lib/team-profile/statistics-server';
+import {PlayerStatistics} from '../../../../components/team-profile/statistics';
 import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import {profileTeams,profileRoster,championPool,stage3Scopes} from '../../../../lib/team-profile/data';
@@ -12,10 +14,11 @@ export default async function PlayerProfile({params}:{params:Promise<{slug:strin
  const slot=profileRoster(team.id).slots.find(s=>s.player?.slug===playerParam);
  if(!slot?.player)notFound();
  const player=slot.player;const age=playerAge(player);const pool=championPool(player);const scope=stage3Scopes[team.region];
+ const statistics=await playerStatistics(team.id,player.playerId,player.role);
  const fields=[player.realName,player.birthDate,player.reportedAge,player.nationalities];
  const sources=Array.from(new Map(fields.filter(Boolean).map(field=>[field!.source.url,field!.source])).values());
  return <main className={`shell ${styles.page} ${styles.playerPage}`}>
-  <header className={styles.playerHeader}><Link className={styles.back} href={`/teams/${team.slug}`}>← {team.shortName} 战队档案</Link>
+  <header className={styles.playerHeader}><Link className={styles.back} href={`/teams/${team.slug}`}><span aria-hidden="true">←</span> 返回 {team.shortName} 战队档案</Link>
    <div className="eyebrow">PLAYER PROFILE · WORLDS 2026</div><div className={styles.playerHero}><PositionIcon role={player.role} label={slot.role.label}/><h1>{player.playerId}</h1></div>
    <dl className={styles.playerFacts}>
     <div><dt>真实姓名</dt><dd>{player.realName?.value??'未核验'}</dd></div>
@@ -25,6 +28,7 @@ export default async function PlayerProfile({params}:{params:Promise<{slug:strin
    <div className={`${styles.meta} ${styles.playerTeamRole}`}><Link href={`/teams/${team.slug}`}>{team.name}</Link><span>{slot.role.label}</span></div>
   </header>
   {player.notes?.map(note=><p className={styles.note} key={note}>{note}</p>)}
+  <PlayerStatistics view={statistics}/>
   <section className={styles.section} aria-labelledby="champion-pool-title">
    <div className={styles.sectionHead}><div><div className="eyebrow">STAGE 3 CHAMPION POOL</div><h2 id="champion-pool-title">第三赛段英雄池</h2></div></div>
    <p className={styles.note}>{scope.label} · {scope.includes.join(' + ')}</p>
