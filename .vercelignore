@@ -28,3 +28,5 @@ lib/team-profile/gol-segments.json
 *.key
 id_ed25519*
 id_rsa*
+.team-stats-release
+**/p3c1-review

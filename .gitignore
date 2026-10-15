@@ -65,3 +65,5 @@ next-env.d.ts
 *.key
 id_ed25519*
 id_rsa*
+/.team-stats-release/
+**/p3c1-review/

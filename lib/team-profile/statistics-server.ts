@@ -2,10 +2,10 @@ import 'server-only';
 import {readFile,realpath} from 'node:fs/promises';
 import {isAbsolute,resolve,relative,sep} from 'node:path';
 import {headers} from 'next/headers';
-import {localStatisticsEnabled,scopeNotes,type Entity,type Baseline,type Definition,type Draft,type StatisticsView} from './statistics-types';
+import {localStatisticsEnabled} from './statistics-types';
+import {project,type Snapshot} from './statistics-projection';
+import {releaseView} from './statistics-release-server';
 
-type Identity={status:string;region:string;regionalTeamId:string;regionalStatKeys:string[]};
-type Snapshot={metadata:{schemaVersion:string;sourceSnapshotDate:string;publicExportAllowed:boolean};regions:Record<string,{teamsById:Record<string,Entity>;playerStatsByKey:Record<string,Entity>;bpByTeamId:Record<string,Draft>}>;worldsTeamsById:Record<string,Identity>;worldsPlayersByKey:Record<string,Identity>;regionalComparisonsByRegion:Record<string,{team:Baseline[];positional:Baseline[]}>;metricDictionary:{metrics:Definition[]};championsById:Record<string,{id:string;name:string}>};
 let cached:{path:string;data:Promise<Snapshot>}|undefined;
 async function localSnapshot():Promise<Snapshot|null>{
  // Fail closed before headers, filesystem access or rendering in production/builds.
@@ -33,20 +33,8 @@ async function localSnapshot():Promise<Snapshot|null>{
  })};
  return cached.data;
 }
-function project(data:Snapshot,region:string,entity:Entity,baselines:Baseline[],kind:'team'|'player',draft?:Draft):StatisticsView{
- // Send/render only page-level aggregates. Never include source game IDs,
- // full regional bundles, hero-pool snapshots or private filesystem paths.
- const metrics=Object.fromEntries(Object.entries(entity.metrics).map(([key,m])=>[key,{value:m.value,validGames:m.validGames,eligibleGames:m.eligibleGames,excludedGames:m.excludedGames,missingGames:m.missingGames,coverageStatus:m.coverageStatus,source:m.source,definitionVersion:m.definitionVersion}]));
- const definitions=data.metricDictionary.metrics.filter(m=>m.id.startsWith(kind+'.')&&m.id.split('.')[1] in metrics);
- const needed=new Set<string>();
- if(draft){for(const name of ['mostPicked','mostBanned','mostBannedAgainst'] as const)for(const s of draft[name].stats)needed.add(s.championId);for(const section of Object.values(draft.combinations))for(const s of section.stats)for(const id of s.championIds)needed.add(id);}
- const safeDraft=draft?{
-  ...Object.fromEntries((['mostPicked','mostBanned','mostBannedAgainst'] as const).map(k=>[k,{validGames:draft[k].validGames,missingGames:draft[k].missingGames,coverageStatus:draft[k].coverageStatus,stats:draft[k].stats.map(s=>({championId:s.championId,games:s.games,count:s.count,useRatePct:s.useRatePct}))}])),
-  combinations:Object.fromEntries(Object.entries(draft.combinations).map(([k,s])=>[k,{roles:s.roles,validGames:s.validGames,missingGames:s.missingGames,coverageStatus:s.coverageStatus,stats:s.stats.map(x=>({championIds:x.championIds,championNames:x.championNames,games:x.games,wins:x.wins,winRate:x.winRate}))}]))
- } as Draft:undefined;
- return {region,entity:{teamId:entity.teamId,playerId:entity.displayName??entity.playerId,role:entity.role,sampleGames:entity.sampleGames,lowSample:entity.lowSample,metrics},baselines:baselines.map(b=>({metric:b.metric,role:b.role,value:b.value,coverageStatus:b.coverageStatus,regionalAverage:b.regionalAverage,regionalPositionalAverage:b.regionalPositionalAverage,distribution:b.distribution.map(p=>({teamId:p.teamId,playerId:p.playerId?.startsWith('oe-player:')?null:p.playerId,displayName:p.playerId&&b.role?data.regions[region].playerStatsByKey[`${p.teamId}|${p.playerId}|${b.role}`]?.displayName:undefined,value:p.value,validGames:p.validGames,sampleGames:p.sampleGames,lowSample:p.lowSample})),distributionSummary:b.distributionSummary})),definitions,snapshotDate:data.metadata.sourceSnapshotDate,scopeNote:scopeNotes[region],draft:safeDraft,champions:Object.fromEntries([...needed].map(id=>[id,data.championsById[id]]))};
-}
 export async function teamStatistics(teamId:string){
+ const release=await releaseView(`team:${teamId}`);if(release)return release;
  const data=await localSnapshot();if(!data)return null;
  const identity=data.worldsTeamsById[teamId];if(identity?.status!=='MATCHED')return null;
  const region=identity.region;const record=data.regions[region].teamsById[identity.regionalTeamId];
@@ -54,6 +42,7 @@ export async function teamStatistics(teamId:string){
  return project(data,region,record,data.regionalComparisonsByRegion[region].team,'team',data.regions[region].bpByTeamId[teamId]);
 }
 export async function playerStatistics(teamId:string,playerId:string,role:string){
+ const release=await releaseView(`player:${teamId}|${playerId}|${role}`);if(release)return release;
  const data=await localSnapshot();if(!data)return null;
  const identity=data.worldsPlayersByKey[`${teamId}|${playerId}|${role}`];if(identity?.status!=='MATCHED'||identity.regionalStatKeys.length!==1)return null;
  const region=identity.region;const record=data.regions[region].playerStatsByKey[identity.regionalStatKeys[0]];

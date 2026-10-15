@@ -17,6 +17,6 @@ export default function Layout({children}:{children:React.ReactNode}){
    <SiteNavigation/>
   </div></header>
   {children}
-  <footer className="footer"><div className="shell">2026 全球总决赛模拟器 · 赛程时间以 LoL Esports 公布为准</div></footer>
+  <footer className="footer"><div className="shell">2026 全球总决赛模拟器 · 赛程时间以 LoL Esports 公布为准 · 非官方粉丝项目，不代表 Riot Games 官方观点。模拟概率由本站模型计算。</div></footer>
  </body></html>;
 }
