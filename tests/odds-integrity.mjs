@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {precomputedOdds as odds,assertPrecomputedOddsCurrent} from '../lib/sim/precomputed.ts';
+import {assertEventCounts} from '../lib/sim/validation.ts';
+import {createSession} from '../lib/sim/engine.ts';
+import {SystemRatingProvider} from '../lib/sim/ratings.ts';
+import {tournamentStateInput} from '../lib/sim/oddsMetadata.ts';
+const digest=x=>createHash('sha256').update(x).digest('hex');
+assertPrecomputedOddsCurrent();assertEventCounts(odds.counts,100000);
+assert.equal(odds.metadata.strengthInputSHA256,'50ecd08a842afff2cfb2146a92fa67b929c42c121f831a6e110de9185a7ed8cb');
+assert.equal(odds.metadata.inputSHA256,digest(tournamentStateInput(createSession('SYSTEM_MODEL',new SystemRatingProvider().getRatings(),undefined,2026,undefined,'RANDOM'))));
+const legacy=JSON.parse(await readFile(new URL('../docs/odds-history/precomputed-legacy-rules-2026-10-11.json',import.meta.url)));
+const legacyBytes=await readFile(new URL('../docs/odds-history/precomputed-legacy-rules-2026-10-11.json',import.meta.url));
+assert.equal(digest(legacyBytes),'fac0f3118b6e68af80a151bed650caaf7723589ecfd3956c431800ac11c5e9d1');
+assert.throws(()=>assertPrecomputedOddsCurrent(legacy),/stale/);
+for(const mutation of [x=>{x.metadata.rulesVersion='legacy';},x=>{x.metadata.randomSeed=1;},x=>{x.metadata.failedCount=1;},x=>{x.counts.swiss.GEN--;},x=>{x.probabilities.GEN+=0.01;}]){const bad=structuredClone(odds);mutation(bad);assert.throws(()=>assertPrecomputedOddsCurrent(bad));}
+for(const id of ['KC','MVK','C9','FUR'])assert.ok(odds.counts.swiss[id]>0&&odds.counts.swiss[id]<100000,'No real Play-In winner may be fixed');
+const sources=['engine.ts','draws.ts','random.ts','monteCarlo.ts','validation.ts','worlds2026.ts','sessionCompatibility.ts','types.ts','oddsMetadata.ts'];
+const engine=[];for(const file of sources)engine.push([file,await readFile(new URL(`../lib/sim/${file}`,import.meta.url),'utf8')]);
+assert.equal(odds.metadata.engineSourceSHA256,digest(JSON.stringify(engine)),'Engine changed after official odds were generated');
+console.log('100,000次正式快照：全19队整数计数、16/8/4/2/1名额、嵌套、旧缓存失效、冻结实力与源码指纹通过。');

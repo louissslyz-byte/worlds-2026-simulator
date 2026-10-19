@@ -1,0 +1,9 @@
+{
+  "classification": "LEGACY_RULES",
+  "sha256": "fac0f3118b6e68af80a151bed650caaf7723589ecfd3956c431800ac11c5e9d1",
+  "sourceCommit": "6cc9de086075c40e6bd4ee2f0141f9b719cc2c67",
+  "rulesVersion": "legacy-unversioned",
+  "randomSeed": 2026,
+  "seedEvidence": "scripts/generate-odds.mjs at sourceCommit; createSession and Monte Carlo both use 2026",
+  "note": "Original bytes preserved. Historical probabilities use the previous draw rules."
+}

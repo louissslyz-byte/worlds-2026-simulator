@@ -1,0 +1,523 @@
+{
+  "oldClassification": "LEGACY_RULES",
+  "newClassification": "OFFICIAL_RULES_CORRECTED",
+  "oldSHA256": "fac0f3118b6e68af80a151bed650caaf7723589ecfd3956c431800ac11c5e9d1",
+  "newSHA256": "8ce8f63929caca68eff760377e16729df419f20a31c05f103c7e991849baad78",
+  "randomSeed": 2026,
+  "simulationCount": 100000,
+  "teams": [
+    {
+      "teamId": "GEN",
+      "gprScore": 1519,
+      "stages": {
+        "knockout": {
+          "legacy": 0.83028,
+          "corrected": 0.81115,
+          "changePercentagePoints": -1.913
+        },
+        "semifinal": {
+          "legacy": 0.56184,
+          "corrected": 0.55164,
+          "changePercentagePoints": -1.02
+        },
+        "final": {
+          "legacy": 0.35405,
+          "corrected": 0.34769,
+          "changePercentagePoints": -0.636
+        },
+        "champion": {
+          "legacy": 0.2059,
+          "corrected": 0.20382,
+          "changePercentagePoints": -0.208
+        }
+      },
+      "swissProbability": 1
+    },
+    {
+      "teamId": "HLE",
+      "gprScore": 1540,
+      "stages": {
+        "knockout": {
+          "legacy": 0.86264,
+          "corrected": 0.84458,
+          "changePercentagePoints": -1.806
+        },
+        "semifinal": {
+          "legacy": 0.62178,
+          "corrected": 0.61347,
+          "changePercentagePoints": -0.831
+        },
+        "final": {
+          "legacy": 0.42357,
+          "corrected": 0.4185,
+          "changePercentagePoints": -0.507
+        },
+        "champion": {
+          "legacy": 0.27645,
+          "corrected": 0.2707,
+          "changePercentagePoints": -0.575
+        }
+      },
+      "swissProbability": 1
+    },
+    {
+      "teamId": "T1",
+      "gprScore": 1471,
+      "stages": {
+        "knockout": {
+          "legacy": 0.73145,
+          "corrected": 0.69982,
+          "changePercentagePoints": -3.163
+        },
+        "semifinal": {
+          "legacy": 0.41475,
+          "corrected": 0.39867,
+          "changePercentagePoints": -1.608
+        },
+        "final": {
+          "legacy": 0.21171,
+          "corrected": 0.20141,
+          "changePercentagePoints": -1.03
+        },
+        "champion": {
+          "legacy": 0.09624,
+          "corrected": 0.09131,
+          "changePercentagePoints": -0.493
+        }
+      },
+      "swissProbability": 1
+    },
+    {
+      "teamId": "DK",
+      "gprScore": 1409,
+      "stages": {
+        "knockout": {
+          "legacy": 0.57654,
+          "corrected": 0.51642,
+          "changePercentagePoints": -6.012
+        },
+        "semifinal": {
+          "legacy": 0.24284,
+          "corrected": 0.2196,
+          "changePercentagePoints": -2.324
+        },
+        "final": {
+          "legacy": 0.08818,
+          "corrected": 0.07936,
+          "changePercentagePoints": -0.882
+        },
+        "champion": {
+          "legacy": 0.0286,
+          "corrected": 0.02615,
+          "changePercentagePoints": -0.245
+        }
+      },
+      "swissProbability": 1
+    },
+    {
+      "teamId": "AL",
+      "gprScore": 1409,
+      "stages": {
+        "knockout": {
+          "legacy": 0.51611,
+          "corrected": 0.52903,
+          "changePercentagePoints": 1.292
+        },
+        "semifinal": {
+          "legacy": 0.21725,
+          "corrected": 0.22568,
+          "changePercentagePoints": 0.843
+        },
+        "final": {
+          "legacy": 0.07951,
+          "corrected": 0.08216,
+          "changePercentagePoints": 0.265
+        },
+        "champion": {
+          "legacy": 0.02542,
+          "corrected": 0.02678,
+          "changePercentagePoints": 0.136
+        }
+      },
+      "swissProbability": 1
+    },
+    {
+      "teamId": "BLG",
+      "gprScore": 1513,
+      "stages": {
+        "knockout": {
+          "legacy": 0.7737,
+          "corrected": 0.78679,
+          "changePercentagePoints": 1.309
+        },
+        "semifinal": {
+          "legacy": 0.51288,
+          "corrected": 0.52436,
+          "changePercentagePoints": 1.148
+        },
+        "final": {
+          "legacy": 0.3148,
+          "corrected": 0.32138,
+          "changePercentagePoints": 0.658
+        },
+        "champion": {
+          "legacy": 0.1775,
+          "corrected": 0.182,
+          "changePercentagePoints": 0.45
+        }
+      },
+      "swissProbability": 1
+    },
+    {
+      "teamId": "TES",
+      "gprScore": 1364,
+      "stages": {
+        "knockout": {
+          "legacy": 0.39445,
+          "corrected": 0.39512,
+          "changePercentagePoints": 0.067
+        },
+        "semifinal": {
+          "legacy": 0.12917,
+          "corrected": 0.12832,
+          "changePercentagePoints": -0.085
+        },
+        "final": {
+          "legacy": 0.03658,
+          "corrected": 0.0355,
+          "changePercentagePoints": -0.108
+        },
+        "champion": {
+          "legacy": 0.0089,
+          "corrected": 0.00826,
+          "changePercentagePoints": -0.064
+        }
+      },
+      "swissProbability": 1
+    },
+    {
+      "teamId": "IG",
+      "gprScore": 1348,
+      "stages": {
+        "knockout": {
+          "legacy": 0.35231,
+          "corrected": 0.33908,
+          "changePercentagePoints": -1.323
+        },
+        "semifinal": {
+          "legacy": 0.10594,
+          "corrected": 0.09909,
+          "changePercentagePoints": -0.685
+        },
+        "final": {
+          "legacy": 0.02712,
+          "corrected": 0.02582,
+          "changePercentagePoints": -0.13
+        },
+        "champion": {
+          "legacy": 0.00614,
+          "corrected": 0.00559,
+          "changePercentagePoints": -0.055
+        }
+      },
+      "swissProbability": 1
+    },
+    {
+      "teamId": "G2",
+      "gprScore": 1475,
+      "stages": {
+        "knockout": {
+          "legacy": 0.6778,
+          "corrected": 0.71172,
+          "changePercentagePoints": 3.392
+        },
+        "semifinal": {
+          "legacy": 0.38749,
+          "corrected": 0.41419,
+          "changePercentagePoints": 2.67
+        },
+        "final": {
+          "legacy": 0.1999,
+          "corrected": 0.21408,
+          "changePercentagePoints": 1.418
+        },
+        "champion": {
+          "legacy": 0.09184,
+          "corrected": 0.09961,
+          "changePercentagePoints": 0.777
+        }
+      },
+      "swissProbability": 1
+    },
+    {
+      "teamId": "MKOI",
+      "gprScore": 1317,
+      "stages": {
+        "knockout": {
+          "legacy": 0.26805,
+          "corrected": 0.268,
+          "changePercentagePoints": -0.005
+        },
+        "semifinal": {
+          "legacy": 0.06383,
+          "corrected": 0.06582,
+          "changePercentagePoints": 0.199
+        },
+        "final": {
+          "legacy": 0.01239,
+          "corrected": 0.01283,
+          "changePercentagePoints": 0.044
+        },
+        "champion": {
+          "legacy": 0.00207,
+          "corrected": 0.00236,
+          "changePercentagePoints": 0.029
+        }
+      },
+      "swissProbability": 1
+    },
+    {
+      "teamId": "KC",
+      "gprScore": 1375,
+      "stages": {
+        "knockout": {
+          "legacy": 0.22784,
+          "corrected": 0.22764,
+          "changePercentagePoints": -0.02
+        },
+        "semifinal": {
+          "legacy": 0.08183,
+          "corrected": 0.0786,
+          "changePercentagePoints": -0.323
+        },
+        "final": {
+          "legacy": 0.02465,
+          "corrected": 0.02396,
+          "changePercentagePoints": -0.069
+        },
+        "champion": {
+          "legacy": 0.00625,
+          "corrected": 0.00614,
+          "changePercentagePoints": -0.011
+        }
+      },
+      "swissProbability": 0.54915
+    },
+    {
+      "teamId": "TSW",
+      "gprScore": 1372,
+      "stages": {
+        "knockout": {
+          "legacy": 0.38646,
+          "corrected": 0.41655,
+          "changePercentagePoints": 3.009
+        },
+        "semifinal": {
+          "legacy": 0.13594,
+          "corrected": 0.14148,
+          "changePercentagePoints": 0.554
+        },
+        "final": {
+          "legacy": 0.04044,
+          "corrected": 0.04228,
+          "changePercentagePoints": 0.184
+        },
+        "champion": {
+          "legacy": 0.01075,
+          "corrected": 0.01054,
+          "changePercentagePoints": -0.021
+        }
+      },
+      "swissProbability": 1
+    },
+    {
+      "teamId": "CFO",
+      "gprScore": 1317,
+      "stages": {
+        "knockout": {
+          "legacy": 0.25443,
+          "corrected": 0.26243,
+          "changePercentagePoints": 0.8
+        },
+        "semifinal": {
+          "legacy": 0.06309,
+          "corrected": 0.06393,
+          "changePercentagePoints": 0.084
+        },
+        "final": {
+          "legacy": 0.01295,
+          "corrected": 0.01315,
+          "changePercentagePoints": 0.02
+        },
+        "champion": {
+          "legacy": 0.0024,
+          "corrected": 0.0023,
+          "changePercentagePoints": -0.01
+        }
+      },
+      "swissProbability": 1
+    },
+    {
+      "teamId": "MVK",
+      "gprScore": 1247,
+      "stages": {
+        "knockout": {
+          "legacy": 0.00982,
+          "corrected": 0.01193,
+          "changePercentagePoints": 0.211
+        },
+        "semifinal": {
+          "legacy": 0.00136,
+          "corrected": 0.00167,
+          "changePercentagePoints": 0.031
+        },
+        "final": {
+          "legacy": 0.00018,
+          "corrected": 0.00023,
+          "changePercentagePoints": 0.005
+        },
+        "champion": {
+          "legacy": 0,
+          "corrected": 4e-05,
+          "changePercentagePoints": 0.004
+        }
+      },
+      "swissProbability": 0.08289
+    },
+    {
+      "teamId": "LYON",
+      "gprScore": 1443,
+      "stages": {
+        "knockout": {
+          "legacy": 0.5984,
+          "corrected": 0.61877,
+          "changePercentagePoints": 2.037
+        },
+        "semifinal": {
+          "legacy": 0.30145,
+          "corrected": 0.3098,
+          "changePercentagePoints": 0.835
+        },
+        "final": {
+          "legacy": 0.13117,
+          "corrected": 0.13731,
+          "changePercentagePoints": 0.614
+        },
+        "champion": {
+          "legacy": 0.05191,
+          "corrected": 0.05413,
+          "changePercentagePoints": 0.222
+        }
+      },
+      "swissProbability": 1
+    },
+    {
+      "teamId": "TLAW",
+      "gprScore": 1364,
+      "stages": {
+        "knockout": {
+          "legacy": 0.38233,
+          "corrected": 0.4018,
+          "changePercentagePoints": 1.947
+        },
+        "semifinal": {
+          "legacy": 0.12564,
+          "corrected": 0.13244,
+          "changePercentagePoints": 0.68
+        },
+        "final": {
+          "legacy": 0.03583,
+          "corrected": 0.03798,
+          "changePercentagePoints": 0.215
+        },
+        "champion": {
+          "legacy": 0.00828,
+          "corrected": 0.00905,
+          "changePercentagePoints": 0.077
+        }
+      },
+      "swissProbability": 1
+    },
+    {
+      "teamId": "C9",
+      "gprScore": 1335,
+      "stages": {
+        "knockout": {
+          "legacy": 0.10275,
+          "corrected": 0.10119,
+          "changePercentagePoints": -0.156
+        },
+        "semifinal": {
+          "legacy": 0.02844,
+          "corrected": 0.0267,
+          "changePercentagePoints": -0.174
+        },
+        "final": {
+          "legacy": 0.00667,
+          "corrected": 0.00609,
+          "changePercentagePoints": -0.058
+        },
+        "champion": {
+          "legacy": 0.00134,
+          "corrected": 0.0012,
+          "changePercentagePoints": -0.014
+        }
+      },
+      "swissProbability": 0.33446
+    },
+    {
+      "teamId": "LOS",
+      "gprScore": 1174,
+      "stages": {
+        "knockout": {
+          "legacy": 0.05279,
+          "corrected": 0.05536,
+          "changePercentagePoints": 0.257
+        },
+        "semifinal": {
+          "legacy": 0.00426,
+          "corrected": 0.00431,
+          "changePercentagePoints": 0.005
+        },
+        "final": {
+          "legacy": 0.0003,
+          "corrected": 0.00026,
+          "changePercentagePoints": -0.004
+        },
+        "champion": {
+          "legacy": 1e-05,
+          "corrected": 2e-05,
+          "changePercentagePoints": 0.001
+        }
+      },
+      "swissProbability": 1
+    },
+    {
+      "teamId": "FUR",
+      "gprScore": null,
+      "stages": {
+        "knockout": {
+          "legacy": 0.00185,
+          "corrected": 0.00262,
+          "changePercentagePoints": 0.077
+        },
+        "semifinal": {
+          "legacy": 0.00022,
+          "corrected": 0.00023,
+          "changePercentagePoints": 0.001
+        },
+        "final": {
+          "legacy": 0,
+          "corrected": 1e-05,
+          "changePercentagePoints": 0.001
+        },
+        "champion": {
+          "legacy": 0,
+          "corrected": 0,
+          "changePercentagePoints": 0
+        }
+      },
+      "swissProbability": 0.0335
+    }
+  ]
+}

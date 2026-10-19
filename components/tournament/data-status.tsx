@@ -11,5 +11,5 @@ export function DataStatus(){return <><div className="data-status" aria-label="�
  <span><b>队伍</b> {confirmed}/{teams.length} 已确认 · {teamSnapshotMetadata.snapshotUpdatedAt}</span>
  <span><b>Riot GPR</b> {covered}/{teams.length} 匹配 · 回退 {teams.length-covered} · {riotGprSnapshot.sourceUpdatedAt} 快照</span>
  <span><b>夺冠概率</b> {precomputedOdds.metadata.simulationCount.toLocaleString('en-US')} 次 · {generated} CST</span>
- <span><b>模型</b> {MODEL_VERSION}</span>
+ <span><b>模型</b> {MODEL_VERSION} · 赛制 {precomputedOdds.metadata.rulesVersion}</span>
  </div><p className="fine">{seedAssumptionLabel}</p></>}

@@ -1,4 +1,6 @@
 import './team-profile.mjs';
+import './official-rules.mjs';
+import './odds-integrity.mjs';
 import {validateSnapshots} from '../lib/sim/validateSnapshots.ts';
 import {GprProbabilityModel} from '../lib/sim/gprProbability.ts';
 import {defaultSeedAssignments} from '../lib/sim/seedAssignments.ts';
@@ -49,7 +51,7 @@ try{
  assert.throws(()=>createSession('SYSTEM_MODEL',ratings,undefined,42,{...defaultSeedAssignments,C9:1}),/不重复/);
  const base=createSession('SYSTEM_MODEL',ratings,undefined,42);
  assertPrecomputedOddsCurrent();assert.equal(precomputedOdds.metadata.simulationCount,SIMULATION_COUNTS.production);assert.equal(precomputedOdds.metadata.teamSnapshotDate,'2026-10-11');assert.equal(precomputedOdds.metadata.gprSnapshotDate,'2026-09-29');
- const published=createSession('SYSTEM_MODEL',ratings,undefined,2026);assert.equal(precomputedOdds.metadata.tournamentStateHash,tournamentStateHash(published));
+ const published=createSession('SYSTEM_MODEL',ratings,undefined,2026,undefined,'RANDOM');assert.equal(precomputedOdds.metadata.tournamentStateHash,tournamentStateHash(published));
  assert.equal(formatProbability(0.0005),'<0.1%');assert.equal(formatProbability(0.184),'18.4%');
  const full=simulateEntireWorlds(base);assert.ok(full.tournamentState.champion);assert.equal(full.simulationStatus,'COMPLETE');
  const first=base.tournamentState.matches[0];const manual=applyResult(base,first.id,first.teamA,3,1,'MANUAL');const mixed=simulateRemaining(manual);assert.equal(mixed.tournamentState.matches[0].resultSource,'MANUAL');assert.equal(mixed.tournamentState.matches[0].scoreB,1);assert.equal(mixed.tournamentState.matches[1].resultSource,'SIMULATION');

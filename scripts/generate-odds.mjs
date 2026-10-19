@@ -1,17 +1,31 @@
 import {validateSnapshots} from '../lib/sim/validateSnapshots.ts';
 import {access} from 'node:fs/promises';
 import {worldsTeamSnapshot} from '../lib/sim/teamSnapshot.ts';
-import {writeFile} from 'node:fs/promises';
+import {writeFile,rename,unlink} from 'node:fs/promises';
 import {createSession} from '../lib/sim/engine.ts';
 import {SystemRatingProvider} from '../lib/sim/ratings.ts';
 import {runMonteCarloFromState} from '../lib/sim/monteCarlo.ts';
+import {createHash,randomUUID} from 'node:crypto';
+import {readFile} from 'node:fs/promises';
+import {tournamentStateInput} from '../lib/sim/oddsMetadata.ts';
+import {worlds2026} from '../lib/sim/worlds2026.ts';
 import {SIMULATION_COUNTS} from '../lib/sim/oddsConfig.ts';
 
 console.log('Snapshot validation:',validateSnapshots());
 for(const team of worldsTeamSnapshot.filter(t=>t.confirmed))await access(new URL(`../public${team.logo}`,import.meta.url));
-const session=createSession('SYSTEM_MODEL',new SystemRatingProvider().getRatings(),undefined,2026);
+const session=createSession('SYSTEM_MODEL',new SystemRatingProvider().getRatings(),undefined,2026,undefined,'RANDOM');
 const start=performance.now();
 const odds=runMonteCarloFromState(session,SIMULATION_COUNTS.production,2026);
 if(odds.iterations<SIMULATION_COUNTS.production)throw new Error(`Only ${odds.iterations} of ${SIMULATION_COUNTS.production} simulations completed`);
-await writeFile(new URL('../lib/sim/precomputedOdds.json',import.meta.url),`${JSON.stringify(odds,null,2)}\n`);
+const digest=value=>createHash('sha256').update(value).digest('hex');
+const files=['engine.ts','draws.ts','random.ts','monteCarlo.ts','validation.ts','worlds2026.ts','sessionCompatibility.ts','types.ts','oddsMetadata.ts'];
+const source=[];for(const file of files)source.push([file,await readFile(new URL(`../lib/sim/${file}`,import.meta.url),'utf8')]);
+odds.metadata.inputSHA256=digest(tournamentStateInput(session));
+odds.metadata.strengthInputSHA256=digest(JSON.stringify(Object.fromEntries(Object.entries(session.ratingSnapshot).sort())));
+odds.metadata.rulesSHA256=digest(JSON.stringify(worlds2026));
+odds.metadata.engineSourceSHA256=digest(JSON.stringify(source));
+odds.metadata.initialDrawMode=session.playInDrawMode;
+const target=new URL('../lib/sim/precomputedOdds.json',import.meta.url);
+const temp=new URL(`../lib/sim/precomputedOdds-${randomUUID()}.tmp`,import.meta.url);
+try{await writeFile(temp,`${JSON.stringify(odds,null,2)}\n`,{flag:'wx'});await rename(temp,target);}finally{await unlink(temp).catch(e=>{if(e.code!=='ENOENT')throw e;});}
 console.log(`Saved ${odds.iterations.toLocaleString()} simulations in ${((performance.now()-start)/1000).toFixed(1)}s`);
