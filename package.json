@@ -15,6 +15,8 @@
     "db:generate": "drizzle-kit generate",
     "typecheck": "tsc --noEmit",
     "test": "tsx tests/run.mjs",
+    "live:odds:generate": "node --import tsx scripts/generate-live-odds.mjs",
+    "live:odds:validate": "node --import tsx scripts/validate-live-odds.mjs",
     "live:validate": "node --import tsx scripts/validate-live.mjs",
     "odds:generate": "node --import tsx scripts/generate-odds.mjs",
     "build:vercel": "node --import tsx scripts/build-production.mjs",
