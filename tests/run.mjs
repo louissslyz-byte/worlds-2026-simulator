@@ -1,3 +1,4 @@
+import './live-data.mjs';
 import './team-profile.mjs';
 import './official-rules.mjs';
 import './odds-integrity.mjs';

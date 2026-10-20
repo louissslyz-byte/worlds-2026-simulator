@@ -1,0 +1,931 @@
+{
+  "metadata": {
+    "schemaVersion": "live-tournament-facts-v1.0",
+    "eventId": "worlds-2026",
+    "eventName": "Worlds 2026",
+    "season": 2026,
+    "snapshotId": "worlds-2026-post-play-in-v1",
+    "asOf": "2026-10-19T12:00:00.000Z",
+    "sourceCheckedAt": "2026-10-20T00:52:35.000Z",
+    "tournamentStage": "POST_PLAY_IN",
+    "dataVersion": "worlds-live-facts-v1.0",
+    "rulesVersion": "worlds-2026-official-draw-v2",
+    "revisionOf": null,
+    "boundaryExplanation": "Historical information cutoff: 2026-10-19 20:00 CST / 12:00 UTC, after Play-In and draw, before Swiss. Not the final whistle or draw timestamp. Conservative date-only publication bound (end of October 18 at UTC-12) ensures dated result/draw reports precede cutoff. Verified retrospectively on October 20. No Swiss results or later schedule revisions included."
+  },
+  "teamIds": [
+    "GEN",
+    "HLE",
+    "T1",
+    "DK",
+    "AL",
+    "BLG",
+    "TES",
+    "IG",
+    "G2",
+    "MKOI",
+    "KC",
+    "TSW",
+    "CFO",
+    "MVK",
+    "TLAW",
+    "LYON",
+    "C9",
+    "LOS",
+    "FUR"
+  ],
+  "sources": [
+    {
+      "sourceId": "riot-primer",
+      "sourceName": "LoL Esports Worlds 2026 Primer",
+      "sourceUrl": "https://lolesports.com/en-US/news/worlds-2026-primer",
+      "sourceType": "OFFICIAL",
+      "accessStatus": "READABLE",
+      "publishedAt": null,
+      "publishedDate": "2026-10-05",
+      "checkedAt": "2026-10-20T00:52:35.000Z",
+      "verificationStatus": "OFFICIAL_VERIFIED",
+      "location": "QUALIFIED TEAMS; WORLDS 2026 FORMAT; stage start times",
+      "notes": "Official format, pools and daily broadcast start. Daily first slot is not a start time for every series. Exact publication time unavailable.",
+      "supports": [
+        "EVENT_RULES",
+        "STAGE_SCHEDULE"
+      ]
+    },
+    {
+      "sourceId": "riot-schedule",
+      "sourceName": "LoL Esports Worlds schedule",
+      "sourceUrl": "https://lolesports.com/en-US/leagues/worlds",
+      "sourceType": "OFFICIAL",
+      "accessStatus": "READABLE",
+      "publishedAt": null,
+      "publishedDate": null,
+      "checkedAt": "2026-10-20T00:52:35.000Z",
+      "verificationStatus": "OFFICIAL_VERIFIED",
+      "location": "Worlds Play-Ins, October 15–18, six completed Bo5 records",
+      "notes": "Current page confirms final scores. Its current Swiss running order has no verified historical publication time and is excluded from this historical snapshot.",
+      "supports": [
+        "PLAY_IN_RESULTS"
+      ]
+    },
+    {
+      "sourceId": "riot-swiss-bracket",
+      "sourceName": "LoL Esports Worlds Swiss bracket",
+      "sourceUrl": "https://lolesports.com/en-US/tournament/115660540725177488/stage/115660540725570706",
+      "sourceType": "OFFICIAL",
+      "accessStatus": "READABLE",
+      "publishedAt": null,
+      "publishedDate": null,
+      "checkedAt": "2026-10-20T00:52:35.000Z",
+      "verificationStatus": "OFFICIAL_VERIFIED",
+      "location": "Round 1, eight pairings, including KC; no completed Swiss results",
+      "notes": "Bracket display zeroes are placeholders, not official 0–0 results. Bracket row order is not match order.",
+      "supports": [
+        "SWISS_DRAW",
+        "QUALIFICATION"
+      ]
+    },
+    {
+      "sourceId": "dot-play-in",
+      "sourceName": "Dot Esports Play-In qualification report",
+      "sourceUrl": "https://dotesports.com/league-of-legends/news/karmine-corp-beat-mvk-worlds-2026-play-ins",
+      "sourceType": "TRUSTED_THIRD_PARTY",
+      "accessStatus": "READABLE",
+      "publishedAt": null,
+      "publishedDate": "2026-10-18",
+      "checkedAt": "2026-10-20T00:52:35.000Z",
+      "verificationStatus": "CROSS_VERIFIED",
+      "location": "KC qualification; opening KC–C9, MVK–FUR; FUR–C9; MVK–FUR; final recap",
+      "notes": "Displayed publication 2026-10-18 18:55 without timezone. Date-only historical evidence uses a conservative UTC-12 upper bound, not a fabricated UTC publication timestamp.",
+      "supports": [
+        "PLAY_IN_RESULTS",
+        "QUALIFICATION"
+      ]
+    },
+    {
+      "sourceId": "dot-draw",
+      "sourceName": "Dot Esports Swiss draw report",
+      "sourceUrl": "https://dotesports.com/league-of-legends/news/worlds-2026-swiss-stage-draw",
+      "sourceType": "TRUSTED_THIRD_PARTY",
+      "accessStatus": "READABLE",
+      "publishedAt": null,
+      "publishedDate": "2026-10-18",
+      "checkedAt": "2026-10-20T00:52:35.000Z",
+      "verificationStatus": "CROSS_VERIFIED",
+      "location": "All eight Round 1 pairings; embedded LoL Esports statement: match order still TBD",
+      "notes": "Displayed update 2026-10-18 21:13 without timezone. Official embedded post was not directly readable; not treated as directly verified social media evidence.",
+      "supports": [
+        "SWISS_DRAW"
+      ]
+    },
+    {
+      "sourceId": "4gamers-draw",
+      "sourceName": "4Gamers Swiss draw report",
+      "sourceUrl": "https://www.4gamers.com.tw/news/detail/82714/lol-swiss-stage-2026-draw-result",
+      "sourceType": "TRUSTED_THIRD_PARTY",
+      "accessStatus": "READABLE",
+      "publishedAt": "2026-10-19T02:00:10.000Z",
+      "publishedDate": "2026-10-19",
+      "checkedAt": "2026-10-20T00:52:35.000Z",
+      "verificationStatus": "CROSS_VERIFIED",
+      "location": "KC qualification; Round 1 eight pairings; October 24 01:00 Taipei stage start",
+      "notes": "Publication explicitly states Taipei Standard Time. Pairing list is corroboration only; its match-order claim conflicts with the current official schedule, so per-match times are not inferred.",
+      "supports": [
+        "PLAY_IN_RESULTS",
+        "QUALIFICATION",
+        "SWISS_DRAW",
+        "STAGE_SCHEDULE"
+      ]
+    }
+  ],
+  "matches": {
+    "playIn": [
+      {
+        "matchId": "w26-pi-ub-sf-1",
+        "officialMatchId": null,
+        "stage": "PLAY_IN",
+        "round": 1,
+        "bracketPosition": "UPPER_SEMIFINAL_1",
+        "teamA": "KC",
+        "teamB": "C9",
+        "bestOf": 5,
+        "teamAFrom": null,
+        "teamBFrom": null,
+        "competitionDate": "2026-10-15",
+        "competitionTimeZone": "America/Los_Angeles",
+        "schedule": {
+          "scheduledAt": "2026-10-15T18:00:00.000Z",
+          "timeStatus": "CONFIRMED",
+          "originalLocalTime": "2026-10-15T11:00",
+          "originalTimeZone": "America/Los_Angeles",
+          "evidence": {
+            "verificationStatus": "CROSS_VERIFIED",
+            "sourceIds": [
+              "riot-primer",
+              "riot-schedule",
+              "dot-play-in"
+            ],
+            "temporalSourceIds": [
+              "riot-primer"
+            ],
+            "knownBy": "2026-10-19T12:00:00.000Z"
+          },
+          "notes": "Announced first broadcast slot of this event day; not an observed actual start."
+        },
+        "startedAt": null,
+        "completedAt": null,
+        "status": "COMPLETED",
+        "scoreA": 3,
+        "scoreB": 2,
+        "winnerId": "KC",
+        "loserId": "C9",
+        "evidence": {
+          "verificationStatus": "OFFICIAL_VERIFIED",
+          "sourceIds": [
+            "riot-schedule",
+            "dot-play-in",
+            "4gamers-draw"
+          ],
+          "temporalSourceIds": [
+            "dot-play-in"
+          ],
+          "knownBy": "2026-10-19T12:00:00.000Z"
+        },
+        "updatedAt": "2026-10-20T00:52:35.000Z"
+      },
+      {
+        "matchId": "w26-pi-ub-sf-2",
+        "officialMatchId": null,
+        "stage": "PLAY_IN",
+        "round": 1,
+        "bracketPosition": "UPPER_SEMIFINAL_2",
+        "teamA": "MVK",
+        "teamB": "FUR",
+        "bestOf": 5,
+        "teamAFrom": null,
+        "teamBFrom": null,
+        "competitionDate": "2026-10-15",
+        "competitionTimeZone": "America/Los_Angeles",
+        "schedule": {
+          "scheduledAt": null,
+          "timeStatus": "TIME_TBD",
+          "originalLocalTime": null,
+          "originalTimeZone": "America/Los_Angeles",
+          "evidence": null,
+          "notes": "Second-series start time not independently established before cutoff; not inferred from duration or daily opening time."
+        },
+        "startedAt": null,
+        "completedAt": null,
+        "status": "COMPLETED",
+        "scoreA": 3,
+        "scoreB": 0,
+        "winnerId": "MVK",
+        "loserId": "FUR",
+        "evidence": {
+          "verificationStatus": "OFFICIAL_VERIFIED",
+          "sourceIds": [
+            "riot-schedule",
+            "dot-play-in",
+            "4gamers-draw"
+          ],
+          "temporalSourceIds": [
+            "dot-play-in"
+          ],
+          "knownBy": "2026-10-19T12:00:00.000Z"
+        },
+        "updatedAt": "2026-10-20T00:52:35.000Z"
+      },
+      {
+        "matchId": "w26-pi-ub-final",
+        "officialMatchId": null,
+        "stage": "PLAY_IN",
+        "round": 2,
+        "bracketPosition": "UPPER_FINAL",
+        "teamA": "KC",
+        "teamB": "MVK",
+        "bestOf": 5,
+        "teamAFrom": {
+          "matchId": "w26-pi-ub-sf-1",
+          "outcome": "WINNER"
+        },
+        "teamBFrom": {
+          "matchId": "w26-pi-ub-sf-2",
+          "outcome": "WINNER"
+        },
+        "competitionDate": "2026-10-16",
+        "competitionTimeZone": "America/Los_Angeles",
+        "schedule": {
+          "scheduledAt": "2026-10-16T18:00:00.000Z",
+          "timeStatus": "CONFIRMED",
+          "originalLocalTime": "2026-10-16T11:00",
+          "originalTimeZone": "America/Los_Angeles",
+          "evidence": {
+            "verificationStatus": "CROSS_VERIFIED",
+            "sourceIds": [
+              "riot-primer",
+              "riot-schedule",
+              "dot-play-in"
+            ],
+            "temporalSourceIds": [
+              "riot-primer"
+            ],
+            "knownBy": "2026-10-19T12:00:00.000Z"
+          },
+          "notes": "Announced first broadcast slot of this event day; not an observed actual start."
+        },
+        "startedAt": null,
+        "completedAt": null,
+        "status": "COMPLETED",
+        "scoreA": 3,
+        "scoreB": 0,
+        "winnerId": "KC",
+        "loserId": "MVK",
+        "evidence": {
+          "verificationStatus": "OFFICIAL_VERIFIED",
+          "sourceIds": [
+            "riot-schedule",
+            "dot-play-in",
+            "4gamers-draw"
+          ],
+          "temporalSourceIds": [
+            "dot-play-in"
+          ],
+          "knownBy": "2026-10-19T12:00:00.000Z"
+        },
+        "updatedAt": "2026-10-20T00:52:35.000Z"
+      },
+      {
+        "matchId": "w26-pi-lb-sf",
+        "officialMatchId": null,
+        "stage": "PLAY_IN",
+        "round": 2,
+        "bracketPosition": "LOWER_SEMIFINAL",
+        "teamA": "FUR",
+        "teamB": "C9",
+        "bestOf": 5,
+        "teamAFrom": {
+          "matchId": "w26-pi-ub-sf-2",
+          "outcome": "LOSER"
+        },
+        "teamBFrom": {
+          "matchId": "w26-pi-ub-sf-1",
+          "outcome": "LOSER"
+        },
+        "competitionDate": "2026-10-16",
+        "competitionTimeZone": "America/Los_Angeles",
+        "schedule": {
+          "scheduledAt": null,
+          "timeStatus": "TIME_TBD",
+          "originalLocalTime": null,
+          "originalTimeZone": "America/Los_Angeles",
+          "evidence": null,
+          "notes": "Second-series start time not independently established before cutoff; not inferred from duration or daily opening time."
+        },
+        "startedAt": null,
+        "completedAt": null,
+        "status": "COMPLETED",
+        "scoreA": 3,
+        "scoreB": 1,
+        "winnerId": "FUR",
+        "loserId": "C9",
+        "evidence": {
+          "verificationStatus": "OFFICIAL_VERIFIED",
+          "sourceIds": [
+            "riot-schedule",
+            "dot-play-in",
+            "4gamers-draw"
+          ],
+          "temporalSourceIds": [
+            "dot-play-in"
+          ],
+          "knownBy": "2026-10-19T12:00:00.000Z"
+        },
+        "updatedAt": "2026-10-20T00:52:35.000Z"
+      },
+      {
+        "matchId": "w26-pi-lb-final",
+        "officialMatchId": null,
+        "stage": "PLAY_IN",
+        "round": 3,
+        "bracketPosition": "LOWER_FINAL",
+        "teamA": "MVK",
+        "teamB": "FUR",
+        "bestOf": 5,
+        "teamAFrom": {
+          "matchId": "w26-pi-ub-final",
+          "outcome": "LOSER"
+        },
+        "teamBFrom": {
+          "matchId": "w26-pi-lb-sf",
+          "outcome": "WINNER"
+        },
+        "competitionDate": "2026-10-17",
+        "competitionTimeZone": "America/Los_Angeles",
+        "schedule": {
+          "scheduledAt": "2026-10-17T18:00:00.000Z",
+          "timeStatus": "CONFIRMED",
+          "originalLocalTime": "2026-10-17T11:00",
+          "originalTimeZone": "America/Los_Angeles",
+          "evidence": {
+            "verificationStatus": "CROSS_VERIFIED",
+            "sourceIds": [
+              "riot-primer",
+              "riot-schedule",
+              "dot-play-in"
+            ],
+            "temporalSourceIds": [
+              "riot-primer"
+            ],
+            "knownBy": "2026-10-19T12:00:00.000Z"
+          },
+          "notes": "Announced first broadcast slot of this event day; not an observed actual start."
+        },
+        "startedAt": null,
+        "completedAt": null,
+        "status": "COMPLETED",
+        "scoreA": 3,
+        "scoreB": 1,
+        "winnerId": "MVK",
+        "loserId": "FUR",
+        "evidence": {
+          "verificationStatus": "OFFICIAL_VERIFIED",
+          "sourceIds": [
+            "riot-schedule",
+            "dot-play-in",
+            "4gamers-draw"
+          ],
+          "temporalSourceIds": [
+            "dot-play-in"
+          ],
+          "knownBy": "2026-10-19T12:00:00.000Z"
+        },
+        "updatedAt": "2026-10-20T00:52:35.000Z"
+      },
+      {
+        "matchId": "w26-pi-final",
+        "officialMatchId": null,
+        "stage": "PLAY_IN",
+        "round": 4,
+        "bracketPosition": "QUALIFICATION_FINAL",
+        "teamA": "KC",
+        "teamB": "MVK",
+        "bestOf": 5,
+        "teamAFrom": {
+          "matchId": "w26-pi-ub-final",
+          "outcome": "WINNER"
+        },
+        "teamBFrom": {
+          "matchId": "w26-pi-lb-final",
+          "outcome": "WINNER"
+        },
+        "competitionDate": "2026-10-18",
+        "competitionTimeZone": "America/Los_Angeles",
+        "schedule": {
+          "scheduledAt": "2026-10-18T18:00:00.000Z",
+          "timeStatus": "CONFIRMED",
+          "originalLocalTime": "2026-10-18T11:00",
+          "originalTimeZone": "America/Los_Angeles",
+          "evidence": {
+            "verificationStatus": "CROSS_VERIFIED",
+            "sourceIds": [
+              "riot-primer",
+              "riot-schedule",
+              "dot-play-in"
+            ],
+            "temporalSourceIds": [
+              "riot-primer"
+            ],
+            "knownBy": "2026-10-19T12:00:00.000Z"
+          },
+          "notes": "Announced first broadcast slot of this event day; not an observed actual start."
+        },
+        "startedAt": null,
+        "completedAt": null,
+        "status": "COMPLETED",
+        "scoreA": 3,
+        "scoreB": 0,
+        "winnerId": "KC",
+        "loserId": "MVK",
+        "evidence": {
+          "verificationStatus": "OFFICIAL_VERIFIED",
+          "sourceIds": [
+            "riot-schedule",
+            "dot-play-in",
+            "4gamers-draw"
+          ],
+          "temporalSourceIds": [
+            "dot-play-in"
+          ],
+          "knownBy": "2026-10-19T12:00:00.000Z"
+        },
+        "updatedAt": "2026-10-20T00:52:35.000Z"
+      }
+    ],
+    "swiss": [
+      {
+        "matchId": "w26-swiss-r1-gen-ig",
+        "officialMatchId": null,
+        "stage": "SWISS",
+        "round": 1,
+        "bracketPosition": "ROUND_1",
+        "teamA": "GEN",
+        "teamB": "IG",
+        "bestOf": 1,
+        "teamAFrom": null,
+        "teamBFrom": null,
+        "competitionDate": "2026-10-23",
+        "competitionTimeZone": "America/Chicago",
+        "schedule": {
+          "scheduledAt": null,
+          "timeStatus": "TIME_TBD",
+          "originalLocalTime": null,
+          "originalTimeZone": "America/Chicago",
+          "evidence": null,
+          "notes": "Pairing confirmed. Individual slot/order at historical cutoff not reliably established; stage opens 17:00 UTC, no hourly slots inferred."
+        },
+        "startedAt": null,
+        "completedAt": null,
+        "status": "SCHEDULED",
+        "scoreA": null,
+        "scoreB": null,
+        "winnerId": null,
+        "loserId": null,
+        "evidence": {
+          "verificationStatus": "OFFICIAL_VERIFIED",
+          "sourceIds": [
+            "riot-swiss-bracket",
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "temporalSourceIds": [
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "knownBy": "2026-10-19T12:00:00.000Z"
+        },
+        "updatedAt": "2026-10-20T00:52:35.000Z"
+      },
+      {
+        "matchId": "w26-swiss-r1-tlaw-cfo",
+        "officialMatchId": null,
+        "stage": "SWISS",
+        "round": 1,
+        "bracketPosition": "ROUND_1",
+        "teamA": "TLAW",
+        "teamB": "CFO",
+        "bestOf": 1,
+        "teamAFrom": null,
+        "teamBFrom": null,
+        "competitionDate": "2026-10-23",
+        "competitionTimeZone": "America/Chicago",
+        "schedule": {
+          "scheduledAt": null,
+          "timeStatus": "TIME_TBD",
+          "originalLocalTime": null,
+          "originalTimeZone": "America/Chicago",
+          "evidence": null,
+          "notes": "Pairing confirmed. Individual slot/order at historical cutoff not reliably established; stage opens 17:00 UTC, no hourly slots inferred."
+        },
+        "startedAt": null,
+        "completedAt": null,
+        "status": "SCHEDULED",
+        "scoreA": null,
+        "scoreB": null,
+        "winnerId": null,
+        "loserId": null,
+        "evidence": {
+          "verificationStatus": "OFFICIAL_VERIFIED",
+          "sourceIds": [
+            "riot-swiss-bracket",
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "temporalSourceIds": [
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "knownBy": "2026-10-19T12:00:00.000Z"
+        },
+        "updatedAt": "2026-10-20T00:52:35.000Z"
+      },
+      {
+        "matchId": "w26-swiss-r1-al-kc",
+        "officialMatchId": null,
+        "stage": "SWISS",
+        "round": 1,
+        "bracketPosition": "ROUND_1",
+        "teamA": "AL",
+        "teamB": "KC",
+        "bestOf": 1,
+        "teamAFrom": null,
+        "teamBFrom": null,
+        "competitionDate": "2026-10-23",
+        "competitionTimeZone": "America/Chicago",
+        "schedule": {
+          "scheduledAt": null,
+          "timeStatus": "TIME_TBD",
+          "originalLocalTime": null,
+          "originalTimeZone": "America/Chicago",
+          "evidence": null,
+          "notes": "Pairing confirmed. Individual slot/order at historical cutoff not reliably established; stage opens 17:00 UTC, no hourly slots inferred."
+        },
+        "startedAt": null,
+        "completedAt": null,
+        "status": "SCHEDULED",
+        "scoreA": null,
+        "scoreB": null,
+        "winnerId": null,
+        "loserId": null,
+        "evidence": {
+          "verificationStatus": "OFFICIAL_VERIFIED",
+          "sourceIds": [
+            "riot-swiss-bracket",
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "temporalSourceIds": [
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "knownBy": "2026-10-19T12:00:00.000Z"
+        },
+        "updatedAt": "2026-10-20T00:52:35.000Z"
+      },
+      {
+        "matchId": "w26-swiss-r1-g2-dk",
+        "officialMatchId": null,
+        "stage": "SWISS",
+        "round": 1,
+        "bracketPosition": "ROUND_1",
+        "teamA": "G2",
+        "teamB": "DK",
+        "bestOf": 1,
+        "teamAFrom": null,
+        "teamBFrom": null,
+        "competitionDate": "2026-10-23",
+        "competitionTimeZone": "America/Chicago",
+        "schedule": {
+          "scheduledAt": null,
+          "timeStatus": "TIME_TBD",
+          "originalLocalTime": null,
+          "originalTimeZone": "America/Chicago",
+          "evidence": null,
+          "notes": "Pairing confirmed. Individual slot/order at historical cutoff not reliably established; stage opens 17:00 UTC, no hourly slots inferred."
+        },
+        "startedAt": null,
+        "completedAt": null,
+        "status": "SCHEDULED",
+        "scoreA": null,
+        "scoreB": null,
+        "winnerId": null,
+        "loserId": null,
+        "evidence": {
+          "verificationStatus": "OFFICIAL_VERIFIED",
+          "sourceIds": [
+            "riot-swiss-bracket",
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "temporalSourceIds": [
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "knownBy": "2026-10-19T12:00:00.000Z"
+        },
+        "updatedAt": "2026-10-20T00:52:35.000Z"
+      },
+      {
+        "matchId": "w26-swiss-r1-hle-tes",
+        "officialMatchId": null,
+        "stage": "SWISS",
+        "round": 1,
+        "bracketPosition": "ROUND_1",
+        "teamA": "HLE",
+        "teamB": "TES",
+        "bestOf": 1,
+        "teamAFrom": null,
+        "teamBFrom": null,
+        "competitionDate": "2026-10-23",
+        "competitionTimeZone": "America/Chicago",
+        "schedule": {
+          "scheduledAt": null,
+          "timeStatus": "TIME_TBD",
+          "originalLocalTime": null,
+          "originalTimeZone": "America/Chicago",
+          "evidence": null,
+          "notes": "Pairing confirmed. Individual slot/order at historical cutoff not reliably established; stage opens 17:00 UTC, no hourly slots inferred."
+        },
+        "startedAt": null,
+        "completedAt": null,
+        "status": "SCHEDULED",
+        "scoreA": null,
+        "scoreB": null,
+        "winnerId": null,
+        "loserId": null,
+        "evidence": {
+          "verificationStatus": "OFFICIAL_VERIFIED",
+          "sourceIds": [
+            "riot-swiss-bracket",
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "temporalSourceIds": [
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "knownBy": "2026-10-19T12:00:00.000Z"
+        },
+        "updatedAt": "2026-10-20T00:52:35.000Z"
+      },
+      {
+        "matchId": "w26-swiss-r1-los-t1",
+        "officialMatchId": null,
+        "stage": "SWISS",
+        "round": 1,
+        "bracketPosition": "ROUND_1",
+        "teamA": "LOS",
+        "teamB": "T1",
+        "bestOf": 1,
+        "teamAFrom": null,
+        "teamBFrom": null,
+        "competitionDate": "2026-10-23",
+        "competitionTimeZone": "America/Chicago",
+        "schedule": {
+          "scheduledAt": null,
+          "timeStatus": "TIME_TBD",
+          "originalLocalTime": null,
+          "originalTimeZone": "America/Chicago",
+          "evidence": null,
+          "notes": "Pairing confirmed. Individual slot/order at historical cutoff not reliably established; stage opens 17:00 UTC, no hourly slots inferred."
+        },
+        "startedAt": null,
+        "completedAt": null,
+        "status": "SCHEDULED",
+        "scoreA": null,
+        "scoreB": null,
+        "winnerId": null,
+        "loserId": null,
+        "evidence": {
+          "verificationStatus": "OFFICIAL_VERIFIED",
+          "sourceIds": [
+            "riot-swiss-bracket",
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "temporalSourceIds": [
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "knownBy": "2026-10-19T12:00:00.000Z"
+        },
+        "updatedAt": "2026-10-20T00:52:35.000Z"
+      },
+      {
+        "matchId": "w26-swiss-r1-tsw-lyon",
+        "officialMatchId": null,
+        "stage": "SWISS",
+        "round": 1,
+        "bracketPosition": "ROUND_1",
+        "teamA": "TSW",
+        "teamB": "LYON",
+        "bestOf": 1,
+        "teamAFrom": null,
+        "teamBFrom": null,
+        "competitionDate": "2026-10-23",
+        "competitionTimeZone": "America/Chicago",
+        "schedule": {
+          "scheduledAt": null,
+          "timeStatus": "TIME_TBD",
+          "originalLocalTime": null,
+          "originalTimeZone": "America/Chicago",
+          "evidence": null,
+          "notes": "Pairing confirmed. Individual slot/order at historical cutoff not reliably established; stage opens 17:00 UTC, no hourly slots inferred."
+        },
+        "startedAt": null,
+        "completedAt": null,
+        "status": "SCHEDULED",
+        "scoreA": null,
+        "scoreB": null,
+        "winnerId": null,
+        "loserId": null,
+        "evidence": {
+          "verificationStatus": "OFFICIAL_VERIFIED",
+          "sourceIds": [
+            "riot-swiss-bracket",
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "temporalSourceIds": [
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "knownBy": "2026-10-19T12:00:00.000Z"
+        },
+        "updatedAt": "2026-10-20T00:52:35.000Z"
+      },
+      {
+        "matchId": "w26-swiss-r1-blg-mkoi",
+        "officialMatchId": null,
+        "stage": "SWISS",
+        "round": 1,
+        "bracketPosition": "ROUND_1",
+        "teamA": "BLG",
+        "teamB": "MKOI",
+        "bestOf": 1,
+        "teamAFrom": null,
+        "teamBFrom": null,
+        "competitionDate": "2026-10-23",
+        "competitionTimeZone": "America/Chicago",
+        "schedule": {
+          "scheduledAt": null,
+          "timeStatus": "TIME_TBD",
+          "originalLocalTime": null,
+          "originalTimeZone": "America/Chicago",
+          "evidence": null,
+          "notes": "Pairing confirmed. Individual slot/order at historical cutoff not reliably established; stage opens 17:00 UTC, no hourly slots inferred."
+        },
+        "startedAt": null,
+        "completedAt": null,
+        "status": "SCHEDULED",
+        "scoreA": null,
+        "scoreB": null,
+        "winnerId": null,
+        "loserId": null,
+        "evidence": {
+          "verificationStatus": "OFFICIAL_VERIFIED",
+          "sourceIds": [
+            "riot-swiss-bracket",
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "temporalSourceIds": [
+            "dot-draw",
+            "4gamers-draw"
+          ],
+          "knownBy": "2026-10-19T12:00:00.000Z"
+        },
+        "updatedAt": "2026-10-20T00:52:35.000Z"
+      }
+    ],
+    "knockout": []
+  },
+  "officialDraws": [
+    {
+      "drawId": "w26-swiss-r1-official-draw",
+      "kind": "OFFICIAL_DRAW",
+      "stage": "SWISS",
+      "round": 1,
+      "publishedAt": null,
+      "publishedDate": "2026-10-18",
+      "orderStatus": "NOT_MATCH_ORDER",
+      "pools": [
+        [
+          "GEN",
+          "AL",
+          "TLAW",
+          "G2"
+        ],
+        [
+          "TSW",
+          "LOS",
+          "HLE",
+          "BLG"
+        ],
+        [
+          "LYON",
+          "MKOI",
+          "T1",
+          "TES"
+        ],
+        [
+          "CFO",
+          "IG",
+          "DK",
+          "KC"
+        ]
+      ],
+      "matchIds": [
+        "w26-swiss-r1-gen-ig",
+        "w26-swiss-r1-tlaw-cfo",
+        "w26-swiss-r1-al-kc",
+        "w26-swiss-r1-g2-dk",
+        "w26-swiss-r1-hle-tes",
+        "w26-swiss-r1-los-t1",
+        "w26-swiss-r1-tsw-lyon",
+        "w26-swiss-r1-blg-mkoi"
+      ],
+      "evidence": {
+        "verificationStatus": "OFFICIAL_VERIFIED",
+        "sourceIds": [
+          "riot-swiss-bracket",
+          "riot-primer",
+          "dot-draw",
+          "4gamers-draw"
+        ],
+        "temporalSourceIds": [
+          "dot-draw",
+          "4gamers-draw"
+        ],
+        "knownBy": "2026-10-19T12:00:00.000Z"
+      }
+    }
+  ],
+  "officialQualification": {
+    "qualifiedToSwiss": [
+      "KC"
+    ],
+    "evidence": {
+      "verificationStatus": "OFFICIAL_VERIFIED",
+      "sourceIds": [
+        "riot-swiss-bracket",
+        "riot-schedule",
+        "dot-play-in",
+        "4gamers-draw"
+      ],
+      "temporalSourceIds": [
+        "dot-play-in",
+        "4gamers-draw"
+      ],
+      "knownBy": "2026-10-19T12:00:00.000Z"
+    }
+  },
+  "stageSchedule": {
+    "swissRound1StartsAt": "2026-10-23T17:00:00.000Z",
+    "originalLocalTime": "2026-10-23T12:00",
+    "originalTimeZone": "America/Chicago",
+    "evidence": {
+      "verificationStatus": "OFFICIAL_VERIFIED",
+      "sourceIds": [
+        "riot-primer",
+        "4gamers-draw"
+      ],
+      "temporalSourceIds": [
+        "riot-primer",
+        "4gamers-draw"
+      ],
+      "knownBy": "2026-10-19T12:00:00.000Z"
+    }
+  },
+  "limitations": [
+    {
+      "code": "DRAW_EXACT_PUBLICATION_TIME_UNKNOWN",
+      "description": "Draw confirmed on October 18; exact UTC publication time unavailable. publishedAt remains null; knownBy is a conservative upper bound."
+    },
+    {
+      "code": "PER_MATCH_TIME_TBD",
+      "description": "All eight Swiss slots and two second-series Play-In slots have no safely verified historical per-match time. Stage opening time and four daily first Play-In slots are retained separately."
+    },
+    {
+      "code": "ACTUAL_START_END_UNKNOWN",
+      "description": "Actual start/completion timestamps and provider match IDs remain null; internal match IDs are explicitly local identifiers."
+    },
+    {
+      "code": "LATER_SCHEDULE_EXCLUDED",
+      "description": "Current official schedule order differs from historical pairing-list order and omits one pairing in readable output. No latest per-match slot is backdated into this snapshot."
+    },
+    {
+      "code": "RETROSPECTIVE_TEMPORAL_EVIDENCE",
+      "description": "Current official score/bracket pages corroborated against dated pre-cutoff reports. No immutable archived official page or exact social-post timestamp is claimed."
+    }
+  ]
+}
