@@ -1,4 +1,4 @@
-import {readFile,mkdir,writeFile,rename,rm,cp,access,readdir} from 'node:fs/promises';
+import {readFile,mkdir,writeFile,rename,rm,cp,access,readdir,mkdtemp} from 'node:fs/promises';
 import {join} from 'node:path';
 import {historySchema,generationAuditSchema} from './schema';
 import {loadFrozenSystem,generatorSourceSHA256,sha256,semanticSHA256} from './model';
@@ -52,11 +52,13 @@ export async function validateProbabilityHistory(directory:URL|string=archiveDir
 }
 export async function saveCandidate(directory:string){
  await validateProbabilityHistory(directory);
- const lock=new URL('./.archive-save.lock/',import.meta.url),stage=new URL('./.archive-staging/',import.meta.url);
+ const lock=new URL('./.archive-save.lock/',import.meta.url);
+ let stage:string|undefined;
  await mkdir(lock);
  try{
   try{await access(archiveDirectory);throw Error('Historical probability archive already exists; never overwrite it');}catch(error){if(!(error instanceof Error&&'code' in error&&error.code==='ENOENT'))throw error;}
+  stage=await mkdtemp(new URL('./.archive-staging-',import.meta.url));
   await cp(directory,stage,{recursive:true,force:false,errorOnExist:true});await validateProbabilityHistory(stage);
   await rename(stage,archiveDirectory);
- }finally{await rm(stage,{recursive:true,force:true});await rm(lock,{recursive:true,force:true});}
+ }finally{if(stage)await rm(stage,{recursive:true,force:true});await rm(lock,{recursive:true,force:true});}
 }
