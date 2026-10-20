@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "live-probability-history-v1.0",
+  "historyId": "worlds-live-probability-history-v1",
+  "frozenModel": {
+    "file": "frozen-system-v1.json",
+    "sha256": "f55e1d76f6f3fc6475daa7ff30a879fc0970553bd3a7e517345bdc68ace6ec83",
+    "modelSHA256": "f41a8bd77d58a296929bc35b2badb7a0f3a089703e88bfefe273c6e0104d0826"
+  },
+  "snapshots": [
+    {
+      "snapshotId": "worlds-2026-pre-tournament-probability-v1",
+      "label": "PRE-TOURNAMENT",
+      "asOf": "2026-10-15T17:59:59.000Z",
+      "file": "pre-tournament-v1.json",
+      "sha256": "d08592ed5f7cfaef241c3c8f9f6d1e91b4782c18f2166bc462ad1cc8c98c5124",
+      "countSHA256": "04996473ee71f26573d3459f5b799ad4ff4d3e3883b46594a07fc12ff97c8ddd"
+    },
+    {
+      "snapshotId": "worlds-2026-post-play-in-probability-v1",
+      "label": "POST-PLAY-IN",
+      "asOf": "2026-10-19T12:00:00.000Z",
+      "file": "post-play-in-v1.json",
+      "sha256": "56f2b4913d3c42b3c6f47546a2c596b40a76a58eeeb079647ca5fba568534052",
+      "countSHA256": "5601fb1f64d30f9b90f8ef508d832dc36083adbb0890c639975121f65a77c509"
+    }
+  ],
+  "comparison": {
+    "file": "comparison-v1.json",
+    "sha256": "2a45bcfd67daf97cd9a0c761738a234982d6b2bc6d9db598f68bdf6ef6bb97d6"
+  },
+  "comparisonCsv": {
+    "file": "comparison-v1.csv",
+    "sha256": "9bd2f4e853e396e77078eff87ab5b7ccdfc6987e8c12b6e4b0e19bc43236cc6b"
+  },
+  "generationAudit": {
+    "file": "generation-v1.json",
+    "sha256": "8e1ce3d02436ba6f74e6442a23840e46b5f7641ef0b418706890cdbc49f511b2"
+  }
+}

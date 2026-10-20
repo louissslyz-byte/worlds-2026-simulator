@@ -1,3 +1,4 @@
+import './live-probability-snapshots.mjs';
 import './live-probability.mjs';
 import './live-data.mjs';
 import './team-profile.mjs';

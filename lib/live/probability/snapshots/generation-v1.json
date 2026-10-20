@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "live-probability-generation-audit-v1.0",
+  "generatorCommit": "1ce5722cc1f8c77004307f8a37a28140437bbc3e",
+  "generatorSourceSHA256": "3c5242e529cae8b745cb025ba26e9068c67729c265348b46037e622c3f06642d",
+  "factsInputSHA256": "e71bb7d0d9828b5b6a1b2f7f2323fe72043c8d057289f7fc64698c867591748b",
+  "ratingInputSHA256": "50ecd08a842afff2cfb2146a92fa67b929c42c121f831a6e110de9185a7ed8cb",
+  "pre": {
+    "method": "REUSED_R1_VERIFIED",
+    "sourceCacheSHA256": "8ce8f63929caca68eff760377e16729df419f20a31c05f103c7e991849baad78",
+    "sourceCalculatedAt": "2026-10-19T05:55:49.548Z",
+    "countsExactlyEqualToR1": true,
+    "totalCounts": {
+      "swiss": 1600000,
+      "knockout": 800000,
+      "semifinal": 400000,
+      "final": 200000,
+      "champion": 100000
+    }
+  },
+  "post": {
+    "method": "SHARED_ENGINE_RUN",
+    "simulationCount": 100000,
+    "failedCount": 0,
+    "durationMs": 90963,
+    "peakProcessRssBytes": 137166848,
+    "totalCounts": {
+      "swiss": 1600000,
+      "knockout": 800000,
+      "semifinal": 400000,
+      "final": 200000,
+      "champion": 100000
+    }
+  },
+  "preCountSHA256": "04996473ee71f26573d3459f5b799ad4ff4d3e3883b46594a07fc12ff97c8ddd",
+  "postCountSHA256": "5601fb1f64d30f9b90f8ef508d832dc36083adbb0890c639975121f65a77c509",
+  "conditionalInvariants": "Start validated against A1. Existing engine only simulates undecided matches in current stage; known Play-In is complete/locked and Swiss R1 already materialized. Every final sample passes shared R1 tournament validation.",
+  "memoryMeasurement": "Node process.resourceUsage().maxRSS * 1024: process-lifetime high-water RSS; not isolated per-iteration memory. Original R1 peak RSS was not recorded."
+}

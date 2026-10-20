@@ -1,0 +1,769 @@
+{
+  "schemaVersion": "live-probability-comparison-v1.0",
+  "preSnapshotId": "worlds-2026-pre-tournament-probability-v1",
+  "postSnapshotId": "worlds-2026-post-play-in-probability-v1",
+  "unit": "PERCENTAGE_POINTS",
+  "conditioning": "Play-In results plus known Swiss R1 draw; no strength update",
+  "teams": [
+    {
+      "teamId": "GEN",
+      "events": {
+        "swiss": {
+          "preCount": 100000,
+          "postCount": 100000,
+          "preProbability": 1,
+          "postProbability": 1,
+          "deltaPercentagePoints": 0
+        },
+        "knockout": {
+          "preCount": 81115,
+          "postCount": 80695,
+          "preProbability": 0.81115,
+          "postProbability": 0.80695,
+          "deltaPercentagePoints": -0.42
+        },
+        "semifinal": {
+          "preCount": 55164,
+          "postCount": 54741,
+          "preProbability": 0.55164,
+          "postProbability": 0.54741,
+          "deltaPercentagePoints": -0.423
+        },
+        "final": {
+          "preCount": 34769,
+          "postCount": 34481,
+          "preProbability": 0.34769,
+          "postProbability": 0.34481,
+          "deltaPercentagePoints": -0.288
+        },
+        "champion": {
+          "preCount": 20382,
+          "postCount": 20093,
+          "preProbability": 0.20382,
+          "postProbability": 0.20093,
+          "deltaPercentagePoints": -0.289
+        }
+      }
+    },
+    {
+      "teamId": "HLE",
+      "events": {
+        "swiss": {
+          "preCount": 100000,
+          "postCount": 100000,
+          "preProbability": 1,
+          "postProbability": 1,
+          "deltaPercentagePoints": 0
+        },
+        "knockout": {
+          "preCount": 84458,
+          "postCount": 84325,
+          "preProbability": 0.84458,
+          "postProbability": 0.84325,
+          "deltaPercentagePoints": -0.133
+        },
+        "semifinal": {
+          "preCount": 61347,
+          "postCount": 61227,
+          "preProbability": 0.61347,
+          "postProbability": 0.61227,
+          "deltaPercentagePoints": -0.12
+        },
+        "final": {
+          "preCount": 41850,
+          "postCount": 41704,
+          "preProbability": 0.4185,
+          "postProbability": 0.41704,
+          "deltaPercentagePoints": -0.146
+        },
+        "champion": {
+          "preCount": 27070,
+          "postCount": 27115,
+          "preProbability": 0.2707,
+          "postProbability": 0.27115,
+          "deltaPercentagePoints": 0.045
+        }
+      }
+    },
+    {
+      "teamId": "T1",
+      "events": {
+        "swiss": {
+          "preCount": 100000,
+          "postCount": 100000,
+          "preProbability": 1,
+          "postProbability": 1,
+          "deltaPercentagePoints": 0
+        },
+        "knockout": {
+          "preCount": 69982,
+          "postCount": 74103,
+          "preProbability": 0.69982,
+          "postProbability": 0.74103,
+          "deltaPercentagePoints": 4.121
+        },
+        "semifinal": {
+          "preCount": 39867,
+          "postCount": 42032,
+          "preProbability": 0.39867,
+          "postProbability": 0.42032,
+          "deltaPercentagePoints": 2.165
+        },
+        "final": {
+          "preCount": 20141,
+          "postCount": 21375,
+          "preProbability": 0.20141,
+          "postProbability": 0.21375,
+          "deltaPercentagePoints": 1.234
+        },
+        "champion": {
+          "preCount": 9131,
+          "postCount": 9780,
+          "preProbability": 0.09131,
+          "postProbability": 0.0978,
+          "deltaPercentagePoints": 0.649
+        }
+      }
+    },
+    {
+      "teamId": "DK",
+      "events": {
+        "swiss": {
+          "preCount": 100000,
+          "postCount": 100000,
+          "preProbability": 1,
+          "postProbability": 1,
+          "deltaPercentagePoints": 0
+        },
+        "knockout": {
+          "preCount": 51642,
+          "postCount": 50054,
+          "preProbability": 0.51642,
+          "postProbability": 0.50054,
+          "deltaPercentagePoints": -1.588
+        },
+        "semifinal": {
+          "preCount": 21960,
+          "postCount": 21047,
+          "preProbability": 0.2196,
+          "postProbability": 0.21047,
+          "deltaPercentagePoints": -0.913
+        },
+        "final": {
+          "preCount": 7936,
+          "postCount": 7683,
+          "preProbability": 0.07936,
+          "postProbability": 0.07683,
+          "deltaPercentagePoints": -0.253
+        },
+        "champion": {
+          "preCount": 2615,
+          "postCount": 2518,
+          "preProbability": 0.02615,
+          "postProbability": 0.02518,
+          "deltaPercentagePoints": -0.097
+        }
+      }
+    },
+    {
+      "teamId": "AL",
+      "events": {
+        "swiss": {
+          "preCount": 100000,
+          "postCount": 100000,
+          "preProbability": 1,
+          "postProbability": 1,
+          "deltaPercentagePoints": 0
+        },
+        "knockout": {
+          "preCount": 52903,
+          "postCount": 52511,
+          "preProbability": 0.52903,
+          "postProbability": 0.52511,
+          "deltaPercentagePoints": -0.392
+        },
+        "semifinal": {
+          "preCount": 22568,
+          "postCount": 22073,
+          "preProbability": 0.22568,
+          "postProbability": 0.22073,
+          "deltaPercentagePoints": -0.495
+        },
+        "final": {
+          "preCount": 8216,
+          "postCount": 8054,
+          "preProbability": 0.08216,
+          "postProbability": 0.08054,
+          "deltaPercentagePoints": -0.162
+        },
+        "champion": {
+          "preCount": 2678,
+          "postCount": 2565,
+          "preProbability": 0.02678,
+          "postProbability": 0.02565,
+          "deltaPercentagePoints": -0.113
+        }
+      }
+    },
+    {
+      "teamId": "BLG",
+      "events": {
+        "swiss": {
+          "preCount": 100000,
+          "postCount": 100000,
+          "preProbability": 1,
+          "postProbability": 1,
+          "deltaPercentagePoints": 0
+        },
+        "knockout": {
+          "preCount": 78679,
+          "postCount": 79985,
+          "preProbability": 0.78679,
+          "postProbability": 0.79985,
+          "deltaPercentagePoints": 1.306
+        },
+        "semifinal": {
+          "preCount": 52436,
+          "postCount": 53023,
+          "preProbability": 0.52436,
+          "postProbability": 0.53023,
+          "deltaPercentagePoints": 0.587
+        },
+        "final": {
+          "preCount": 32138,
+          "postCount": 32185,
+          "preProbability": 0.32138,
+          "postProbability": 0.32185,
+          "deltaPercentagePoints": 0.047
+        },
+        "champion": {
+          "preCount": 18200,
+          "postCount": 18164,
+          "preProbability": 0.182,
+          "postProbability": 0.18164,
+          "deltaPercentagePoints": -0.036
+        }
+      }
+    },
+    {
+      "teamId": "TES",
+      "events": {
+        "swiss": {
+          "preCount": 100000,
+          "postCount": 100000,
+          "preProbability": 1,
+          "postProbability": 1,
+          "deltaPercentagePoints": 0
+        },
+        "knockout": {
+          "preCount": 39512,
+          "postCount": 35686,
+          "preProbability": 0.39512,
+          "postProbability": 0.35686,
+          "deltaPercentagePoints": -3.826
+        },
+        "semifinal": {
+          "preCount": 12832,
+          "postCount": 11639,
+          "preProbability": 0.12832,
+          "postProbability": 0.11639,
+          "deltaPercentagePoints": -1.193
+        },
+        "final": {
+          "preCount": 3550,
+          "postCount": 3217,
+          "preProbability": 0.0355,
+          "postProbability": 0.03217,
+          "deltaPercentagePoints": -0.333
+        },
+        "champion": {
+          "preCount": 826,
+          "postCount": 774,
+          "preProbability": 0.00826,
+          "postProbability": 0.00774,
+          "deltaPercentagePoints": -0.052
+        }
+      }
+    },
+    {
+      "teamId": "IG",
+      "events": {
+        "swiss": {
+          "preCount": 100000,
+          "postCount": 100000,
+          "preProbability": 1,
+          "postProbability": 1,
+          "deltaPercentagePoints": 0
+        },
+        "knockout": {
+          "preCount": 33908,
+          "postCount": 31955,
+          "preProbability": 0.33908,
+          "postProbability": 0.31955,
+          "deltaPercentagePoints": -1.953
+        },
+        "semifinal": {
+          "preCount": 9909,
+          "postCount": 9290,
+          "preProbability": 0.09909,
+          "postProbability": 0.0929,
+          "deltaPercentagePoints": -0.619
+        },
+        "final": {
+          "preCount": 2582,
+          "postCount": 2378,
+          "preProbability": 0.02582,
+          "postProbability": 0.02378,
+          "deltaPercentagePoints": -0.204
+        },
+        "champion": {
+          "preCount": 559,
+          "postCount": 525,
+          "preProbability": 0.00559,
+          "postProbability": 0.00525,
+          "deltaPercentagePoints": -0.034
+        }
+      }
+    },
+    {
+      "teamId": "G2",
+      "events": {
+        "swiss": {
+          "preCount": 100000,
+          "postCount": 100000,
+          "preProbability": 1,
+          "postProbability": 1,
+          "deltaPercentagePoints": 0
+        },
+        "knockout": {
+          "preCount": 71172,
+          "postCount": 69948,
+          "preProbability": 0.71172,
+          "postProbability": 0.69948,
+          "deltaPercentagePoints": -1.224
+        },
+        "semifinal": {
+          "preCount": 41419,
+          "postCount": 40125,
+          "preProbability": 0.41419,
+          "postProbability": 0.40125,
+          "deltaPercentagePoints": -1.294
+        },
+        "final": {
+          "preCount": 21408,
+          "postCount": 20744,
+          "preProbability": 0.21408,
+          "postProbability": 0.20744,
+          "deltaPercentagePoints": -0.664
+        },
+        "champion": {
+          "preCount": 9961,
+          "postCount": 9660,
+          "preProbability": 0.09961,
+          "postProbability": 0.0966,
+          "deltaPercentagePoints": -0.301
+        }
+      }
+    },
+    {
+      "teamId": "MKOI",
+      "events": {
+        "swiss": {
+          "preCount": 100000,
+          "postCount": 100000,
+          "preProbability": 1,
+          "postProbability": 1,
+          "deltaPercentagePoints": 0
+        },
+        "knockout": {
+          "preCount": 26800,
+          "postCount": 24590,
+          "preProbability": 0.268,
+          "postProbability": 0.2459,
+          "deltaPercentagePoints": -2.21
+        },
+        "semifinal": {
+          "preCount": 6582,
+          "postCount": 5866,
+          "preProbability": 0.06582,
+          "postProbability": 0.05866,
+          "deltaPercentagePoints": -0.716
+        },
+        "final": {
+          "preCount": 1283,
+          "postCount": 1160,
+          "preProbability": 0.01283,
+          "postProbability": 0.0116,
+          "deltaPercentagePoints": -0.123
+        },
+        "champion": {
+          "preCount": 236,
+          "postCount": 184,
+          "preProbability": 0.00236,
+          "postProbability": 0.00184,
+          "deltaPercentagePoints": -0.052
+        }
+      }
+    },
+    {
+      "teamId": "KC",
+      "events": {
+        "swiss": {
+          "preCount": 54915,
+          "postCount": 100000,
+          "preProbability": 0.54915,
+          "postProbability": 1,
+          "deltaPercentagePoints": 45.085
+        },
+        "knockout": {
+          "preCount": 22764,
+          "postCount": 41805,
+          "preProbability": 0.22764,
+          "postProbability": 0.41805,
+          "deltaPercentagePoints": 19.041
+        },
+        "semifinal": {
+          "preCount": 7860,
+          "postCount": 14516,
+          "preProbability": 0.0786,
+          "postProbability": 0.14516,
+          "deltaPercentagePoints": 6.656
+        },
+        "final": {
+          "preCount": 2396,
+          "postCount": 4345,
+          "preProbability": 0.02396,
+          "postProbability": 0.04345,
+          "deltaPercentagePoints": 1.949
+        },
+        "champion": {
+          "preCount": 614,
+          "postCount": 1126,
+          "preProbability": 0.00614,
+          "postProbability": 0.01126,
+          "deltaPercentagePoints": 0.512
+        }
+      }
+    },
+    {
+      "teamId": "TSW",
+      "events": {
+        "swiss": {
+          "preCount": 100000,
+          "postCount": 100000,
+          "preProbability": 1,
+          "postProbability": 1,
+          "deltaPercentagePoints": 0
+        },
+        "knockout": {
+          "preCount": 41655,
+          "postCount": 39961,
+          "preProbability": 0.41655,
+          "postProbability": 0.39961,
+          "deltaPercentagePoints": -1.694
+        },
+        "semifinal": {
+          "preCount": 14148,
+          "postCount": 13527,
+          "preProbability": 0.14148,
+          "postProbability": 0.13527,
+          "deltaPercentagePoints": -0.621
+        },
+        "final": {
+          "preCount": 4228,
+          "postCount": 3983,
+          "preProbability": 0.04228,
+          "postProbability": 0.03983,
+          "deltaPercentagePoints": -0.245
+        },
+        "champion": {
+          "preCount": 1054,
+          "postCount": 1036,
+          "preProbability": 0.01054,
+          "postProbability": 0.01036,
+          "deltaPercentagePoints": -0.018
+        }
+      }
+    },
+    {
+      "teamId": "CFO",
+      "events": {
+        "swiss": {
+          "preCount": 100000,
+          "postCount": 100000,
+          "preProbability": 1,
+          "postProbability": 1,
+          "deltaPercentagePoints": 0
+        },
+        "knockout": {
+          "preCount": 26243,
+          "postCount": 27089,
+          "preProbability": 0.26243,
+          "postProbability": 0.27089,
+          "deltaPercentagePoints": 0.846
+        },
+        "semifinal": {
+          "preCount": 6393,
+          "postCount": 6325,
+          "preProbability": 0.06393,
+          "postProbability": 0.06325,
+          "deltaPercentagePoints": -0.068
+        },
+        "final": {
+          "preCount": 1315,
+          "postCount": 1282,
+          "preProbability": 0.01315,
+          "postProbability": 0.01282,
+          "deltaPercentagePoints": -0.033
+        },
+        "champion": {
+          "preCount": 230,
+          "postCount": 247,
+          "preProbability": 0.0023,
+          "postProbability": 0.00247,
+          "deltaPercentagePoints": 0.017
+        }
+      }
+    },
+    {
+      "teamId": "MVK",
+      "events": {
+        "swiss": {
+          "preCount": 8289,
+          "postCount": 0,
+          "preProbability": 0.08289,
+          "postProbability": 0,
+          "deltaPercentagePoints": -8.289
+        },
+        "knockout": {
+          "preCount": 1193,
+          "postCount": 0,
+          "preProbability": 0.01193,
+          "postProbability": 0,
+          "deltaPercentagePoints": -1.193
+        },
+        "semifinal": {
+          "preCount": 167,
+          "postCount": 0,
+          "preProbability": 0.00167,
+          "postProbability": 0,
+          "deltaPercentagePoints": -0.167
+        },
+        "final": {
+          "preCount": 23,
+          "postCount": 0,
+          "preProbability": 0.00023,
+          "postProbability": 0,
+          "deltaPercentagePoints": -0.023
+        },
+        "champion": {
+          "preCount": 4,
+          "postCount": 0,
+          "preProbability": 0.00004,
+          "postProbability": 0,
+          "deltaPercentagePoints": -0.004
+        }
+      }
+    },
+    {
+      "teamId": "LYON",
+      "events": {
+        "swiss": {
+          "preCount": 100000,
+          "postCount": 100000,
+          "preProbability": 1,
+          "postProbability": 1,
+          "deltaPercentagePoints": 0
+        },
+        "knockout": {
+          "preCount": 61877,
+          "postCount": 62102,
+          "preProbability": 0.61877,
+          "postProbability": 0.62102,
+          "deltaPercentagePoints": 0.225
+        },
+        "semifinal": {
+          "preCount": 30980,
+          "postCount": 31085,
+          "preProbability": 0.3098,
+          "postProbability": 0.31085,
+          "deltaPercentagePoints": 0.105
+        },
+        "final": {
+          "preCount": 13731,
+          "postCount": 13643,
+          "preProbability": 0.13731,
+          "postProbability": 0.13643,
+          "deltaPercentagePoints": -0.088
+        },
+        "champion": {
+          "preCount": 5413,
+          "postCount": 5284,
+          "preProbability": 0.05413,
+          "postProbability": 0.05284,
+          "deltaPercentagePoints": -0.129
+        }
+      }
+    },
+    {
+      "teamId": "TLAW",
+      "events": {
+        "swiss": {
+          "preCount": 100000,
+          "postCount": 100000,
+          "preProbability": 1,
+          "postProbability": 1,
+          "deltaPercentagePoints": 0
+        },
+        "knockout": {
+          "preCount": 40180,
+          "postCount": 40194,
+          "preProbability": 0.4018,
+          "postProbability": 0.40194,
+          "deltaPercentagePoints": 0.014
+        },
+        "semifinal": {
+          "preCount": 13244,
+          "postCount": 13120,
+          "preProbability": 0.13244,
+          "postProbability": 0.1312,
+          "deltaPercentagePoints": -0.124
+        },
+        "final": {
+          "preCount": 3798,
+          "postCount": 3745,
+          "preProbability": 0.03798,
+          "postProbability": 0.03745,
+          "deltaPercentagePoints": -0.053
+        },
+        "champion": {
+          "preCount": 905,
+          "postCount": 928,
+          "preProbability": 0.00905,
+          "postProbability": 0.00928,
+          "deltaPercentagePoints": 0.023
+        }
+      }
+    },
+    {
+      "teamId": "C9",
+      "events": {
+        "swiss": {
+          "preCount": 33446,
+          "postCount": 0,
+          "preProbability": 0.33446,
+          "postProbability": 0,
+          "deltaPercentagePoints": -33.446
+        },
+        "knockout": {
+          "preCount": 10119,
+          "postCount": 0,
+          "preProbability": 0.10119,
+          "postProbability": 0,
+          "deltaPercentagePoints": -10.119
+        },
+        "semifinal": {
+          "preCount": 2670,
+          "postCount": 0,
+          "preProbability": 0.0267,
+          "postProbability": 0,
+          "deltaPercentagePoints": -2.67
+        },
+        "final": {
+          "preCount": 609,
+          "postCount": 0,
+          "preProbability": 0.00609,
+          "postProbability": 0,
+          "deltaPercentagePoints": -0.609
+        },
+        "champion": {
+          "preCount": 120,
+          "postCount": 0,
+          "preProbability": 0.0012,
+          "postProbability": 0,
+          "deltaPercentagePoints": -0.12
+        }
+      }
+    },
+    {
+      "teamId": "LOS",
+      "events": {
+        "swiss": {
+          "preCount": 100000,
+          "postCount": 100000,
+          "preProbability": 1,
+          "postProbability": 1,
+          "deltaPercentagePoints": 0
+        },
+        "knockout": {
+          "preCount": 5536,
+          "postCount": 4997,
+          "preProbability": 0.05536,
+          "postProbability": 0.04997,
+          "deltaPercentagePoints": -0.539
+        },
+        "semifinal": {
+          "preCount": 431,
+          "postCount": 364,
+          "preProbability": 0.00431,
+          "postProbability": 0.00364,
+          "deltaPercentagePoints": -0.067
+        },
+        "final": {
+          "preCount": 26,
+          "postCount": 21,
+          "preProbability": 0.00026,
+          "postProbability": 0.00021,
+          "deltaPercentagePoints": -0.005
+        },
+        "champion": {
+          "preCount": 2,
+          "postCount": 1,
+          "preProbability": 0.00002,
+          "postProbability": 0.00001,
+          "deltaPercentagePoints": -0.001
+        }
+      }
+    },
+    {
+      "teamId": "FUR",
+      "events": {
+        "swiss": {
+          "preCount": 3350,
+          "postCount": 0,
+          "preProbability": 0.0335,
+          "postProbability": 0,
+          "deltaPercentagePoints": -3.35
+        },
+        "knockout": {
+          "preCount": 262,
+          "postCount": 0,
+          "preProbability": 0.00262,
+          "postProbability": 0,
+          "deltaPercentagePoints": -0.262
+        },
+        "semifinal": {
+          "preCount": 23,
+          "postCount": 0,
+          "preProbability": 0.00023,
+          "postProbability": 0,
+          "deltaPercentagePoints": -0.023
+        },
+        "final": {
+          "preCount": 1,
+          "postCount": 0,
+          "preProbability": 0.00001,
+          "postProbability": 0,
+          "deltaPercentagePoints": -0.001
+        },
+        "champion": {
+          "preCount": 0,
+          "postCount": 0,
+          "preProbability": 0,
+          "postProbability": 0,
+          "deltaPercentagePoints": 0
+        }
+      }
+    }
+  ]
+}

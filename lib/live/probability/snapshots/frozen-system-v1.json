@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "live-frozen-system-v1.0",
+  "ratingVersion": "system-gpr-prob-v1.1@riot-gpr-2026-09-29-v2",
+  "modelVersion": "gpr-prob-v1.1",
+  "strengthVersion": "riot-gpr-2026-09-29-v2",
+  "rulesVersion": "worlds-2026-official-draw-v2",
+  "stateVersion": "worlds-state-v2",
+  "rngVersion": "lcg32-high-bucket-v1",
+  "samplingVersion": "canonical-uniform-legal-pairings-v1",
+  "gprSnapshotDate": "2026-09-29",
+  "parameters": {
+    "eloDivisor": 400,
+    "gprScale": 0.85,
+    "referenceScore": 1350,
+    "referenceRating": 1700
+  },
+  "ratings": {
+    "GEN": 1843.65,
+    "HLE": 1861.5,
+    "T1": 1802.85,
+    "DK": 1750.15,
+    "AL": 1750.15,
+    "BLG": 1838.55,
+    "TES": 1711.9,
+    "IG": 1698.3,
+    "G2": 1806.25,
+    "MKOI": 1671.95,
+    "KC": 1721.25,
+    "TSW": 1718.7,
+    "CFO": 1671.95,
+    "MVK": 1612.45,
+    "LYON": 1779.05,
+    "TLAW": 1711.9,
+    "C9": 1687.25,
+    "LOS": 1550.4,
+    "FUR": 1575
+  },
+  "teams": [
+    {
+      "teamId": "GEN",
+      "region": "LCK",
+      "gprRank": 2,
+      "gprScore": 1519,
+      "rating": 1843.65
+    },
+    {
+      "teamId": "HLE",
+      "region": "LCK",
+      "gprRank": 1,
+      "gprScore": 1540,
+      "rating": 1861.5
+    },
+    {
+      "teamId": "T1",
+      "region": "LCK",
+      "gprRank": 5,
+      "gprScore": 1471,
+      "rating": 1802.85
+    },
+    {
+      "teamId": "DK",
+      "region": "LCK",
+      "gprRank": 7,
+      "gprScore": 1409,
+      "rating": 1750.15
+    },
+    {
+      "teamId": "AL",
+      "region": "LPL",
+      "gprRank": 7,
+      "gprScore": 1409,
+      "rating": 1750.15
+    },
+    {
+      "teamId": "BLG",
+      "region": "LPL",
+      "gprRank": 3,
+      "gprScore": 1513,
+      "rating": 1838.55
+    },
+    {
+      "teamId": "TES",
+      "region": "LPL",
+      "gprRank": 12,
+      "gprScore": 1364,
+      "rating": 1711.9
+    },
+    {
+      "teamId": "IG",
+      "region": "LPL",
+      "gprRank": 15,
+      "gprScore": 1348,
+      "rating": 1698.3
+    },
+    {
+      "teamId": "G2",
+      "region": "LEC",
+      "gprRank": 4,
+      "gprScore": 1475,
+      "rating": 1806.25
+    },
+    {
+      "teamId": "MKOI",
+      "region": "LEC",
+      "gprRank": 18,
+      "gprScore": 1317,
+      "rating": 1671.95
+    },
+    {
+      "teamId": "KC",
+      "region": "LEC",
+      "gprRank": 10,
+      "gprScore": 1375,
+      "rating": 1721.25
+    },
+    {
+      "teamId": "TSW",
+      "region": "LCP",
+      "gprRank": 11,
+      "gprScore": 1372,
+      "rating": 1718.7
+    },
+    {
+      "teamId": "CFO",
+      "region": "LCP",
+      "gprRank": 18,
+      "gprScore": 1317,
+      "rating": 1671.95
+    },
+    {
+      "teamId": "MVK",
+      "region": "LCP",
+      "gprRank": 28,
+      "gprScore": 1247,
+      "rating": 1612.45
+    },
+    {
+      "teamId": "LYON",
+      "region": "LCS",
+      "gprRank": 6,
+      "gprScore": 1443,
+      "rating": 1779.05
+    },
+    {
+      "teamId": "TLAW",
+      "region": "LCS",
+      "gprRank": 12,
+      "gprScore": 1364,
+      "rating": 1711.9
+    },
+    {
+      "teamId": "C9",
+      "region": "LCS",
+      "gprRank": 16,
+      "gprScore": 1335,
+      "rating": 1687.25
+    },
+    {
+      "teamId": "LOS",
+      "region": "CBLOL",
+      "gprRank": 41,
+      "gprScore": 1174,
+      "rating": 1550.4
+    },
+    {
+      "teamId": "FUR",
+      "region": "CBLOL",
+      "gprRank": null,
+      "gprScore": null,
+      "rating": 1575
+    }
+  ],
+  "ratingInputSHA256": "50ecd08a842afff2cfb2146a92fa67b929c42c121f831a6e110de9185a7ed8cb",
+  "rulesSHA256": "1fb944c1931223d34663f5c6a964998e912bd972387b39dc32c78822fdfd6709",
+  "engineSourceSHA256": "9acb9dc2544401aad5ebeb9f1f36359064b100389952c211ccb3286932578191",
+  "strengthSourceSHA256": "0d5a1631ee412933003e3454bd599f95ad59b0b94c48673924206ea529e5bdb0",
+  "sourceFiles": {
+    "engine.ts": "0ea90eac843dafb6a96cfee1df3eb9de6965751d03eede9e6e6a83a3ac7a7a35",
+    "draws.ts": "72b86e6185c774d184c52758c9f90e6aa3dd128a89201b48665c8c845910f0f5",
+    "random.ts": "7eb16df32522c7849dd4ae428842f99d349e25de91604ea5c32d0d54ba18012c",
+    "monteCarlo.ts": "6a780be98b27d37f20964441e301a6057f13be93d0f685c59d8068f8938171bd",
+    "validation.ts": "3abaad8c94747fa00821d3a99a165d739592cc992fc39f476fe794052c261e5e",
+    "worlds2026.ts": "395e9179722e806786a2b9867685a894ab8427b06eb8fa909b3611cf319a994f",
+    "sessionCompatibility.ts": "9b3320602afcdabc1f57532cead226ab33c13a0186b53d5c0841d8b0419f73b0",
+    "types.ts": "3f0b2f87de7e7890b8df1202ee576333812bf76a8930a384f127ad9aa88518da",
+    "oddsMetadata.ts": "1edba3c703865a1cc5cb284a96ab05d9ab6f3b6a6b67f4f204a1fc9d8a7f6a2e",
+    "gprSnapshot.ts": "c0c20a04d1de503acea6329b5f25bca4f513cc7efdbe8dc73dc3bcb5f18cd8b3",
+    "ratingConfig.ts": "fc341c00ede365fe0392fcd24f1b8fea433ee5bbeabc3da3b975c535e6349c89",
+    "ratings.ts": "be611ceb14bc6d21f4c7f5db47cb3a01345d58769aa0679fa3cd0243bd942be6",
+    "riotGpr.ts": "49a0e577c84e142728f0999b049097dc8351165e1465fb127688596c0afb518b",
+    "gprProbability.ts": "acd3177c03cceee142203303f5b1575a5d1720e07facc7228ca9f6417c799b24",
+    "teamSnapshot.ts": "f2339831a805aa92ff4c73e2000a837457469e2d846e43c64c97edd675794a1e",
+    "oddsConfig.ts": "21a75fd16055b7df5b78347bf24ba471084c0021e5079fe8c2bb8c8eb534a1d8"
+  }
+}
