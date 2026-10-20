@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   devIndicators: false,
   outputFileTracingIncludes: {
+    '/live': ['./lib/live/**/*.json', './lib/live/probability/*.ts', './lib/sim/*.ts', './lib/sim/precomputedOdds.json', './scripts/generate-live-odds.mjs', './scripts/validate-live-odds.mjs'],
     '/teams/*': ['./.team-stats-release/data.json'],
     '/teams/*/*': ['./.team-stats-release/data.json'],
   },

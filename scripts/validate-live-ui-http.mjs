@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+const base=process.env.LIVE_TEST_ORIGIN??'http://127.0.0.1:3045';
+for(const path of ['/','/rankings','/methodology','/simulator','/simulator/new','/teams/gen','/teams/gen/chovy'])assert.equal((await fetch(base+path)).status,200,path);
+const response=await fetch(base+'/live');assert.equal(response.status,200);const html=await response.text();
+assert.equal((html.match(/data-live-team=/g)||[]).length,19);assert.equal((html.match(/data-curve=/g)||[]).length,57);
+assert.equal((html.match(/data-match=/g)||[]).length,6);
+const flight=await fetch(base+'/live?_rsc=live-a3',{headers:{RSC:'1'}});assert.equal(flight.status,200);const rsc=await flight.text();assert.ok(rsc.includes('worlds-2026-post-play-in-probability-v1'));
+for(const text of [html,rsc])for(const marker of ['/Users/','TEAM_STATS_RELEASE_TOKEN','sourceFiles','engineSourceSHA256','gol-match-rows','OE_2026'])assert.ok(!text.includes(marker),marker);
+const assets=[...html.matchAll(/(?:src|href)="([^" ]+)"/g)].map(m=>m[1]).filter(s=>s.startsWith('/_next/')||s.startsWith('/teams/')&&/\.(svg|png|webp)$/.test(s));
+for(const asset of new Set(assets))assert.equal((await fetch(base+asset)).status,200,asset);
+for(const path of ['/lib/live/probability/snapshots/post-play-in-v1.json','/.team-stats-release/data.json','/lib/team-profile/gol-match-rows.json'])assert.equal((await fetch(base+path)).status,404);
+const trace=JSON.parse(await readFile('.next/server/app/live/page.js.nft.json','utf8'));assert.ok(trace.files.some(f=>f.endsWith('lib/live/probability/snapshots/post-play-in-v1.json')));
+assert.ok(!trace.files.some(f=>/gol-match-rows|gol-segments|\.csv$|offline-worlds-stats/.test(f)));
+console.log(JSON.stringify({status:'PASS',htmlBytes:html.length,rscBytes:rsc.length,teams:19,curves:57,assets:new Set(assets).size,traceFiles:trace.files.length}));

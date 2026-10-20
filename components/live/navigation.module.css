@@ -1,0 +1,3 @@
+.liveLink{white-space:nowrap;font-family:var(--font-en-display);letter-spacing:.01em}
+@media(max-width:1050px){:global(.topbar) :global(.shell):has(.navigation){flex-wrap:wrap;gap:0 18px;padding-top:10px}.navigation{flex-wrap:wrap;gap:4px 16px;padding-bottom:8px}.navigation>a{white-space:nowrap}}
+@media(max-width:600px){a.liveLink{display:inline-flex!important;min-height:44px;align-items:center;font-size:13px}.navigation{width:100%;justify-content:space-between;gap:4px 10px}.navigation>a:not(:global(.button)){padding:10px 0!important}}
