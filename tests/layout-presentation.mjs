@@ -18,7 +18,8 @@ assert.equal((ranking.match(/<tr>/g)||[]).length,20);assert.match(ranking,/进�
 const setup=await readFile('app/simulator/new/page.tsx','utf8');assert.equal((setup.match(/onClick={start}/g)||[]).length,1);
 assert.ok(setup.indexOf('onClick={start}')<setup.indexOf('className="tier-grid"'));
 const sim=await readFile('app/simulator/page.tsx','utf8');assert.ok(sim.includes('aria-label="本轮比赛操作"'));assert.ok(sim.includes('aria-label="整赛段与全赛事操作"'));assert.ok(!/className="bracket-disclosure" open=/.test(sim));
-// No data, model, Worker, session, release/config or original text/source component changes.
-const protectedFiles=execFileSync('git',['ls-files','lib/','app/methodology/','app/simulator/odds-worker.ts','next.config.ts','vercel.json','.gitignore','.vercelignore','components/live/live-tournament.tsx','components/team-profile/profile-roster.tsx','components/team-profile/qualification-path.tsx','app/teams/[slug]/[player]/page.tsx'],{encoding:'utf8'}).trim().split('\n');
+// No data, model, Worker, session, release/config or original roster/road source changes.
+// Live presentation is now in U2-C scope; data/curve protections live in data-presentation.mjs.
+const protectedFiles=execFileSync('git',['ls-files','lib/','app/methodology/','app/simulator/odds-worker.ts','next.config.ts','vercel.json','.gitignore','.vercelignore','components/team-profile/profile-roster.tsx','components/team-profile/qualification-path.tsx','app/teams/[slug]/[player]/page.tsx'],{encoding:'utf8'}).trim().split('\n');
 for(const file of protectedFiles)assert.deepEqual(await readFile(file),execFileSync('git',['show',`7e96e33:${file}`]),file);
 console.log('U2-AB layout: five forecast leaders, full ranking columns, keyboard scroll region, one early Start, distinct action scopes, collapsed paths and protected inputs PASS.');

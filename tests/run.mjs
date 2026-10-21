@@ -1,3 +1,5 @@
+import './rankings-presentation.mjs';
+import './data-presentation.mjs';
 import './navigation-layout.mjs';
 import './layout-presentation.mjs';
 import './text-cleanup.mjs';
