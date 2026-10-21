@@ -1,6 +1,6 @@
 'use client';
 import {InfoDisclosure} from '../ui/info-disclosure';
-import {useState} from 'react';
+import {useRef,useState} from 'react';
 import Link from 'next/link';
 import {TeamLogo} from '../tournament/team-logo';
 import {curveEvents,curveLabels,regions,probabilityText,deltaText,visibleTeams,type LiveView} from '../../lib/live/view';
@@ -10,6 +10,8 @@ const positions:Record<string,string>={UPPER_SEMIFINAL_1:'胜者组首轮',UPPER
 function Team({id,data}:{id:string;data:LiveView}){const team=data.teams.find(t=>t.id===id)!;return <span className={styles.identity}><TeamLogo teamId={id} src={team.logo} size={30}/><strong>{team.shortName}</strong></span>;}
 function ProbabilityCard({team,nodes}:{team:LiveView['teams'][number];nodes:LiveView['nodes']}){
  const [selected,setSelected]=useState<number|null>(null);
+ const pointTargets=useRef<(SVGRectElement|null)[]>([]);
+ const closeDetail=()=>{if(selected!==null)pointTargets.current[selected]?.focus();setSelected(null);};
  const first=team.points[0],latest=team.points.at(-1)!;
  const chartWidth=Math.max(320,72+(nodes.length-1)*120);
  const x=(i:number)=>44+i*(chartWidth-68)/Math.max(1,nodes.length-1),y=(p:number)=>112-p*88;
@@ -22,10 +24,10 @@ function ProbabilityCard({team,nodes}:{team:LiveView['teams'][number];nodes:Live
     <polyline points={team.points.map((p,i)=>`${x(i)},${y(p.values[e].probability)}`).join(' ')} fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray={k===1?'6 3':k===2?'2 3':undefined}/>
     {team.points.map((p,i)=><g key={p.snapshotId} pointerEvents="none">{k===0?<circle cx={x(i)} cy={y(p.values[e].probability)} r="4" fill="currentColor"/>:k===1?<rect x={x(i)-4} y={y(p.values[e].probability)-4} width="8" height="8" fill="none" stroke="currentColor" strokeWidth="2"/>:<path d={`M ${x(i)} ${y(p.values[e].probability)-5} l 5 5 -5 5 -5 -5 Z`} fill="none" stroke="currentColor" strokeWidth="2"/>}</g>)}
    </g>)}
-   {nodes.map((node,i)=><g key={node.id}><text x={x(i)} y="136" textAnchor={i===0?"start":i===nodes.length-1?"end":"middle"}>{node.label}</text><rect x={i===0?x(i)-2:x(i)-19} y="12" width="38" height="112" fill="transparent" tabIndex={0} role="button" aria-label={`${team.shortName} ${node.label}：${curveEvents.map(e=>`${curveLabels[e]} ${(team.points[i].values[e].probability*100).toFixed(3)}%`).join('；')}`} aria-expanded={selected===i} onMouseEnter={()=>setSelected(i)} onClick={()=>setSelected(i)} onFocus={()=>setSelected(i)} onKeyDown={event=>{if(event.key==='Escape')setSelected(null);if(event.key==='Enter'||event.key===' '){event.preventDefault();setSelected(i);}}} className={styles.pointTarget}/></g>)}
+   {nodes.map((node,i)=><g key={node.id}><text x={x(i)} y="136" textAnchor={i===0?"start":i===nodes.length-1?"end":"middle"}>{node.label}</text><rect ref={target=>{pointTargets.current[i]=target;}} x={i===0?x(i)-2:x(i)-19} y="12" width="38" height="112" fill="transparent" tabIndex={0} role="button" aria-label={`${team.shortName} ${node.label}：${curveEvents.map(e=>`${curveLabels[e]} ${(team.points[i].values[e].probability*100).toFixed(3)}%`).join('；')}`} aria-expanded={selected===i} onMouseEnter={()=>setSelected(i)} onClick={()=>setSelected(i)} onFocus={()=>setSelected(i)} onKeyDown={event=>{if(event.key==='Escape')setSelected(null);if(event.key==='Enter'||event.key===' '){event.preventDefault();setSelected(i);}}} className={styles.pointTarget}/></g>)}
   </svg></div>
-  {selected!==null&&<div className={styles.pointDetail} role="status"><strong>{nodes[selected].label}</strong> · {beijing(nodes[selected].asOf)} 北京时间{curveEvents.map(e=><div key={e}>{curveLabels[e]}：{(team.points[selected].values[e].probability*100).toFixed(3)}% <span>({team.points[selected].values[e].count.toLocaleString('en-US')} / {team.points[selected].simulationCount.toLocaleString('en-US')})</span></div>)}<button onClick={()=>setSelected(null)} aria-label="关闭数据点详情">收起 ×</button></div>}
-  <div className={styles.comparison}>相对{nodes[0].label}变化（pp）</div><div className={styles.numbers}>{curveEvents.map(e=>{const a=first.values[e],b=latest.values[e],delta=(b.count-a.count)*100/latest.simulationCount;return <div key={e}><span className={styles[e]}>{curveLabels[e]}</span><strong>{probabilityText(b.probability)}</strong><small>{nodes[0].label} {probabilityText(a.probability)}</small><small title={`${delta.toFixed(3)} 个百分点`}>{deltaText(delta)}</small></div>;})}</div>
+  {selected!==null&&<div className={styles.pointDetail} role="status" onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();closeDetail();}}}><div className={styles.detailHeader}><strong>{nodes[selected].label}</strong><button onClick={closeDetail} aria-label="关闭数据点详情">收起 ×</button></div><time dateTime={nodes[selected].asOf}>{beijing(nodes[selected].asOf)} 北京时间</time><small className={styles.snapshotId}>{nodes[selected].id}</small>{curveEvents.map(e=><div className={styles.detailRow} key={e}><span>{curveLabels[e]}</span><b>{(team.points[selected].values[e].probability*100).toFixed(3)}%</b><span>({team.points[selected].values[e].count.toLocaleString('en-US')} / {team.points[selected].simulationCount.toLocaleString('en-US')})</span></div>)}</div>}
+  <div className={styles.comparison}><span>当前：{nodes.at(-1)!.label}</span><span>相对{nodes[0].label}变化（pp）</span></div><div className={styles.numbers}>{curveEvents.map(e=>{const a=first.values[e],b=latest.values[e],delta=(b.count-a.count)*100/latest.simulationCount;return <div key={e}><span className={styles[e]}>{curveLabels[e]}</span><strong>{probabilityText(b.probability)}</strong><small>{nodes[0].label} {probabilityText(a.probability)}</small><small title={`${delta.toFixed(3)} 个百分点`}>{deltaText(delta)}</small></div>;})}</div>
  </article>;
 }
 export function LiveTournament({data}:{data:LiveView}){
