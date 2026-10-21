@@ -52,3 +52,9 @@
 .sourceList{font-size:var(--type-ui);color:var(--text-secondary);padding-left:var(--space-5)}.sourceList a{color:var(--accent)}
 @media(max-width:760px){.hero{padding-top:var(--space-5)}.teamList{grid-template-columns:minmax(0,1fr)}.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.roster{grid-template-columns:repeat(6,minmax(0,1fr))}.playerSlot{grid-column:span 2}.playerSlot:nth-child(3){border-right:0}.playerSlot:nth-child(n+4){grid-column:span 3;border-top:var(--line)}.section{margin-top:var(--space-6)}}
 @media(max-width:390px){.identity{gap:var(--space-3);align-items:flex-start}.identity :global(.team-logo){width:72px!important;height:72px!important}.identity h1{font-size:40px}.fullName{font-size:var(--type-ui)}.teamLink{gap:var(--space-3);padding:var(--space-4) 0}.playerSlot strong{font-size:20px}.playerSlot{padding:var(--space-4) var(--space-2)}.pending strong{font-size:12px}.facts{gap:var(--space-4)}.facts dd{font-size:16px}.path{padding-left:var(--space-2)}.path li{padding-left:var(--space-4)}.poolTable{font-size:var(--type-ui)}.championIdentity{gap:var(--space-2)}}
+/* Team detail only: preserve the compact Player Header and all module ordering. */
+.teamPage .hero{padding-top:32px;padding-bottom:16px}
+.teamPage>.section{margin-top:32px}
+.teamPage .sectionHead{padding-bottom:12px}
+.teamPage .playerSlot{min-height:96px;padding:12px 8px}
+@media(max-width:760px){.teamPage .hero{padding-top:24px}}

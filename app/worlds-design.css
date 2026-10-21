@@ -135,8 +135,8 @@ body:has(.is-champion-view) .footer{color:#a0b1bd;border-color:#30424f}
 .simulator-page .stage-navigation{top:var(--site-header-offset,66px)}
 
 :root{--site-header-offset:66px}
-@media(max-width:1050px){:root{--site-header-offset:98px}}
-@media(max-width:700px){:root:has(.nav[data-menu-open=true]){--site-header-offset:207px}}
+@media(max-width:1050px){:root{--site-header-offset:100px}}
+@media(max-width:700px){:root:has(.nav[data-menu-open=true]){--site-header-offset:209px}}
 /* U2-B: local page rhythm, without changing typography or data order. */
 .setup-controls{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px 24px;margin-bottom:24px}
 .setup-start{display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px}
@@ -158,3 +158,24 @@ body:has(.is-champion-view) .footer{color:#a0b1bd;border-color:#30424f}
  .setup-start{width:100%;gap:8px 12px}
 }
 @media(max-width:360px){.home-page .home-odds-row:nth-of-type(-n+3) .big-percent{font-size:clamp(36px,11.25vw,38px)}}
+/* Current round first; larger simulation scopes remain distinct secondary actions. */
+.current-actions .simulation-action-groups{gap:12px 24px;align-items:center}
+.round-actions,.bulk-actions{display:flex;flex-wrap:wrap;gap:8px}
+.current-actions .bulk-actions .button{background:transparent;font-size:12px}
+.simulator-toolbar [data-reset-simulation]{color:var(--danger);border-color:var(--danger)}
+.simulator-page .simulator-toolbar{gap:8px;padding:8px 0}
+.simulator-page .tournament-stage{padding-top:16px}
+.rankings-page>.page-head{padding-top:32px;padding-bottom:16px}
+.rankings-page>.data-status{margin:16px 0}
+.ranking-scroll-hint{display:none}
+@media(min-width:601px) and (max-width:900px){.rankings-page>.ranking-scroll-hint{display:block;font-size:12px;color:var(--text-secondary);margin:0 0 8px}}
+@media(max-width:700px){
+ .current-actions .simulation-action-groups{display:flex;flex-direction:column;align-items:stretch;gap:12px}
+ .round-actions,.bulk-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .current-actions .simulation-action-groups .button{min-height:44px;min-width:0}
+}
+@media(max-width:600px){
+ .simulator-page .simulator-model{flex-direction:row;align-items:baseline;gap:8px;min-width:0}
+ .simulator-page .simulator-status{gap:8px}
+ .rankings-page>.page-head{padding-top:24px;padding-bottom:16px}
+}

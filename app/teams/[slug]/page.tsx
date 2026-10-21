@@ -10,5 +10,5 @@ export default async function TeamProfile({params}:{params:Promise<{slug:string}
  const {slug}=await params;const team=profileTeams.find(t=>t.slug===slug);
  if(!team)notFound();
  const statistics=await teamStatistics(team.id);
- return <main className={`shell ${styles.page}`}><ProfileHeader team={team}/><ProfileRoster teamId={team.id} teamSlug={team.slug}/><QualificationPath team={team}/><TeamStatistics view={statistics}/></main>;
+ return <main className={`shell ${styles.page} ${styles.teamPage}`}><ProfileHeader team={team}/><ProfileRoster teamId={team.id} teamSlug={team.slug}/><QualificationPath team={team}/><TeamStatistics view={statistics}/></main>;
 }

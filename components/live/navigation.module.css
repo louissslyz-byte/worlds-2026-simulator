@@ -33,3 +33,5 @@
  .navigation .secondaryLinks a[aria-current=page]::after{bottom:4px;left:8px;right:8px}
 }
 @media(max-width:360px){.mobileLinks{column-gap:6px}}
+/* Fill the available header row, keeping the CTA aligned with the page edge. */
+.desktopLinks,.mobileLinks{width:100%}
