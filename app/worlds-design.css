@@ -131,3 +131,9 @@ body:has(.is-champion-view) .footer{color:#a0b1bd;border-color:#30424f}
 @media(prefers-reduced-motion:reduce){.tournament-stage{animation:none}}
 .is-champion-view .stage-navigation button.is-active .stage-nav-copy small{color:var(--text-secondary)}
 .is-champion-view .team-logo{background:#102736}
+/* Navigation owns the actual sticky header height, including its mobile menu. */
+.simulator-page .stage-navigation{top:var(--site-header-offset,66px)}
+
+:root{--site-header-offset:66px}
+@media(max-width:1050px){:root{--site-header-offset:98px}}
+@media(max-width:700px){:root:has(.nav[data-menu-open=true]){--site-header-offset:207px}}
