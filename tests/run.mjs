@@ -1,3 +1,4 @@
+import './text-cleanup.mjs';
 import './ui-information.mjs';
 import './live-ui.mjs';
 import './live-probability-snapshots.mjs';
