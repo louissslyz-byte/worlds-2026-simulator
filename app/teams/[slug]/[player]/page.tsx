@@ -16,8 +16,8 @@ export default async function PlayerProfile({params}:{params:Promise<{slug:strin
  if(!slot?.player)notFound();
  const player=slot.player;const age=playerAge(player);const pool=championPool(player);const scope=stage3Scopes[team.region];
  const statistics=await playerStatistics(team.id,player.playerId,player.role);
- const fields=[player.realName,player.birthDate,player.reportedAge,player.nationalities];
- const sources=Array.from(new Map(fields.filter(Boolean).map(field=>[field!.source.url,field!.source])).values());
+ const fields=[{label:'真实姓名',field:player.realName},{label:'出生日期 / 年龄',field:player.birthDate},{label:'资料所载年龄',field:player.reportedAge},{label:'国籍',field:player.nationalities}];
+ const sources=fields.filter(item=>item.field).map(item=>({label:item.label,source:item.field!.source}));
  return <main className={`shell ${styles.page} ${styles.playerPage}`}>
   <header className={styles.playerHeader}><Link className={styles.back} href={`/teams/${team.slug}`}><span aria-hidden="true">←</span> 返回 {team.shortName} 战队档案</Link>
    <div className="eyebrow">PLAYER PROFILE · WORLDS 2026</div><div className={styles.playerHero}><PositionIcon role={player.role} label={slot.role.label}/><h1>{player.playerId}</h1></div>
@@ -42,7 +42,7 @@ export default async function PlayerProfile({params}:{params:Promise<{slug:strin
    <InfoDisclosure label="统计范围与来源"><p>{scope.label} · {scope.includes.join(' + ')}。</p><p>快照核对：{pool.snapshotDate} · 本站读取已保存的英雄池快照，不自动同步比赛。</p>{pool.note&&<p>原来源备注：{pool.note}</p>}{pool.reason&&<p>{pool.reason}</p>}{(pool.sources??(pool.source?[pool.source]:[])).map(source=><p key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a></p>)}<p>不计入：{scope.excludes.join('、')}。</p><a href={scope.source.url} target="_blank" rel="noopener noreferrer">官方赛段说明 ↗</a></InfoDisclosure>
   </section>
   <section className={styles.section}><InfoDisclosure label="选手资料来源">
-   {sources.length?<ul className={styles.sourceList}>{sources.map(source=><li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a> · {source.checkedAt}</li>)}</ul>:<p className={styles.note}>姓名、国籍和年龄尚无已核验资料。</p>}</InfoDisclosure>
+   {sources.length?<ul className={styles.sourceList}>{sources.map(source=><li key={source.label}>{source.label}：<a href={source.source.url} target="_blank" rel="noopener noreferrer">{source.source.label} ↗</a> · {source.source.checkedAt}</li>)}</ul>:<p className={styles.note}>姓名、国籍和年龄尚无已核验资料。</p>}</InfoDisclosure>
   </section>
  </main>;
 }

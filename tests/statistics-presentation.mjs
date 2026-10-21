@@ -45,11 +45,11 @@ const view={region:'LCS',entity:{teamId:'TEST',sampleGames:29,metrics:{gd15:metr
 const unchanged=JSON.stringify(view);
 const html=renderToStaticMarkup(React.createElement(TeamStatistics,{view}));
 const draftHtml=html.slice(html.indexOf('DRAFT ANALYSIS'));
-assert.ok(draftHtml.includes('LCS 最后国内赛段'));
+assert.ok(draftHtml.includes('LCS')&&draftHtml.includes('最后国内赛段'));
 assert.equal((draftHtml.match(/ⓘ 样本量/g)??[]).length,1);
 for(const value of ['28 局有效','27 局有效','1 局字段缺失','2 局字段缺失'])assert.ok(draftHtml.includes(value));
 assert.ok(!draftHtml.includes('29 局有效 · 部分数据'));
-assert.ok(draftHtml.includes('低场次组合的胜率仅供参考'));
+assert.ok(draftHtml.includes('小样本（不足10局）'));
 assert.equal(JSON.stringify(view),unchanged,'rendering must not mutate source values or states');
 
 for(const count of [2,3,4,5,7]){

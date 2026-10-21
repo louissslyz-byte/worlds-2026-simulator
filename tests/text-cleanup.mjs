@@ -29,3 +29,25 @@ for(const file of execFileSync('git',['ls-files','lib/','app/methodology/'],{enc
 const player=await readFile('app/teams/[slug]/[player]/page.tsx','utf8');
 assert.match(player,/label="统计范围与来源"/);assert.match(player,/label="选手资料来源"/);assert.match(player,/不自动同步/);assert.match(player,/pool\.reason/);assert.match(player,/pool\.sources/);assert.match(player,/scope\.includes/);
 console.log('U2 text: data freshness/seed uncertainty, real GPR/fallback, manual+locked status, one round mode, placeholders, collapsed sources, protected files PASS.');
+const {ProfileRoster}=await import('../components/team-profile/profile-roster.tsx');
+const {QualificationPath}=await import('../components/team-profile/qualification-path.tsx');
+const {profileTeams,profileRoster,regularSeasonRecord,qualificationPath}=await import('../lib/team-profile/data.ts');
+for(const team of profileTeams){
+ const roster=profileRoster(team.id),html=render(ProfileRoster,{teamId:team.id,teamSlug:team.slug});
+ assert.ok(html.includes('阵容来源'));assert.ok(!html.includes('点击选手查看档案'));assert.ok(html.includes(roster.source.url.replaceAll('&','&amp;')));
+ assert.ok(html.includes(roster.note)); // full original caveat remains available
+ for(const {player,role} of roster.slots)assert.ok(html.includes(`${player.playerId} · ${role.label} · 选手档案`));
+ const road=render(QualificationPath,{team}),regular=regularSeasonRecord(team.id);
+ assert.ok(road.includes('真实赛果 · 北京时间'));assert.ok(road.includes('晋级记录说明'));
+ for(const url of [team.sourceUrl,qualificationPath(team.id)[0]?.source.url,regular?.source.url,regular?.recordSource?.url].filter(Boolean))assert.ok(road.includes(url.replaceAll('&','&amp;')));
+ if(team.region==='LCK')assert.ok(road.includes('含 R1–2 结转 · 传奇组最终排名'));
+ if(team.region==='LCP')assert.ok(road.includes('不含后续种子赛'));
+}
+const c9=render(ProfileRoster,{teamId:'C9',teamSlug:'c9'});assert.ok(c9.includes('Loki、Tactical'));assert.ok(c9.includes('APA、Zven 列为替补'));
+const {default:TeamProfiles}=await import('../app/teams/page.tsx');const list=render(TeamProfiles);
+assert.ok(!list.includes('待定种子列于最后'));for(const team of profileTeams)assert.ok(list.includes(`${team.shortName} · ${team.name} · ${team.region}`));
+const {LiveTournament}=await import('../components/live/live-tournament.tsx');
+// Source guards complement live-ui's full actual and future-node renders.
+const live=await readFile('components/live/live-tournament.tsx','utf8');assert.ok(!live.includes('较赛前'));assert.ok(live.includes('相对{nodes[0].label}变化（pp）'));assert.ok(live.includes('时间待核实'));assert.ok(live.includes('非各场开赛时间'));
+assert.equal(typeof LiveTournament,'function');
+console.log('U2 sources: 19 rosters/roads preserve links+scope, C9 identity caveat, accessible region context and dynamic Live baseline PASS.');
