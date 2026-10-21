@@ -137,3 +137,24 @@ body:has(.is-champion-view) .footer{color:#a0b1bd;border-color:#30424f}
 :root{--site-header-offset:66px}
 @media(max-width:1050px){:root{--site-header-offset:98px}}
 @media(max-width:700px){:root:has(.nav[data-menu-open=true]){--site-header-offset:207px}}
+/* U2-B: local page rhythm, without changing typography or data order. */
+.setup-controls{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px 24px;margin-bottom:24px}
+.setup-start{display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px}
+.setup-page>.section-title{margin-top:24px}
+.setup-system-grid{grid-template-columns:minmax(260px,.7fr) minmax(0,1.3fr);align-items:start;gap:32px}
+.setup-system-grid .leader{padding:10px 0;min-height:52px}
+@media(max-width:900px){
+ .setup-system-grid{grid-template-columns:minmax(0,1fr);gap:20px}
+ .home-page>.page-head{padding-top:24px;padding-bottom:16px}
+ .home-page .home-primary-grid{row-gap:20px}
+ .home-page .home-cta{padding-top:16px;padding-bottom:16px}
+ .home-page .home-cta p{margin-bottom:16px}
+}
+@media(max-width:600px){
+ .home-page .home-odds-panel>.section-title{margin-bottom:16px}
+ .home-page .home-cta .home-text-link{margin-top:8px}
+ .setup-page>.page-head{padding-top:24px;padding-bottom:20px}
+ .setup-controls{gap:12px;margin-bottom:20px}
+ .setup-start{width:100%;gap:8px 12px}
+}
+@media(max-width:360px){.home-page .home-odds-row:nth-of-type(-n+3) .big-percent{font-size:clamp(36px,11.25vw,38px)}}
