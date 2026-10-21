@@ -157,7 +157,7 @@ body:has(.is-champion-view) .footer{color:#a0b1bd;border-color:#30424f}
  .setup-controls{gap:12px;margin-bottom:20px}
  .setup-start{width:100%;gap:8px 12px}
 }
-@media(max-width:360px){.home-page .home-odds-row:nth-of-type(-n+3) .big-percent{font-size:clamp(36px,11.25vw,38px)}}
+@media(max-width:390px){.home-page .home-odds-row:nth-of-type(-n+3) .big-percent{font-size:clamp(36px,calc(20vw - 30px),48px)}}
 /* Current round first; larger simulation scopes remain distinct secondary actions. */
 .current-actions .simulation-action-groups{gap:12px 24px;align-items:center}
 .round-actions,.bulk-actions{display:flex;flex-wrap:wrap;gap:8px}
