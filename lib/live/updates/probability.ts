@@ -41,7 +41,8 @@ export async function loadUpdateHistory(model:FrozenSystem,projectRoot=process.c
  const index=JSON.parse(await read('snapshots/index.json'));
  if(index.schemaVersion!=='live-probability-extension-v1.0'||index.baseHistorySHA256!==sha256(await readFile(`${projectRoot}/lib/live/probability/snapshots/index.json`))||index.snapshots.length!==1)throw Error('History extension/base lock mismatch');
  const snapshots:UpdateProbability[]=[];
- const generatorSHA=await updateGeneratorSHA256(projectRoot);
+ const generatorSHA=await archivedGeneratorSHA256(projectRoot);
+ if(index.generationSource?.sha256!==sha256(await readFile(`${projectRoot}/lib/live/updates/generation-source-v1.json`)))throw Error('Generator audit file checksum mismatch');
  for(const e of index.snapshots){
   if(!/^[-a-z0-9]+\.json$/.test(e.file))throw Error('Unsafe update archive path');
   const bytes=await read('snapshots/'+e.file);if(sha256(bytes)!==e.sha256)throw Error('Update snapshot file checksum mismatch');
@@ -50,4 +51,13 @@ export async function loadUpdateHistory(model:FrozenSystem,projectRoot=process.c
   snapshots.push(s);
  }
  return {...facts,index,snapshots};
+}
+
+/** Immutable calculation source fingerprints, independent of later loader-only fixes.
+ * Tests bind every entry to generatorCommit in Git. Strength/engine are still checked live. */
+export async function archivedGeneratorSHA256(projectRoot=process.cwd()){
+ const a=JSON.parse(await readFile(`${projectRoot}/lib/live/updates/generation-source-v1.json`,'utf8'));
+ const expected="d63a4fc78960344635c6ed83de70864be94e562cb9dd7a90a35fc74dd246bb43";
+ if(a.schemaVersion!=='live-generator-source-audit-v1.0'||a.generatorCommit!=="02de5acde9270124fb077e0283e74a247a181e07"||a.sourceFiles.map((e:[string,string])=>e[0]).join('|')!==UPDATE_FILES.join('|')||semanticSHA256(a.sourceFiles)!==expected||a.generatorSourceSHA256!==expected)throw Error('Historical generator source audit mismatch');
+ return expected;
 }

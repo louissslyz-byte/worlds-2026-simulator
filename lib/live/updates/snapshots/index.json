@@ -10,5 +10,9 @@
       "sha256": "e9d004aa54600b9dda9fb1e7b93729c8aa359b4e0d91afdc9071b219e480a392",
       "countSHA256": "b0ee80de2d41e2328e36035a5a315de4c99a3d711b723fc1cc4e7d0b30f31511"
     }
-  ]
+  ],
+  "generationSource": {
+    "file": "generation-source-v1.json",
+    "sha256": "38de64e5183224a42a8bd4970a784ea01acfa7ba537b0e8c01fd2bc605e9699d"
+  }
 }

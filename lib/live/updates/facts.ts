@@ -34,7 +34,7 @@ export function validateSwissUpdate(input:unknown,official:OfficialSnapshot){
  if(Math.min(...r2.filter(m=>m.scheduledAt).map(m=>Date.parse(m.scheduledAt!)))!==Date.parse(update.nextRoundStartsAt))throw Error('Wrong earliest R2 start');
  return {update,records,factsSHA256:semanticSHA256(factsInput(update))};
 }
-export async function loadSwissUpdate(root=new URL('./',import.meta.url)){
+export async function loadSwissUpdate(root=new URL('file://'+process.cwd()+'/lib/live/updates/')){
  const official=await verifiedA1(),index=JSON.parse(await readFile(new URL('facts/index.json',root),'utf8'));
  if(index.schemaVersion!=='live-swiss-update-index-v1.0'||index.entries.length!==1)throw Error('Unknown update index');
  const e=index.entries[0];if(!/^[-a-z0-9]+\.json$/.test(e.file))throw Error('Unsafe facts path');

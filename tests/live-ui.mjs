@@ -32,7 +32,7 @@ console.log('Live UI: 19 teams / 57 curves / 2 nodes / future node / all counts 
 const fixture=await mkdtemp(join(tmpdir(),'live-ui-'));
 try{
  const files=[...ENGINE_FILES,...STRENGTH_FILES].map(f=>'lib/sim/'+f);
- files.push(...GENERATOR_FILES,...UPDATE_FILES,'lib/live/updates/facts/index.json','lib/live/updates/facts/swiss-r1-v1.json','lib/live/updates/snapshots/index.json','lib/live/updates/snapshots/swiss-r1-v1.json','lib/sim/precomputedOdds.json','lib/live/snapshots/index.json','lib/live/snapshots/post-play-in-v1.json',...['index.json','pre-tournament-v1.json','post-play-in-v1.json','frozen-system-v1.json'].map(f=>'lib/live/probability/snapshots/'+f));
+ files.push(...GENERATOR_FILES,...UPDATE_FILES,'lib/live/updates/facts/index.json','lib/live/updates/facts/swiss-r1-v1.json','lib/live/updates/generation-source-v1.json','lib/live/updates/snapshots/index.json','lib/live/updates/snapshots/swiss-r1-v1.json','lib/sim/precomputedOdds.json','lib/live/snapshots/index.json','lib/live/snapshots/post-play-in-v1.json',...['index.json','pre-tournament-v1.json','post-play-in-v1.json','frozen-system-v1.json'].map(f=>'lib/live/probability/snapshots/'+f));
  for(const file of new Set(files)){await mkdir(dirname(join(fixture,file)),{recursive:true});await copyFile(file,join(fixture,file));}
  assert.deepEqual(await readLiveView(fixture),view);
  const target=join(fixture,'lib/live/probability/snapshots/post-play-in-v1.json');await writeFile(target,'{}');await assert.rejects(readLiveView(fixture),/checksum/);

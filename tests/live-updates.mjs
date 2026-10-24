@@ -6,7 +6,7 @@ import {assertConditioningPreserved} from '../lib/live/probability/adapter.ts';
 import {runMonteCarloFromState} from '../lib/sim/monteCarlo.ts';
 import {simulateEntireWorlds} from '../lib/sim/engine.ts';
 import {assertCompletedTournament} from '../lib/sim/validation.ts';
-import {loadUpdateHistory,validateUpdateProbability,updateGeneratorSHA256} from '../lib/live/updates/probability.ts';
+import {loadUpdateHistory,validateUpdateProbability,archivedGeneratorSHA256} from '../lib/live/updates/probability.ts';
 const {update,official,records,factsSHA256}=await loadSwissUpdate(),{model}=await loadFrozenSystem(),before=semanticSHA256({update,official});
 const session=createSwissRound2Session(update,official,model);
 assert.equal(semanticSHA256({update,official}),before);
@@ -32,7 +32,9 @@ const a=runMonteCarloFromState(session,64,9876),b=runMonteCarloFromState(session
 assert.throws(()=>runMonteCarloFromState({...session,tournamentState:{...session.tournamentState,matches:session.tournamentState.matches.slice(0,-1)}},1,1));
 console.log('LiveOps small gates PASS: 256 fully audited paths, 2 x 64 repeatability; fixed 14 results and 8 R2 pairings; invalid states rejected.');
 if(!process.argv.includes('--facts-only')){
- const h=await loadUpdateHistory(model),s=h.snapshots[0],sourceSHA=await updateGeneratorSHA256();
+ const {readFile}=await import('node:fs/promises');const {execFileSync}=await import('node:child_process');const {sha256}=await import('../lib/live/probability/model.ts');
+ const audit=JSON.parse(await readFile('lib/live/updates/generation-source-v1.json','utf8'));for(const [file,hash]of audit.sourceFiles)assert.equal(sha256(execFileSync('git',['show',`${audit.generatorCommit}:${file}`])),hash);
+ const h=await loadUpdateHistory(model),s=h.snapshots[0],sourceSHA=await archivedGeneratorSHA256();
  assert.equal(s.simulationCount,100000);assert.equal(s.failedCount,0);
  for(const mutate of [x=>x.teams.pop(),x=>x.ratingInputSHA256='0'.repeat(64),x=>x.countSHA256='0'.repeat(64),x=>x.rulesVersion='old',x=>x.completedCount=99999,x=>x.teams[0].championProbability+=0.00001,x=>x.conditionedStateSHA256='0'.repeat(64),x=>x.randomSeed++]){const bad=structuredClone(s);mutate(bad);assert.throws(()=>validateUpdateProbability(bad,update,official,model,sourceSHA));}
  console.log('LiveOps formal archive and negative snapshot validation PASS.');

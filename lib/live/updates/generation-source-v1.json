@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "live-generator-source-audit-v1.0",
+  "generatorCommit": "02de5acde9270124fb077e0283e74a247a181e07",
+  "sourceFiles": [
+    [
+      "lib/live/updates/facts.ts",
+      "c72d451583e9e4226eea1d4b8e88c3ec70051de5b17483be2ba9460c0d97c52c"
+    ],
+    [
+      "lib/live/updates/adapter.ts",
+      "4e3a789faaa304b9505506f139991b4279f18eb1012c0693fc5977daefe7a7ad"
+    ],
+    [
+      "lib/live/updates/probability.ts",
+      "ab41f4632a5a62c2d274845fde636befa9916991fc3023bfcaa3347b82d7e4f9"
+    ],
+    [
+      "scripts/generate-live-update.mjs",
+      "949882e6f4ff69b30b8816ddc35d79c71baebc5edb8c135cfe4d30959bcdf707"
+    ]
+  ],
+  "generatorSourceSHA256": "d63a4fc78960344635c6ed83de70864be94e562cb9dd7a90a35fc74dd246bb43"
+}
