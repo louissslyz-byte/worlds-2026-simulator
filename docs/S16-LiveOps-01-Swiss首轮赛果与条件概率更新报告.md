@@ -1,6 +1,6 @@
 # S16-LiveOps-01 — Swiss首轮赛果与条件概率更新报告
 
-2026-10-24 · LOCAL COMPLETE · PRODUCTION NOT UPDATED。
+2026-10-24 · 初次验收为 LOCAL COMPLETE / PRODUCTION NOT UPDATED。后续用户授权的正式发布见第11节；保留原NO-GO历史记录。
 
 ## 1. 基准、保护范围与提交
 
@@ -209,3 +209,50 @@ Daily流程详见[Runbook](S16-LiveOps-Daily-Update-Runbook.md)。**当前facts/
 | PRODUCTION READY | **NO-GO：发布控制面403，当前Production/回滚目标/自动部署状态需在正式发布前重新核实** |
 
 本地技术候选已就绪，最后剩余发布阻碍是Vercel只读权限，不是已发现的应用故障。恢复原账户/项目访问后，先核对Production/回滚与关闭自动部署、复验同一产物SHA、核对统计运行参数，获得用户另行Production授权后才能执行手动Prebuilt部署。Push需独立授权。当前本轮没有任何远程写入、Preview或正式发布，没有推进第二轮赛果，也没有开启M0-D4。
+
+
+## 11. 后续正式发布（用户另行授权）
+
+用户回复“上线”，并完成原账户Vercel登录恢复。此前403阻碍已解除；本节是后续发布记录，不删除第10节当时的NO-GO结论。
+
+### 发布前复核
+
+- 原项目绑定：worlds-2026-simulator，projectId `prj_pETbiwwBgfF7fqBELVMeyyLczbdb`；未创建新项目、未更改域名或Git设置。
+- Production直接只读确认：`dpl_DZ8NTHED3eXAts1kLEinauXB8WSe`，READY，源码7734178，正式域名仍指向它。
+- Git自动部署门禁`ignoreCommand=exit 0`、本地deploymentEnabled=false未变；CLI只读确认无回滚进行中。
+- Hobby回滚资格：此部署在新版本发布后成为紧邻上一Production，仍READY并曾绑定正式域名，符合[官方Instant Rollback规则](https://vercel.com/docs/instant-rollback)（2026-10-24核查）。没有执行云端回滚演练。
+- 冻结产物重新审计，579文件、59内部链接，树SHA仍为`4b3a30301e103b34c732e60a7bff9eac79bc550aa4b6df5eab8503d3cd7dd1bc`；统计资源SHA仍为`c2ba86bf8da177c664c5e34d9fa10e9ae16fa671f4e067769775da4fc817b3d2`。
+- 当前部署API未返回统计运行环境变量明文，不能声称直接读到了旧参数。新部署通过`--env`明确指定TEAM_STATS_RELEASE_ENABLED=true和上述批准SHA，且项目autoExposeSystemEnvs=true直接核实。
+
+### 执行及版本
+
+使用原Vercel CLI64.2.0和原项目，执行`vercel deploy --prebuilt --prod --yes`，显式携带两项统计运行参数。没有重新构建、重新运行Monte Carlo或上传GitHub。CLI确认使用`.vercel/output`预构建产物；638个部署条目对应579文件＋59内部链接。
+
+| 项目 | 结果 |
+|---|---|
+| 原Production / 回滚目标 | `dpl_DZ8NTHED3eXAts1kLEinauXB8WSe` |
+| 新Deployment | `dpl_Da4zRHe9yQz4GRdZ5vy7FzycJcYe` |
+| 状态 / target | READY / production |
+| 正式域名 | https://worlds-2026-simulator.vercel.app/ |
+| 实例URL | https://worlds-2026-simulator-273jsme6h-luis-cf15.vercel.app |
+| 构建业务源码 | `87e47d5f60ccf698566d0fa0cc11efcf37acee87` |
+| CLI时Git HEAD | `b68251dc152a6c195d0548597da56ed4951ce7f7`（后续仅测试、离线只读工具及文档） |
+| 产物树SHA | `4b3a30301e103b34c732e60a7bff9eac79bc550aa4b6df5eab8503d3cd7dd1bc` |
+
+新Deployment元数据同时记录gitCommitSha（构建业务提交）、githubCommitSha（CLI当时HEAD）、releaseReportCommit及产物SHA。未把报告提交冒充重新构建过的业务源码。部署后再次GET项目确认正式别名指向新ID，旧Production为紧邻上一条；Git自动部署仍关闭。部署后本地产物再审计SHA一致。
+
+### 生产验证及局限
+
+- 控制面独立验证：**PASS**。新Deployment READY、原项目、production、正式域名及元数据产物SHA一致。
+- 独立公网HTTP：**未完成**。对/live、/rankings、/simulator/new、/teams/gen、/teams/gen/chovy各一次有限请求均UND_ERR_CONNECT_TIMEOUT，未收到应用HTTP响应；不能标200/PASS。
+- 独立生产浏览器：**未完成**。打开正式/live时浏览器连接超时；没有伪造生产截图。
+- 最终同一Prebuilt的本地HTTP/RSC、19队95人、1302英雄记录、System/Custom与四宽度浏览器验证，见前节PASS。这些不自动替代生产交互验证。
+- 已请用户在真实浏览器复核R1八场结果、R2八组待开赛对阵、第三概率节点、KC58.424%/1.602%及GEN/Chovy统计。当前待回复，不标PASS。
+
+上述连接超时不构成已确认应用故障，未据此盲目回滚。若用户发现重大应用错误，先确认并按原账户执行`vercel rollback dpl_DZ8NTHED3eXAts1kLEinauXB8WSe --yes`，核对READY、正式别名及统计功能；回滚沿用目标部署原环境，不能以当前项目变量覆盖旧参数。未执行回滚。
+
+**PRODUCTION DEPLOYMENT：READY**
+
+**PRODUCTION VERIFICATION：CONDITIONAL — 控制面PASS，公网独立验收受连接限制，等待用户浏览器验证。**
+
+已按授权发布Swiss R1增量和第三概率节点。没有推进R2结果、修改模型或原统计；没有Git Push、额外Preview或云端配置调整。
