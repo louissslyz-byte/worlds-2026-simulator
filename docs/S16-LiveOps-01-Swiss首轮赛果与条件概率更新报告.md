@@ -247,12 +247,12 @@ Daily流程详见[Runbook](S16-LiveOps-Daily-Update-Runbook.md)。**当前facts/
 - 独立公网HTTP：**未完成**。对/live、/rankings、/simulator/new、/teams/gen、/teams/gen/chovy各一次有限请求均UND_ERR_CONNECT_TIMEOUT，未收到应用HTTP响应；不能标200/PASS。
 - 独立生产浏览器：**未完成**。打开正式/live时浏览器连接超时；没有伪造生产截图。
 - 最终同一Prebuilt的本地HTTP/RSC、19队95人、1302英雄记录、System/Custom与四宽度浏览器验证，见前节PASS。这些不自动替代生产交互验证。
-- 已请用户在真实浏览器复核R1八场结果、R2八组待开赛对阵、第三概率节点、KC58.424%/1.602%及GEN/Chovy统计。当前待回复，不标PASS。
+- 已请用户在真实浏览器复核R1八场结果、R2八组待开赛对阵、第三概率节点、KC58.424%/1.602%及GEN/Chovy统计。用户随后回复“正常”。记录为 **USER-REPORTED PRODUCTION BROWSER VERIFICATION：PASS**，仅覆盖上述项目，不冒充Codex独立HTTP或浏览器验收。
 
 上述连接超时不构成已确认应用故障，未据此盲目回滚。若用户发现重大应用错误，先确认并按原账户执行`vercel rollback dpl_DZ8NTHED3eXAts1kLEinauXB8WSe --yes`，核对READY、正式别名及统计功能；回滚沿用目标部署原环境，不能以当前项目变量覆盖旧参数。未执行回滚。
 
 **PRODUCTION DEPLOYMENT：READY**
 
-**PRODUCTION VERIFICATION：CONDITIONAL — 控制面PASS，公网独立验收受连接限制，等待用户浏览器验证。**
+**PRODUCTION VERIFICATION：用户浏览器验收PASS；控制面PASS；Codex独立公网HTTP/浏览器验收仍受连接限制。**
 
 已按授权发布Swiss R1增量和第三概率节点。没有推进R2结果、修改模型或原统计；没有Git Push、额外Preview或云端配置调整。
