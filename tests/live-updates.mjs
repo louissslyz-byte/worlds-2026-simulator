@@ -37,5 +37,8 @@ if(!process.argv.includes('--facts-only')){
  const h=await loadUpdateHistory(model),s=h.snapshots[0],sourceSHA=await archivedGeneratorSHA256();
  assert.equal(s.simulationCount,100000);assert.equal(s.failedCount,0);
  for(const mutate of [x=>x.teams.pop(),x=>x.ratingInputSHA256='0'.repeat(64),x=>x.countSHA256='0'.repeat(64),x=>x.rulesVersion='old',x=>x.completedCount=99999,x=>x.teams[0].championProbability+=0.00001,x=>x.conditionedStateSHA256='0'.repeat(64),x=>x.randomSeed++]){const bad=structuredClone(s);mutate(bad);assert.throws(()=>validateUpdateProbability(bad,update,official,model,sourceSHA));}
- console.log('LiveOps formal archive and negative snapshot validation PASS.');
+ const archive='lib/live/updates/snapshots';const raw=await readFile(archive+'/swiss-r1-v1.json');
+ const {spawnSync}=await import('node:child_process');const refused=spawnSync(process.execPath,['--import','tsx','scripts/generate-live-update.mjs','--candidate',archive],{encoding:'utf8'});
+ assert.notEqual(refused.status,0);assert.ok(refused.stderr.includes('EEXIST'));assert.ok(!refused.stdout.includes('Starting'));assert.deepEqual(await readFile(archive+'/swiss-r1-v1.json'),raw);
+ console.log('LiveOps formal archive, negative snapshot validation and attempted overwrite refusal PASS.');
 }

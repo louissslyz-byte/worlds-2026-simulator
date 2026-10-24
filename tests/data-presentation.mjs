@@ -40,3 +40,8 @@ assert.equal(JSON.stringify(view),before);assert.equal(probabilityText(.00001),'
 const protectedFiles=execFileSync('git',['ls-tree','-r','--name-only','aea12c9','--','lib/','app/page.tsx','app/worlds-design.css','app/simulator/','app/teams/','app/methodology/','components/site-navigation.tsx','components/team-profile/','components/tournament/','components/live/navigation.module.css','next.config.ts','vercel.json','.gitignore','.vercelignore'],{encoding:'utf8'}).trim().split('\n').filter(file=>!['lib/live/view.ts','lib/live/view-server.ts','next.config.ts'].includes(file));
 for(const file of protectedFiles)assert.deepEqual(await readFile(file),execFileSync('git',['show',`aea12c9:${file}`]),file);
 console.log('U2-C Live: 19/57, exact real probabilities/deltas/axes/order, in-memory 3/4 nodes, tiny values and all AB/model/data protections PASS.');
+
+const real=render(view),los=real.match(/data-live-team="LOS"[^>]*>(.*?)<\/article>/s)[1];
+assert.ok(los.includes('100,000次样本未抽中，不代表理论上不可能'));
+for(const id of ['C9','FUR','MVK']){const card=real.match(new RegExp(`data-live-team="${id}"[^>]*>(.*?)<\\/article>`,'s'))[1];assert.ok(!card.includes('100,000次样本未抽中，不代表理论上不可能'));}
+console.log('LiveOps real three-node zero-count distinction: LOS sampled zero vs three eliminated teams PASS.');

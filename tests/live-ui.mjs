@@ -27,7 +27,7 @@ const source=await readFile('components/live/live-tournament.tsx','utf8');assert
 const serialized=JSON.stringify(view);for(const forbidden of ['ratingInput','sourceFiles','randomSeed','/Users/','GPRScore','tournamentState'])assert.ok(!serialized.includes(forbidden));
 const client=await readFile('components/live/live-tournament.tsx','utf8');for(const forbidden of ['localStorage','runMonteCarlo','fetch(','statistics-server'])assert.ok(!client.includes(forbidden));
 assert.ok((await readFile('components/site-navigation.tsx','utf8')).includes("['/live','LIVE TOURNAMENT']"));
-console.log('Live UI: 19 teams / 57 curves / 2 nodes / future node / all counts / tiny probabilities / pp / region filters / isolation PASS');
+console.log('Live UI: 19 teams / 57 curves / 3 real nodes / synthetic future node / all counts / tiny probabilities / pp / region filters / isolation PASS');
 
 const fixture=await mkdtemp(join(tmpdir(),'live-ui-'));
 try{
