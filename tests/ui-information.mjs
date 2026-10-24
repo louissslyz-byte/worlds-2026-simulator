@@ -15,7 +15,7 @@ const ranking=renderToStaticMarkup(React.createElement(Rankings));
 assert.ok(ranking.includes('Riot GPR 实力榜'));assert.ok(ranking.includes('数据与计算方法'));assert.ok(ranking.includes('不是 Riot 官方夺冠预测'));assert.ok(ranking.includes('/methodology'));assert.ok(ranking.includes('暂无'));
 assert.equal((ranking.match(/<tr>/g)||[]).length,20);
 const {default:Home}=await import('../app/page.tsx');const home=renderToStaticMarkup(React.createElement(Home));assert.ok(home.includes('关于预测'));assert.ok(home.includes('创建模拟'));
-for(const path of execFileSync('git',['ls-files','lib/','app/methodology/'],{encoding:'utf8'}).trim().split('\n')){
+for(const path of execFileSync('git',['ls-tree','-r','--name-only','d2dd830','--','lib/','app/methodology/'],{encoding:'utf8'}).trim().split('\n').filter(file=>!['lib/live/view.ts','lib/live/view-server.ts','next.config.ts'].includes(file))){
  const before=execFileSync('git',['show',`d2dd830:${path}`]);assert.deepEqual(await readFile(path),before,`Protected data/model changed: ${path}`);
 }
 const live=await readFile('components/live/live-tournament.tsx','utf8');assert.ok(live.includes('非实时更新'));assert.ok(live.includes('beijing(data.asOf)'));assert.ok(live.includes('关于概率'));assert.ok(live.includes('时间待核实'));

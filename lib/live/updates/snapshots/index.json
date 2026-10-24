@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "live-probability-extension-v1.0",
+  "baseHistorySHA256": "2d4223e721183e65d6304349f37e18d1bec555657d4331f19f0a982c1654c189",
+  "snapshots": [
+    {
+      "snapshotId": "worlds-2026-swiss-r1-probability-v1",
+      "label": "SWISS-R1-COMPLETE",
+      "asOf": "2026-10-24T04:11:37.729Z",
+      "file": "swiss-r1-v1.json",
+      "sha256": "e9d004aa54600b9dda9fb1e7b93729c8aa359b4e0d91afdc9071b219e480a392",
+      "countSHA256": "b0ee80de2d41e2328e36035a5a315de4c99a3d711b723fc1cc4e7d0b30f31511"
+    }
+  ]
+}

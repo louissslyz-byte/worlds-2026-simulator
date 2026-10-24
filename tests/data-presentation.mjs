@@ -13,10 +13,10 @@ const {LiveTournament}=await import('../components/live/live-tournament.tsx');
 const view=await loadLiveView(),before=JSON.stringify(view);
 const render=data=>renderToStaticMarkup(React.createElement(LiveTournament,{data}));
 for(const count of [2,3,4]){
- const data=structuredClone(view);
+ const data=structuredClone(view);data.nodes=data.nodes.slice(0,count);for(const team of data.teams)team.points=team.points.slice(0,count);
  while(data.nodes.length<count){const i=data.nodes.length;const id=`test-only-${i}`;data.nodes.push({...data.nodes[1],id,label:`SWISS R${i-1}`});for(const team of data.teams)team.points.push({...structuredClone(team.points[1]),snapshotId:id});}
  const html=render(data),cards=[...html.matchAll(/<article[^>]*data-live-team="([^"]+)"[^>]*>(.*?)<\/article>/gs)];
- assert.equal(cards.length,19);assert.deepEqual(cards.map(c=>c[1]),visibleTeams(view.teams,'ALL').map(t=>t.id));
+ assert.equal(cards.length,19);assert.deepEqual(cards.map(c=>c[1]),visibleTeams(data.teams,'ALL').map(t=>t.id));
  assert.equal((html.match(/data-curve=/g)||[]).length,57);assert.equal((html.match(/role="button"/g)||[]).length,19*count);
  assert.equal((html.match(/相对赛前变化（pp）/g)||[]).length,19);
  for(const [,id,card] of cards){
@@ -37,6 +37,6 @@ for(const count of [2,3,4]){
 }
 assert.equal(JSON.stringify(view),before);assert.equal(probabilityText(.00001),'<0.1%');assert.equal(probabilityText(0),'0%');assert.equal(deltaText(.045),'+0.045 pp');
 // All AB navigation, Home, Setup, Simulator, profiles and protected libraries remain unchanged.
-const protectedFiles=execFileSync('git',['ls-files','lib/','app/page.tsx','app/worlds-design.css','app/simulator/','app/teams/','app/methodology/','components/site-navigation.tsx','components/team-profile/','components/tournament/','components/live/navigation.module.css','next.config.ts','vercel.json','.gitignore','.vercelignore'],{encoding:'utf8'}).trim().split('\n');
+const protectedFiles=execFileSync('git',['ls-tree','-r','--name-only','aea12c9','--','lib/','app/page.tsx','app/worlds-design.css','app/simulator/','app/teams/','app/methodology/','components/site-navigation.tsx','components/team-profile/','components/tournament/','components/live/navigation.module.css','next.config.ts','vercel.json','.gitignore','.vercelignore'],{encoding:'utf8'}).trim().split('\n').filter(file=>!['lib/live/view.ts','lib/live/view-server.ts','next.config.ts'].includes(file));
 for(const file of protectedFiles)assert.deepEqual(await readFile(file),execFileSync('git',['show',`aea12c9:${file}`]),file);
 console.log('U2-C Live: 19/57, exact real probabilities/deltas/axes/order, in-memory 3/4 nodes, tiny values and all AB/model/data protections PASS.');

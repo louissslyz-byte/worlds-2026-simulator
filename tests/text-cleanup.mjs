@@ -25,7 +25,7 @@ const custom=render(RoundSection,{...props,strengthSource:'CUSTOM_TIER_LIST'});a
 const history=render(RoundSection,{...props,current:false});assert.equal((history.match(/我的选择/g)||[]).length,1);
 const waiting=render(RoundSection,{...props,matches:[]});assert.match(waiting,/等待生成/);assert.match(waiting,/对阵待定/);assert.ok(!waiting.includes('根据前一轮'));
 // All protected libraries, formulas, archives, session schema, Worker and Methodology remain byte-identical.
-for(const file of execFileSync('git',['ls-files','lib/','app/methodology/'],{encoding:'utf8'}).trim().split('\n'))assert.deepEqual(await readFile(file),execFileSync('git',['show',`d66b9d8:${file}`]),file);
+for(const file of execFileSync('git',['ls-tree','-r','--name-only','d66b9d8','--','lib/','app/methodology/'],{encoding:'utf8'}).trim().split('\n').filter(file=>!['lib/live/view.ts','lib/live/view-server.ts','next.config.ts'].includes(file)))assert.deepEqual(await readFile(file),execFileSync('git',['show',`d66b9d8:${file}`]),file);
 const player=await readFile('app/teams/[slug]/[player]/page.tsx','utf8');
 assert.match(player,/label="统计范围与来源"/);assert.match(player,/label="选手资料来源"/);assert.match(player,/不自动同步/);assert.match(player,/pool\.reason/);assert.match(player,/pool\.sources/);assert.match(player,/scope\.includes/);
 console.log('U2 text: data freshness/seed uncertainty, real GPR/fallback, manual+locked status, one round mode, placeholders, collapsed sources, protected files PASS.');

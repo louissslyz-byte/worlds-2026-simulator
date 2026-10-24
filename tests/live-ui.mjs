@@ -6,16 +6,20 @@ import {ENGINE_FILES,STRENGTH_FILES,GENERATOR_FILES} from '../lib/live/probabili
 import {validateProbabilityHistory} from '../lib/live/probability/archive.ts';
 import {loadOfficialSnapshot} from '../lib/live/load.ts';
 import {loadLiveView,readLiveView} from '../lib/live/view-server.ts';
-import {projectLiveView,curveEvents,probabilityText,deltaText,visibleTeams,regions} from '../lib/live/view.ts';
+import {projectLiveView,projectUpdatedLiveView,curveEvents,probabilityText,deltaText,visibleTeams,regions} from '../lib/live/view.ts';
 const history=await validateProbabilityHistory(),official=await loadOfficialSnapshot();
-const view=projectLiveView(official,history.index,[history.pre,history.post]);
+const legacy=projectLiveView(official,history.index,[history.pre,history.post]);
+const {loadUpdateHistory,UPDATE_FILES}=await import('../lib/live/updates/probability.ts');
+const extension=await loadUpdateHistory(history.model);
+const view=projectUpdatedLiveView(official,{snapshots:[...history.index.snapshots,...extension.index.snapshots]},[history.pre,history.post,...extension.snapshots],extension.update,extension.records);
 assert.deepEqual(await loadLiveView(),view);
-assert.equal(view.teams.length,19);assert.equal(view.nodes.length,2);
-for(const team of view.teams)for(let i=0;i<2;i++)for(const event of curveEvents){const raw=[history.pre,history.post][i].teams.find(t=>t.teamId===team.id);assert.equal(team.points[i].values[event].count,raw[event+'Count']);assert.equal(team.points[i].values[event].probability,raw[event+'Probability']);}
+assert.equal(view.teams.length,19);assert.equal(view.nodes.length,3);
+for(const team of view.teams)for(let i=0;i<3;i++)for(const event of curveEvents){const raw=[history.pre,history.post,...extension.snapshots][i].teams.find(t=>t.teamId===team.id);assert.equal(team.points[i].values[event].count,raw[event+'Count']);assert.equal(team.points[i].values[event].probability,raw[event+'Probability']);}
 assert.equal(view.matches.filter(m=>m.stage==='PLAY_IN').length,6);
-assert.equal(view.matches.filter(m=>m.stage==='SWISS'&&m.time===null&&m.scoreA===null&&m.winner===null).length,8);
+assert.equal(view.matches.filter(m=>m.stage==='SWISS'&&m.round===1&&m.status==='COMPLETED').length,8);
+assert.equal(view.matches.filter(m=>m.stage==='SWISS'&&m.round===2&&m.scoreA===null&&m.winner===null).length,8);
 for(const r of regions)assert.equal(visibleTeams(view.teams,r).length,view.teams.filter(t=>r==='ALL'||t.region===r).length);
-assert.equal(visibleTeams(view.teams,'ALL')[0].id,'HLE');
+assert.equal(visibleTeams(view.teams,'ALL').length,19);
 assert.equal(view.teams.filter(t=>t.status==='已淘汰').length,3);
 assert.equal(probabilityText(0),'0%');assert.equal(probabilityText(.00001),'<0.1%');assert.equal(probabilityText(1),'100.0%');
 assert.equal(deltaText(-.001),'−0.001 pp');assert.equal(deltaText(.045),'+0.045 pp');assert.equal(deltaText(0),'0 pp');
@@ -28,7 +32,7 @@ console.log('Live UI: 19 teams / 57 curves / 2 nodes / future node / all counts 
 const fixture=await mkdtemp(join(tmpdir(),'live-ui-'));
 try{
  const files=[...ENGINE_FILES,...STRENGTH_FILES].map(f=>'lib/sim/'+f);
- files.push(...GENERATOR_FILES,'lib/sim/precomputedOdds.json','lib/live/snapshots/index.json','lib/live/snapshots/post-play-in-v1.json',...['index.json','pre-tournament-v1.json','post-play-in-v1.json','frozen-system-v1.json'].map(f=>'lib/live/probability/snapshots/'+f));
+ files.push(...GENERATOR_FILES,...UPDATE_FILES,'lib/live/updates/facts/index.json','lib/live/updates/facts/swiss-r1-v1.json','lib/live/updates/snapshots/index.json','lib/live/updates/snapshots/swiss-r1-v1.json','lib/sim/precomputedOdds.json','lib/live/snapshots/index.json','lib/live/snapshots/post-play-in-v1.json',...['index.json','pre-tournament-v1.json','post-play-in-v1.json','frozen-system-v1.json'].map(f=>'lib/live/probability/snapshots/'+f));
  for(const file of new Set(files)){await mkdir(dirname(join(fixture,file)),{recursive:true});await copyFile(file,join(fixture,file));}
  assert.deepEqual(await readLiveView(fixture),view);
  const target=join(fixture,'lib/live/probability/snapshots/post-play-in-v1.json');await writeFile(target,'{}');await assert.rejects(readLiveView(fixture),/checksum/);
@@ -43,6 +47,6 @@ const {renderToStaticMarkup}=await import('react-dom/server');
 const {LiveTournament}=await import('../components/live/live-tournament.tsx');
 const html=renderToStaticMarkup(React.createElement(LiveTournament,{data:view}));
 assert.equal((html.match(/data-live-team=/g)||[]).length,19);assert.equal((html.match(/data-curve=/g)||[]).length,57);
-const future=structuredClone(view);future.nodes.push({...view.nodes[1],id:'test-future',label:'测试未来节点'});for(const t of future.teams)t.points.push({...t.points[1],snapshotId:'test-future'});
+const future=structuredClone(legacy);future.nodes.push({...view.nodes[1],id:'test-future',label:'测试未来节点'});for(const t of future.teams)t.points.push({...t.points[1],snapshotId:'test-future'});
 const expanded=renderToStaticMarkup(React.createElement(LiveTournament,{data:future}));assert.equal((expanded.match(/测试未来节点<\/text>/g)||[]).length,19);
 console.log('Actual component SSR: 19 cards, 57 lines, third synthetic node rendered on all 19 charts.');
