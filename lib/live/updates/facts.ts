@@ -34,11 +34,11 @@ export function validateSwissUpdate(input:unknown,official:OfficialSnapshot){
  if(Math.min(...r2.filter(m=>m.scheduledAt).map(m=>Date.parse(m.scheduledAt!)))!==Date.parse(update.nextRoundStartsAt))throw Error('Wrong earliest R2 start');
  return {update,records,factsSHA256:semanticSHA256(factsInput(update))};
 }
-export async function loadSwissUpdate(root=new URL('file://'+process.cwd()+'/lib/live/updates/')){
- const official=await verifiedA1(),index=JSON.parse(await readFile(new URL('facts/index.json',root),'utf8'));
+export async function loadSwissUpdate(root=process.cwd()+'/lib/live/updates'){
+ const official=await verifiedA1(),index=JSON.parse(await readFile(`${root}/facts/index.json`,'utf8'));
  if(index.schemaVersion!=='live-swiss-update-index-v1.0'||index.entries.length!==1)throw Error('Unknown update index');
  const e=index.entries[0];if(!/^[-a-z0-9]+\.json$/.test(e.file))throw Error('Unsafe facts path');
- const bytes=await readFile(new URL('facts/'+e.file,root));if(sha256(bytes)!==e.fileSHA256)throw Error('Update file checksum mismatch');
+ const bytes=await readFile(`${root}/facts/${e.file}`);if(sha256(bytes)!==e.fileSHA256)throw Error('Update file checksum mismatch');
  const checked=validateSwissUpdate(JSON.parse(bytes.toString()),official);
  if(e.snapshotId!==checked.update.snapshotId||e.factsSHA256!==checked.factsSHA256)throw Error('Update fact checksum mismatch');
  return {...checked,official};
