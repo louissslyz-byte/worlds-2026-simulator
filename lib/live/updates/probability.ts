@@ -35,8 +35,8 @@ export function validateUpdateProbability(input:unknown,update:SwissUpdate,offic
  }
  return s;
 }
-export async function loadUpdateHistory(model:FrozenSystem,projectRoot=process.cwd()){
- const facts=await loadSwissUpdate(`${projectRoot}/lib/live/updates`);
+export async function loadUpdateHistory(model:FrozenSystem,projectRoot=process.cwd(),officialInput?:OfficialSnapshot){
+ const facts=await loadSwissUpdate(`${projectRoot}/lib/live/updates`,officialInput);
  const read=async(path:string)=>readFile(`${projectRoot}/lib/live/updates/${path}`,'utf8');
  const index=JSON.parse(await read('snapshots/index.json'));
  if(index.schemaVersion!=='live-probability-extension-v1.0'||index.baseHistorySHA256!==sha256(await readFile(`${projectRoot}/lib/live/probability/snapshots/index.json`))||index.snapshots.length!==1)throw Error('History extension/base lock mismatch');

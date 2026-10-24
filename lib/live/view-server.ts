@@ -37,7 +37,7 @@ export async function readLiveView(projectRoot=process.cwd()){
  for(const e of index.snapshots){const s=validateProbabilitySnapshot(await checked(e),model,official,generatorSHA);if(s.snapshotId!==e.snapshotId||s.countSHA256!==e.countSHA256||s.asOf!==e.asOf||s.label!==e.label)throw Error('Live index mismatch');snapshots.push(s);}
  const baseline=JSON.parse(await read('lib/sim/precomputedOdds.json'));
  if(semanticSHA256(countsFromSnapshot(snapshots[0]))!==semanticSHA256(baseline.counts))throw Error('Live PRE differs from R1 counts');
- const extension=await loadUpdateHistory(model,projectRoot);
+ const extension=await loadUpdateHistory(model,projectRoot,official);
  return projectUpdatedLiveView(official,{snapshots:[...index.snapshots,...extension.index.snapshots]},[...snapshots,...extension.snapshots],extension.update,extension.records);
 }
 export const loadLiveView=cache(()=>readLiveView());
