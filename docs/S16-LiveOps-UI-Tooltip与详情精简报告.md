@@ -1,6 +1,6 @@
 # S16-LiveOps-UI — Tooltip与节点详情精简
 
-2026-10-24 · **LOCAL COMPLETE — NOT PUSHED / NOT DEPLOYED**
+2026-10-24 · 初次交付为 **LOCAL COMPLETE — NOT PUSHED / NOT DEPLOYED**。用户随后授权上线，正式发布记录见第10节。
 
 ## 1. 版本与范围
 
@@ -119,3 +119,48 @@
 **UI / DATA INTEGRITY / REGRESSION / PREBUILT SECURITY：PASS。**
 
 本地代码、截图、测试及新候选已完成。未发现未解决的阻断交互问题。实体手机/生产环境未测；本轮不推送、不部署、不生成Preview。后续上线需要用户独立授权，并复验本次新产物SHA和运行参数，不能使用旧冻结候选。
+
+
+## 10. 用户授权后的正式发布
+
+用户明确回复“上线”。本节记录后续生产操作，保留前述本地验收历史。没有重新构建、重新计算概率、推送GitHub或修改业务代码。
+
+### 发布前门禁
+
+- 原项目`worlds-2026-simulator`、projectId `prj_pETbiwwBgfF7fqBELVMeyyLczbdb`只读核对一致，Node22，Hobby。
+- 当前正常Production确认是`dpl_Da4zRHe9yQz4GRdZ5vy7FzycJcYe`，READY，正式域名正确；此前用户已验证Swiss R1及统计正常。它作为本轮回滚目标，不再把更旧R1部署当成Hobby紧邻上一Production。
+- Git门禁`ignoreCommand=exit 0`和本地`git.deploymentEnabled=false`保持关闭；项目系统环境变量自动暴露开启。CLI只读确认没有回滚进行中。
+- 部署前重新扫描579文件与59内部链接，产物树仍为`04513d8f092bb64a53822555bf9ace53106a2383dcdd62f70bdddd529becf446`，批准聚合资源SHA仍为`c2ba86bf8da177c664c5e34d9fa10e9ae16fa671f4e067769775da4fc817b3d2`，私有/凭据命中0。
+
+### 执行与版本溯源
+
+原Vercel CLI64.2.0执行`deploy --prebuilt --prod --yes`，显式携带`TEAM_STATS_RELEASE_ENABLED=true`及批准的`TEAM_STATS_RELEASE_SHA256`。使用原项目绑定与正式域名，未创建额外Preview。CLI日志明确使用`.vercel/output`，上传638个条目；没有云端重新编译业务源码。
+
+| 项目 | 结果 |
+|---|---|
+| 新Deployment ID | `dpl_2RW3cjdW3MrHmv52kn8Ci6ECXHgq` |
+| 状态/目标 | READY / production |
+| 正式地址 | https://worlds-2026-simulator.vercel.app/ |
+| 实例地址 | https://worlds-2026-simulator-5ntupbcph-luis-cf15.vercel.app |
+| 构建业务源码 | `2779b5cf9dc9ba2f8c0aa2b6fa9ff125428802cd` |
+| CLI时HEAD/发布报告 | `7a6fed065aa3bd1d27de41c73e449d903e3b5ed4`（仅后续文档） |
+| releaseId | `s16-liveops-ui-tooltip` |
+| 发布后树SHA | `04513d8f092bb64a53822555bf9ace53106a2383dcdd62f70bdddd529becf446` |
+| 回滚目标 | `dpl_Da4zRHe9yQz4GRdZ5vy7FzycJcYe` |
+
+Vercel控制面于`2026-10-24T13:24:44.656Z`只读确认READY、正式域名别名已切换；再次核对部署元数据的源码、报告提交、releaseId及产物SHA精确一致。旧Production仍为紧邻上一条，Git自动部署门禁未变。生产运行参数证据来自显式部署参数和批准Checksum Gate，不把部署API环境字段当成明文参数验证。
+
+### 线上验收与证据等级
+
+- **控制面独立验收：PASS**。新部署READY，项目/正式别名/版本/产物均一致。
+- **USER-REPORTED PRODUCTION BROWSER VERIFICATION：PASS**。用户刷新正式/live后回复“正常”，具体覆盖：①概率点悬停显示精确读数；②点击详情只显示名称与三项概率，关闭/Escape正常；③GEN/Chovy统计仍正常。这是用户亲自报告，不冒充Codex自动化验证。
+- **Codex独立公网HTTP：未完成**。对/live、/rankings、/teams/gen、/teams/gen/chovy、/.env及/team-profile-data.json进行一轮有限请求，全部UND_ERR_CONNECT_TIMEOUT，未收到应用HTTP响应，不能将受限路径标为线上404/PASS。
+- **Codex独立生产浏览器：未完成**。正式/live连接超时；没有伪造线上截图。前述四宽度、精度、边缘、完整统计和受限路径PASS均来自本轮同一冻结Prebuilt的本地验收。
+
+没有发现已确认重大应用故障，不因执行环境网络超时盲目回滚。必要时使用原账户运行`vercel rollback dpl_Da4zRHe9yQz4GRdZ5vy7FzycJcYe --yes`，复核READY、别名、统计及Swiss R1；应沿用目标部署原运行参数。Hobby回滚资格按紧邻上一Production判断，不保证长期所有历史部署均可回滚。本轮未执行回滚。
+
+**PRODUCTION DEPLOYMENT：READY。**
+
+**PRODUCTION VERIFICATION：控制面PASS、用户浏览器验证PASS；Codex独立公网验收仍受连接限制。**
+
+**LIVE TOOLTIP UI DEPLOYED。未推送GitHub，未修改概率、赛果、Rating或统计。**
