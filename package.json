@@ -23,7 +23,9 @@
     "stats:release": "node --import tsx scripts/create-statistics-release.mjs",
     "build:prebuilt": "node --import tsx scripts/build-prebuilt.mjs",
     "data:validate": "node --import tsx scripts/validate-data.mjs",
-    "update-worlds-data": "pnpm data:validate && pnpm odds:generate"
+    "update-worlds-data": "pnpm data:validate && pnpm odds:generate",
+    "live:update:validate": "node --import tsx scripts/validate-live-update.mjs",
+    "live:update:generate": "node --import tsx scripts/generate-live-update.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

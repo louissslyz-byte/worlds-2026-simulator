@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "live-swiss-update-index-v1.0",
+  "entries": [
+    {
+      "snapshotId": "worlds-2026-swiss-r1-complete-r2-draw-v1",
+      "file": "swiss-r1-v1.json",
+      "fileSHA256": "4395cd045c4457688329e3d33e8ae100ca477cad51ea5e60065babda3ba3d70d",
+      "factsSHA256": "6af05985c917676b74d5844a70a8b6c270a10c877c36753dc923acd30edc5bb4"
+    }
+  ]
+}
