@@ -24,8 +24,9 @@
 .pointDetail{padding:8px 10px;margin:4px 0 8px;scroll-margin-top:var(--site-header-offset,100px)}
 .detailHeader{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .pointDetail .detailHeader button{min-height:44px;min-width:60px;padding:4px 6px}
-.pointDetail time{display:block;color:#526779}
-.snapshotId{display:block;font-size:10px;line-height:1.5;overflow-wrap:anywhere;color:#526779;margin:2px 0 8px}
-.detailRow{display:grid;grid-template-columns:1fr max-content max-content;gap:4px 10px;font-variant-numeric:tabular-nums;align-items:baseline}
-.detailRow b{font-weight:700}
-@media(max-width:359px){.detailRow{grid-template-columns:1fr max-content}.detailRow>span:last-child{grid-column:1/-1;text-align:right}}
+.detailRow{display:grid;grid-template-columns:minmax(0,1fr) max-content;gap:4px 12px;font-variant-numeric:tabular-nums;align-items:baseline}
+.detailRow b{font-weight:700;white-space:nowrap}
+.pointDetail .detailHeader button{min-width:44px;font-size:20px;line-height:1}
+.probabilityTooltip{position:fixed;z-index:1000;pointer-events:none;max-width:calc(100vw - 16px);width:max-content;padding:9px 12px;border:1px solid #bdcfdc;border-radius:3px;background:#f7fbff;color:#142236;box-shadow:0 3px 12px #14223618;font-size:12px;line-height:1.6}
+.probabilityTooltip>strong{display:block;font-size:11px;color:#526779}
+.probabilityTooltip b{font-variant-numeric:tabular-nums;font-size:15px;white-space:nowrap}

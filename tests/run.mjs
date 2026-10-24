@@ -76,3 +76,5 @@ try{
  const tier=defaultTierList();assert.equal(validateTierList(tier),null);const custom=generateRatingsFromTierList(tier);assert.equal(custom[tier.S[0]],ratingConfig.tierBase.S+((tier.S.length-1)/2)*ratingConfig.withinTierStep);const moved={...tier,S:[...tier.S].reverse()};const altered=generateRatingsFromTierList(moved);assert.notEqual(gameProbability(custom[tier.S[0]],custom[tier.S[1]]),gameProbability(altered[tier.S[0]],altered[tier.S[1]]));const mc=runMonteCarloFromState(manual,50,42);assert.ok(mc.iterations>0);const mcOther=runMonteCarloFromState(createSession('CUSTOM_TIER_LIST',altered,moved,42),50,42);assert.ok(mcOther.iterations>0);assert.notDeepEqual(mc.probabilities,mcOther.probabilities);
  console.log('关键场景通过：完整赛事、手动优先、瑞士轮、回退、GPR 转换与缺失回退、自定义评分、Monte Carlo 复现、10 万次赛前快照。');
 }catch(e){console.error(e);process.exitCode=1}
+
+await import('./live-chart-interaction.mjs');

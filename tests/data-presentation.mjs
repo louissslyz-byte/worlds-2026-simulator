@@ -17,7 +17,7 @@ for(const count of [2,3,4]){
  while(data.nodes.length<count){const i=data.nodes.length;const id=`test-only-${i}`;data.nodes.push({...data.nodes[1],id,label:`SWISS R${i-1}`});for(const team of data.teams)team.points.push({...structuredClone(team.points[1]),snapshotId:id});}
  const html=render(data),cards=[...html.matchAll(/<article[^>]*data-live-team="([^"]+)"[^>]*>(.*?)<\/article>/gs)];
  assert.equal(cards.length,19);assert.deepEqual(cards.map(c=>c[1]),visibleTeams(data.teams,'ALL').map(t=>t.id));
- assert.equal((html.match(/data-curve=/g)||[]).length,57);assert.equal((html.match(/role="button"/g)||[]).length,19*count);
+ assert.equal((html.match(/data-curve=/g)||[]).length,57);assert.equal((html.match(/role="button"/g)||[]).length,19*count*3);
  assert.equal((html.match(/相对赛前变化（pp）/g)||[]).length,19);
  for(const [,id,card] of cards){
   assert.match(card,/纵轴固定0至100%/);for(const tick of ['0','50','100'])assert.match(card,new RegExp('>'+tick+'%<'));

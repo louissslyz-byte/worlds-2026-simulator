@@ -11,7 +11,7 @@ assert.deepEqual(actual,expected);assert.equal(actual.nodes.length,3);assert.equ
 assert.equal(actual.matches.filter(m=>m.status==='COMPLETED').length,14);assert.equal(actual.matches.filter(m=>m.round===2&&m.stage==='SWISS'&&m.winner===null&&m.scoreA===null).length,8);
 for(const team of actual.teams)assert.equal(team.points.length,3);
 const html=await (await fetch(base+'/live')).text();assert.equal((html.match(/data-live-team=/g)||[]).length,19);assert.equal((html.match(/data-curve=/g)||[]).length,57);
-assert.equal((html.match(/<circle /g)||[]).length,171);assert.equal((html.match(/role="button"/g)||[]).length,57);
+assert.equal((html.match(/pointer-events="none"/g)||[]).length,171);assert.equal((html.match(/role="button"/g)||[]).length,171);
 let checked=2;
 for(const path of ['/','/rankings','/simulator','/simulator/new','/methodology','/teams','/teams/gen','/teams/gen/chovy']){const r=await fetch(base+path);assert.equal(r.status,200);const body=await r.text();for(const s of ['/Users/','worlds-six-regions-2026-10-14-v1','TEAM_STATS_SNAPSHOT'])assert.ok(!body.includes(s));checked++;}
 for(const path of ['/team-profile-data.json','/.env','/api/statistics','/lib/live/updates/facts/swiss-r1-v1.json','/lib/live/updates/snapshots/swiss-r1-v1.json','/lib/team-profile/gol-match-rows.json','/.team-stats-release/data.json']){assert.equal((await fetch(base+path)).status,404);checked++;}
