@@ -130,3 +130,11 @@ PROFILE_AUDIT_URL=http://127.0.0.1:3061 PROFILE_STATS_RELEASE=1 node --import ts
 重新只读核对原Vercel项目、当前Production、可接受回滚目标、Git自动部署关闭和统计运行参数。403、访问受限等要记录准确证据，不能当成应用故障或伪造验证成功。本次只读403尚需恢复权限，因此正式部署NO-GO；本地数据/页面/产物均通过。
 
 **停在本地候选与报告。等待用户分别批准Production部署及Git Push。** 不因为构建成功自动执行deploy，不创建Preview，不更改云端设置，不推进下一轮结果或M0研究。
+
+## 2026-10-25补记：R2节点已完成
+
+保留第7节作为R1当时的限制。现已独立注册`lib/live/updates/round2/`，没有修改R1目录或旧验证器。
+
+本次实际入口：`pnpm live:round2:validate --facts-only` → `node --import tsx tests/live-round2.mjs --facts-only` → 保存生成代码Commit → 明确授权后运行一次`pnpm live:round2:generate --candidate "$NEW_CANDIDATE_DIRECTORY"` → `node --import tsx scripts/validate-live-round2.mjs --candidate "$NEW_CANDIDATE_DIRECTORY"` → 独占新增归档 → `pnpm live:round2:validate` / `pnpm test` → 原Prebuilt构建及安全审计。
+
+该ID已完成100000有效/0失败，不要在正常维护中重跑或覆盖。状态从R1 Session继续，锁定R2结果并固定R3已知签表；仍不自动抓取、不自动部署。下一比赛日需新事实版本和对应状态校验，不能改写已归档R2。详见本次第二轮更新报告。
