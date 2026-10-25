@@ -38,8 +38,8 @@ assert.equal(JSON.stringify(view),original);
 const source=await readFile('components/live/live-tournament.tsx','utf8');assert.ok(!source.includes('onMouseEnter={()=>setSelected'));
 console.log('Live chart interaction PASS: all 76 real detail panels, exact 0/tiny/100%, nearest/tied hits, viewport clamps, 4/5-node accessibility, untouched source values.');
 
-assert.deepEqual(view.nodes.map(timelineLabel),['赛前','入围赛后','Swiss R1','Swiss R2']);
-assert.equal(timelineLabel({kind:'SWISS-R5-COMPLETE',label:'第五轮结束'}),'Swiss R5');
+assert.deepEqual(view.nodes.map(timelineLabel),['赛前','入围赛后','Swiss R1 后','Swiss R2 后']);
+assert.equal(timelineLabel({kind:'SWISS-R5-COMPLETE',label:'第五轮结束'}),'Swiss R5 后');
 assert.equal(timelineLabel({kind:'UNKNOWN',label:'未登记语义'}),'未登记语义');
 assert.equal(timelineLabel({label:'瑞士轮第三轮后'}),'瑞士轮第三轮后'); // never guess
 for(const team of view.teams){
@@ -71,3 +71,5 @@ const los=view.teams.find(t=>t.id==='LOS');assert.equal(los.points.at(-1).values
 console.log('Timeline/termination PASS: global axes, explicit semantic labels, verified PI eliminations, zero-count survivor, synthetic Swiss R3 elimination, 5/6-node fixtures, source values unchanged.');
 
 assert.equal(fullSnapshotLabel('SWISS-R3-COMPLETE'),'瑞士轮第三轮后');assert.equal(fullSnapshotLabel('UNKNOWN'),'UNKNOWN');
+
+for(let round=1;round<=5;round++)assert.equal(timelineLabel({kind:`SWISS-R${round}-COMPLETE`,label:'完整节点名称'}),`Swiss R${round} 后`);

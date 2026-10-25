@@ -17,7 +17,7 @@ export function timelineLabel(node:{kind?:string;label:string}){
  if(node.kind==='PRE-TOURNAMENT')return '赛前';
  if(node.kind==='POST-PLAY-IN')return '入围赛后';
  const round=/^SWISS-R([1-5])-COMPLETE$/.exec(node.kind??'');
- if(round)return `Swiss R${round[1]}`;
+ if(round)return `Swiss R${round[1]} 后`;
  const stages:Record<string,string>={'QUARTERFINALS-COMPLETE':'Quarterfinals','SEMIFINALS-COMPLETE':'Semifinals','FINAL-COMPLETE':'Final'};
  return stages[node.kind??'']??node.label;
 }
