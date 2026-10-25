@@ -131,3 +131,26 @@ X 坐标始终按全局完整节点列表计算。保留原有每节点约120单
 重新运行lint、typecheck、完整现有回归、本地Next生产构建和19请求Live HTTP/RSC测试，全部通过。浏览器在1440/768/390/320四宽度读取全部19队的实际标签边界，未发现标签重叠或页面横向溢出。测试明确覆盖 R1–R5 通用后缀；原第五、第六节点和淘汰截断测试保持通过。
 
 新截图及日志保存于原仓库外审阅目录的 `label-followup/` 子目录，截图为 `after-1440.jpg`、`after-768.jpg`、`after-390.jpg`、`after-320.jpg`；微调前对照使用原目录同宽度 `after-*.jpg`，未覆盖旧证据。所有数据文件保持不变，无正式Monte Carlo、Push、部署或Prebuilt发布行为。旧Prebuilt仍不得用于发布本轮修复。
+
+## 正式发布记录（2026-10-26，北京时间）
+
+用户明确授权“上线，部署github”，随后补齐本次GitHub Deploy Key。按原项目本地Prebuilt流程重新构建、审计并发布，未重用旧产物。
+
+- 实际部署源码：`7dd4b9c9709e97fcbdcb3a2c93734a725dc7d779`。
+- Vercel CLI：64.2.0；Node22；pnpm9.15.9。
+- 新Prebuilt树SHA-256：`f8f1d96a9ee9fdceddc20b513aba7b174d3609f63a3378181932945cb70f9b56`。
+- 完整产物审计：585文件、59内部链接；19队95人受控聚合资源；私有数据/凭据命中0，source map 0。部署前后树哈希完全相同。
+- 批准聚合SHA和显式运行参数仍为：`TEAM_STATS_RELEASE_ENABLED=true`、`TEAM_STATS_RELEASE_SHA256=c2ba86bf8da177c664c5e34d9fa10e9ae16fa671f4e067769775da4fc817b3d2`。没有放宽本地私有快照门禁。
+- 实际新Prebuilt本机验收：Live HTTP/RSC 19请求通过；统计122请求、19队95人数据通过；1302英雄池记录、Roster/Road to Worlds通过；四宽度浏览器均有正确“Swiss R1 后 / Swiss R2 后”、210绘制点、3处淘汰终点且无页面溢出。
+- 发布前正常Production/回滚目标：`dpl_FLqYBneUq6ec7TMWFmzumKYJ6HzK`。
+- 新Production：`dpl_sQFExCfpVFK1RAm1bB7SrKz1u2Cu`，状态READY。
+- 新实例：`https://worlds-2026-simulator-hhbnatc7d-luis-cf15.vercel.app`。
+- 正式域名 `https://worlds-2026-simulator.vercel.app/` 已切换。控制面独立核实READY、别名、源码Commit、releaseId与Prebuilt哈希一致。
+- 原正常部署仍为紧邻的前一个Production，按现有Hobby回滚方案保留；本轮没有执行回滚。
+- Git自动部署仍关闭：项目ignore命令`exit 0`，仓库`git.deploymentEnabled=false`。不修改main，不创建Preview。
+
+部署命令为现有CLI的 `deploy --prebuilt --prod --yes --json`，使用原项目绑定和上列显式统计参数，并附带源码/产物哈希元数据；不包含云存储或新的数据API。
+
+独立Production HTTP复验：`/live`、`/teams/gen`、`/teams/gen/chovy`、`/.env` 四个请求均超时、无HTTP状态，不能标记公网页面或404检查PASS。已请求用户人工确认标签、三支淘汰队终点、Tooltip/详情及GEN/Chovy统计；当前尚未收到本次人工验证回复。不能将本机Prebuilt测试冒充线上浏览器通过。
+
+详细构建/控制面/审计/截图证据保存在仓库外 `s16-live-ui02-release-2026-10-26` 目录。历史事实、四份概率快照、模型和会话均未修改。本报告提交仅记录发布结果，不改变已部署产物。
