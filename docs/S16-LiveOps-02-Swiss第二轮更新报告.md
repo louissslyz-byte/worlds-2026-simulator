@@ -143,8 +143,10 @@ node --import tsx scripts/validate-live-round2.mjs --candidate "$NEW_CANDIDATE_D
 - 控制面：**PASS**。
 - Codex独立公网HTTP：**未完成**。对/live、/rankings、GEN/Chovy及两个受限路径各一次请求均UND_ERR_CONNECT_TIMEOUT，未收到应用响应，不标200或404/PASS。
 - Codex独立生产浏览器：**未完成**。打开正式/live连接超时。没有把本地截图冒充线上截图。
-- 用户浏览器：已请求核验R2比分、R3待开赛、四节点、GEN96.506%/23.929%、Tooltip及GEN/Chovy统计，当前待回复。
+- **USER-REPORTED PRODUCTION BROWSER VERIFICATION：PASS**。用户刷新正式网站后回复“正常”，具体确认R2八场比分、R3待开赛对阵、四节点、GEN八强96.506%/夺冠23.929%、Tooltip及GEN/Chovy统计。这是用户亲自报告，不冒充Codex独立HTTP或浏览器验收，也不扩展到未询问的检查项目。
 
 没有发现已确认重大应用故障，未因工具网络超时盲目回滚。必要时使用原账户执行`vercel rollback dpl_2RW3cjdW3MrHmv52kn8Ci6ECXHgq --yes`，复核READY、正式别名、统计及原三节点版本；沿用目标部署原参数。本轮未执行回滚。
 
-**PRODUCTION DEPLOYMENT：READY。PRODUCTION VERIFICATION：CONDITIONAL，等待用户浏览器确认；独立公网验收受连接限制。**
+**PRODUCTION DEPLOYMENT：READY。控制面与用户生产浏览器验证：PASS；Codex独立公网验收仍受连接限制。**
+
+第二轮更新已上线并完成上述用户验收。没有新增模拟、修改业务代码、推进第三轮赛果或推送GitHub。
