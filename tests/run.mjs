@@ -1,3 +1,4 @@
+import './live-round2.mjs';
 import './live-updates.mjs';
 import './rankings-presentation.mjs';
 import './data-presentation.mjs';

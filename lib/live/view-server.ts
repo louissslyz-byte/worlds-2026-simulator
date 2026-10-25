@@ -9,7 +9,8 @@ import {historySchema} from './probability/schema';
 import {frozenSystemSchema,sha256,semanticSHA256} from './probability/model';
 import {ENGINE_FILES,STRENGTH_FILES,GENERATOR_FILES,LIVE_ODDS} from './probability/config';
 import {validateProbabilitySnapshot,countsFromSnapshot} from './probability/snapshot';
-import {projectUpdatedLiveView} from './view';
+import {projectUpdatedLiveView,projectRound2LiveView} from './view';
+import {loadRound2History} from './updates/round2';
 import {loadUpdateHistory} from './updates/probability';
 export async function readLiveView(projectRoot=process.cwd()){
  if(typeof window!=='undefined')throw Error('Live archives are server-only');
@@ -38,6 +39,7 @@ export async function readLiveView(projectRoot=process.cwd()){
  const baseline=JSON.parse(await read('lib/sim/precomputedOdds.json'));
  if(semanticSHA256(countsFromSnapshot(snapshots[0]))!==semanticSHA256(baseline.counts))throw Error('Live PRE differs from R1 counts');
  const extension=await loadUpdateHistory(model,projectRoot,official);
- return projectUpdatedLiveView(official,{snapshots:[...index.snapshots,...extension.index.snapshots]},[...snapshots,...extension.snapshots],extension.update,extension.records);
+ const latest=await loadRound2History(model,projectRoot,official);
+ return projectRound2LiveView(projectUpdatedLiveView(official,{snapshots:[...index.snapshots,...extension.index.snapshots,latest.index.snapshot]},[...snapshots,...extension.snapshots,latest.snapshot],extension.update,extension.records),latest.update,latest.records);
 }
 export const loadLiveView=cache(()=>readLiveView());

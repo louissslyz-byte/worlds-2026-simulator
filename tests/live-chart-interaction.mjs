@@ -28,12 +28,12 @@ assert.equal(nearestChartHit([{...points[0],event:0},{...points[0],event:1}],44,
 for(const width of [320,390,768,1440])for(const x of [0,width-1])for(const y of [0,799]){
  const p=tooltipPosition(x,y,210,64,width,800);assert.ok(p.left>=8&&p.left+210<=width-8);assert.ok(p.top>=8&&p.top+64<=792);
 }
-for(const count of [3,4]){
- const data=structuredClone(view);if(count===4){data.nodes.push({...data.nodes[2],id:'test-future',label:'测试下一轮'});for(const t of data.teams)t.points.push({...t.points[2],snapshotId:'test-future'});}
+for(const count of [4,5]){
+ const data=structuredClone(view);if(count===5){data.nodes.push({...data.nodes[2],id:'test-future',label:'测试下一轮'});for(const t of data.teams)t.points.push({...t.points[2],snapshotId:'test-future'});}
  const html=renderToStaticMarkup(React.createElement(LiveTournament,{data}));
  assert.equal((html.match(/data-point-node=/g)||[]).length,19*3*count);
  assert.equal((html.match(/data-curve=/g)||[]).length,57);
 }
 assert.equal(JSON.stringify(view),original);
 const source=await readFile('components/live/live-tournament.tsx','utf8');assert.ok(!source.includes('onMouseEnter={()=>setSelected'));
-console.log('Live chart interaction PASS: all 57 real detail panels, exact 0/tiny/100%, nearest/tied hits, viewport clamps, 3/4-node accessibility, untouched source values.');
+console.log('Live chart interaction PASS: all 76 real detail panels, exact 0/tiny/100%, nearest/tied hits, viewport clamps, 4/5-node accessibility, untouched source values.');

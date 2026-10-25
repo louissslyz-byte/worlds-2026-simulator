@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "live-round2-generator-source-v1.0",
+  "generatorCommit": "e0e61d81d3d51505cafac00d008ad98f647cdc14",
+  "sourceFiles": [
+    [
+      "lib/live/updates/round2.ts",
+      "c436b852508ada40f65bf03d8e3d204989e75156e220ad5f673019930d7f3575"
+    ],
+    [
+      "scripts/generate-live-round2.mjs",
+      "9bf24050ae6eaddc49f45be5a624d5b7a90a9789d0bac48c2c9e54f031bd1eb3"
+    ]
+  ],
+  "generatorSourceSHA256": "d04459a1b8b464b39b7176aee30f708feadc6367edf1b0083029f36ec6a57c29"
+}
