@@ -30,3 +30,5 @@
 .probabilityTooltip{position:fixed;z-index:1000;pointer-events:none;max-width:calc(100vw - 16px);width:max-content;padding:9px 12px;border:1px solid #bdcfdc;border-radius:3px;background:#f7fbff;color:#142236;box-shadow:0 3px 12px #14223618;font-size:12px;line-height:1.6}
 .probabilityTooltip>strong{display:block;font-size:11px;color:#526779}
 .probabilityTooltip b{font-variant-numeric:tabular-nums;font-size:15px;white-space:nowrap}
+
+.eliminationMarker line{stroke:#b46565;stroke-width:1;stroke-dasharray:3 4;opacity:.55}.eliminationMarker text{fill:#9d4545;font-size:11px}

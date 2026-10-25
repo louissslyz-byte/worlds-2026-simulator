@@ -17,20 +17,20 @@ for(const count of [2,3,4]){
  while(data.nodes.length<count){const i=data.nodes.length;const id=`test-only-${i}`;data.nodes.push({...data.nodes[1],id,label:`SWISS R${i-1}`});for(const team of data.teams)team.points.push({...structuredClone(team.points[1]),snapshotId:id});}
  const html=render(data),cards=[...html.matchAll(/<article[^>]*data-live-team="([^"]+)"[^>]*>(.*?)<\/article>/gs)];
  assert.equal(cards.length,19);assert.deepEqual(cards.map(c=>c[1]),visibleTeams(data.teams,'ALL').map(t=>t.id));
- assert.equal((html.match(/data-curve=/g)||[]).length,57);assert.equal((html.match(/role="button"/g)||[]).length,19*count*3);
+ assert.equal((html.match(/data-curve=/g)||[]).length,57);assert.equal((html.match(/role="button"/g)||[]).length,(16*count+3*2)*3);
  assert.equal((html.match(/相对赛前变化（pp）/g)||[]).length,19);
  for(const [,id,card] of cards){
   assert.match(card,/纵轴固定0至100%/);for(const tick of ['0','50','100'])assert.match(card,new RegExp('>'+tick+'%<'));
   const team=data.teams.find(t=>t.id===id),w=Math.max(320,72+(count-1)*120);
   for(const event of curveEvents){
    const segment=card.match(new RegExp(`data-curve="${event}"[^>]*><polyline points="([^"]+)"`));assert.ok(segment);
-   const xy=segment[1].split(' ').map(p=>p.split(',').map(Number));assert.equal(xy.length,count);
-   for(let i=0;i<count;i++){assert.equal(xy[i][0],44+i*(w-68)/(count-1));assert.equal(xy[i][1],112-team.points[i].values[event].probability*88);assert.ok(xy[i][1]>=24&&xy[i][1]<=112);}
+   const xy=segment[1].split(' ').map(p=>p.split(',').map(Number));const shown=team.eliminationNodeIndex===null?count:team.eliminationNodeIndex+1;assert.equal(xy.length,shown);
+   for(let i=0;i<shown;i++){assert.equal(xy[i][0],44+i*(w-68)/(count-1));assert.equal(xy[i][1],112-team.points[i].values[event].probability*88);assert.ok(xy[i][1]>=24&&xy[i][1]<=112);}
    const first=team.points[0].values[event],last=team.points.at(-1).values[event];
    const escaped=s=>s.replaceAll('<','&lt;');
    assert.ok(card.includes(escaped(probabilityText(first.probability))));assert.ok(card.includes(escaped(probabilityText(last.probability))));
    assert.ok(card.includes(deltaText((last.count-first.count)*100/team.points.at(-1).simulationCount)));
-   for(const p of team.points)assert.ok(card.includes(`${(p.values[event].probability*100).toFixed(3)}%`));
+   for(const p of team.points.slice(0,shown))assert.ok(card.includes(`${(p.values[event].probability*100).toFixed(3)}%`));
   }
  }
  if(count>2)assert.equal((html.match(/历史节点，可横向滚动/g)||[]).length,19);
