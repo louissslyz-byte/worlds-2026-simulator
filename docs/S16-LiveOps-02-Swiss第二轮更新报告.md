@@ -1,6 +1,6 @@
 # S16-LiveOps-02 — Swiss第二轮更新
 
-2026-10-25 · **LOCAL COMPLETE — PRODUCTION NOT UPDATED**
+2026-10-25 · 初次验收为 **LOCAL COMPLETE — PRODUCTION NOT UPDATED**。用户随后授权上线，正式发布记录见文末。
 
 ## 范围与版本
 
@@ -115,3 +115,36 @@ node --import tsx scripts/validate-live-round2.mjs --candidate "$NEW_CANDIDATE_D
 | C9 | 0.000 | 0.000 | 0.000 | 0.000 | +0.000 |
 | LOS | 2.155 | 0.555 | 0.000 | 0.000 | +0.000 |
 | FUR | 0.000 | 0.000 | 0.000 | 0.000 | +0.000 |
+
+## 用户授权后的正式发布
+
+用户回复“上线”并完成Vercel官方登录验证。没有重新构建、重算Monte Carlo或推送GitHub。
+
+- 发布前重新审计同一产物：585文件、59内部链接，树SHA仍为`9f73d7a2a304264b76d46f739a3c6513afe2bcf6b7880772b689899539e22dd1`；四节点、事实和100K计数只读复验通过。
+- 原项目绑定`prj_pETbiwwBgfF7fqBELVMeyyLczbdb`正确。原Production `dpl_2RW3cjdW3MrHmv52kn8Ci6ECXHgq`为READY、正式域名正确；CLI确认没有回滚进行中。
+- Git门禁`ignoreCommand=exit 0`及`git.deploymentEnabled=false`不变；Node22和系统环境变量暴露设置核实。Hobby回滚目标为本轮紧邻上一Production，而非更早的R1版本。
+- 使用原CLI64.2.0执行`deploy --prebuilt --prod --yes`，显式携带`TEAM_STATS_RELEASE_ENABLED=true`和批准聚合SHA `c2ba86bf8da177c664c5e34d9fa10e9ae16fa671f4e067769775da4fc817b3d2`。日志确认使用`.vercel/output`的644个条目，没有云端重新计算或重新编译业务源码。
+
+| 项目 | 结果 |
+|---|---|
+| 新Deployment | `dpl_FLqYBneUq6ec7TMWFmzumKYJ6HzK` |
+| 状态 / target | READY / production |
+| 正式域名 | https://worlds-2026-simulator.vercel.app/ |
+| 实例地址 | https://worlds-2026-simulator-n0ek2razp-luis-cf15.vercel.app |
+| 构建业务源码 | `a78d873c73110e035e38947dcff2b2e044ee2fef` |
+| CLI时HEAD / 报告提交 | `09150c6793141361ecadc3d5502913d5f1987e7f`（后续仅测试和报告） |
+| releaseId | `s16-liveops-02-swiss-r2` |
+| 回滚目标 | `dpl_2RW3cjdW3MrHmv52kn8Ci6ECXHgq` |
+
+控制面于`2026-10-25T04:37:17.102Z`独立确认READY、正式别名已切换、旧Production为紧邻上一条。部署元数据的业务源码、报告提交、releaseId和产物SHA逐项一致；发布后再次扫描产物SHA未变，私有/凭据命中0。生产统计参数证据为显式部署参数与批准Checksum Gate，不把API环境字段冒充参数明文核验。
+
+线上验证：
+
+- 控制面：**PASS**。
+- Codex独立公网HTTP：**未完成**。对/live、/rankings、GEN/Chovy及两个受限路径各一次请求均UND_ERR_CONNECT_TIMEOUT，未收到应用响应，不标200或404/PASS。
+- Codex独立生产浏览器：**未完成**。打开正式/live连接超时。没有把本地截图冒充线上截图。
+- 用户浏览器：已请求核验R2比分、R3待开赛、四节点、GEN96.506%/23.929%、Tooltip及GEN/Chovy统计，当前待回复。
+
+没有发现已确认重大应用故障，未因工具网络超时盲目回滚。必要时使用原账户执行`vercel rollback dpl_2RW3cjdW3MrHmv52kn8Ci6ECXHgq --yes`，复核READY、正式别名、统计及原三节点版本；沿用目标部署原参数。本轮未执行回滚。
+
+**PRODUCTION DEPLOYMENT：READY。PRODUCTION VERIFICATION：CONDITIONAL，等待用户浏览器确认；独立公网验收受连接限制。**
