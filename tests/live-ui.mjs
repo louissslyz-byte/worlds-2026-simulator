@@ -69,3 +69,20 @@ for(const [,number,html] of groups){
  assert.ok(html.includes(`SWISS ROUND ${number}`));
 }
 console.log('Swiss schedule: official matches grouped once by round, even for unordered input.');
+
+// Historical records are counted by series and only from completed earlier rounds.
+const {swissRecordBeforeMatch}=await import('../components/live/live-tournament.tsx');
+for(const [team,round,record] of [['GEN',1,'0–0'],['GEN',2,'1–0'],['HLE',2,'1–0'],['GEN',3,'2–0'],['DK',4,'3–0'],['CFO',4,'1–2'],['KC',4,'1–2']])assert.equal(swissRecordBeforeMatch(view.matches,team,round),record);
+const incomplete=structuredClone(view.matches);const prior=incomplete.find(m=>m.stage==='SWISS'&&m.round===2&&(m.a==='GEN'||m.b==='GEN'));prior.status='SCHEDULED';prior.winner=null;
+assert.equal(swissRecordBeforeMatch(incomplete,'GEN',3),null);
+assert.ok(grouped.includes('2–0'));assert.ok(grouped.includes('1–2'));assert.ok(!grouped.includes('赛前 2–0'));
+console.log('Swiss pre-match series records: historical rounds and incomplete data PASS.');
+
+const {sortMatchesByTime}=await import('../components/live/live-tournament.tsx');
+const ordered=sortMatchesByTime(view.matches.filter(m=>m.stage==='SWISS'&&m.round===1).toReversed());
+assert.deepEqual(ordered.map(m=>m.time),ordered.map(m=>m.time).toSorted());
+const unknown=[{...ordered[0],id:'unknown-a',time:null,date:null},{...ordered[1],id:'unknown-b',time:null,date:null}];
+assert.deepEqual(sortMatchesByTime([unknown[0],ordered[1],unknown[1],ordered[0]]).map(m=>m.id),[ordered[0].id,ordered[1].id,'unknown-a','unknown-b']);
+assert.ok(!grouped.includes('✓ 已结束'));assert.ok(!grouped.includes('待开赛'));
+console.log('Match times sort within each section; unknown times remain last; status text removed PASS.');
+const partial=[{...ordered[0],id:'date-only',time:null,date:'2026-10-15'}, {...ordered[1],id:'later',date:'2026-10-16'}];assert.deepEqual(sortMatchesByTime(partial.toReversed()).map(m=>m.id),['date-only','later']);

@@ -34,3 +34,5 @@
 .eliminationMarker line{stroke:#b46565;stroke-width:1;stroke-dasharray:3 4;opacity:.55}.eliminationMarker text{fill:#9d4545;font-size:11px}
 
 .swissRound{margin-top:24px}.swissRound h3{font-family:var(--font-en-display);font-size:18px;letter-spacing:.02em;line-height:1.2;color:var(--color-ink,#142236);margin:0 0 10px;padding-bottom:8px;border-bottom:2px solid var(--color-ink,#142236)}
+
+.teamRecord{display:flex;flex-direction:column;line-height:1.2;min-width:0}.teamRecord small{font-size:11px;color:var(--color-text-muted,#576878);font-weight:400;white-space:nowrap;margin-top:3px}
