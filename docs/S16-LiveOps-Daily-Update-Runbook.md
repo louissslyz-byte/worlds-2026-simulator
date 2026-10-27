@@ -138,3 +138,7 @@ PROFILE_AUDIT_URL=http://127.0.0.1:3061 PROFILE_STATS_RELEASE=1 node --import ts
 本次实际入口：`pnpm live:round2:validate --facts-only` → `node --import tsx tests/live-round2.mjs --facts-only` → 保存生成代码Commit → 明确授权后运行一次`pnpm live:round2:generate --candidate "$NEW_CANDIDATE_DIRECTORY"` → `node --import tsx scripts/validate-live-round2.mjs --candidate "$NEW_CANDIDATE_DIRECTORY"` → 独占新增归档 → `pnpm live:round2:validate` / `pnpm test` → 原Prebuilt构建及安全审计。
 
 该ID已完成100000有效/0失败，不要在正常维护中重跑或覆盖。状态从R1 Session继续，锁定R2结果并固定R3已知签表；仍不自动抓取、不自动部署。下一比赛日需新事实版本和对应状态校验，不能改写已归档R2。详见本次第二轮更新报告。
+
+## 2026-10-27补记：R3节点已完成
+
+新增`lib/live/updates/round3/`；已核验R3赛果及R4官方签表，原R1/R2归档保留。入口：`node --import tsx tests/live-round3.mjs --facts-only` → 审核并提交生成器 → 明确授权后一次运行 `pnpm live:round3:generate --candidate "$NEW_CANDIDATE_DIRECTORY"` → `node --import tsx scripts/validate-live-round3.mjs --candidate "$NEW_CANDIDATE_DIRECTORY"` → 追加归档 → `pnpm live:round3:validate` 和回归。此次ID已完成100,000有效样本，不应重跑或覆盖。下一轮需新的事实与快照版本，并在真实R4完成后另行核验。
