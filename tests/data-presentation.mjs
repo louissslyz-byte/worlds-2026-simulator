@@ -13,11 +13,11 @@ const {LiveTournament}=await import('../components/live/live-tournament.tsx');
 const view=await loadLiveView(),before=JSON.stringify(view);
 const render=data=>renderToStaticMarkup(React.createElement(LiveTournament,{data}));
 for(const count of [2,3,4]){
- const data=structuredClone(view);data.nodes=data.nodes.slice(0,count);for(const team of data.teams)team.points=team.points.slice(0,count);
+ const data=structuredClone(view);data.nodes=data.nodes.slice(0,count);for(const team of data.teams){team.points=team.points.slice(0,count);if(team.eliminationNodeIndex!==null&&team.eliminationNodeIndex>=count)team.eliminationNodeIndex=null;}
  while(data.nodes.length<count){const i=data.nodes.length;const id=`test-only-${i}`;data.nodes.push({...data.nodes[1],id,label:`SWISS R${i-1}`});for(const team of data.teams)team.points.push({...structuredClone(team.points[1]),snapshotId:id});}
  const html=render(data),cards=[...html.matchAll(/<article[^>]*data-live-team="([^"]+)"[^>]*>(.*?)<\/article>/gs)];
  assert.equal(cards.length,19);assert.deepEqual(cards.map(c=>c[1]),visibleTeams(data.teams,'ALL').map(t=>t.id));
- assert.equal((html.match(/data-curve=/g)||[]).length,57);assert.equal((html.match(/role="button"/g)||[]).length,(16*count+3*2)*3);
+ assert.equal((html.match(/data-curve=/g)||[]).length,57);assert.equal((html.match(/role="button"/g)||[]).length,data.teams.reduce((sum,t)=>sum+(t.eliminationNodeIndex===null?count:t.eliminationNodeIndex+1),0)*3);
  assert.equal((html.match(/相对赛前变化（pp）/g)||[]).length,19);
  for(const [,id,card] of cards){
   assert.match(card,/纵轴固定0至100%/);for(const tick of ['0','50','100'])assert.match(card,new RegExp('>'+tick+'%<'));
@@ -43,5 +43,5 @@ console.log('U2-C Live: 19/57, exact real probabilities/deltas/axes/order, in-me
 
 const real=render(view),los=real.match(/data-live-team="LOS"[^>]*>(.*?)<\/article>/s)[1];
 assert.ok(los.includes('100,000次样本未抽中，不代表理论上不可能'));
-for(const id of ['C9','FUR','MVK']){const card=real.match(new RegExp(`data-live-team="${id}"[^>]*>(.*?)<\\/article>`,'s'))[1];assert.ok(!card.includes('100,000次样本未抽中，不代表理论上不可能'));}
-console.log('LiveOps real three-node zero-count distinction: LOS sampled zero vs three eliminated teams PASS.');
+for(const id of ['C9','FUR','MVK','AL','TSW']){const card=real.match(new RegExp(`data-live-team="${id}"[^>]*>(.*?)<\\/article>`,'s'))[1];assert.ok(!card.includes('100,000次样本未抽中，不代表理论上不可能'));}
+console.log('LiveOps zero-count distinction: LOS sampled zero vs five eliminated teams PASS.');

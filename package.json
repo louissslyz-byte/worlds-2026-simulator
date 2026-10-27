@@ -27,7 +27,9 @@
     "live:update:validate": "node --import tsx scripts/validate-live-update.mjs",
     "live:update:generate": "node --import tsx scripts/generate-live-update.mjs",
     "live:round2:generate": "node --import tsx scripts/generate-live-round2.mjs",
-    "live:round2:validate": "node --import tsx scripts/validate-live-round2.mjs"
+    "live:round2:validate": "node --import tsx scripts/validate-live-round2.mjs",
+    "live:round3:generate": "node --import tsx scripts/generate-live-round3.mjs",
+    "live:round3:validate": "node --import tsx scripts/validate-live-round3.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

@@ -28,47 +28,47 @@ assert.equal(nearestChartHit([{...points[0],event:0},{...points[0],event:1}],44,
 for(const width of [320,390,768,1440])for(const x of [0,width-1])for(const y of [0,799]){
  const p=tooltipPosition(x,y,210,64,width,800);assert.ok(p.left>=8&&p.left+210<=width-8);assert.ok(p.top>=8&&p.top+64<=792);
 }
-for(const count of [4,5,6]){
+for(const count of [5,6,7]){
  const data=structuredClone(view);while(data.nodes.length<count){data.nodes.push({...data.nodes[2],id:'test-future',label:'测试下一轮'});for(const t of data.teams)t.points.push({...t.points[2],snapshotId:'test-future'});}
  const html=renderToStaticMarkup(React.createElement(LiveTournament,{data}));
- assert.equal((html.match(/data-point-node=/g)||[]).length,(16*count+3*2)*3);
+ assert.equal((html.match(/data-point-node=/g)||[]).length,data.teams.reduce((sum,t)=>sum+(t.eliminationNodeIndex===null?count:t.eliminationNodeIndex+1),0)*3);
  assert.equal((html.match(/data-curve=/g)||[]).length,57);
 }
 assert.equal(JSON.stringify(view),original);
 const source=await readFile('components/live/live-tournament.tsx','utf8');assert.ok(!source.includes('onMouseEnter={()=>setSelected'));
-console.log('Live chart interaction PASS: all 76 real detail panels, exact 0/tiny/100%, nearest/tied hits, viewport clamps, 4/5-node accessibility, untouched source values.');
+console.log('Live chart interaction PASS: all 95 real detail panels, exact 0/tiny/100%, nearest/tied hits, viewport clamps, 5/6/7-node accessibility, untouched source values.');
 
-assert.deepEqual(view.nodes.map(timelineLabel),['赛前','入围赛后','Swiss R1 后','Swiss R2 后']);
+assert.deepEqual(view.nodes.map(timelineLabel),['赛前','入围赛后','Swiss R1 后','Swiss R2 后','Swiss R3 后']);
 assert.equal(timelineLabel({kind:'SWISS-R5-COMPLETE',label:'第五轮结束'}),'Swiss R5 后');
 assert.equal(timelineLabel({kind:'UNKNOWN',label:'未登记语义'}),'未登记语义');
 assert.equal(timelineLabel({label:'瑞士轮第三轮后'}),'瑞士轮第三轮后'); // never guess
 for(const team of view.teams){
- assert.equal(team.eliminationNodeIndex,['C9','FUR','MVK'].includes(team.id)?1:null);
+ assert.equal(team.eliminationNodeIndex,['C9','FUR','MVK'].includes(team.id)?1:['AL','TSW'].includes(team.id)?4:null);
  const html=renderToStaticMarkup(React.createElement(LiveTournament,{data:{...view,matches:[],teams:[team]}}));
  const count=lastVisibleNode(view.nodes.length,team.eliminationNodeIndex)+1;
  assert.equal((html.match(/data-point-node=/g)||[]).length,count*3);
  assert.equal((html.match(/pointer-events="none" cx=/g)||[]).length,count*3);
  assert.equal((html.match(/data-elimination-node=/g)||[]).length,team.eliminationNodeIndex===null?0:1);
  for(const path of html.matchAll(/<polyline points="([^"]+)"/g))assert.equal(path[1].split(' ').length,count);
- if(team.eliminationNodeIndex!==null){assert.ok(!html.includes('data-point-node="2"'));assert.ok(html.includes('Swiss R2'));}
+ if(team.eliminationNodeIndex!==null){assert.ok(!html.includes(`data-point-node="${team.eliminationNodeIndex+1}"`));assert.ok(html.includes('Swiss R2'));}
 }
-for(const count of [5,6]){
+for(const count of [6,7]){
  const data=structuredClone(view);
  while(data.nodes.length<count){const r=data.nodes.length-1;data.nodes.push({id:`fixture-${r}`,kind:`SWISS-R${r}-COMPLETE`,label:`瑞士轮第${r}轮后`,asOf:`2026-10-${26+r}T00:00:00.000Z`});for(const t of data.teams)t.points.push(structuredClone(t.points.at(-1)));}
  const before=JSON.stringify(data.teams.find(t=>t.id==='GEN').points);
- applyOfficialEliminations(data,['GEN'],'2026-10-29T00:00:00.000Z');
- const gen=data.teams.find(t=>t.id==='GEN');assert.equal(gen.eliminationNodeIndex,4);assert.equal(JSON.stringify(gen.points),before);
- assert.equal(gen.points[4].values.swiss.probability,1); // achieved Swiss event stays 100%
+ applyOfficialEliminations(data,['GEN'],'2026-10-30T00:00:00.000Z');
+ const gen=data.teams.find(t=>t.id==='GEN');assert.equal(gen.eliminationNodeIndex,5);assert.equal(JSON.stringify(gen.points),before);
+ assert.equal(gen.points[5].values.swiss.probability,1); // achieved Swiss event stays 100%
  const html=renderToStaticMarkup(React.createElement(LiveTournament,{data:{...data,matches:[],teams:[gen]}}));
- assert.equal((html.match(/data-point-node=/g)||[]).length,15);assert.ok(!html.includes('data-point-node="5"'));
- const geo=chartGeometry(count);assert.equal(geo.x(4),Number([...html.matchAll(/<polyline points="([^"]+)"/g)][0][1].split(' ').at(-1).split(',')[0]));
+ assert.equal((html.match(/data-point-node=/g)||[]).length,18);assert.ok(!html.includes('data-point-node="6"'));
+ const geo=chartGeometry(count);assert.equal(geo.x(5),Number([...html.matchAll(/<polyline points="([^"]+)"/g)][0][1].split(' ').at(-1).split(',')[0]));
  assert.equal(geo.x(1),chartGeometry(count).x(1));
 }
 assert.equal(verifiedEliminationNode([{asOf:'2026-10-01Z'},{asOf:'2026-10-03Z'}],'2026-10-02Z'),1);
 assert.throws(()=>verifiedEliminationNode(view.nodes,'2030-01-01Z'),/no containing/);
 assert.throws(()=>lastVisibleNode(4,4),/Invalid/);
 const los=view.teams.find(t=>t.id==='LOS');assert.equal(los.points.at(-1).values.champion.count,0);assert.equal(los.eliminationNodeIndex,null);
-console.log('Timeline/termination PASS: global axes, explicit semantic labels, verified PI eliminations, zero-count survivor, synthetic Swiss R3 elimination, 5/6-node fixtures, source values unchanged.');
+console.log('Timeline/termination PASS: global axes, explicit semantic labels, verified PI eliminations, zero-count survivor, verified Swiss R3 elimination, 6/7-node fixtures, source values unchanged.');
 
 assert.equal(fullSnapshotLabel('SWISS-R3-COMPLETE'),'瑞士轮第三轮后');assert.equal(fullSnapshotLabel('UNKNOWN'),'UNKNOWN');
 

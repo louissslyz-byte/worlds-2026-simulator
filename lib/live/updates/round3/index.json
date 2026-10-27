@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "live-swiss-round3-index-v1.0",
+  "baseHistorySHA256": "7f70fb6230f56f9a87f1e124a04053c36d92b9e1cde127008d3f04056a3beb68",
+  "facts": {
+    "file": "facts.json",
+    "fileSHA256": "4ff0a31f22712b9e56e2e31a87f7ad07afd52530afb270fef77ef62339d7f515",
+    "factsSHA256": "4852ad52783ca6b1261731c53b0f7b45207b274a9c0253bee928e01760d1b833"
+  },
+  "generationSourceSHA256": "76dda5a5565f8717b697138e5a991da90eaccf18718412e7071f161b60a1cecc",
+  "snapshot": {
+    "snapshotId": "worlds-2026-swiss-r3-probability-v1",
+    "label": "SWISS-R3-COMPLETE",
+    "asOf": "2026-10-27T04:00:11.245Z",
+    "file": "probability.json",
+    "sha256": "f1bb9185864e908e8cdc11b1b4b3f1ba1d57e3a290d336fc73da6f7510d22d13",
+    "countSHA256": "801e672a19d6897876add93999b956e6227ecd5b6e3cf9a8e73a273f9430afcd"
+  }
+}

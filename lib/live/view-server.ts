@@ -9,7 +9,8 @@ import {historySchema} from './probability/schema';
 import {frozenSystemSchema,sha256,semanticSHA256} from './probability/model';
 import {ENGINE_FILES,STRENGTH_FILES,GENERATOR_FILES,LIVE_ODDS} from './probability/config';
 import {validateProbabilitySnapshot,countsFromSnapshot} from './probability/snapshot';
-import {projectUpdatedLiveView,projectRound2LiveView} from './view';
+import {projectUpdatedLiveView,projectRound2LiveView,projectRound3LiveView} from './view';
+import {loadRound3History} from './updates/round3';
 import {loadRound2History} from './updates/round2';
 import {loadUpdateHistory} from './updates/probability';
 export async function readLiveView(projectRoot=process.cwd()){
@@ -40,6 +41,7 @@ export async function readLiveView(projectRoot=process.cwd()){
  if(semanticSHA256(countsFromSnapshot(snapshots[0]))!==semanticSHA256(baseline.counts))throw Error('Live PRE differs from R1 counts');
  const extension=await loadUpdateHistory(model,projectRoot,official);
  const latest=await loadRound2History(model,projectRoot,official);
- return projectRound2LiveView(projectUpdatedLiveView(official,{snapshots:[...index.snapshots,...extension.index.snapshots,latest.index.snapshot]},[...snapshots,...extension.snapshots,latest.snapshot],extension.update,extension.records),latest.update,latest.records);
+ const round3=await loadRound3History(model,projectRoot,official);
+ return projectRound3LiveView(projectRound2LiveView(projectUpdatedLiveView(official,{snapshots:[...index.snapshots,...extension.index.snapshots,latest.index.snapshot,round3.index.snapshot]},[...snapshots,...extension.snapshots,latest.snapshot,round3.snapshot],extension.update,extension.records),latest.update,latest.records),round3.update,round3.records);
 }
 export const loadLiveView=cache(()=>readLiveView());

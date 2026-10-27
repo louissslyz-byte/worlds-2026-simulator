@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "live-round3-generator-source-v1.0",
+  "generatorCommit": "ac3f04f1a07a8efdbf77b501a72b8cd519484664",
+  "sourceFiles": [
+    [
+      "lib/live/updates/round3.ts",
+      "82c3463991ca889656ca553877363c11e9882c7fbd2316e5cdc7f18e8b9250ef"
+    ],
+    [
+      "scripts/generate-live-round3.mjs",
+      "7a0fa5a2be594a06ea6e0c61d1e6eb26151f23f1b14e89b801b98e92678d8a72"
+    ]
+  ],
+  "generatorSourceSHA256": "10e2904e74fbcf4b4b9e7e7312a7b89fadb4f914ef1e1d7a1ac747d7ab23551c"
+}
