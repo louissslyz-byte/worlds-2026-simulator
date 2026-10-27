@@ -58,6 +58,14 @@ function ProbabilityCard({team,nodes,tooltip,onTooltip}:{team:LiveView['teams'][
   <div className={styles.comparison}><span>当前：{nodes.at(-1)!.label}</span><span>相对{nodes[0].label}变化（pp）</span></div><div className={styles.numbers}>{curveEvents.map(e=>{const a=first.values[e],b=latest.values[e],delta=(b.count-a.count)*100/latest.simulationCount;return <div key={e}><span className={styles[e]}>{curveLabels[e]}</span><strong title={sampledZero(team.points.length-1,e)?'100,000次样本未抽中，不代表理论上不可能':undefined}>{probabilityText(b.probability)}{sampledZero(team.points.length-1,e)?'*':''}</strong><small>{nodes[0].label} {probabilityText(a.probability)}</small><small title={`${delta.toFixed(3)} 个百分点`}>{deltaText(delta)}</small></div>;})}</div>
  </article>;
 }
+function MatchCard({match:m,data}:{match:LiveView['matches'][number];data:LiveView}){
+ return <article className={styles.match} data-match={m.id}><div className={styles.matchMeta}><span>{m.stage==='SWISS'?`BO${m.bestOf}`:`${positions[m.position]??`SWISS ROUND ${m.round}`} · BO${m.bestOf}`}</span><span>{m.status==='COMPLETED'?'✓ 已结束':'待开赛'}</span></div><div className={styles.matchTeams}><Team id={m.a} data={data}/><strong className={styles.score}>{m.scoreA===null?'VS':`${m.scoreA} — ${m.scoreB}`}</strong><Team id={m.b} data={data}/></div><div className={styles.muted}>{m.time?beijing(m.time):`时间待核实${m.stage==='PLAY_IN'?` · ${m.date}（赛事当地日期）`:''}`}</div>{m.winner&&<small className={styles.qualified}>{data.teams.find(t=>t.id===m.winner)!.shortName} 获胜</small>}</article>;
+}
+export function SwissRounds({data}:{data:LiveView}){
+ const matches=data.matches.filter(m=>m.stage==='SWISS');
+ const rounds=[...new Set(matches.map(m=>m.round))].sort((a,b)=>a-b);
+ return <div>{rounds.map(round=><section key={round} className={styles.swissRound} aria-labelledby={`swiss-round-${round}`}><h3 id={`swiss-round-${round}`}>SWISS ROUND {round}</h3><div className={styles.matchGrid}>{matches.filter(m=>m.round===round).map(m=><MatchCard key={m.id} match={m} data={data}/>)}</div></section>)}</div>;
+}
 export function LiveTournament({data}:{data:LiveView}){
  const [stage,setStage]=useState('PLAY_IN'),[region,setRegion]=useState('ALL');
  const [tooltip,setTooltip]=useState<TooltipData|null>(null);
@@ -75,7 +83,7 @@ export function LiveTournament({data}:{data:LiveView}){
    {data.matches.some(m=>m.time)&&<p className={styles.muted}>比赛时间：北京时间 · 计划开赛</p>}
    {stage==='PLAY_IN'&&<p className={styles.progress}>{data.teams.filter(t=>t.playIn).map(t=><span key={t.id}><b>{t.shortName}</b> · {t.status}</span>)}</p>}
    {stage==='SWISS'&&<p className={styles.muted}>{data.swissLabel}<br/>赛段开幕：{beijing(data.stageStartsAt!)}（北京时间，非各场开赛时间）</p>}
-   {stage==='KNOCKOUT'?<div className={styles.matchGrid}>{['四分之一决赛 / QUARTERFINALS','半决赛 / SEMIFINALS','总决赛 / FINAL'].map(label=><article className={styles.match} key={label}><div className="eyebrow">{label}</div><h3>TBD — TBD</h3><p className={styles.muted}>待确定晋级队伍与正式抽签 · 时间待定</p></article>)}</div>:<div className={styles.matchGrid}>{data.matches.filter(m=>m.stage===stage).map(m=><article className={styles.match} key={m.id} data-match={m.id}><div className={styles.matchMeta}><span>{positions[m.position]??`SWISS ROUND ${m.round}`} · BO{m.bestOf}</span><span>{m.status==='COMPLETED'?'✓ 已结束':'待开赛'}</span></div><div className={styles.matchTeams}><Team id={m.a} data={data}/><strong className={styles.score}>{m.scoreA===null?'VS':`${m.scoreA} — ${m.scoreB}`}</strong><Team id={m.b} data={data}/></div><div className={styles.muted}>{m.time?beijing(m.time):`时间待核实${m.stage==='PLAY_IN'?` · ${m.date}（赛事当地日期）`:''}`}</div>{m.winner&&<small className={styles.qualified}>{data.teams.find(t=>t.id===m.winner)!.shortName} 获胜</small>}</article>)}</div>}
+   {stage==='KNOCKOUT'?<div className={styles.matchGrid}>{['四分之一决赛 / QUARTERFINALS','半决赛 / SEMIFINALS','总决赛 / FINAL'].map(label=><article className={styles.match} key={label}><div className="eyebrow">{label}</div><h3>TBD — TBD</h3><p className={styles.muted}>待确定晋级队伍与正式抽签 · 时间待定</p></article>)}</div>:stage==='SWISS'?<SwissRounds data={data}/>:<div className={styles.matchGrid}>{data.matches.filter(m=>m.stage===stage).map(m=><MatchCard key={m.id} match={m} data={data}/>)}</div>}
    {stage==='SWISS'&&<p className={styles.pending}>{data.pendingLabel}</p>}
    <details className={styles.sources}><summary>ⓘ 官方来源与历史快照说明</summary><p>事实截止：{beijing(data.asOf)} 北京时间 · 来源核查：{beijing(data.checkedAt)} 北京时间。未知逐场时间保持未核实，未开始比赛没有正式比分。当前签表与赛果不会自动更新。</p>{data.sources.map(s=><a key={s.id} href={s.url} target="_blank" rel="noreferrer">{s.name} ↗</a>)}</details>
   </section>

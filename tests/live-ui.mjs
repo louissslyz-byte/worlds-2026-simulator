@@ -55,3 +55,17 @@ assert.equal((html.match(/data-live-team=/g)||[]).length,19);assert.equal((html.
 const future=structuredClone(legacy);future.nodes.push({...view.nodes[1],id:'test-future',kind:'TEST-FUTURE',label:'测试未来节点'});for(const t of future.teams)t.points.push({...t.points[1],snapshotId:'test-future'});
 const expanded=renderToStaticMarkup(React.createElement(LiveTournament,{data:future}));assert.equal((expanded.match(/测试未来节点<\/text>/g)||[]).length,19);
 console.log('Actual component SSR: 19 cards, 57 lines, third synthetic node rendered on all 19 charts.');
+
+// Swiss match cards stay in their actual round, even if data arrive out of order.
+const {SwissRounds}=await import('../components/live/live-tournament.tsx');
+const reordered={...view,matches:[...view.matches].reverse()};
+const grouped=renderToStaticMarkup(React.createElement(SwissRounds,{data:reordered}));
+const groups=[...grouped.matchAll(/<section[^>]*aria-labelledby="swiss-round-(\d+)"[^>]*>(.*?)<\/section>/gs)];
+assert.deepEqual(groups.map(g=>Number(g[1])),[1,2,3,4]);
+for(const [,number,html] of groups){
+ const expected=view.matches.filter(m=>m.stage==='SWISS'&&m.round===Number(number));
+ const actual=[...html.matchAll(/data-match="([^"]+)"/g)].map(m=>m[1]);
+ assert.deepEqual(actual.toSorted(),expected.map(m=>m.id).toSorted());
+ assert.ok(html.includes(`SWISS ROUND ${number}`));
+}
+console.log('Swiss schedule: official matches grouped once by round, even for unordered input.');
