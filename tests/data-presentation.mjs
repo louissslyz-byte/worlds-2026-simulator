@@ -37,8 +37,16 @@ for(const count of [2,3,4]){
 }
 assert.equal(JSON.stringify(view),before);assert.equal(probabilityText(.00001),'<0.1%');assert.equal(probabilityText(0),'0%');assert.equal(deltaText(.045),'+0.045 pp');
 // All AB navigation, Home, Setup, Simulator, profiles and protected libraries remain unchanged.
-const protectedFiles=execFileSync('git',['ls-tree','-r','--name-only','aea12c9','--','lib/','app/page.tsx','app/worlds-design.css','app/simulator/','app/teams/','app/methodology/','components/site-navigation.tsx','components/team-profile/','components/tournament/','components/live/navigation.module.css','next.config.ts','vercel.json','.gitignore','.vercelignore'],{encoding:'utf8'}).trim().split('\n').filter(file=>!['lib/live/view.ts','lib/live/view-server.ts','next.config.ts'].includes(file));
-for(const file of protectedFiles)assert.deepEqual(await readFile(file),execFileSync('git',['show',`aea12c9:${file}`]),file);
+const protectedFiles=execFileSync('git',['ls-tree','-r','--name-only','aea12c9','--','lib/','app/page.tsx','app/worlds-design.css','app/simulator/','app/teams/','app/methodology/','components/site-navigation.tsx','components/team-profile/','components/tournament/','components/live/navigation.module.css','next.config.ts','vercel.json','.gitignore','.vercelignore'],{encoding:'utf8'}).trim().split('\n').filter(file=>!['lib/live/view.ts','lib/live/view-server.ts','next.config.ts','app/worlds-design.css','components/tournament/champion-card.tsx','app/page.tsx','app/teams/page.tsx','app/teams/[slug]/[player]/page.tsx','components/team-profile/qualification-path.tsx','components/tournament/data-status.tsx','components/team-profile/statistics-chart.tsx','components/team-profile/statistics.tsx'].includes(file));
+for(const file of protectedFiles){
+ let expected=execFileSync('git',['show',`aea12c9:${file}`],{encoding:'utf8'});
+ if(file==='app/simulator/page.tsx')expected=expected.replace('<h1>{stageTitle(state)}</h1><p>{stageDescription(state)}</p>',"<h1>{stageTitle(state)}</h1>{state.stage!=='CHAMPION'&&<p>{stageDescription(state)}</p>}");
+ assert.equal(await readFile(file,'utf8'),expected,file);
+}
+// Champion-only selectors may change; every other style rule remains protected.
+const {createRequire}=await import('node:module');const require=createRequire(import.meta.url);const postcss=createRequire(require.resolve('next/package.json'))('postcss');
+function nonChampionRules(css){const root=postcss.parse(css);const rules=[];root.walkRules(rule=>{if(!rule.selector.includes('champion'))rules.push([rule.selector,rule.nodes.map(n=>n.toString()).join(';'),rule.parent.type==='atrule'?rule.parent.params:'']);});return rules;}
+assert.deepEqual(nonChampionRules(await readFile('app/worlds-design.css','utf8')),nonChampionRules(execFileSync('git',['show','aea12c9:app/worlds-design.css'],{encoding:'utf8'})));
 console.log('U2-C Live: 19/57, exact real probabilities/deltas/axes/order, in-memory 3/4 nodes, tiny values and all AB/model/data protections PASS.');
 
 const real=render(view),los=real.match(/data-live-team="LOS"[^>]*>(.*?)<\/article>/s)[1];

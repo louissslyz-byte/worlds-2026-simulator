@@ -8,7 +8,7 @@ const covered=teams.filter(t=>t.officialGprScore!==undefined).length;
 const confirmed=teams.filter(t=>t.confirmed).length;
 const generated=new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(precomputedOdds.metadata.generatedAt));
 export function DataDetails({showSimulationCount=true}:{showSimulationCount?:boolean}){return <>
- <p>队伍快照：{teamSnapshotMetadata.snapshotUpdatedAt} · GPR 快照：{riotGprSnapshot.sourceUpdatedAt}。</p>
+ <p>队伍 {confirmed}/{teams.length} 已确认 · {teams.every(t=>t.officialSeed!==null)?'种子已确认':'种子待定'}；GPR {covered}/{teams.length}，{teams.length-covered} 队使用回退评分。</p><p>队伍快照：{teamSnapshotMetadata.snapshotUpdatedAt} · GPR 快照：{riotGprSnapshot.sourceUpdatedAt}。</p>
  <p>{showSimulationCount&&<>{precomputedOdds.metadata.simulationCount.toLocaleString('en-US')} 次完整模拟 · </>}概率生成：{generated} CST。</p>
  <p>模型：{MODEL_VERSION} · 赛制：{precomputedOdds.metadata.rulesVersion}。</p>
  </>;}

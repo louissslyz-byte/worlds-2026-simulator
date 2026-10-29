@@ -26,7 +26,6 @@ export default async function PlayerProfile({params}:{params:Promise<{slug:strin
     <div><dt>国籍</dt><dd>{player.nationalities?player.nationalities.value.map(n=><span key={n.countryCode} className={styles.playerNationality}><span aria-hidden="true">{countryFlag(n.countryCode)}</span> {n.name}</span>):'未核验'}</dd></div>
     <div><dt>年龄</dt><dd>{age===null?'暂无可核验资料':<span title={player.birthDate?`出生日期：${player.birthDate.value}`:`官方资料所载年龄 · ${player.reportedAge!.source.checkedAt} 核对`}>{age} 岁<span className={styles.playerFactLabel}>{player.birthDate?`，出生日期：${player.birthDate.value}`:`，官方资料所载年龄，${player.reportedAge!.source.checkedAt} 核对`}</span></span>}</dd></div>
    </dl>
-   <div className={`${styles.meta} ${styles.playerTeamRole}`}><Link href={`/teams/${team.slug}`}>{team.name}</Link><span>{slot.role.label}</span></div>
   </header>
   {player.notes?.map(note=><p className={styles.note} key={note}>{note}</p>)}
   <PlayerStatistics view={statistics}/>

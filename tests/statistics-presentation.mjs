@@ -61,3 +61,12 @@ for(const count of [2,3,4,5,7]){
  assert.equal(labels,count);
 }
 console.log('P3-A.6显示回归通过：均值差／百分点／时间／null，6类独立BP分母，动态赛区，指标数量及无数据修改。');
+
+// Identical values belonging to other players must stay in the distribution.
+const {DistributionChart}=await import('../components/team-profile/statistics-chart.tsx');
+const points=[{teamId:'GEN',playerId:null,displayName:'Chovy',value:10,validGames:29,sampleGames:29,lowSample:false},{teamId:'T1',playerId:'Faker',value:10,validGames:30,sampleGames:30,lowSample:false},{teamId:'GEN',playerId:'Other',value:20,validGames:20,sampleGames:20,lowSample:false}];
+const baseline={metric:'gd15',role:'MID',value:13.3,coverageStatus:'PARTIAL',regionalAverage:null,regionalPositionalAverage:null,distribution:points,distributionSummary:{min:10,max:20,p25:10,p75:15}};
+const originalBaseline=JSON.stringify(baseline);
+const chart=renderToStaticMarkup(React.createElement(DistributionChart,{baseline,metric:'gd15',value:10,ownLabel:'当前选手',validGames:29,ownIdentity:{teamId:'GEN',playerId:'Chovy'}}));
+assert.ok(!chart.includes('GEN Chovy：'));assert.ok(chart.includes('T1 Faker：'));assert.ok(chart.includes('GEN Other：'));assert.ok(chart.includes('当前选手：'));assert.equal(JSON.stringify(baseline),originalBaseline);
+console.log('Player chart: own duplicate hidden by identity, equal-value peers and original statistics retained.');

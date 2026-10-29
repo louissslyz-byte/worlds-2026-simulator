@@ -97,7 +97,7 @@ export function LiveTournament({data}:{data:LiveView}){
  },[]);
  const filtered=visibleTeams(data.teams,region);
  return <main className={`shell ${styles.page}`}>
-  <header className={styles.hero}><div className="eyebrow">WORLDS 2026 · TOURNAMENT TRACKER</div><h1>LIVE TOURNAMENT</h1><p>真实赛程与赛果 / 晋级概率演变</p><div className={styles.snapshotLabel}>{data.phaseLabel}</div><p className={styles.muted}>冻结历史快照 · 数据截止 2026年{beijing(data.asOf)}（北京时间）<br/>人工维护 · 非实时更新。</p></header>
+  <header className={styles.hero}><div className="eyebrow">WORLDS 2026 · TOURNAMENT TRACKER</div><h1>LIVE TOURNAMENT</h1><p>真实赛程与赛果 / 晋级概率演变</p><div className={styles.snapshotLabel}>{data.phaseLabel}</div></header>
   <section className={styles.section} aria-labelledby="matches-title"><header className={styles.sectionHeader}><span>01 /</span><h2 id="matches-title">MATCHES & RESULTS</h2></header>
    <div className={styles.filters} role="group" aria-label="赛事阶段">{[['PLAY_IN','PLAY-IN'],['SWISS','SWISS'],['KNOCKOUT','KNOCKOUT']].map(([id,label])=><button key={id} aria-pressed={stage===id} onClick={()=>setStage(id)}>{label}</button>)}</div>
    {data.matches.some(m=>m.time)&&<p className={styles.muted}>比赛时间：北京时间 · 计划开赛</p>}
@@ -105,7 +105,7 @@ export function LiveTournament({data}:{data:LiveView}){
    {stage==='SWISS'&&<p className={styles.muted}>{data.swissLabel}<br/>赛段开幕：{beijing(data.stageStartsAt!)}（北京时间，非各场开赛时间）</p>}
    {stage==='KNOCKOUT'?<div className={styles.matchGrid}>{['四分之一决赛 / QUARTERFINALS','半决赛 / SEMIFINALS','总决赛 / FINAL'].map(label=><article className={styles.match} key={label}><div className="eyebrow">{label}</div><h3>TBD — TBD</h3><p className={styles.muted}>待确定晋级队伍与正式抽签 · 时间待定</p></article>)}</div>:stage==='SWISS'?<SwissRounds data={data}/>:<div className={styles.matchGrid}>{sortMatchesByTime(data.matches.filter(m=>m.stage===stage)).map(m=><MatchCard key={m.id} match={m} data={data}/>)}</div>}
    {stage==='SWISS'&&<p className={styles.pending}>{data.pendingLabel}</p>}
-   <details className={styles.sources}><summary>ⓘ 官方来源与历史快照说明</summary><p>事实截止：{beijing(data.asOf)} 北京时间 · 来源核查：{beijing(data.checkedAt)} 北京时间。未知逐场时间保持未核实，未开始比赛没有正式比分。当前签表与赛果不会自动更新。</p>{data.sources.map(s=><a key={s.id} href={s.url} target="_blank" rel="noreferrer">{s.name} ↗</a>)}</details>
+   <details className={styles.sources}><summary>ⓘ 官方来源与历史快照说明</summary><p>冻结历史快照，人工维护，非实时更新。事实截止：2026年{beijing(data.asOf)} 北京时间 · 来源核查：{beijing(data.checkedAt)} 北京时间。未知逐场时间保持未核实，未开始比赛没有正式比分。当前签表与赛果不会自动更新。</p>{data.sources.map(s=><a key={s.id} href={s.url} target="_blank" rel="noreferrer">{s.name} ↗</a>)}</details>
   </section>
   <section className={styles.section} aria-labelledby="probability-title"><header className={styles.sectionHeader}><span>02 /</span><h2 id="probability-title">PROBABILITY EVOLUTION</h2></header><InfoDisclosure label="关于概率"><p>固定赛前 Riot GPR / Rating · S16-R1 正式赛制 · 每节点 100,000 次 Monte Carlo。</p><p>入围赛后节点锁定真实入围赛结果及 Swiss 首轮抽签；首轮后节点另锁定真实首轮赛果及第二轮抽签；第二轮后节点另锁定真实第二轮赛果及第三轮抽签；第三轮后节点另锁定真实第三轮赛果及第四轮抽签。概率变化不代表 Rating 变化。</p><p>小幅变化可能包含抽样误差；0%＊表示本批样本未抽中，不代表理论上不可能。折线仅连接已记录的历史快照，不代表每日连续观测；模型未声称经过历史校准。</p><Link href="/methodology">完整方法论 →</Link></InfoDisclosure>
    <div className={styles.filters} role="group" aria-label="按赛区筛选">{regions.map(r=><button key={r} onClick={()=>{setTooltip(null);setRegion(r);}} aria-pressed={region===r}>{r}</button>)}</div><p className={styles.muted} role="status">{filtered.length} 支队伍 · 按最新夺冠概率排序 · 变化单位：百分点（pp）</p>

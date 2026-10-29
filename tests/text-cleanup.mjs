@@ -40,8 +40,8 @@ for(const team of profileTeams){
  const road=render(QualificationPath,{team}),regular=regularSeasonRecord(team.id);
  assert.ok(road.includes('真实赛果 · 北京时间'));assert.ok(road.includes('晋级记录说明'));
  for(const url of [team.sourceUrl,qualificationPath(team.id)[0]?.source.url,regular?.source.url,regular?.recordSource?.url].filter(Boolean))assert.ok(road.includes(url.replaceAll('&','&amp;')));
- if(team.region==='LCK')assert.ok(road.includes('含 R1–2 结转 · 传奇组最终排名'));
- if(team.region==='LCP')assert.ok(road.includes('不含后续种子赛'));
+ if(team.region==='LCK')assert.ok(road.includes('含 Rounds 1–2 结转战绩；排名为传奇组最终排名。'));
+ if(team.region==='LCP')assert.ok(road.includes('不含后续种子决定赛'));
 }
 const c9=render(ProfileRoster,{teamId:'C9',teamSlug:'c9'});assert.ok(c9.includes('Loki、Tactical'));assert.ok(c9.includes('APA、Zven 列为替补'));
 const {default:TeamProfiles}=await import('../app/teams/page.tsx');const list=render(TeamProfiles);

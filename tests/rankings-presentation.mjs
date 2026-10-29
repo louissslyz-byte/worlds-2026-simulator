@@ -12,7 +12,7 @@ const html=renderToStaticMarkup(React.createElement(Rankings));
 const rows=[...html.matchAll(/<article[^>]*data-ranking-team="([^"]+)"[^>]*>(.*?)<\/article>/gs)];
 const order=[...teams].sort((a,b)=>(a.officialGprRank??999)-(b.officialGprRank??999));
 assert.deepEqual(rows.map(r=>r[1]),order.map(t=>t.id));assert.equal(rows.length,19);
-assert.match(html,/按 Riot 官方 GPR 名次排序/);assert.match(html,/概率为本站赛前模拟/);
+assert.match(html,/按 Riot GPR 排名排序/);assert.match(html,/概率由本站进行 Monte Carlo 模拟计算/);
 for(const [,id,row] of rows){
  const team=teams.find(t=>t.id===id);
  assert.match(row,/本站夺冠概率/);assert.match(row,/Worlds 种子/);assert.ok(row.includes(`#${team.officialSeed}`));
