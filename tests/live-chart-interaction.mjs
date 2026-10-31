@@ -95,3 +95,12 @@ applyOfficialQualifications(fixture,{HLE:{wins:3,losses:2}},'2026-11-01T00:00:00
 applyOfficialQualifications(fixture,{GEN:{wins:3,losses:0}},'2026-11-01T00:00:00.000Z');assert.equal(fixture.teams.find(t=>t.id==='GEN').qualificationNodes.knockout,4);
 assert.equal(JSON.stringify(view),original);
 console.log('Official qualification endpoints PASS: direct Swiss, Play-In winner, R3/R4 KO, no hidden hit targets, sampled 100% stays active, future R5 and original snapshot preservation.');
+
+const {LivePlayInBracket,LiveKnockoutBracket}=await import('../components/live/live-tournament.tsx');
+const pi=renderToStaticMarkup(React.createElement(LivePlayInBracket,{data:view}));
+assert.equal((pi.match(/data-match=/g)||[]).length,6);for(const m of view.matches.filter(m=>m.stage==='PLAY_IN'))assert.ok(pi.includes('data-match="'+m.id+'"'));
+assert.ok(pi.includes('live-pi-arrow'));assert.ok(pi.includes('Swiss'));
+const ko=renderToStaticMarkup(React.createElement(LiveKnockoutBracket));assert.equal((ko.match(/data-bracket-slot=/g)||[]).length,7);assert.equal((ko.match(/data-match=/g)||[]).length,0);
+assert.equal((ko.match(/BO5/g)||[]).length,7);assert.ok(!ko.includes('GEN'));
+assert.equal(JSON.stringify(view),original);
+console.log('Live bracket presentation: six verified PI series, 4/2/1 TBD knockout slots, no invented draws or mutated facts PASS.');

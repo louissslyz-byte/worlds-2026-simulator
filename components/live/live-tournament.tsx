@@ -46,7 +46,7 @@ function ProbabilityCard({team,nodes,tooltip,onTooltip,compact=false}:{team:Live
   if(hit)showPoint(hit.node,hit.event,event.clientX,event.clientY);else onTooltip(current=>current?.anchor?current:null);
  };
  return <article className={styles.probabilityCard} aria-labelledby={`team-${team.id}`} data-live-team={team.id} onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();if(selected!==null)closeDetail();else onTooltip(null);}}}>
-  <header className={styles.cardHeader}><TeamLogo teamId={team.id} src={team.logo} size={42}/><div><Link href={`/teams/${team.slug}`} id={`team-${team.id}`} className={styles.teamTitle}>{team.shortName}</Link><div className={styles.muted}><span className={styles.regionIdentity}><RegionMark region={team.region} showLabel={false} size={18}/><span>{team.name}</span></span></div></div><span className={team.status==='已淘汰'?styles.eliminated:styles.qualified}>{team.status}</span></header>
+  <header className={styles.cardHeader}><TeamLogo teamId={team.id} src={team.logo} size={42}/><div><Link href={`/teams/${team.slug}`} id={`team-${team.id}`} className={styles.teamTitle}>{team.shortName}</Link><div className={styles.muted}><span className={styles.regionIdentity}><RegionMark region={team.region} showLabel={false} size={28}/><span>{team.name}</span></span></div></div><span className={team.status==='已淘汰'?styles.eliminated:styles.qualified}>{team.status}</span></header>
   <div className={styles.legend}>{curveEvents.map(e=><span key={e} className={styles[e]}><b aria-hidden="true">●</b> {curveLabels[e]}</span>)}</div>
   <div className={styles.chartViewport} tabIndex={nodes.length>2?0:undefined} role={nodes.length>2?"region":undefined} aria-label={nodes.length>2?`${team.shortName} 历史节点，可横向滚动`:undefined}><svg viewBox={`0 0 ${chartWidth} 144`} style={nodes.length>2?{minWidth:chartWidth}:undefined} className={styles.chart} role="group" aria-label={`${team.shortName} 概率变化，纵轴固定0至100%。折线仅连接历史快照。`} onPointerMove={hoverPoint} onPointerLeave={()=>onTooltip(current=>current?.anchor?current:null)} onPointerCancel={()=>onTooltip(null)}>
    {[0,0.5,1].map(p=><g key={p}><line x1="44" x2={chartWidth-24} y1={y(p)} y2={y(p)} className={styles.gridLine}/><text x="36" y={y(p)+4} textAnchor="end">{p*100}%</text></g>)}
@@ -73,7 +73,7 @@ export function swissRecordBeforeMatch(matches:LiveView['matches'],teamId:string
  return `${wins}–${losses}`;
 }
 function MatchCard({match:m,data}:{match:LiveView['matches'][number];data:LiveView}){
- return <article className={styles.match} data-match={m.id}><div className={styles.matchMeta}><span>{m.stage==='SWISS'?`BO${m.bestOf}`:`${positions[m.position]??`SWISS ROUND ${m.round}`} · BO${m.bestOf}`}</span></div><div className={styles.matchTeams}><Team id={m.a} data={data} record={m.stage==='SWISS'?swissRecordBeforeMatch(data.matches,m.a,m.round)??'战绩待定':undefined}/><strong className={styles.score}>{m.scoreA===null?'VS':`${m.scoreA} — ${m.scoreB}`}</strong><Team id={m.b} data={data} record={m.stage==='SWISS'?swissRecordBeforeMatch(data.matches,m.b,m.round)??'战绩待定':undefined}/></div><div className={styles.muted}>{m.time?beijing(m.time):`时间待核实${m.stage==='PLAY_IN'?` · ${m.date}（赛事当地日期）`:''}`}</div></article>;
+ return <article className={styles.match} data-match={m.id}><div className={styles.matchMeta}><span>{m.stage==='SWISS'?`BO${m.bestOf}`:`${positions[m.position]??`SWISS ROUND ${m.round}`} · BO${m.bestOf}`}</span></div>{m.stage==='SWISS'?<div className={`${styles.matchTeams} ${styles.swissMatchTeams}`}><Team id={m.a} data={data} record={swissRecordBeforeMatch(data.matches,m.a,m.round)??'战绩待定'}/><strong className={styles.score}>{m.scoreA===null?'VS':`${m.scoreA} — ${m.scoreB}`}</strong><Team id={m.b} data={data} record={swissRecordBeforeMatch(data.matches,m.b,m.round)??'战绩待定'}/></div>:<div className={styles.matchTeams}>{([{id:m.a,score:m.scoreA},{id:m.b,score:m.scoreB}]).map(side=><div className={styles.matchTeamRow} key={side.id}><Team id={side.id} data={data} record={m.stage==='SWISS'?swissRecordBeforeMatch(data.matches,side.id,m.round)??'战绩待定':undefined}/><strong className={styles.score} aria-label={side.score===null?'比分待定':`比分 ${side.score}`}>{side.score??'—'}</strong></div>)}</div>}<div className={styles.muted}>{m.time?beijing(m.time):`时间待核实${m.stage==='PLAY_IN'?` · ${m.date}（赛事当地日期）`:''}`}</div></article>;
 }
 // Sort by the known competition date and, where available, exact scheduled time.
 // Matches lacking a precise time remain after timed matches on the same date.
@@ -89,6 +89,26 @@ export function SwissRounds({data}:{data:LiveView}){
  const matches=data.matches.filter(m=>m.stage==='SWISS');
  const rounds=[...new Set(matches.map(m=>m.round))].sort((a,b)=>a-b);
  return <div>{rounds.map(round=><section key={round} className={styles.swissRound} aria-labelledby={`swiss-round-${round}`}><h3 id={`swiss-round-${round}`}>SWISS ROUND {round}</h3><div className={styles.matchGrid}>{sortMatchesByTime(matches.filter(m=>m.round===round)).map(m=><MatchCard key={m.id} match={m} data={data}/>)}</div></section>)}</div>;
+}
+// Bracket geometry is presentation only; matches come from verified position IDs.
+export function LivePlayInBracket({data}:{data:LiveView}){
+ const slots=[['UPPER_SEMIFINAL_1',0,60],['UPPER_SEMIFINAL_2',0,260],['UPPER_FINAL',310,160],['LOWER_SEMIFINAL',310,520],['LOWER_FINAL',620,470],['QUALIFICATION_FINAL',930,260]] as const;
+ return <div className={styles.bracketScroll} tabIndex={0} role="region" aria-label="入围赛双败晋级树，可横向滚动"><div className={styles.playInTree}>
+  <svg className={styles.bracketWires} viewBox="0 0 1200 700" aria-hidden="true"><defs><marker id="live-pi-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="currentColor"/></marker></defs>
+   <g className={styles.winnerWire}><path d="M270 138H285V238H310 M270 338H285V238"/><path d="M580 238H900V338H930"/><path d="M580 598H600V548H620"/><path d="M890 548H910V338H930"/></g>
+   <g className={styles.loserWire}><path d="M135 216V240H295V598H310 M135 416V450H295"/><path d="M445 316V430H600V548H620"/></g>
+  </svg>
+  <div className={styles.bracketColumnLabel} style={{left:0}}>首轮</div><div className={styles.bracketColumnLabel} style={{left:310}}>胜者组 / 败者组</div><div className={styles.bracketColumnLabel} style={{left:620}}>败者组决赛</div><div className={styles.bracketColumnLabel} style={{left:930}}>最终资格赛</div>
+  {slots.map(([position,left,top])=>{const match=data.matches.find(m=>m.stage==='PLAY_IN'&&m.position===position);return <div key={position} className={styles.bracketNode} style={{left,top}}>{match?<MatchCard match={match} data={data}/>:<article className={styles.match}><h3>TBD — TBD</h3></article>}</div>;})}
+  <span className={styles.bracketLane} style={{left:310,top:490}}>败者组</span><div className={styles.bracketOutcome}>最终资格赛胜者 → Swiss 正赛</div>
+ </div></div>;
+}
+export function LiveKnockoutBracket(){
+ const slots=[...Array.from({length:4},(_,i)=>({key:`QF${i+1}`,label:`四分之一决赛 ${i+1}`,left:0,top:30+i*190})),...Array.from({length:2},(_,i)=>({key:`SF${i+1}`,label:`半决赛 ${i+1}`,left:350,top:125+i*380})),{key:'FINAL',label:'总决赛',left:700,top:315}];
+ return <div className={styles.bracketScroll} tabIndex={0} role="region" aria-label="淘汰赛晋级树，可横向滚动"><div className={styles.knockoutTree}>
+  <svg className={styles.bracketWires} viewBox="0 0 970 770" aria-hidden="true"><g className={styles.winnerWire}><path d="M270 108H310V203H350 M270 298H310V203 M270 488H310V583H350 M270 678H310V583 M620 203H660V393H700 M620 583H660V393"/></g></svg>
+  {slots.map(slot=><article key={slot.key} data-bracket-slot={slot.key} className={`${styles.bracketNode} ${styles.knockoutSlot}`} style={{left:slot.left,top:slot.top}}><span>{slot.label} · BO5</span><div className={styles.matchTeams}>{[0,1].map(i=><div className={styles.matchTeamRow} key={i}><strong>TBD</strong><strong className={styles.score} aria-label="比分待定">—</strong></div>)}</div></article>)}
+ </div></div>;
 }
 export function LiveTournament({data}:{data:LiveView}){
  const [stage,setStage]=useState('PLAY_IN'),[region,setRegion]=useState('ALL');
@@ -107,7 +127,7 @@ export function LiveTournament({data}:{data:LiveView}){
    {data.matches.some(m=>m.time)&&<p className={styles.muted}>比赛时间：北京时间 · 计划开赛</p>}
    {stage==='PLAY_IN'&&<p className={styles.progress}>{data.teams.filter(t=>t.playIn).map(t=><span key={t.id}><b>{t.shortName}</b> · {t.status}</span>)}</p>}
    {stage==='SWISS'&&<p className={styles.muted}>{data.swissLabel}<br/>赛段开幕：{beijing(data.stageStartsAt!)}（北京时间，非各场开赛时间）</p>}
-   {stage==='KNOCKOUT'?<div className={styles.matchGrid}>{['四分之一决赛 / QUARTERFINALS','半决赛 / SEMIFINALS','总决赛 / FINAL'].map(label=><article className={styles.match} key={label}><div className="eyebrow">{label}</div><h3>TBD — TBD</h3><p className={styles.muted}>待确定晋级队伍与正式抽签 · 时间待定</p></article>)}</div>:stage==='SWISS'?<SwissRounds data={data}/>:<div className={styles.matchGrid}>{sortMatchesByTime(data.matches.filter(m=>m.stage===stage)).map(m=><MatchCard key={m.id} match={m} data={data}/>)}</div>}
+   {stage==='KNOCKOUT'?<><p className={styles.muted}>正式对阵尚未公布 · 晋级结构示意</p><LiveKnockoutBracket/></>:stage==='SWISS'?<SwissRounds data={data}/>:<><div className={styles.bracketLegend}><span>实线：胜者晋级</span><span>虚线：败者进入败者组</span></div><LivePlayInBracket data={data}/></>}
    {stage==='SWISS'&&<p className={styles.pending}>{data.pendingLabel}</p>}
    <details className={styles.sources}><summary>ⓘ 官方来源与历史快照说明</summary><p>冻结历史快照，人工维护，非实时更新。事实截止：2026年{beijing(data.asOf)} 北京时间 · 来源核查：{beijing(data.checkedAt)} 北京时间。未知逐场时间保持未核实，未开始比赛没有正式比分。当前签表与赛果不会自动更新。</p>{data.sources.map(s=><a key={s.id} href={s.url} target="_blank" rel="noreferrer">{s.name} ↗</a>)}</details>
   </section>
