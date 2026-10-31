@@ -6,6 +6,7 @@ import {register} from 'node:module';
 import {pathToFileURL} from 'node:url';
 import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
+import {lastEventNode} from '../components/live/chart-interaction.ts';
 import {loadLiveView} from '../lib/live/view-server.ts';
 import {curveEvents,probabilityText,deltaText,visibleTeams} from '../lib/live/view.ts';
 register('./tests/live-ui-loader.mjs',pathToFileURL('./'));globalThis.React=React;
@@ -13,18 +14,18 @@ const {LiveTournament}=await import('../components/live/live-tournament.tsx');
 const view=await loadLiveView(),before=JSON.stringify(view);
 const render=data=>renderToStaticMarkup(React.createElement(LiveTournament,{data}));
 for(const count of [2,3,4]){
- const data=structuredClone(view);data.nodes=data.nodes.slice(0,count);for(const team of data.teams){team.points=team.points.slice(0,count);if(team.eliminationNodeIndex!==null&&team.eliminationNodeIndex>=count)team.eliminationNodeIndex=null;}
+ const data=structuredClone(view);data.nodes=data.nodes.slice(0,count);for(const team of data.teams){team.points=team.points.slice(0,count);if(team.eliminationNodeIndex!==null&&team.eliminationNodeIndex>=count)team.eliminationNodeIndex=null;for(const e of ['swiss','knockout'])if(team.qualificationNodes[e]>=count)team.qualificationNodes[e]=null;}
  while(data.nodes.length<count){const i=data.nodes.length;const id=`test-only-${i}`;data.nodes.push({...data.nodes[1],id,label:`SWISS R${i-1}`});for(const team of data.teams)team.points.push({...structuredClone(team.points[1]),snapshotId:id});}
  const html=render(data),cards=[...html.matchAll(/<article[^>]*data-live-team="([^"]+)"[^>]*>(.*?)<\/article>/gs)];
  assert.equal(cards.length,19);assert.deepEqual(cards.map(c=>c[1]),visibleTeams(data.teams,'ALL').map(t=>t.id));
- assert.equal((html.match(/data-curve=/g)||[]).length,57);assert.equal((html.match(/role="button"/g)||[]).length,data.teams.reduce((sum,t)=>sum+(t.eliminationNodeIndex===null?count:t.eliminationNodeIndex+1),0)*3);
+ assert.equal((html.match(/data-curve=/g)||[]).length,57);assert.equal((html.match(/role="button"/g)||[]).length,data.teams.reduce((sum,t)=>sum+curveEvents.reduce((n,e)=>n+lastEventNode(count,t.eliminationNodeIndex,e==='champion'?null:t.qualificationNodes[e])+1,0),0));
  assert.equal((html.match(/相对赛前变化（pp）/g)||[]).length,19);
  for(const [,id,card] of cards){
   assert.match(card,/纵轴固定0至100%/);for(const tick of ['0','50','100'])assert.match(card,new RegExp('>'+tick+'%<'));
   const team=data.teams.find(t=>t.id===id),w=Math.max(320,72+(count-1)*120);
   for(const event of curveEvents){
    const segment=card.match(new RegExp(`data-curve="${event}"[^>]*><polyline points="([^"]+)"`));assert.ok(segment);
-   const xy=segment[1].split(' ').map(p=>p.split(',').map(Number));const shown=team.eliminationNodeIndex===null?count:team.eliminationNodeIndex+1;assert.equal(xy.length,shown);
+   const xy=segment[1].split(' ').map(p=>p.split(',').map(Number));const shown=lastEventNode(count,team.eliminationNodeIndex,event==='champion'?null:team.qualificationNodes[event])+1;assert.equal(xy.length,shown);
    for(let i=0;i<shown;i++){assert.equal(xy[i][0],44+i*(w-68)/(count-1));assert.equal(xy[i][1],112-team.points[i].values[event].probability*88);assert.ok(xy[i][1]>=24&&xy[i][1]<=112);}
    const first=team.points[0].values[event],last=team.points.at(-1).values[event];
    const escaped=s=>s.replaceAll('<','&lt;');

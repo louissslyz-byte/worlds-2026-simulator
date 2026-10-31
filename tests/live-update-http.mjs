@@ -1,5 +1,6 @@
 // Actual final Build Output projection; local HTTP only, no generation or writes.
 import assert from 'node:assert/strict';
+import {lastEventNode} from '../components/live/chart-interaction.ts';
 import {loadLiveView} from '../lib/live/view-server.ts';
 const base=process.env.LIVE_UPDATE_BASE_URL??'http://127.0.0.1:3061';
 const url=new URL(base);assert.ok(url.protocol==='http:'&&['127.0.0.1','localhost'].includes(url.hostname));
@@ -10,7 +11,7 @@ for(const line of text.split('\n'))try{visit(JSON.parse(line.slice(line.indexOf(
 assert.deepEqual(actual,expected);assert.equal(actual.nodes.length,6);assert.equal(actual.matches.length,39);
 assert.equal(actual.matches.filter(m=>m.status==='COMPLETED').length,36);assert.equal(actual.matches.filter(m=>m.round===5&&m.stage==='SWISS'&&m.winner===null&&m.scoreA===null).length,3);
 for(const team of actual.teams)assert.equal(team.points.length,6);
-const rendered=actual.teams.reduce((n,t)=>n+(t.eliminationNodeIndex===null?actual.nodes.length:t.eliminationNodeIndex+1)*3,0);
+const rendered=actual.teams.reduce((n,t)=>n+['swiss','knockout','champion'].reduce((sum,e)=>sum+lastEventNode(actual.nodes.length,t.eliminationNodeIndex,e==='champion'?null:t.qualificationNodes[e])+1,0),0);
 const html=await (await fetch(base+'/live')).text();assert.equal((html.match(/data-live-team=/g)||[]).length,19);assert.equal((html.match(/data-curve=/g)||[]).length,57);
 assert.equal((html.match(/pointer-events="none" cx=/g)||[]).length,rendered);assert.equal((html.match(/role="button"/g)||[]).length,rendered);
 let checked=2;

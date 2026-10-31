@@ -30,3 +30,7 @@ export function lastVisibleNode(nodeCount:number,eliminationNodeIndex:number|nul
  if(!Number.isInteger(eliminationNodeIndex)||eliminationNodeIndex<0||eliminationNodeIndex>=nodeCount)throw Error('Invalid official elimination node');
  return eliminationNodeIndex;
 }
+
+export function lastEventNode(nodeCount:number,elimination:number|null,qualification:number|null){
+ return Math.min(lastVisibleNode(nodeCount,elimination),lastVisibleNode(nodeCount,qualification));
+}

@@ -20,7 +20,7 @@ export function projectLiveView(official:ReturnType<typeof validateOfficialTourn
   sources:data.sources.map(s=>({id:s.sourceId,name:s.sourceName,url:s.sourceUrl,type:s.sourceType})),
   matches:[...data.matches.playIn,...data.matches.swiss].map(m=>({id:m.matchId,stage:m.stage,round:m.round,position:m.bracketPosition,a:m.teamA,b:m.teamB,bestOf:m.bestOf,scoreA:m.scoreA,scoreB:m.scoreB,winner:m.winnerId,status:m.status,time:m.schedule.scheduledAt,date:m.competitionDate as string|null,zone:m.competitionTimeZone})),
   nodes:index.snapshots.map(s=>({id:s.snapshotId,kind:s.label,label:fullSnapshotLabel(s.label),asOf:s.asOf})),
-  teams:liveTeams.map(t=>({...t,status:state.eliminatedTeams.includes(t.id)?'已淘汰':'已晋级 Swiss',eliminationNodeIndex:state.eliminatedTeams.includes(t.id)?verifiedEliminationNode(index.snapshots,data.metadata.asOf):null,points:snapshots.map(s=>{const row=s.teams.find(r=>r.teamId===t.id);if(!row)throw Error('Missing chart team');return {snapshotId:s.snapshotId,simulationCount:s.simulationCount,values:Object.fromEntries(curveEvents.map(e=>[e,{count:row[`${e}Count`],probability:row[`${e}Probability`]}])) as Record<typeof curveEvents[number],{count:number;probability:number}>};})})),
+  teams:liveTeams.map(t=>({...t,status:state.eliminatedTeams.includes(t.id)?'已淘汰':'已晋级 Swiss',qualificationNodes:{swiss:state.directToSwiss.includes(t.id)?0:state.qualifiedToSwiss.includes(t.id)?verifiedEliminationNode(index.snapshots,data.metadata.asOf):null,knockout:null as number|null},eliminationNodeIndex:state.eliminatedTeams.includes(t.id)?verifiedEliminationNode(index.snapshots,data.metadata.asOf):null,points:snapshots.map(s=>{const row=s.teams.find(r=>r.teamId===t.id);if(!row)throw Error('Missing chart team');return {snapshotId:s.snapshotId,simulationCount:s.simulationCount,values:Object.fromEntries(curveEvents.map(e=>[e,{count:row[`${e}Count`],probability:row[`${e}Probability`]}])) as Record<typeof curveEvents[number],{count:number;probability:number}>};})})),
  };
 }
 // Only callers with verified official elimination facts may supply this cutoff.
@@ -36,6 +36,14 @@ export function applyOfficialEliminations(view:LiveView,ids:string[],factsAsOf:s
  team.eliminationNodeIndex=team.eliminationNodeIndex===null?i:Math.min(i,team.eliminationNodeIndex);team.status='已淘汰';}
 }
 export type LiveView=ReturnType<typeof projectLiveView>;
+// Only verified official records establish qualification; a sampled 100% never does.
+export function applyOfficialQualifications(view:LiveView,records:Record<string,{wins:number;losses:number}>,factsAsOf:string){
+ for(const [id,record] of Object.entries(records))if(record.wins===3){
+  const team=view.teams.find(t=>t.id===id);if(!team)throw Error('Unknown qualified team');
+  const i=verifiedEliminationNode(view.nodes,factsAsOf),previous=team.qualificationNodes.knockout;
+  team.qualificationNodes.knockout=previous===null?i:Math.min(i,previous);
+ }
+}
 export function visibleTeams(teams:LiveView['teams'],region:string){return teams.filter(t=>region==='ALL'||t.region===region).toSorted((a,b)=>b.points.at(-1)!.values.champion.count-a.points.at(-1)!.values.champion.count||a.id.localeCompare(b.id));}
 
 /** Display projection only; official facts never become a user Simulator session. */
@@ -46,6 +54,7 @@ export function projectUpdatedLiveView(official:ReturnType<typeof validateOffici
  view.sources.push(...update.sources.map(s=>({id:s.sourceId,name:s.sourceId==='swiss'?'LoL Esports · Swiss官方签表与赛果':'LoL Esports · 官方赛程（计划时间）',url:s.url,type:'OFFICIAL' as const})));
  view.matches=[...view.matches.filter(m=>m.stage!=='SWISS'),...update.matches.map(m=>({id:m.matchId,stage:m.stage,round:m.round,position:m.bracketPosition,a:m.teamA,b:m.teamB,bestOf:m.bestOf,scoreA:m.scoreA,scoreB:m.scoreB,winner:m.winnerId,status:m.status,time:m.scheduledAt,date:new Intl.DateTimeFormat('en-CA',{timeZone:m.competitionTimeZone,year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(m.scheduledAt!)),zone:m.competitionTimeZone}))];
  for(const team of view.teams)if(records[team.id])team.status=`${records[team.id].wins}–${records[team.id].losses}`;
+ applyOfficialQualifications(view,records,update.asOf);
  applyOfficialEliminations(view,Object.keys(records).filter(id=>records[id].losses>=3),update.asOf);
  return view;
 }
@@ -57,6 +66,7 @@ export function projectRound2LiveView(view:LiveView,update:Round2Facts,records:R
  view.sources=[...view.sources.filter(s=>!['swiss','schedule'].includes(s.id)),...update.sources.map(s=>({id:s.sourceId,name:s.sourceId==='swiss'?'LoL Esports · Swiss官方签表与赛果':'LoL Esports · 官方赛程（计划时间）',url:s.url,type:'OFFICIAL' as const}))];
  view.matches=[...view.matches.filter(m=>m.stage!=='SWISS'),...update.matches.map(m=>({id:m.matchId,stage:m.stage,round:m.round,position:m.bracketPosition,a:m.teamA,b:m.teamB,bestOf:m.bestOf,scoreA:m.scoreA,scoreB:m.scoreB,winner:m.winnerId,status:m.status,time:m.scheduledAt,date:m.scheduledAt?new Intl.DateTimeFormat('en-CA',{timeZone:m.competitionTimeZone,year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(m.scheduledAt)):null,zone:m.competitionTimeZone}))];
  for(const team of view.teams)if(records[team.id])team.status=`${records[team.id].wins}–${records[team.id].losses}`;
+ applyOfficialQualifications(view,records,update.asOf);
  applyOfficialEliminations(view,Object.keys(records).filter(id=>records[id].losses>=3),update.asOf);
  return view;
 }
@@ -68,6 +78,7 @@ export function projectRound3LiveView(view:LiveView,update:import('./updates/rou
  view.sources=[...view.sources.filter(s=>!['swiss','schedule'].includes(s.id)),...update.sources.map(s=>({id:s.sourceId,name:s.sourceId==='swiss'?'LoL Esports · Swiss官方签表与赛果':'LoL Esports · 官方赛程（计划时间）',url:s.url,type:'OFFICIAL' as const}))];
  view.matches=[...view.matches.filter(m=>m.stage!=='SWISS'),...update.matches.map(m=>({id:m.matchId,stage:m.stage,round:m.round,position:m.bracketPosition,a:m.teamA,b:m.teamB,bestOf:m.bestOf,scoreA:m.scoreA,scoreB:m.scoreB,winner:m.winnerId,status:m.status,time:m.scheduledAt,date:m.scheduledAt?new Intl.DateTimeFormat('en-CA',{timeZone:m.competitionTimeZone,year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(m.scheduledAt)):null,zone:m.competitionTimeZone}))];
  for(const team of view.teams)if(records[team.id])team.status=records[team.id].wins===3?'3–0 · 已晋级八强':`${records[team.id].wins}–${records[team.id].losses}`;
+ applyOfficialQualifications(view,records,update.asOf);
  applyOfficialEliminations(view,Object.keys(records).filter(id=>records[id].losses>=3),update.asOf);
  return view;
 }
@@ -79,6 +90,7 @@ export function projectRound4LiveView(view:LiveView,update:import('./updates/rou
  view.sources=[...view.sources.filter(s=>!['swiss','schedule'].includes(s.id)),...update.sources.map(s=>({id:s.sourceId,name:s.sourceId==='swiss'?'LoL Esports · Swiss官方签表与赛果':'LoL Esports · 官方赛程（计划时间）',url:s.url,type:'OFFICIAL' as const}))];
  view.matches=[...view.matches.filter(m=>m.stage!=='SWISS'),...update.matches.map(m=>({id:m.matchId,stage:m.stage,round:m.round,position:m.bracketPosition,a:m.teamA,b:m.teamB,bestOf:m.bestOf,scoreA:m.scoreA,scoreB:m.scoreB,winner:m.winnerId,status:m.status,time:m.scheduledAt,date:m.scheduledAt?new Intl.DateTimeFormat('en-CA',{timeZone:m.competitionTimeZone,year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(m.scheduledAt)):null,zone:m.competitionTimeZone}))];
  for(const team of view.teams)if(records[team.id])team.status=records[team.id].wins===3?`${records[team.id].wins}–${records[team.id].losses} · 已晋级八强`:`${records[team.id].wins}–${records[team.id].losses}`;
+ applyOfficialQualifications(view,records,update.asOf);
  applyOfficialEliminations(view,Object.keys(records).filter(id=>records[id].losses>=3),update.asOf);
  return view;
 }

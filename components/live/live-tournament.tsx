@@ -2,7 +2,7 @@
 import {InfoDisclosure} from '../ui/info-disclosure';
 import {useEffect,useLayoutEffect,useRef,useState,type PointerEvent,type Dispatch,type SetStateAction} from 'react';
 import {createPortal} from 'react-dom';
-import {nearestChartHit,preciseProbability,tooltipPosition,timelineLabel,chartGeometry,lastVisibleNode} from './chart-interaction';
+import {nearestChartHit,preciseProbability,tooltipPosition,timelineLabel,chartGeometry,lastVisibleNode,lastEventNode} from './chart-interaction';
 import Link from 'next/link';
 import {TeamLogo} from '../tournament/team-logo';
 import {curveEvents,curveLabels,regions,probabilityText,deltaText,visibleTeams,type LiveView} from '../../lib/live/view';
@@ -10,12 +10,12 @@ import styles from './live.module.css';
 const beijing=(value:string)=>new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(value));
 const positions:Record<string,string>={UPPER_SEMIFINAL_1:'胜者组首轮',UPPER_SEMIFINAL_2:'胜者组首轮',UPPER_FINAL:'胜者组决赛',LOWER_SEMIFINAL:'败者组首轮',LOWER_FINAL:'败者组决赛',QUALIFICATION_FINAL:'最终资格赛'};
 function Team({id,data,record}:{id:string;data:LiveView;record?:string}){const team=data.teams.find(t=>t.id===id)!;return <span className={styles.identity}><TeamLogo teamId={id} src={team.logo} size={30}/>{record===undefined?<strong>{team.shortName}</strong>:<span className={styles.teamRecord}><strong>{team.shortName}</strong><small>{record}</small></span>}</span>;}
-type TooltipData={key:string;label:string;event:typeof curveEvents[number];probability:number;eliminated:boolean;x:number;y:number;anchor?:SVGCircleElement};
+type TooltipData={key:string;label:string;event:typeof curveEvents[number];probability:number;eliminated:boolean;qualification:string|null;x:number;y:number;anchor?:SVGCircleElement};
 function ProbabilityTooltip({data}:{data:TooltipData}){
  const ref=useRef<HTMLDivElement>(null);
  const [position,setPosition]=useState<{left:number;top:number}|null>(null);
  useLayoutEffect(()=>{const box=ref.current?.getBoundingClientRect();if(box)setPosition(tooltipPosition(data.x,data.y,box.width,box.height,window.innerWidth,window.innerHeight));},[data]);
- return createPortal(<div ref={ref} id="live-probability-tooltip" role="tooltip" className={styles.probabilityTooltip} style={{left:position?.left??0,top:position?.top??0,visibility:position?'visible':'hidden'}}><strong>{data.label}{data.eliminated?' · 已淘汰':''}</strong><div className={styles[data.event]}>{curveLabels[data.event]} · <b>{preciseProbability(data.probability)}</b></div></div>,document.body);
+ return createPortal(<div ref={ref} id="live-probability-tooltip" role="tooltip" className={styles.probabilityTooltip} style={{left:position?.left??0,top:position?.top??0,visibility:position?'visible':'hidden'}}><strong>{data.label}{data.eliminated?' · 已淘汰':data.qualification?` · ${data.qualification}`:''}</strong><div className={styles[data.event]}>{curveLabels[data.event]} · <b>{preciseProbability(data.probability)}</b></div></div>,document.body);
 }
 export function NodeProbabilityDetail({id,teamLabel,nodeLabel,values,onClose}:{id:string;teamLabel:string;nodeLabel:string;values:LiveView['teams'][number]['points'][number]['values'];onClose:()=>void}){
  return <div id={id} className={styles.pointDetail} role="region" aria-label={`${teamLabel} ${nodeLabel}概率详情`}><div className={styles.detailHeader}><strong>{nodeLabel}</strong><button onClick={onClose} aria-label="关闭数据点详情">×</button></div>{curveEvents.map(e=><div className={styles.detailRow} key={e}><span className={styles[e]}>{curveLabels[e]}</span><b>{preciseProbability(values[e].probability)}</b></div>)}</div>;
@@ -30,15 +30,17 @@ function ProbabilityCard({team,nodes,tooltip,onTooltip}:{team:LiveView['teams'][
  const sampledZero=(i:number,e:typeof curveEvents[number])=>team.points[i].values[e].count===0&&!(i>0&&team.status==='已淘汰');
  const {width:chartWidth,x}=chartGeometry(nodes.length);
  const lastNode=lastVisibleNode(nodes.length,team.eliminationNodeIndex);
- const visiblePoints=team.points.slice(0,lastNode+1);
+ const qualification=(e:typeof curveEvents[number])=>e==='champion'?null:team.qualificationNodes[e];
+ const lastFor=(e:typeof curveEvents[number])=>lastEventNode(nodes.length,team.eliminationNodeIndex,qualification(e));
+ const qualifiedLabel=(i:number,e:typeof curveEvents[number])=>i===qualification(e)?`已${curveLabels[e]}`:null;
  const y=(p:number)=>112-p*88;
- const showPoint=(i:number,e:number,clientX:number,clientY:number,anchor?:SVGCircleElement)=>onTooltip({key:`${team.id}-${i}-${e}`,label:nodes[i].label,eliminated:i===team.eliminationNodeIndex,event:curveEvents[e],probability:team.points[i].values[curveEvents[e]].probability,x:clientX,y:clientY,anchor});
+ const showPoint=(i:number,e:number,clientX:number,clientY:number,anchor?:SVGCircleElement)=>onTooltip({key:`${team.id}-${i}-${e}`,label:nodes[i].label,eliminated:i===team.eliminationNodeIndex,qualification:qualifiedLabel(i,curveEvents[e]),event:curveEvents[e],probability:team.points[i].values[curveEvents[e]].probability,x:clientX,y:clientY,anchor});
  const hoverPoint=(event:PointerEvent<SVGSVGElement>)=>{
   if(event.pointerType==='touch')return;
   // Auto-scroll can emit a stationary pointer move; preserve the keyboard's active point.
   if(event.movementX===0&&event.movementY===0&&document.activeElement?.hasAttribute('data-point-event'))return;
   const matrix=event.currentTarget.getScreenCTM();if(!matrix)return;
-  const points=nodes.slice(0,lastNode+1).flatMap((_,i)=>curveEvents.map((e,j)=>{const point=new DOMPoint(x(i),y(team.points[i].values[e].probability)).matrixTransform(matrix);return {node:i,event:j,x:point.x,y:point.y};}));
+  const points=nodes.slice(0,lastNode+1).flatMap((_,i)=>curveEvents.flatMap((e,j)=>{if(i>lastFor(e))return [];const point=new DOMPoint(x(i),y(team.points[i].values[e].probability)).matrixTransform(matrix);return {node:i,event:j,x:point.x,y:point.y};}));
   const hit=nearestChartHit(points,event.clientX,event.clientY);
   if(hit)showPoint(hit.node,hit.event,event.clientX,event.clientY);else onTooltip(current=>current?.anchor?current:null);
  };
@@ -48,11 +50,12 @@ function ProbabilityCard({team,nodes,tooltip,onTooltip}:{team:LiveView['teams'][
   <div className={styles.chartViewport} tabIndex={nodes.length>2?0:undefined} role={nodes.length>2?"region":undefined} aria-label={nodes.length>2?`${team.shortName} 历史节点，可横向滚动`:undefined}><svg viewBox={`0 0 ${chartWidth} 144`} style={nodes.length>2?{minWidth:chartWidth}:undefined} className={styles.chart} role="group" aria-label={`${team.shortName} 概率变化，纵轴固定0至100%。折线仅连接历史快照。`} onPointerMove={hoverPoint} onPointerLeave={()=>onTooltip(current=>current?.anchor?current:null)} onPointerCancel={()=>onTooltip(null)}>
    {[0,0.5,1].map(p=><g key={p}><line x1="44" x2={chartWidth-24} y1={y(p)} y2={y(p)} className={styles.gridLine}/><text x="36" y={y(p)+4} textAnchor="end">{p*100}%</text></g>)}
    {team.eliminationNodeIndex!==null&&<g className={styles.eliminationMarker} pointerEvents="none" data-elimination-node={lastNode}><line x1={x(lastNode)} x2={x(lastNode)} y1="20" y2="117"/><text x={x(lastNode)} y="13" textAnchor="middle">已淘汰</text></g>}
+   {(['swiss','knockout'] as const).map(e=>{const i=qualification(e);return i===null||i>lastNode?null:<g key={e} className={`${styles.qualificationMarker} ${styles[e]}`} pointerEvents="none" data-qualification-event={e} data-qualification-node={i}><text x={x(i)} y="13" textAnchor={i===0?'start':i===nodes.length-1?'end':'middle'}>{qualifiedLabel(i,e)}</text></g>;})}
    {curveEvents.map(e=><g key={e} className={styles[e]} data-curve={e}>
-    <polyline points={visiblePoints.map((p,i)=>`${x(i)},${y(p.values[e].probability)}`).join(' ')} fill="none" stroke="currentColor" strokeWidth="2"/>
-    {visiblePoints.map((p,i)=><circle key={p.snapshotId} pointerEvents="none" cx={x(i)} cy={y(p.values[e].probability)} r="4" fill="currentColor"/>)}
+    <polyline points={team.points.slice(0,lastFor(e)+1).map((p,i)=>`${x(i)},${y(p.values[e].probability)}`).join(' ')} fill="none" stroke="currentColor" strokeWidth="2"/>
+    {team.points.slice(0,lastFor(e)+1).map((p,i)=><circle key={p.snapshotId} pointerEvents="none" cx={x(i)} cy={y(p.values[e].probability)} r="4" fill="currentColor"/>)}
    </g>)}
-   {nodes.map((node,i)=><g key={node.id}><text x={x(i)} y="136" textAnchor={i===0?"start":i===nodes.length-1?"end":"middle"}>{timelineLabel(node)}</text>{i<=lastNode&&curveEvents.map((e,j)=><circle key={e} ref={target=>{pointTargets.current[i*3+j]=target;}} data-point-node={i} data-point-event={e} cx={x(i)} cy={y(team.points[i].values[e].probability)} r="10" fill="transparent" tabIndex={0} role="button" aria-label={`${team.shortName} ${node.label} ${curveLabels[e]} ${preciseProbability(team.points[i].values[e].probability)}${i===team.eliminationNodeIndex?' · 已淘汰':''}`} aria-expanded={selected===i} aria-controls={selected===i?detailId:undefined} aria-describedby={tooltip?.key===`${team.id}-${i}-${j}`?'live-probability-tooltip':undefined} onClick={()=>toggleDetail(i,j)} onFocus={event=>{if(suppressFocus.current)return;const rect=event.currentTarget.getBoundingClientRect();showPoint(i,j,rect.right,rect.top,event.currentTarget);}} onBlur={()=>onTooltip(current=>current?.key===`${team.id}-${i}-${j}`?null:current)} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleDetail(i,j);}}} className={styles.pointTarget}/>)}</g>)}
+   {nodes.map((node,i)=><g key={node.id}><text x={x(i)} y="136" textAnchor={i===0?"start":i===nodes.length-1?"end":"middle"}>{timelineLabel(node)}</text>{i<=lastNode&&curveEvents.filter(e=>i<=lastFor(e)).map(e=>{const j=curveEvents.indexOf(e);return <circle key={e} ref={target=>{pointTargets.current[i*3+j]=target;}} data-point-node={i} data-point-event={e} cx={x(i)} cy={y(team.points[i].values[e].probability)} r="10" fill="transparent" tabIndex={0} role="button" aria-label={`${team.shortName} ${node.label} ${curveLabels[e]} ${preciseProbability(team.points[i].values[e].probability)}${i===team.eliminationNodeIndex?' · 已淘汰':qualifiedLabel(i,e)?` · ${qualifiedLabel(i,e)}`:''}`} aria-expanded={selected===i} aria-controls={selected===i?detailId:undefined} aria-describedby={tooltip?.key===`${team.id}-${i}-${j}`?'live-probability-tooltip':undefined} onClick={()=>toggleDetail(i,j)} onFocus={event=>{if(suppressFocus.current)return;const rect=event.currentTarget.getBoundingClientRect();showPoint(i,j,rect.right,rect.top,event.currentTarget);}} onBlur={()=>onTooltip(current=>current?.key===`${team.id}-${i}-${j}`?null:current)} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleDetail(i,j);}}} className={styles.pointTarget}/>;})}</g>)}
   </svg></div>
   {selected!==null&&<NodeProbabilityDetail id={detailId} teamLabel={team.shortName} nodeLabel={nodes[selected].label} values={team.points[selected].values} onClose={closeDetail}/>}
   <div className={styles.comparison}><span>当前：{nodes.at(-1)!.label}</span><span>相对{nodes[0].label}变化（pp）</span></div><div className={styles.numbers}>{curveEvents.map(e=>{const a=first.values[e],b=latest.values[e],delta=(b.count-a.count)*100/latest.simulationCount;return <div key={e}><span className={styles[e]}>{curveLabels[e]}</span><strong title={sampledZero(team.points.length-1,e)?'100,000次样本未抽中，不代表理论上不可能':undefined}>{probabilityText(b.probability)}{sampledZero(team.points.length-1,e)?'*':''}</strong><small>{nodes[0].label} {probabilityText(a.probability)}</small><small title={`${delta.toFixed(3)} 个百分点`}>{deltaText(delta)}</small></div>;})}</div>
