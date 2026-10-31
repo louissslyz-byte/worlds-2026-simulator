@@ -1,0 +1,4 @@
+TW flag: flag-icons 7.5.0, flags/4x3/tw.svg
+https://github.com/lipis/flag-icons
+https://cdn.jsdelivr.net/npm/flag-icons@7.5.0/flags/4x3/tw.svg
+MIT license retained in LICENSE-flag-icons.txt.

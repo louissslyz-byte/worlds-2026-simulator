@@ -10,3 +10,8 @@ for(const r of sources.assets){const b=await readFile(`public/region-logos/${r.r
  const html=renderToStaticMarkup(React.createElement(RegionMark,{region:r.region,showLabel:false}));assert.ok(html.includes(`aria-label="${r.region}"`));assert.ok(!html.includes('>'+r.region+'<'));assert.ok(renderToStaticMarkup(React.createElement(RegionMark,{region:r.region})).includes('>'+r.region+'<'));
 }
 console.log('Six official region assets: PNG/checksums, label and icon-only accessible variants PASS.');
+const {CountryFlag}=await import('../components/team-profile/country-flag.tsx');
+const tw=renderToStaticMarkup(React.createElement(CountryFlag,{code:'TW'}));assert.ok(tw.includes('/flags/tw.svg'));assert.ok(!tw.includes('🇹🇼'));
+assert.ok(renderToStaticMarkup(React.createElement(CountryFlag,{code:'KR'})).includes('🇰🇷'));
+const svg=await readFile('public/flags/tw.svg','utf8');assert.ok(svg.includes('<svg'));assert.ok(!/<script|onload=|https?:\/\/[^" ]+\.(js|css)/i.test(svg));
+console.log('TW uses local SVG instead of platform flag emoji; other nationalities unchanged PASS.');

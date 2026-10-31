@@ -1,10 +1,11 @@
+import {CountryFlag} from '../../../../components/team-profile/country-flag';
 import {playerStatistics} from '../../../../lib/team-profile/statistics-server';
 import {PlayerStatistics} from '../../../../components/team-profile/statistics';
 import Link from 'next/link';
 import {InfoDisclosure} from '../../../../components/ui/info-disclosure';
 import {notFound} from 'next/navigation';
 import {profileTeams,profileRoster,championPool,stage3Scopes} from '../../../../lib/team-profile/data';
-import {countryFlag,playerAge,sortedChampionStats,championWinRate} from '../../../../lib/team-profile/helpers';
+import {playerAge,sortedChampionStats,championWinRate} from '../../../../lib/team-profile/helpers';
 import {PositionIcon} from '../../../../components/tournament/roster-strip';
 import {ChampionIcon} from '../../../../components/team-profile/champion-icon';
 import styles from '../../../../components/team-profile/profile.module.css';
@@ -23,7 +24,7 @@ export default async function PlayerProfile({params}:{params:Promise<{slug:strin
    <div className="eyebrow">PLAYER PROFILE · WORLDS 2026</div><div className={styles.playerHero}><PositionIcon role={player.role} label={slot.role.label}/><h1>{player.playerId}</h1></div>
    <dl className={styles.playerFacts}>
     <div><dt>真实姓名</dt><dd>{player.realName?.value??'未核验'}</dd></div>
-    <div><dt>国籍</dt><dd>{player.nationalities?player.nationalities.value.map(n=><span key={n.countryCode} className={styles.playerNationality}><span aria-hidden="true">{countryFlag(n.countryCode)}</span> {n.name}</span>):'未核验'}</dd></div>
+    <div><dt>国籍</dt><dd>{player.nationalities?player.nationalities.value.map(n=><span key={n.countryCode} className={styles.playerNationality}><CountryFlag code={n.countryCode}/> {n.name}</span>):'未核验'}</dd></div>
     <div><dt>年龄</dt><dd>{age===null?'暂无可核验资料':<span title={player.birthDate?`出生日期：${player.birthDate.value}`:`官方资料所载年龄 · ${player.reportedAge!.source.checkedAt} 核对`}>{age} 岁<span className={styles.playerFactLabel}>{player.birthDate?`，出生日期：${player.birthDate.value}`:`，官方资料所载年龄，${player.reportedAge!.source.checkedAt} 核对`}</span></span>}</dd></div>
    </dl>
   </header>
