@@ -49,7 +49,8 @@ function nonChampionRules(css){const root=postcss.parse(css);const rules=[];root
 assert.deepEqual(nonChampionRules(await readFile('app/worlds-design.css','utf8')),nonChampionRules(execFileSync('git',['show','aea12c9:app/worlds-design.css'],{encoding:'utf8'})));
 console.log('U2-C Live: 19/57, exact real probabilities/deltas/axes/order, in-memory 3/4 nodes, tiny values and all AB/model/data protections PASS.');
 
-const real=render(view),los=real.match(/data-live-team="LOS"[^>]*>(.*?)<\/article>/s)[1];
+const zeroFixture=structuredClone(view);zeroFixture.teams.find(t=>t.id==='LOS').points.at(-1).values.champion={count:0,probability:0};
+const real=render(zeroFixture),los=real.match(/data-live-team="LOS"[^>]*>(.*?)<\/article>/s)[1];
 assert.ok(los.includes('100,000次样本未抽中，不代表理论上不可能'));
-for(const id of ['C9','FUR','MVK','AL','TSW']){const card=real.match(new RegExp(`data-live-team="${id}"[^>]*>(.*?)<\\/article>`,'s'))[1];assert.ok(!card.includes('100,000次样本未抽中，不代表理论上不可能'));}
-console.log('LiveOps zero-count distinction: LOS sampled zero vs five eliminated teams PASS.');
+for(const id of ['C9','FUR','MVK','AL','TSW','CFO','G2','TLAW']){const card=real.match(new RegExp(`data-live-team="${id}"[^>]*>(.*?)<\\/article>`,'s'))[1];assert.ok(!card.includes('100,000次样本未抽中，不代表理论上不可能'));}
+console.log('LiveOps zero-count distinction: zero-count survivor fixture vs eight eliminated teams PASS.');

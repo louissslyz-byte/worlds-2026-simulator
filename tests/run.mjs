@@ -80,3 +80,5 @@ try{
 }catch(e){console.error(e);process.exitCode=1}
 
 await import('./live-chart-interaction.mjs');
+
+await import('./live-round4.mjs');

@@ -142,3 +142,9 @@ PROFILE_AUDIT_URL=http://127.0.0.1:3061 PROFILE_STATS_RELEASE=1 node --import ts
 ## 2026-10-27补记：R3节点已完成
 
 新增`lib/live/updates/round3/`；已核验R3赛果及R4官方签表，原R1/R2归档保留。入口：`node --import tsx tests/live-round3.mjs --facts-only` → 审核并提交生成器 → 明确授权后一次运行 `pnpm live:round3:generate --candidate "$NEW_CANDIDATE_DIRECTORY"` → `node --import tsx scripts/validate-live-round3.mjs --candidate "$NEW_CANDIDATE_DIRECTORY"` → 追加归档 → `pnpm live:round3:validate` 和回归。此次ID已完成100,000有效样本，不应重跑或覆盖。下一轮需新的事实与快照版本，并在真实R4完成后另行核验。
+
+## 2026-10-31补记：R4节点已完成
+
+新增`lib/live/updates/round4/`，六场R4结果与三场R5待开赛签表已验证。精确抽签发布时间未知，使用R5开赛前实际观察时间，不猜测。流程：`pnpm live:round4:validate --facts-only` → `node --import tsx tests/live-round4.mjs --facts-only` → 保存生成器提交 → 授权后一次`pnpm live:round4:generate --candidate "$NEW_CANDIDATE_DIRECTORY"` → `node --import tsx scripts/validate-live-round4.mjs --candidate "$NEW_CANDIDATE_DIRECTORY"` → 排他新增归档 → `pnpm live:round4:validate`与全站回归、Prebuilt及HTTP/RSC、四宽度浏览器验收。
+
+当前R4已有100,000有效/0失败、seed20261031，不应重跑或覆盖。继承R3并锁定36场完成结果，固定R5三场未赛对阵。原两节点验证入口继续保护PRE/POST；round4验证与服务器读取校验全六节点，不削弱旧断言。未来R5需独立版本和授权，不自动更新、推送或部署。

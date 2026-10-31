@@ -71,3 +71,14 @@ export function projectRound3LiveView(view:LiveView,update:import('./updates/rou
  applyOfficialEliminations(view,Object.keys(records).filter(id=>records[id].losses>=3),update.asOf);
  return view;
 }
+
+/** Project verified R4 facts without changing any archived probability or user session. */
+export function projectRound4LiveView(view:LiveView,update:import('./updates/round4').Round4Facts,records:Record<string,{wins:number;losses:number}>){
+ view.asOf=update.asOf;view.checkedAt=update.sourceCheckedAt;
+ view.phaseLabel='瑞士轮第四轮结束 · 第五轮对阵已确认';view.swissLabel='ROUND 1–4 已结束 · ROUND 5 官方签表已确认';view.pendingLabel='淘汰赛 · 待确定晋级队伍与抽签';
+ view.sources=[...view.sources.filter(s=>!['swiss','schedule'].includes(s.id)),...update.sources.map(s=>({id:s.sourceId,name:s.sourceId==='swiss'?'LoL Esports · Swiss官方签表与赛果':'LoL Esports · 官方赛程（计划时间）',url:s.url,type:'OFFICIAL' as const}))];
+ view.matches=[...view.matches.filter(m=>m.stage!=='SWISS'),...update.matches.map(m=>({id:m.matchId,stage:m.stage,round:m.round,position:m.bracketPosition,a:m.teamA,b:m.teamB,bestOf:m.bestOf,scoreA:m.scoreA,scoreB:m.scoreB,winner:m.winnerId,status:m.status,time:m.scheduledAt,date:m.scheduledAt?new Intl.DateTimeFormat('en-CA',{timeZone:m.competitionTimeZone,year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(m.scheduledAt)):null,zone:m.competitionTimeZone}))];
+ for(const team of view.teams)if(records[team.id])team.status=records[team.id].wins===3?`${records[team.id].wins}–${records[team.id].losses} · 已晋级八强`:`${records[team.id].wins}–${records[team.id].losses}`;
+ applyOfficialEliminations(view,Object.keys(records).filter(id=>records[id].losses>=3),update.asOf);
+ return view;
+}
