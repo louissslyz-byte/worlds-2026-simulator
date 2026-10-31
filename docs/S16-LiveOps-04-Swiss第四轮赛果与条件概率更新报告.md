@@ -136,3 +136,27 @@ Node22.23.3、pnpm9.15.9、Vercel CLI64.2.0，实际本地`build --prod --standa
 - 未重新运行正式Monte Carlo，未修改事实、快照、模型、引擎、Team/Player及Session。未上线、未推送。
 
 **本地候选已更新，替代上文旧产物哈希。** 新产物树SHA：`428bbadd72803f008183fc34baccb7914da5c17996aac0b942b4ca9fa17cdce8`；597文件、59内部链接、私人内容命中0；原批准统计聚合SHA不变。未来发布须使用此新版候选并重新核对发布门禁。
+
+## 正式发布记录（2026-10-31）
+
+用户已明确授权“上线，同步github”，并完成原Vercel账户设备验证与本次GitHub写入Deploy Key添加。
+
+| 项目 | 核查结果 |
+|---|---|
+| 产品源码 | `2a34d9e893af9a5590a370c08f66d1c460131cf4` |
+| 发布前Production／立即回滚目标 | `dpl_GSe1cM1eXZNmF7Zha6K8XNENEQKs`，READY |
+| 发布后Production | `dpl_H1SFQx9NFzCjry5kckVYsx3YcRnL`，READY |
+| 正式域名 | https://worlds-2026-simulator.vercel.app/ |
+| 发布后控制面核查 | `2026-10-31T13:03:24.212Z` |
+| Prebuilt树SHA | `428bbadd72803f008183fc34baccb7914da5c17996aac0b942b4ca9fa17cdce8` |
+| Git自动部署 | 云端Ignored Build Step仍为`exit 0`，本地deploymentEnabled=false不变 |
+
+实际仅执行一次手动Production Prebuilt部署，日志明确“Using prebuilt build artifacts”。没有重建、运行正式Monte Carlo、修改业务代码或云端项目设置。显式携带`TEAM_STATS_RELEASE_ENABLED=true`及原批准SHA参数，不使用私人完整快照、URL或Token输入。API未直接返回统计参数明文，不能冒充读取验证；参数依据实际部署命令与本地严格Checksum Gate核实。
+
+部署后通过原项目API和正式域名Alias独立核对：新ID、READY、源码SHA、产物SHA及域名目标一致。当前列表中紧邻上一Production仍为上述正常版本。回滚状态无进行中操作；未执行回滚。若重大应用回归，可用已验证CLI和原账户执行 `vercel rollback dpl_GSe1cM1eXZNmF7Zha6K8XNENEQKs --yes`，然后复核域名、READY、统计及Simulator。Hobby紧邻上一Production限制依据[Vercel官方说明](https://vercel.com/docs/instant-rollback)，不假定任意旧版本均可回滚。
+
+独立公网HTTPS连接仍超时，未取得生产页面正文，不能把HTTP/RSC或线上交互标为PASS。已请求用户验证R4六场结果、R5三场待赛、六节点、晋级事件终止及GEN/Chovy统计；截至此记录仍待人工回复。没有证据显示重大应用故障，因此未因网络超时盲目回滚。
+
+GitHub同步范围：仅把本轮审核过的代码与发布记录快进推送到`release/s16-u2`，不修改`main`（核查值`6cc9de086075c40e6bd4ee2f0141f9b719cc2c67`），不强推、不推Tag。推送内容审计为22个产品/测试/报告文件，不包含原始CSV、研究资料、凭据或私人路径；未跟踪成果留本地。发布记录提交也属于本次同步范围，实际结果以推送回执和远端ref复核为准。
+
+PRODUCTION DEPLOYMENT：READY。PRODUCTION VERIFICATION：CONDITIONAL（控制面PASS，公网独立访问未完成，人工验证待回复）。
