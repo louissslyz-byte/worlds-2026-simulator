@@ -1,0 +1,694 @@
+{
+  "schemaVersion": "live-swiss-round4-facts-v1.0",
+  "snapshotId": "worlds-2026-swiss-r4-complete-r5-draw-v1",
+  "baseSnapshotId": "worlds-2026-swiss-r3-complete-r4-draw-v1",
+  "baseInputSHA256": "4852ad52783ca6b1261731c53b0f7b45207b274a9c0253bee928e01760d1b833",
+  "stateLabel": "SWISS_R4_COMPLETE_R5_DRAW_CONFIRMED",
+  "completedRound": 4,
+  "asOf": "2026-10-31T12:14:40.631Z",
+  "sourceCheckedAt": "2026-10-31T12:14:40.631Z",
+  "drawPublishedAt": null,
+  "drawKnownBy": "2026-10-31T12:14:40.631Z",
+  "nextRoundStartsAt": "2026-10-31T17:00:00.000Z",
+  "temporalEvidence": "Official bracket and schedule observed after R4 completion and before R5 starts. Exact draw publication time unknown. All R5 events unstarted with null outcomes; placeholder 0-0 excluded.",
+  "sources": [
+    {
+      "sourceId": "swiss",
+      "url": "https://lolesports.com/en-SG/tournament/115660540725177488/stage/115660540725570706",
+      "checkedAt": "2026-10-31T12:14:40.631Z",
+      "sha256": "f8f17e51f444d2543c4ff47bb9123feef02f9ce03f6c29adf6180783d7a51282",
+      "bytes": 548480,
+      "verificationStatus": "OFFICIAL_VERIFIED"
+    },
+    {
+      "sourceId": "schedule",
+      "url": "https://lolesports.com/en-US/leagues/worlds",
+      "checkedAt": "2026-10-31T12:14:40.631Z",
+      "sha256": "f47164d63c172cca65f65f55c244b4fbc15782fe409ba61f1668717ebd2c93cc",
+      "bytes": 3385851,
+      "verificationStatus": "OFFICIAL_VERIFIED"
+    }
+  ],
+  "matches": [
+    {
+      "matchId": "official-115660540726095005",
+      "officialMatchId": "115660540726095005",
+      "stage": "SWISS",
+      "round": 1,
+      "bracketPosition": "M1 (0-0)",
+      "teamA": "GEN",
+      "teamB": "IG",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-23T17:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 1,
+      "scoreB": 0,
+      "winnerId": "GEN",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095007",
+      "officialMatchId": "115660540726095007",
+      "stage": "SWISS",
+      "round": 1,
+      "bracketPosition": "M2 (0-0)",
+      "teamA": "TLAW",
+      "teamB": "CFO",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-23T22:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 1,
+      "winnerId": "CFO",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095009",
+      "officialMatchId": "115660540726095009",
+      "stage": "SWISS",
+      "round": 1,
+      "bracketPosition": "M3 (0-0)",
+      "teamA": "AL",
+      "teamB": "KC",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-23T20:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 1,
+      "winnerId": "KC",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095011",
+      "officialMatchId": "115660540726095011",
+      "stage": "SWISS",
+      "round": 1,
+      "bracketPosition": "M4 (0-0)",
+      "teamA": "G2",
+      "teamB": "DK",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-23T21:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 1,
+      "winnerId": "DK",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095013",
+      "officialMatchId": "115660540726095013",
+      "stage": "SWISS",
+      "round": 1,
+      "bracketPosition": "M5 (0-0)",
+      "teamA": "HLE",
+      "teamB": "TES",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-23T18:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 1,
+      "scoreB": 0,
+      "winnerId": "HLE",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095015",
+      "officialMatchId": "115660540726095015",
+      "stage": "SWISS",
+      "round": 1,
+      "bracketPosition": "M6 (0-0)",
+      "teamA": "LOS",
+      "teamB": "T1",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-23T23:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 1,
+      "winnerId": "T1",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095017",
+      "officialMatchId": "115660540726095017",
+      "stage": "SWISS",
+      "round": 1,
+      "bracketPosition": "M7 (0-0)",
+      "teamA": "TSW",
+      "teamB": "LYON",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-24T00:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 1,
+      "winnerId": "LYON",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095019",
+      "officialMatchId": "115660540726095019",
+      "stage": "SWISS",
+      "round": 1,
+      "bracketPosition": "M8 (0-0)",
+      "teamA": "BLG",
+      "teamB": "MKOI",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-23T19:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 1,
+      "winnerId": "MKOI",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095021",
+      "officialMatchId": "115660540726095021",
+      "stage": "SWISS",
+      "round": 2,
+      "bracketPosition": "M1 (1-0)",
+      "teamA": "MKOI",
+      "teamB": "CFO",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-24T18:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 1,
+      "scoreB": 0,
+      "winnerId": "MKOI",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095023",
+      "officialMatchId": "115660540726095023",
+      "stage": "SWISS",
+      "round": 2,
+      "bracketPosition": "M2 (1-0)",
+      "teamA": "KC",
+      "teamB": "LYON",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-24T20:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 1,
+      "winnerId": "LYON",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095025",
+      "officialMatchId": "115660540726095025",
+      "stage": "SWISS",
+      "round": 2,
+      "bracketPosition": "M3 (1-0)",
+      "teamA": "HLE",
+      "teamB": "GEN",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-24T22:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 1,
+      "winnerId": "GEN",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095027",
+      "officialMatchId": "115660540726095027",
+      "stage": "SWISS",
+      "round": 2,
+      "bracketPosition": "M4 (1-0)",
+      "teamA": "DK",
+      "teamB": "T1",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-24T23:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 1,
+      "scoreB": 0,
+      "winnerId": "DK",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095029",
+      "officialMatchId": "115660540726095029",
+      "stage": "SWISS",
+      "round": 2,
+      "bracketPosition": "M5 (0-1)",
+      "teamA": "TES",
+      "teamB": "AL",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-24T17:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 1,
+      "scoreB": 0,
+      "winnerId": "TES",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095031",
+      "officialMatchId": "115660540726095031",
+      "stage": "SWISS",
+      "round": 2,
+      "bracketPosition": "M6 (0-1)",
+      "teamA": "LOS",
+      "teamB": "G2",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-24T19:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 1,
+      "winnerId": "G2",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095033",
+      "officialMatchId": "115660540726095033",
+      "stage": "SWISS",
+      "round": 2,
+      "bracketPosition": "M7 (0-1)",
+      "teamA": "IG",
+      "teamB": "TSW",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-24T21:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 1,
+      "scoreB": 0,
+      "winnerId": "IG",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095035",
+      "officialMatchId": "115660540726095035",
+      "stage": "SWISS",
+      "round": 2,
+      "bracketPosition": "M8 (0-1)",
+      "teamA": "BLG",
+      "teamB": "TLAW",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-25T00:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 1,
+      "scoreB": 0,
+      "winnerId": "BLG",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095037",
+      "officialMatchId": "115660540726095037",
+      "stage": "SWISS",
+      "round": 3,
+      "bracketPosition": "M1 (2-0)",
+      "teamA": "DK",
+      "teamB": "MKOI",
+      "bestOf": 3,
+      "scheduledAt": "2026-10-25T19:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 2,
+      "scoreB": 0,
+      "winnerId": "DK",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095041",
+      "officialMatchId": "115660540726095041",
+      "stage": "SWISS",
+      "round": 3,
+      "bracketPosition": "M2 (2-0)",
+      "teamA": "LYON",
+      "teamB": "GEN",
+      "bestOf": 3,
+      "scheduledAt": "2026-10-25T22:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 1,
+      "scoreB": 2,
+      "winnerId": "GEN",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095045",
+      "officialMatchId": "115660540726095045",
+      "stage": "SWISS",
+      "round": 3,
+      "bracketPosition": "M3 (1-1)",
+      "teamA": "IG",
+      "teamB": "HLE",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-25T17:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 1,
+      "scoreB": 0,
+      "winnerId": "IG",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095047",
+      "officialMatchId": "115660540726095047",
+      "stage": "SWISS",
+      "round": 3,
+      "bracketPosition": "M4 (1-1)",
+      "teamA": "G2",
+      "teamB": "TES",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-25T18:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 1,
+      "winnerId": "TES",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095049",
+      "officialMatchId": "115660540726095049",
+      "stage": "SWISS",
+      "round": 3,
+      "bracketPosition": "M5 (1-1)",
+      "teamA": "T1",
+      "teamB": "CFO",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-26T17:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 1,
+      "scoreB": 0,
+      "winnerId": "T1",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095051",
+      "officialMatchId": "115660540726095051",
+      "stage": "SWISS",
+      "round": 3,
+      "bracketPosition": "M6 (1-1)",
+      "teamA": "KC",
+      "teamB": "BLG",
+      "bestOf": 1,
+      "scheduledAt": "2026-10-26T18:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 1,
+      "winnerId": "BLG",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095053",
+      "officialMatchId": "115660540726095053",
+      "stage": "SWISS",
+      "round": 3,
+      "bracketPosition": "M7 (0-2)",
+      "teamA": "TSW",
+      "teamB": "LOS",
+      "bestOf": 3,
+      "scheduledAt": "2026-10-26T19:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 2,
+      "winnerId": "LOS",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095057",
+      "officialMatchId": "115660540726095057",
+      "stage": "SWISS",
+      "round": 3,
+      "bracketPosition": "M8 (0-2)",
+      "teamA": "AL",
+      "teamB": "TLAW",
+      "bestOf": 3,
+      "scheduledAt": "2026-10-26T22:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 2,
+      "winnerId": "TLAW",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095061",
+      "officialMatchId": "115660540726095061",
+      "stage": "SWISS",
+      "round": 4,
+      "bracketPosition": "M1 (2-1)",
+      "teamA": "MKOI",
+      "teamB": "T1",
+      "bestOf": 3,
+      "scheduledAt": "2026-10-28T20:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 2,
+      "winnerId": "T1",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095065",
+      "officialMatchId": "115660540726095065",
+      "stage": "SWISS",
+      "round": 4,
+      "bracketPosition": "M2 (2-1)",
+      "teamA": "LYON",
+      "teamB": "IG",
+      "bestOf": 3,
+      "scheduledAt": "2026-10-28T23:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 1,
+      "scoreB": 2,
+      "winnerId": "IG",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095069",
+      "officialMatchId": "115660540726095069",
+      "stage": "SWISS",
+      "round": 4,
+      "bracketPosition": "M3 (2-1)",
+      "teamA": "BLG",
+      "teamB": "TES",
+      "bestOf": 3,
+      "scheduledAt": "2026-10-29T23:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 1,
+      "scoreB": 2,
+      "winnerId": "TES",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095073",
+      "officialMatchId": "115660540726095073",
+      "stage": "SWISS",
+      "round": 4,
+      "bracketPosition": "M4 (1-2)",
+      "teamA": "CFO",
+      "teamB": "KC",
+      "bestOf": 3,
+      "scheduledAt": "2026-10-29T20:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 2,
+      "winnerId": "KC",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095077",
+      "officialMatchId": "115660540726095077",
+      "stage": "SWISS",
+      "round": 4,
+      "bracketPosition": "M5 (1-2)",
+      "teamA": "TLAW",
+      "teamB": "LOS",
+      "bestOf": 3,
+      "scheduledAt": "2026-10-30T20:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 1,
+      "scoreB": 2,
+      "winnerId": "LOS",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095081",
+      "officialMatchId": "115660540726095081",
+      "stage": "SWISS",
+      "round": 4,
+      "bracketPosition": "M6 (1-2)",
+      "teamA": "G2",
+      "teamB": "HLE",
+      "bestOf": 3,
+      "scheduledAt": "2026-10-30T23:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "COMPLETED",
+      "scoreA": 0,
+      "scoreB": 2,
+      "winnerId": "HLE",
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095085",
+      "officialMatchId": "115660540726095085",
+      "stage": "SWISS",
+      "round": 5,
+      "bracketPosition": "M1 (2-2)",
+      "teamA": "MKOI",
+      "teamB": "KC",
+      "bestOf": 3,
+      "scheduledAt": "2026-10-31T17:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "SCHEDULED",
+      "scoreA": null,
+      "scoreB": null,
+      "winnerId": null,
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095089",
+      "officialMatchId": "115660540726095089",
+      "stage": "SWISS",
+      "round": 5,
+      "bracketPosition": "M2 (2-2)",
+      "teamA": "LOS",
+      "teamB": "LYON",
+      "bestOf": 3,
+      "scheduledAt": "2026-10-31T20:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "SCHEDULED",
+      "scoreA": null,
+      "scoreB": null,
+      "winnerId": null,
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    },
+    {
+      "matchId": "official-115660540726095093",
+      "officialMatchId": "115660540726095093",
+      "stage": "SWISS",
+      "round": 5,
+      "bracketPosition": "M3 (2-2)",
+      "teamA": "HLE",
+      "teamB": "BLG",
+      "bestOf": 3,
+      "scheduledAt": "2026-10-31T23:00:00.000Z",
+      "competitionTimeZone": "America/Chicago",
+      "status": "SCHEDULED",
+      "scoreA": null,
+      "scoreB": null,
+      "winnerId": null,
+      "sourceIds": [
+        "swiss",
+        "schedule"
+      ]
+    }
+  ]
+}
