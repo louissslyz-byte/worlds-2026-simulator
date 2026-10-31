@@ -14,7 +14,7 @@ const {default:Rankings}=await import('../app/rankings/page.tsx');
 const ranking=renderToStaticMarkup(React.createElement(Rankings));
 assert.ok(ranking.includes('Riot GPR 实力榜'));assert.ok(ranking.includes('数据与计算方法'));assert.ok(ranking.includes('不是 Riot 官方夺冠预测'));assert.ok(ranking.includes('/methodology'));assert.ok(ranking.includes('暂无'));
 assert.equal((ranking.match(/<tr>/g)||[]).length,20);
-const {default:Home}=await import('../app/page.tsx');const home=renderToStaticMarkup(React.createElement(Home));assert.ok(home.includes('关于预测'));assert.ok(home.includes('创建模拟'));
+const {default:Home}=await import('../app/page.tsx');const home=renderToStaticMarkup(await Home());assert.ok(home.includes('重点队伍走势'));assert.ok(home.includes('进入模拟器'));
 for(const path of execFileSync('git',['ls-tree','-r','--name-only','d2dd830','--','lib/','app/methodology/'],{encoding:'utf8'}).trim().split('\n').filter(file=>!['lib/live/view.ts','lib/live/view-server.ts','next.config.ts'].includes(file))){
  const before=execFileSync('git',['show',`d2dd830:${path}`]);assert.deepEqual(await readFile(path),before,`Protected data/model changed: ${path}`);
 }

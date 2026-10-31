@@ -20,7 +20,7 @@ function ProbabilityTooltip({data}:{data:TooltipData}){
 export function NodeProbabilityDetail({id,teamLabel,nodeLabel,values,onClose}:{id:string;teamLabel:string;nodeLabel:string;values:LiveView['teams'][number]['points'][number]['values'];onClose:()=>void}){
  return <div id={id} className={styles.pointDetail} role="region" aria-label={`${teamLabel} ${nodeLabel}概率详情`}><div className={styles.detailHeader}><strong>{nodeLabel}</strong><button onClick={onClose} aria-label="关闭数据点详情">×</button></div>{curveEvents.map(e=><div className={styles.detailRow} key={e}><span className={styles[e]}>{curveLabels[e]}</span><b>{preciseProbability(values[e].probability)}</b></div>)}</div>;
 }
-function ProbabilityCard({team,nodes,tooltip,onTooltip}:{team:LiveView['teams'][number];nodes:LiveView['nodes'];tooltip:TooltipData|null;onTooltip:Dispatch<SetStateAction<TooltipData|null>>}){
+function ProbabilityCard({team,nodes,tooltip,onTooltip,compact=false}:{team:LiveView['teams'][number];nodes:LiveView['nodes'];tooltip:TooltipData|null;onTooltip:Dispatch<SetStateAction<TooltipData|null>>;compact?:boolean}){
  const [selected,setSelected]=useState<number|null>(null);
  const pointTargets=useRef<(SVGCircleElement|null)[]>([]),trigger=useRef(0),suppressFocus=useRef(false);
  const detailId=`live-detail-${team.id}`;
@@ -58,7 +58,7 @@ function ProbabilityCard({team,nodes,tooltip,onTooltip}:{team:LiveView['teams'][
    {nodes.map((node,i)=><g key={node.id}><text x={x(i)} y="136" textAnchor={i===0?"start":i===nodes.length-1?"end":"middle"}>{timelineLabel(node)}</text>{i<=lastNode&&curveEvents.filter(e=>i<=lastFor(e)).map(e=>{const j=curveEvents.indexOf(e);return <circle key={e} ref={target=>{pointTargets.current[i*3+j]=target;}} data-point-node={i} data-point-event={e} cx={x(i)} cy={y(team.points[i].values[e].probability)} r="10" fill="transparent" tabIndex={0} role="button" aria-label={`${team.shortName} ${node.label} ${curveLabels[e]} ${preciseProbability(team.points[i].values[e].probability)}${i===team.eliminationNodeIndex?' · 已淘汰':qualifiedLabel(i,e)?` · ${qualifiedLabel(i,e)}`:''}`} aria-expanded={selected===i} aria-controls={selected===i?detailId:undefined} aria-describedby={tooltip?.key===`${team.id}-${i}-${j}`?'live-probability-tooltip':undefined} onClick={()=>toggleDetail(i,j)} onFocus={event=>{if(suppressFocus.current)return;const rect=event.currentTarget.getBoundingClientRect();showPoint(i,j,rect.right,rect.top,event.currentTarget);}} onBlur={()=>onTooltip(current=>current?.key===`${team.id}-${i}-${j}`?null:current)} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleDetail(i,j);}}} className={styles.pointTarget}/>;})}</g>)}
   </svg></div>
   {selected!==null&&<NodeProbabilityDetail id={detailId} teamLabel={team.shortName} nodeLabel={nodes[selected].label} values={team.points[selected].values} onClose={closeDetail}/>}
-  <div className={styles.comparison}><span>当前：{nodes.at(-1)!.label}</span><span>相对{nodes[0].label}变化（pp）</span></div><div className={styles.numbers}>{curveEvents.map(e=>{const a=first.values[e],b=latest.values[e],delta=(b.count-a.count)*100/latest.simulationCount;return <div key={e}><span className={styles[e]}>{curveLabels[e]}</span><strong title={sampledZero(team.points.length-1,e)?'100,000次样本未抽中，不代表理论上不可能':undefined}>{probabilityText(b.probability)}{sampledZero(team.points.length-1,e)?'*':''}</strong><small>{nodes[0].label} {probabilityText(a.probability)}</small><small title={`${delta.toFixed(3)} 个百分点`}>{deltaText(delta)}</small></div>;})}</div>
+  <div className={styles.comparison}><span>当前：{nodes.at(-1)!.label}</span><span>相对{nodes[0].label}变化（pp）</span></div><div className={`${styles.numbers} ${compact?styles.compactNumbers:''}`}>{curveEvents.filter(e=>!compact||e!=='swiss').map(e=>{const a=first.values[e],b=latest.values[e],delta=(b.count-a.count)*100/latest.simulationCount;return <div key={e}><span className={styles[e]}>{curveLabels[e]}</span><strong title={sampledZero(team.points.length-1,e)?'100,000次样本未抽中，不代表理论上不可能':undefined}>{probabilityText(b.probability)}{sampledZero(team.points.length-1,e)?'*':''}</strong><small>{nodes[0].label} {probabilityText(a.probability)}</small><small title={`${delta.toFixed(3)} 个百分点`}>{deltaText(delta)}</small></div>;})}</div>
  </article>;
 }
 // A Swiss record counts completed series from earlier rounds, never individual games.
@@ -116,4 +116,18 @@ export function LiveTournament({data}:{data:LiveView}){
   </section>
   {tooltip&&<ProbabilityTooltip data={tooltip}/>}
  </main>;
+}
+
+// Home reuses the exact Live cards, snapshot values and point interactions.
+export function HomeLivePreview({data}:{data:LiveView}){
+ const [tooltip,setTooltip]=useState<TooltipData|null>(null);
+ useEffect(()=>{const clear=()=>setTooltip(null);window.addEventListener('scroll',clear,true);window.addEventListener('resize',clear);return()=>{window.removeEventListener('scroll',clear,true);window.removeEventListener('resize',clear);};},[]);
+ return <><div className={styles.probabilityGrid}>{data.teams.map(team=><ProbabilityCard key={team.id} team={team} nodes={data.nodes} tooltip={tooltip} onTooltip={setTooltip} compact/>)}</div>{tooltip&&<ProbabilityTooltip data={tooltip}/>}</>;
+}
+export function HomeMatchPreview({data}:{data:LiveView}){
+ const latest=sortMatchesByTime(data.matches.filter(m=>m.status==='COMPLETED')).at(-1);
+ const recent=sortMatchesByTime(data.matches.filter(m=>m.status==='COMPLETED'&&m.stage===latest?.stage&&m.round===latest?.round));
+ const recentLabel=latest?.stage==='SWISS'?`Swiss R${latest.round}`:latest?.stage==='PLAY_IN'?'入围赛':'淘汰赛';
+ const next=sortMatchesByTime(data.matches.filter(m=>m.status==='SCHEDULED'));
+ return <div className={styles.probabilityGrid}>{[{title:`最近结果 · ${recentLabel}`,matches:recent},{title:'接下来 · 已确认对阵',matches:next}].map(group=><section key={group.title}><h3>{group.title}</h3>{group.matches.length?group.matches.map(m=><MatchCard key={m.id} match={m} data={data}/>):<p>等待官方公布</p>}</section>)}</div>;
 }

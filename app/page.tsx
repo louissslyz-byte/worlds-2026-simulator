@@ -1,26 +1,18 @@
-import {InfoDisclosure} from '../components/ui/info-disclosure';
 import Link from 'next/link';
-import {teams} from '../lib/sim/data';
-import {worldsSchedule,scheduleSource,updatedStartTimesSource} from '../lib/sim/schedule';
-import {precomputedOdds,assertPrecomputedOddsCurrent} from '../lib/sim/precomputed';
-import {formatProbability} from '../lib/sim/oddsConfig';
-import {riotGprSnapshot} from '../lib/sim/gprSnapshot';
-import {TeamIdentity} from '../components/tournament/team-identity';
-import {ProbabilityBar} from '../components/tournament/probability-bar';
-import {DataDetails} from '../components/tournament/data-status';
-
-export default function Home(){
- assertPrecomputedOddsCurrent();
- const top=[...teams].sort((a,b)=>(a.officialGprRank??999)-(b.officialGprRank??999)).slice(0,5);
- const leaders=[...teams].sort((a,b)=>(precomputedOdds.probabilities[b.id]??0)-(precomputedOdds.probabilities[a.id]??0)).slice(0,5);
- return <main className="shell home-page">
-  <div className="page-head"><div><div className="eyebrow">WORLDS 2026 / 赛事模拟</div><h1>全球总决赛模拟器</h1></div></div>
-  <div className="home-primary-grid">
-   <section className="panel home-odds-panel"><div className="section-title"><div><div className="eyebrow">CHAMPIONSHIP FORECAST</div><h2>冠军概率</h2><InfoDisclosure label="关于预测"><DataDetails showSimulationCount={false}/><p>官方 Riot GPR 提供队伍实力输入；夺冠概率由本站 Monte Carlo 模拟计算，不是 Riot 官方预测。</p><p><a href={riotGprSnapshot.sourceUrl} target="_blank" rel="noopener noreferrer">Riot GPR 来源 ↗</a> · <Link href="/methodology">完整方法论 →</Link></p></InfoDisclosure></div><span className="fine">{precomputedOdds.metadata.simulationCount.toLocaleString('en-US')} 次完整模拟</span></div>{leaders.map((t,i)=><Link href={`/teams/${t.slug}`} className="home-odds-row" key={t.id}><span className="rank-num">{String(i+1).padStart(2,'0')}</span><TeamIdentity teamId={t.id} size={38}/><ProbabilityBar a={precomputedOdds.probabilities[t.id]??0} label={`${t.shortName} 夺冠概率 ${formatProbability(precomputedOdds.probabilities[t.id]??0)}`}/><strong className="big-percent">{formatProbability(precomputedOdds.probabilities[t.id]??0)}</strong></Link>)}</section>
-   <aside className="hero-card home-cta"><span className="pill blue">SIMULATE WORLDS</span><h2>预测比赛，<br/><span className="accent">模拟冠军。</span></h2><p>手动选关键比分，其余比赛交给模拟器。</p><Link href="/simulator/new" className="button">创建模拟 →</Link><Link href="/methodology" className="home-text-link">模型如何计算？</Link></aside>
-  </div>
-  <div className="section-title"><h2>Riot GPR 实力榜</h2><Link href="/rankings" className="fine home-text-link">查看全部队伍 →</Link></div><div className="panel home-ranking-list">{top.map((t,i)=><Link href={`/teams/${t.slug}`} className="leader" key={t.id}><span className="home-team-leader"><span className="rank-num">{String(i+1).padStart(2,'0')}</span><TeamIdentity teamId={t.id} size={32}/></span><span className="home-rank-metrics"><strong>{t.officialGprScore===undefined?'GPR 暂无':`GPR ${t.officialGprScore}`}</strong></span></Link>)}</div>
-  <div className="section-title"><h2>比赛日程</h2><span className="fine">北京时间 CST（UTC+8）</span></div><div className="grid grid-3"><div className="panel"><div className="schedule-card-date">{worldsSchedule['play-in'].date}</div><h3>入围赛</h3><p className="schedule-card-time">{worldsSchedule['play-in'].time}</p></div><div className="panel"><div className="schedule-card-date">{worldsSchedule.swiss.date}</div><h3>瑞士轮</h3><p className="schedule-card-time">{worldsSchedule.swiss.time}</p></div><div className="panel"><div className="schedule-card-date">11月4–15日</div><h3>淘汰赛</h3><div className="schedule-card-subdates">四分之一决赛 {worldsSchedule.quarterfinals.date} · {worldsSchedule.quarterfinals.time}<br/>半决赛 {worldsSchedule.semifinals.date} · {worldsSchedule.semifinals.time}<br/>决赛 {worldsSchedule.final.date} · {worldsSchedule.final.time}</div></div></div>
-  <InfoDisclosure label="赛程来源"><p><a href={scheduleSource} target="_blank" rel="noopener noreferrer">赛段日期 ↗</a> / <a href={updatedStartTimesSource} target="_blank" rel="noopener noreferrer">开赛时间 ↗</a></p></InfoDisclosure>
+import {loadLiveView} from '../lib/live/view-server';
+import {HomeLivePreview,HomeMatchPreview} from '../components/live/live-tournament';
+import styles from './home.module.css';
+export const metadata={title:'Worlds 2026 · 赛事观赛总览',description:'Worlds 2026 赛程、赛果、队伍数据与晋级概率走势。'};
+export default async function Home(){
+ const live=await loadLiveView();
+ const spotlight=['GEN','T1','BLG','KC'];
+ const preview={...live,teams:spotlight.map(id=>live.teams.find(t=>t.id===id)!)};
+ const cutoff=new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(live.asOf));
+ return <main className={`shell ${styles.home}`}>
+  <header className={styles.hero}><h1>WORLDS <span className="accent">2026</span></h1><p>赛程、数据与晋级走势</p><div className={styles.progress}><strong>{live.phaseLabel}</strong><span>数据截至 {cutoff} · 北京时间</span></div></header>
+  <section className={styles.section} aria-labelledby="home-trends"><div className={styles.heading}><h2 id="home-trends">重点队伍走势</h2><Link href="/live#probability-title">查看全部19队走势 →</Link></div><HomeLivePreview data={preview}/></section>
+  <section className={styles.section} aria-labelledby="home-matches"><div className={styles.heading}><h2 id="home-matches">近期赛程与赛果</h2><Link href="/live#matches-title">完整赛程与赛果 →</Link></div><HomeMatchPreview data={live}/></section>
+  <section className={styles.section} aria-labelledby="home-data"><div className={styles.heading}><h2 id="home-data">战队与选手数据</h2><Link href="/teams">查看全部档案 →</Link></div><div className={styles.resources}><Link href="/teams"><h3>战队档案</h3><p>阵容、赛区统计、比赛风格与英雄池</p></Link><Link href="/rankings"><h3>Riot GPR 实力榜</h3><p>查看冻结的赛前实力输入</p></Link></div></section>
+  <aside className={styles.simulator}><div><h2>探索你的赛事路径</h2><p>自行选择比赛结果，模拟另一种可能。</p></div><Link href="/simulator">进入模拟器 →</Link></aside>
  </main>;
 }
