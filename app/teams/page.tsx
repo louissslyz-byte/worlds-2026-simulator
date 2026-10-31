@@ -1,3 +1,4 @@
+import {RegionMark} from '../../components/tournament/region-mark';
 import Link from 'next/link';
 import {profileRegions,teamsByRegion,regularSeasonRecord,regularSeasonSummary} from '../../lib/team-profile/data';
 import {TeamLogo} from '../../components/tournament/team-logo';
@@ -6,9 +7,9 @@ export const metadata={title:'战队档案 · Worlds 2026'};
 export default function TeamProfiles(){
  return <main className={`shell ${styles.page}`}>
   <header className={styles.hero}><div className="eyebrow">TEAM PROFILE · WORLDS 2026</div><h1>战队档案</h1></header>
-  <nav className={styles.regionNav} aria-label="跳转到赛区">{profileRegions.map(region=><a href={`#region-${region}`} key={region}>{region}</a>)}</nav>
+  <nav className={styles.regionNav} aria-label="跳转到赛区">{profileRegions.map(region=><a href={`#region-${region}`} key={region}><RegionMark region={region}/></a>)}</nav>
   {profileRegions.map(region=><section id={`region-${region}`} className={styles.section} key={region} aria-labelledby={`title-${region}`}>
-   <div className={styles.sectionHead}><h2 id={`title-${region}`}>{region}</h2><span className="fine">{teamsByRegion(region).length} 支队伍</span></div>
+   <div className={styles.sectionHead}><h2 id={`title-${region}`}><RegionMark region={region} size={36}/></h2><span className="fine">{teamsByRegion(region).length} 支队伍</span></div>
    <ul className={styles.teamList}>{teamsByRegion(region).map(team=><li key={team.id}><Link href={`/teams/${team.slug}`} className={styles.teamLink} aria-label={`${team.shortName} · ${team.name} · ${region} · ${team.worldsSeed?`#${team.worldsSeed} 种子`:'种子待定'} · 战队档案`}>
     <TeamLogo teamId={team.id} size={36}/><div className={styles.teamCopy}><strong>{team.shortName}</strong><small>{team.name}</small><small>{regularSeasonRecord(team.id)?`常规赛${region==='LCK'?'（累计）':region==='LCP'?'（瑞士轮）':''}：${regularSeasonSummary(regularSeasonRecord(team.id)!)}`:'常规赛战绩与排名待核验'}</small></div>
     <span className={styles.seed}>{team.worldsSeed?`#${team.worldsSeed}`:<small>种子待定</small>}</span>

@@ -1,0 +1,36 @@
+{
+  "sourcePage": "https://lolesports.com/en-US/leagues/worlds",
+  "sourceCheckedAt": "2026-10-31",
+  "assets": [
+    {
+      "region": "LCK",
+      "url": "https://static.lolesports.com/leagues/lck-color-on-black.png",
+      "sha256": "1d0893042bde8b3e62e0e789ebdc380ac829d5b9c028c8cff80dcbf73aabe331"
+    },
+    {
+      "region": "LPL",
+      "url": "https://static.lolesports.com/leagues/1592516115322_LPL-01-FullonDark.png",
+      "sha256": "2118252c54d3b7530232bdcb4bd3b4376d1a7ae4736218692d7720b023271013"
+    },
+    {
+      "region": "LEC",
+      "url": "https://static.lolesports.com/leagues/1592516184297_LEC-01-FullonDark.png",
+      "sha256": "a922d65bb7170c454732ad3c0a094f6fba93b997868b86b894d4c4b35bcd9046"
+    },
+    {
+      "region": "LCS",
+      "url": "https://static.lolesports.com/leagues/1706356907418_LCSNew-01-FullonDark.png",
+      "sha256": "c937026a09ada72ba0f07dff86e00737ef05157907b0be8e2b48cab7ae7d15e7"
+    },
+    {
+      "region": "LCP",
+      "url": "https://static.lolesports.com/leagues/1733468139601_lcp-color-golden.png",
+      "sha256": "ac0562931c9f0e3ce429da9edffa518e4bcfc518f9de676c6e6b412c73588952"
+    },
+    {
+      "region": "CBLOL",
+      "url": "https://static.lolesports.com/leagues/cblol-logo-symbol-offwhite.png",
+      "sha256": "87688c405302a5c7d1aebd8499af93cb381615acee1addb297f0782c78bad91b"
+    }
+  ]
+}

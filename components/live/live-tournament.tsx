@@ -1,4 +1,5 @@
 'use client';
+import {RegionMark} from '../tournament/region-mark';
 import {InfoDisclosure} from '../ui/info-disclosure';
 import {useEffect,useLayoutEffect,useRef,useState,type PointerEvent,type Dispatch,type SetStateAction} from 'react';
 import {createPortal} from 'react-dom';
@@ -45,7 +46,7 @@ function ProbabilityCard({team,nodes,tooltip,onTooltip,compact=false}:{team:Live
   if(hit)showPoint(hit.node,hit.event,event.clientX,event.clientY);else onTooltip(current=>current?.anchor?current:null);
  };
  return <article className={styles.probabilityCard} aria-labelledby={`team-${team.id}`} data-live-team={team.id} onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();if(selected!==null)closeDetail();else onTooltip(null);}}}>
-  <header className={styles.cardHeader}><TeamLogo teamId={team.id} src={team.logo} size={42}/><div><Link href={`/teams/${team.slug}`} id={`team-${team.id}`} className={styles.teamTitle}>{team.shortName}</Link><div className={styles.muted}>{team.region} · {team.name}</div></div><span className={team.status==='已淘汰'?styles.eliminated:styles.qualified}>{team.status}</span></header>
+  <header className={styles.cardHeader}><TeamLogo teamId={team.id} src={team.logo} size={42}/><div><Link href={`/teams/${team.slug}`} id={`team-${team.id}`} className={styles.teamTitle}>{team.shortName}</Link><div className={styles.muted}><RegionMark region={team.region} showLabel={!compact} size={18}/> · {team.name}</div></div><span className={team.status==='已淘汰'?styles.eliminated:styles.qualified}>{team.status}</span></header>
   <div className={styles.legend}>{curveEvents.map(e=><span key={e} className={styles[e]}><b aria-hidden="true">●</b> {curveLabels[e]}</span>)}</div>
   <div className={styles.chartViewport} tabIndex={nodes.length>2?0:undefined} role={nodes.length>2?"region":undefined} aria-label={nodes.length>2?`${team.shortName} 历史节点，可横向滚动`:undefined}><svg viewBox={`0 0 ${chartWidth} 144`} style={nodes.length>2?{minWidth:chartWidth}:undefined} className={styles.chart} role="group" aria-label={`${team.shortName} 概率变化，纵轴固定0至100%。折线仅连接历史快照。`} onPointerMove={hoverPoint} onPointerLeave={()=>onTooltip(current=>current?.anchor?current:null)} onPointerCancel={()=>onTooltip(null)}>
    {[0,0.5,1].map(p=><g key={p}><line x1="44" x2={chartWidth-24} y1={y(p)} y2={y(p)} className={styles.gridLine}/><text x="36" y={y(p)+4} textAnchor="end">{p*100}%</text></g>)}
@@ -111,7 +112,7 @@ export function LiveTournament({data}:{data:LiveView}){
    <details className={styles.sources}><summary>ⓘ 官方来源与历史快照说明</summary><p>冻结历史快照，人工维护，非实时更新。事实截止：2026年{beijing(data.asOf)} 北京时间 · 来源核查：{beijing(data.checkedAt)} 北京时间。未知逐场时间保持未核实，未开始比赛没有正式比分。当前签表与赛果不会自动更新。</p>{data.sources.map(s=><a key={s.id} href={s.url} target="_blank" rel="noreferrer">{s.name} ↗</a>)}</details>
   </section>
   <section className={styles.section} aria-labelledby="probability-title"><header className={styles.sectionHeader}><span>02 /</span><h2 id="probability-title">PROBABILITY EVOLUTION</h2></header><InfoDisclosure label="关于概率"><p>固定赛前 Riot GPR / Rating · S16-R1 正式赛制 · 每节点 100,000 次 Monte Carlo。</p><p>入围赛后节点锁定真实入围赛结果及 Swiss 首轮抽签；首轮后节点另锁定真实首轮赛果及第二轮抽签；第二轮后节点另锁定真实第二轮赛果及第三轮抽签；第三轮后节点另锁定真实第三轮赛果及第四轮抽签；第四轮后节点另锁定真实第四轮赛果及第五轮抽签。概率变化不代表 Rating 变化。</p><p>小幅变化可能包含抽样误差；0%＊表示本批样本未抽中，不代表理论上不可能。折线仅连接已记录的历史快照，不代表每日连续观测；模型未声称经过历史校准。</p><Link href="/methodology">完整方法论 →</Link></InfoDisclosure>
-   <div className={styles.filters} role="group" aria-label="按赛区筛选">{regions.map(r=><button key={r} onClick={()=>{setTooltip(null);setRegion(r);}} aria-pressed={region===r}>{r}</button>)}</div><p className={styles.muted} role="status">{filtered.length} 支队伍 · 按最新夺冠概率排序 · 变化单位：百分点（pp）</p>
+   <div className={styles.filters} role="group" aria-label="按赛区筛选">{regions.map(r=><button key={r} onClick={()=>{setTooltip(null);setRegion(r);}} aria-pressed={region===r}>{r==='ALL'?r:<RegionMark region={r}/>}</button>)}</div><p className={styles.muted} role="status">{filtered.length} 支队伍 · 按最新夺冠概率排序 · 变化单位：百分点（pp）</p>
    <div className={styles.probabilityGrid}>{filtered.map(team=><ProbabilityCard key={team.id} team={team} nodes={data.nodes} tooltip={tooltip} onTooltip={setTooltip}/>)}</div>
   </section>
   {tooltip&&<ProbabilityTooltip data={tooltip}/>}
