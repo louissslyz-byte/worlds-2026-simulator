@@ -127,7 +127,8 @@ export function HomeLivePreview({data}:{data:LiveView}){
 export function HomeMatchPreview({data}:{data:LiveView}){
  const latest=sortMatchesByTime(data.matches.filter(m=>m.status==='COMPLETED')).at(-1);
  const recent=sortMatchesByTime(data.matches.filter(m=>m.status==='COMPLETED'&&m.stage===latest?.stage&&m.round===latest?.round));
- const recentLabel=latest?.stage==='SWISS'?`Swiss R${latest.round}`:latest?.stage==='PLAY_IN'?'入围赛':'淘汰赛';
+ const stageLabel=(match:LiveView['matches'][number]|undefined)=>!match?'TBD':match.stage==='SWISS'?`Swiss R${match.round}`:match.stage==='PLAY_IN'?'Play-In':'Knockout';
+ const recentLabel=stageLabel(latest);
  const next=sortMatchesByTime(data.matches.filter(m=>m.status==='SCHEDULED'));
- return <div className={styles.probabilityGrid}>{[{title:`最近结果 · ${recentLabel}`,matches:recent},{title:'接下来 · 已确认对阵',matches:next}].map(group=><section key={group.title}><h3>{group.title}</h3>{group.matches.length?group.matches.map(m=><MatchCard key={m.id} match={m} data={data}/>):<p>等待官方公布</p>}</section>)}</div>;
+ return <div className={styles.probabilityGrid}>{[{title:`Finished: ${recentLabel}`,matches:recent},{title:`Upcoming: ${stageLabel(next[0])}`,matches:next}].map(group=><section key={group.title}><h3>{group.title}</h3>{group.matches.length?group.matches.map(m=><MatchCard key={m.id} match={m} data={data}/>):<p>等待官方公布</p>}</section>)}</div>;
 }
