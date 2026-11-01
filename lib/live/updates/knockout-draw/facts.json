@@ -1,0 +1,42 @@
+{
+  "snapshotId": "worlds-2026-knockout-draw-facts-v1",
+  "baseFactsSHA256": "c288aa48dce23bd5a1bfd0e55822347f67b0ab01a1f16fe68cd26917f5bd8959",
+  "asOf": "2026-11-01T00:42:26.159Z",
+  "sourceUrl": "https://lolesports.com/en-SG/tournament/115660540725177488/stage/115660540725570707",
+  "evidenceSHA256": "5aa52a4ff1c8c3a5152745d9cb302026ceb53f312350151da9245866731578c1",
+  "publishedAt": null,
+  "matches": [
+    {
+      "id": "115660540726095097",
+      "position": "QF1",
+      "a": "DK",
+      "b": "BLG",
+      "scheduledAt": "2026-11-05T22:00:00Z",
+      "semifinalId": "match_c09550107e"
+    },
+    {
+      "id": "115660540726095103",
+      "position": "QF2",
+      "a": "KC",
+      "b": "T1",
+      "scheduledAt": "2026-11-06T22:00:00Z",
+      "semifinalId": "match_c09550107e"
+    },
+    {
+      "id": "115660540726095109",
+      "position": "QF3",
+      "a": "TES",
+      "b": "IG",
+      "scheduledAt": "2026-11-03T22:00:00Z",
+      "semifinalId": "match_c45c67b67c"
+    },
+    {
+      "id": "115660540726095115",
+      "position": "QF4",
+      "a": "GEN",
+      "b": "LYON",
+      "scheduledAt": "2026-11-04T22:00:00Z",
+      "semifinalId": "match_c45c67b67c"
+    }
+  ]
+}

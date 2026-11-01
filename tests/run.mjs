@@ -86,3 +86,4 @@ await import('./live-round4.mjs');
 await import('./region-mark.mjs');
 
 await import('./live-round5.mjs');
+await import('./live-knockout-draw.mjs');

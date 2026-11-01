@@ -152,3 +152,7 @@ PROFILE_AUDIT_URL=http://127.0.0.1:3061 PROFILE_STATS_RELEASE=1 node --import ts
 ## R5结束、八强抽签前
 
 人工核验并新增`lib/live/updates/round5/facts.json`；`pnpm live:round5:generate <新的候选目录>`离线执行100000路径，拒绝复用已有目录。候选经整数计数、模型/事实哈希校验后，将probability.json和index.json追加归档至round5目录。`pnpm live:round5:validate`只读验证归档，不执行模拟。该节点排除官方八强签表；如已知道签表，也不能导入此条件节点。asOf保存来源观察时间，不冒充未知的抽签前历史时间。后续抽签后另建唯一节点。执行tests/live-round5.mjs、完整回归、构建和产物审计后等待单独上线授权。
+
+## 官方八强抽签后
+
+人工从LoL Esports Knockouts页面的matchTeams及destinations核验四场对阵、内部官方比赛ID、半决赛去向和计划时间，新增`updates/knockout-draw/facts.json`，绑定R5事实哈希。`pnpm live:draw:generate <新的候选目录>`固定四场签表后执行100000完整路径；`pnpm live:draw:validate`只读验证归档。不得重抽官方签表；引擎内部比赛ID使用k1-1至k1-4，官方ID保留在独立事实中。第1/2场通向同一半决赛，第3/4场通向另一场。保留此前抽签前快照，新增唯一抽签后ID。先做128路径校验，失败时停止，不用不足样本输出正式结果。最后完整回归、八节点浏览器检查、Prebuilt审计；等待独立生产授权。

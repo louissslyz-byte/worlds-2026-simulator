@@ -10,7 +10,7 @@ assert.equal(s.tournamentState.matches.filter(m=>m.stage==='SWISS'&&m.round===5&
 const a=runMonteCarloFromState(s,128,42);assert.deepEqual(a.counts,runMonteCarloFromState(s,128,42).counts);assert.equal(semanticSHA256(s),before);
 const h=await loadRound5History(model);assert.equal(h.snapshot.completedCount,100000);assert.equal(h.snapshot.failedCount,0);
 for(const mutate of [x=>x.randomSeed++,x=>x.knownDrawIds.push('future-draw'),x=>x.ratingInputSHA256='0'.repeat(64),x=>x.teams.pop(),x=>x.teams[0].championCount++]){const bad=structuredClone(h.snapshot);mutate(bad);assert.throws(()=>validateRound5Snapshot(bad,f,model));}
-const view=await readLiveView();assert.equal(view.nodes.length,7);assert.equal(view.teams.length,19);for(const t of view.teams)assert.equal(t.points.length,7);
+const view=await readLiveView();assert.equal(view.nodes.length,8);assert.equal(view.teams.length,19);for(const t of view.teams)assert.equal(t.points.length,8);
 for(const id of ['MKOI','LOS','HLE']){const t=view.teams.find(t=>t.id===id);assert.equal(t.eliminationNodeIndex,6);assert.equal(t.points.at(-1).values.champion.count,0);}
 for(const id of ['KC','LYON','BLG'])assert.equal(view.teams.find(t=>t.id===id).qualificationNodes.knockout,6);
 assert.equal((await readFile('lib/sim/precomputedOdds.json')).length>0,true);

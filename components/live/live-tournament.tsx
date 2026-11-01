@@ -9,7 +9,7 @@ import {TeamLogo} from '../tournament/team-logo';
 import {curveEvents,curveLabels,regions,probabilityText,deltaText,visibleTeams,type LiveView} from '../../lib/live/view';
 import styles from './live.module.css';
 const beijing=(value:string)=>new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(value));
-const positions:Record<string,string>={UPPER_SEMIFINAL_1:'胜者组首轮',UPPER_SEMIFINAL_2:'胜者组首轮',UPPER_FINAL:'胜者组决赛',LOWER_SEMIFINAL:'败者组首轮',LOWER_FINAL:'败者组决赛',QUALIFICATION_FINAL:'最终资格赛'};
+const positions:Record<string,string>={QF1:'四分之一决赛 1',QF2:'四分之一决赛 2',QF3:'四分之一决赛 3',QF4:'四分之一决赛 4',UPPER_SEMIFINAL_1:'胜者组首轮',UPPER_SEMIFINAL_2:'胜者组首轮',UPPER_FINAL:'胜者组决赛',LOWER_SEMIFINAL:'败者组首轮',LOWER_FINAL:'败者组决赛',QUALIFICATION_FINAL:'最终资格赛'};
 function Team({id,data,record}:{id:string;data:LiveView;record?:string}){const team=data.teams.find(t=>t.id===id)!;return <span className={styles.identity}><TeamLogo teamId={id} src={team.logo} size={30}/>{record===undefined?<strong>{team.shortName}</strong>:<span className={styles.teamRecord}><strong>{team.shortName}</strong><small>{record}</small></span>}</span>;}
 type TooltipData={key:string;label:string;event:typeof curveEvents[number];probability:number;eliminated:boolean;qualification:string|null;x:number;y:number;anchor?:SVGCircleElement};
 function ProbabilityTooltip({data}:{data:TooltipData}){
@@ -103,11 +103,11 @@ export function LivePlayInBracket({data}:{data:LiveView}){
   <span className={styles.bracketLane} style={{left:310,top:490}}>败者组</span><div className={styles.bracketOutcome}>最终资格赛胜者 → Swiss 正赛</div>
  </div></div>;
 }
-export function LiveKnockoutBracket(){
+export function LiveKnockoutBracket({data}:{data?:LiveView}={}){
  const slots=[...Array.from({length:4},(_,i)=>({key:`QF${i+1}`,label:`四分之一决赛 ${i+1}`,left:0,top:30+i*190})),...Array.from({length:2},(_,i)=>({key:`SF${i+1}`,label:`半决赛 ${i+1}`,left:350,top:125+i*380})),{key:'FINAL',label:'总决赛',left:700,top:315}];
  return <div className={styles.bracketScroll} tabIndex={0} role="region" aria-label="淘汰赛晋级树，可横向滚动"><div className={styles.knockoutTree}>
   <svg className={styles.bracketWires} viewBox="0 0 970 770" aria-hidden="true"><g className={styles.winnerWire}><path d="M270 108H310V203H350 M270 298H310V203 M270 488H310V583H350 M270 678H310V583 M620 203H660V393H700 M620 583H660V393"/></g></svg>
-  {slots.map(slot=><article key={slot.key} data-bracket-slot={slot.key} className={`${styles.bracketNode} ${styles.knockoutSlot}`} style={{left:slot.left,top:slot.top}}><span>{slot.label} · BO5</span><div className={styles.matchTeams}>{[0,1].map(i=><div className={styles.matchTeamRow} key={i}><strong>TBD</strong><strong className={styles.score} aria-label="比分待定">—</strong></div>)}</div></article>)}
+  {slots.map(slot=><article key={slot.key} data-bracket-slot={slot.key} className={`${styles.bracketNode} ${styles.knockoutSlot}`} style={{left:slot.left,top:slot.top}}>{data?.matches.some(m=>m.stage==='KNOCKOUT'&&m.position===slot.key)?<MatchCard match={data.matches.find(m=>m.stage==='KNOCKOUT'&&m.position===slot.key)!} data={data}/>:<><span>{slot.label} · BO5</span><div className={styles.matchTeams}>{[0,1].map(i=><div className={styles.matchTeamRow} key={i}><strong>TBD</strong><strong className={styles.score} aria-label="比分待定">—</strong></div>)}</div></>}</article>)}
  </div></div>;
 }
 export function LiveTournament({data}:{data:LiveView}){
@@ -127,7 +127,7 @@ export function LiveTournament({data}:{data:LiveView}){
    {data.matches.some(m=>m.time)&&<p className={styles.muted}>比赛时间：北京时间 · 计划开赛</p>}
    {stage==='PLAY_IN'&&<p className={styles.progress}>{data.teams.filter(t=>t.playIn).map(t=><span key={t.id}><b>{t.shortName}</b> · {t.status}</span>)}</p>}
    {stage==='SWISS'&&<p className={styles.muted}>{data.swissLabel}<br/>赛段开幕：{beijing(data.stageStartsAt!)}（北京时间，非各场开赛时间）</p>}
-   {stage==='KNOCKOUT'?<><p className={styles.muted}>正式对阵尚未公布 · 晋级结构示意</p><LiveKnockoutBracket/></>:stage==='SWISS'?<SwissRounds data={data}/>:<><div className={styles.bracketLegend}><span>实线：胜者晋级</span><span>虚线：败者进入败者组</span></div><LivePlayInBracket data={data}/></>}
+   {stage==='KNOCKOUT'?<><p className={styles.muted}>{data.matches.some(m=>m.stage==='KNOCKOUT')?'官方八强签表 · 连线表示半决赛晋级路径':'正式对阵尚未公布 · 晋级结构示意'}</p><LiveKnockoutBracket data={data}/></>:stage==='SWISS'?<SwissRounds data={data}/>:<><div className={styles.bracketLegend}><span>实线：胜者晋级</span><span>虚线：败者进入败者组</span></div><LivePlayInBracket data={data}/></>}
    {stage==='SWISS'&&<p className={styles.pending}>{data.pendingLabel}</p>}
    <details className={styles.sources}><summary>ⓘ 官方来源与历史快照说明</summary><p>冻结历史快照，人工维护，非实时更新。事实截止：2026年{beijing(data.asOf)} 北京时间 · 来源核查：{beijing(data.checkedAt)} 北京时间。未知逐场时间保持未核实，未开始比赛没有正式比分。当前签表与赛果不会自动更新。</p>{data.sources.map(s=><a key={s.id} href={s.url} target="_blank" rel="noreferrer">{s.name} ↗</a>)}</details>
   </section>

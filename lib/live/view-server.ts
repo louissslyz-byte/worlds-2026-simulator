@@ -10,6 +10,7 @@ import {frozenSystemSchema,sha256,semanticSHA256} from './probability/model';
 import {ENGINE_FILES,STRENGTH_FILES,GENERATOR_FILES,LIVE_ODDS} from './probability/config';
 import {validateProbabilitySnapshot,countsFromSnapshot} from './probability/snapshot';
 import {projectUpdatedLiveView,projectRound2LiveView,projectRound3LiveView,projectRound4LiveView} from './view';
+import {loadDrawHistory} from './updates/knockout-draw';
 import {loadRound5History} from './updates/round5';
 import {applyOfficialQualifications,applyOfficialEliminations} from './view';
 import {loadRound4History} from './updates/round4';
@@ -54,6 +55,12 @@ export async function readLiveView(projectRoot=process.cwd()){
  for(const fact of r5.matches.filter(m=>m.round===5)){const m=view.matches.find(m=>m.id===fact.matchId)!;m.scoreA=fact.scoreA;m.scoreB=fact.scoreB;m.winner=fact.winnerId;m.status='COMPLETED';}
  for(const team of view.teams){const r=r5.records[team.id];if(r)team.status=r.wins===3?`${r.wins}–${r.losses} · 已晋级八强`:`${r.wins}–${r.losses}`;}
  applyOfficialQualifications(view,r5.records,r5.facts.asOf);applyOfficialEliminations(view,Object.keys(r5.records).filter(id=>r5.records[id].losses===3),r5.facts.asOf);
+ const draw=await loadDrawHistory(model,projectRoot,official);
+ view.nodes.push({id:draw.snapshot.snapshotId,kind:draw.snapshot.label,label:'八强抽签后',asOf:draw.snapshot.asOf});
+ for(const team of view.teams){const row=draw.snapshot.teams.find(t=>t.teamId===team.id)!;team.points.push({snapshotId:draw.snapshot.snapshotId,simulationCount:100000,values:{swiss:{count:row.swissCount,probability:row.swissProbability},knockout:{count:row.knockoutCount,probability:row.knockoutProbability},champion:{count:row.championCount,probability:row.championProbability}}});}
+ view.asOf=draw.facts.asOf;view.checkedAt=draw.facts.asOf;view.phaseLabel='瑞士轮结束 · 八强抽签已确认';view.pendingLabel='淘汰赛 · 官方八强签表已确认';
+ view.sources.push({id:'knockout-draw',name:'LoL Esports · 官方八强签表',url:draw.facts.sourceUrl,type:'OFFICIAL'});
+ for(const m of draw.ordered)view.matches.push({id:m.id,stage:'KNOCKOUT',round:1,position:m.position,a:m.a,b:m.b,bestOf:5,scoreA:null,scoreB:null,winner:null,status:'SCHEDULED',time:m.scheduledAt,date:m.scheduledAt.slice(0,10),zone:'America/Chicago'});
  return view;
 
 }

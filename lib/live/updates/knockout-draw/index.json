@@ -1,0 +1,16 @@
+{
+  "baseHistorySHA256": "f5a0770c2e5495ef77741b8a0af85740a02238f28050e948720de8f7ff3e148c",
+  "factsSHA256": "52e6bd3f7a0389c7f250d21f25c337412026dcd709fb6abc8ea6ad444d2e65a0",
+  "sha256": "408ebc566a95eab73173a1968e5b4acad2006dcc09c0d28404f147a99645fd3c",
+  "countSHA256": "203ece359029377a51ff08e4f5400145118e127c98960a69b53c2391843ef836",
+  "sourceFiles": [
+    [
+      "lib/live/updates/knockout-draw.ts",
+      "9cbe552717c81d78fa7161a2f51535acd7605c61396488e2ca7d620f675c3eb6"
+    ],
+    [
+      "scripts/generate-live-knockout-draw.mjs",
+      "3de5b6925919043b0aa615f91094bbe0c2688d0da267991e0bfec142e64df9cd"
+    ]
+  ]
+}
