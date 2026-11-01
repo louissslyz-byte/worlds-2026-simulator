@@ -1,0 +1,16 @@
+{
+  "baseHistorySHA256": "d2aabe3f72301b60f94702fe694ec901793280f976dc1fe1112c7d849fab608f",
+  "factsSHA256": "c288aa48dce23bd5a1bfd0e55822347f67b0ab01a1f16fe68cd26917f5bd8959",
+  "sha256": "40c3e15955f28859428b992b6c26609d63d4da25472fef7e080adb6e039e3a87",
+  "countSHA256": "ff900420b2b0e145e3d4291100bd2e24d9b2c68ce8a95f01d11e6c865be67319",
+  "sourceFiles": [
+    [
+      "lib/live/updates/round5.ts",
+      "fda5b9dfb5d6ca5876ac4c785d573b7053efa65a65d733c89ee6695d606611c5"
+    ],
+    [
+      "scripts/generate-live-round5.mjs",
+      "b07e0f864ed55b78046082add6282ca7207550a3a991d832b8191f72f217817e"
+    ]
+  ]
+}

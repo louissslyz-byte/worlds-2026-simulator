@@ -51,7 +51,7 @@ assert.deepEqual(nonChampionRules(await readFile('app/worlds-design.css','utf8')
 console.log('U2-C Live: 19/57, exact real probabilities/deltas/axes/order, in-memory 3/4 nodes, tiny values and all AB/model/data protections PASS.');
 
 const zeroFixture=structuredClone(view);zeroFixture.teams.find(t=>t.id==='LOS').points.at(-1).values.champion={count:0,probability:0};
-const real=render(zeroFixture),los=real.match(/data-live-team="LOS"[^>]*>(.*?)<\/article>/s)[1];
+zeroFixture.teams.find(t=>t.id==='LOS').status='2–2';const real=render(zeroFixture),los=real.match(/data-live-team="LOS"[^>]*>(.*?)<\/article>/s)[1];
 assert.ok(los.includes('100,000次样本未抽中，不代表理论上不可能'));
 for(const id of ['C9','FUR','MVK','AL','TSW','CFO','G2','TLAW']){const card=real.match(new RegExp(`data-live-team="${id}"[^>]*>(.*?)<\\/article>`,'s'))[1];assert.ok(!card.includes('100,000次样本未抽中，不代表理论上不可能'));}
 console.log('LiveOps zero-count distinction: zero-count survivor fixture vs eight eliminated teams PASS.');

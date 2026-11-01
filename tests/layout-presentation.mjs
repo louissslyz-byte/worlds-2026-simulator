@@ -13,7 +13,7 @@ assert.equal((home.match(/data-live-team=/g)||[]).length,4);assert.equal((home.m
 assert.ok(home.indexOf('home-trends')<home.indexOf('home-matches'));assert.ok(home.indexOf('home-matches')<home.indexOf('home-data'));
 for(const id of ['GEN','T1','BLG','KC'])assert.ok(home.includes('data-live-team="'+id+'"'));
 assert.ok(!home.includes('home-odds-row'));assert.ok(!home.includes('CHAMPIONSHIP FORECAST'));
-assert.ok(!home.includes('数据截至'));assert.ok(home.includes('MATCHUPS'));assert.ok(home.includes('Finished: Swiss R4'));assert.ok(home.includes('Upcoming: Swiss R5'));assert.ok(home.includes('赛前队伍战力排名'));assert.ok(home.includes('进入模拟器'));
+assert.ok(!home.includes('数据截至'));assert.ok(home.includes('MATCHUPS'));assert.ok(home.includes('Finished: Swiss R5'));assert.ok(home.includes('Upcoming:'));assert.ok(home.includes('赛前队伍战力排名'));assert.ok(home.includes('进入模拟器'));
 const {default:Rankings}=await import('../app/rankings/page.tsx');
 const ranking=renderToStaticMarkup(React.createElement(Rankings));
 assert.match(ranking,/role="region" aria-label="完整实力榜，可横向滚动" tabindex="0"/);

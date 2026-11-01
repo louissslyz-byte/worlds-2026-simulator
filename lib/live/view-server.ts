@@ -10,6 +10,8 @@ import {frozenSystemSchema,sha256,semanticSHA256} from './probability/model';
 import {ENGINE_FILES,STRENGTH_FILES,GENERATOR_FILES,LIVE_ODDS} from './probability/config';
 import {validateProbabilitySnapshot,countsFromSnapshot} from './probability/snapshot';
 import {projectUpdatedLiveView,projectRound2LiveView,projectRound3LiveView,projectRound4LiveView} from './view';
+import {loadRound5History} from './updates/round5';
+import {applyOfficialQualifications,applyOfficialEliminations} from './view';
 import {loadRound4History} from './updates/round4';
 import {loadRound3History} from './updates/round3';
 import {loadRound2History} from './updates/round2';
@@ -44,6 +46,15 @@ export async function readLiveView(projectRoot=process.cwd()){
  const latest=await loadRound2History(model,projectRoot,official);
  const round3=await loadRound3History(model,projectRoot,official);
  const round4=await loadRound4History(model,projectRoot,official);
- return projectRound4LiveView(projectRound3LiveView(projectRound2LiveView(projectUpdatedLiveView(official,{snapshots:[...index.snapshots,...extension.index.snapshots,latest.index.snapshot,round3.index.snapshot,round4.index.snapshot]},[...snapshots,...extension.snapshots,latest.snapshot,round3.snapshot,round4.snapshot],extension.update,extension.records),latest.update,latest.records),round3.update,round3.records),round4.update,round4.records);
+ const view=projectRound4LiveView(projectRound3LiveView(projectRound2LiveView(projectUpdatedLiveView(official,{snapshots:[...index.snapshots,...extension.index.snapshots,latest.index.snapshot,round3.index.snapshot,round4.index.snapshot]},[...snapshots,...extension.snapshots,latest.snapshot,round3.snapshot,round4.snapshot],extension.update,extension.records),latest.update,latest.records),round3.update,round3.records),round4.update,round4.records);
+ const r5=await loadRound5History(model,projectRoot,official);
+ view.nodes.push({id:r5.snapshot.snapshotId,kind:r5.snapshot.label,label:'瑞士轮结束后 · 八强抽签前',asOf:r5.snapshot.asOf});
+ for(const team of view.teams){const row=r5.snapshot.teams.find(t=>t.teamId===team.id)!;team.points.push({snapshotId:r5.snapshot.snapshotId,simulationCount:100000,values:{swiss:{count:row.swissCount,probability:row.swissProbability},knockout:{count:row.knockoutCount,probability:row.knockoutProbability},champion:{count:row.championCount,probability:row.championProbability}}});}
+ view.asOf=r5.facts.asOf;view.checkedAt=r5.facts.checkedAt;view.phaseLabel='瑞士轮结束 · 概率条件：八强抽签前';view.swissLabel='ROUND 1–5 已结束';view.pendingLabel='淘汰赛 · 本节点未纳入官方抽签';
+ for(const fact of r5.matches.filter(m=>m.round===5)){const m=view.matches.find(m=>m.id===fact.matchId)!;m.scoreA=fact.scoreA;m.scoreB=fact.scoreB;m.winner=fact.winnerId;m.status='COMPLETED';}
+ for(const team of view.teams){const r=r5.records[team.id];if(r)team.status=r.wins===3?`${r.wins}–${r.losses} · 已晋级八强`:`${r.wins}–${r.losses}`;}
+ applyOfficialQualifications(view,r5.records,r5.facts.asOf);applyOfficialEliminations(view,Object.keys(r5.records).filter(id=>r5.records[id].losses===3),r5.facts.asOf);
+ return view;
+
 }
 export const loadLiveView=cache(()=>readLiveView());

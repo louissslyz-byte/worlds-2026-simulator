@@ -1,0 +1,32 @@
+{
+  "snapshotId": "worlds-2026-swiss-r5-complete-before-draw-v1",
+  "baseFactsSHA256": "a5cdd0416ee2f6d40d8f963cf84482b2994fcea092848a1528e7747cc7c49c97",
+  "asOf": "2026-11-01T00:33:04.450Z",
+  "checkedAt": "2026-11-01T00:33:04.450Z",
+  "sourceUrl": "https://lolesports.com/en-SG/tournament/115660540725177488/stage/115660540725570706",
+  "evidenceSHA256": "f7b28733deebd1588ce5f2267b848190cd1bb243273b648fcf7e8fe2950f85b0",
+  "conditioning": "All Swiss results through R5; excludes official knockout draw. As-of is evidence observation, not a claimed draw publication time.",
+  "results": [
+    {
+      "officialMatchId": "115660540726095085",
+      "teamA": "MKOI",
+      "teamB": "KC",
+      "scoreA": 0,
+      "scoreB": 2
+    },
+    {
+      "officialMatchId": "115660540726095089",
+      "teamA": "LOS",
+      "teamB": "LYON",
+      "scoreA": 1,
+      "scoreB": 2
+    },
+    {
+      "officialMatchId": "115660540726095093",
+      "teamA": "HLE",
+      "teamB": "BLG",
+      "scoreA": 0,
+      "scoreB": 2
+    }
+  ]
+}

@@ -8,9 +8,9 @@ const expected=await loadLiveView();let actual;
 function visit(value){if(!value||typeof value!=='object')return;if(value.data?.teams?.length===19&&value.data?.nodes)actual=value.data;for(const v of Object.values(value))visit(v);}
 const response=await fetch(base+'/live?_rsc=liveops',{headers:{RSC:'1'}});assert.equal(response.status,200);const text=await response.text();
 for(const line of text.split('\n'))try{visit(JSON.parse(line.slice(line.indexOf(':')+1)));}catch{}
-assert.deepEqual(actual,expected);assert.equal(actual.nodes.length,6);assert.equal(actual.matches.length,39);
-assert.equal(actual.matches.filter(m=>m.status==='COMPLETED').length,36);assert.equal(actual.matches.filter(m=>m.round===5&&m.stage==='SWISS'&&m.winner===null&&m.scoreA===null).length,3);
-for(const team of actual.teams)assert.equal(team.points.length,6);
+assert.deepEqual(actual,expected);assert.equal(actual.nodes.length,7);assert.equal(actual.matches.length,39);
+assert.equal(actual.matches.filter(m=>m.status==='COMPLETED').length,39);assert.equal(actual.matches.filter(m=>m.round===5&&m.stage==='SWISS'&&m.winner===null&&m.scoreA===null).length,0);
+for(const team of actual.teams)assert.equal(team.points.length,7);
 const rendered=actual.teams.reduce((n,t)=>n+['swiss','knockout','champion'].reduce((sum,e)=>sum+lastEventNode(actual.nodes.length,t.eliminationNodeIndex,e==='champion'?null:t.qualificationNodes[e])+1,0),0);
 const html=await (await fetch(base+'/live')).text();assert.equal((html.match(/data-live-team=/g)||[]).length,19);assert.equal((html.match(/data-curve=/g)||[]).length,57);
 assert.equal((html.match(/pointer-events="none" cx=/g)||[]).length,rendered);assert.equal((html.match(/role="button"/g)||[]).length,rendered);

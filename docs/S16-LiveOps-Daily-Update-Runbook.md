@@ -148,3 +148,7 @@ PROFILE_AUDIT_URL=http://127.0.0.1:3061 PROFILE_STATS_RELEASE=1 node --import ts
 新增`lib/live/updates/round4/`，六场R4结果与三场R5待开赛签表已验证。精确抽签发布时间未知，使用R5开赛前实际观察时间，不猜测。流程：`pnpm live:round4:validate --facts-only` → `node --import tsx tests/live-round4.mjs --facts-only` → 保存生成器提交 → 授权后一次`pnpm live:round4:generate --candidate "$NEW_CANDIDATE_DIRECTORY"` → `node --import tsx scripts/validate-live-round4.mjs --candidate "$NEW_CANDIDATE_DIRECTORY"` → 排他新增归档 → `pnpm live:round4:validate`与全站回归、Prebuilt及HTTP/RSC、四宽度浏览器验收。
 
 当前R4已有100,000有效/0失败、seed20261031，不应重跑或覆盖。继承R3并锁定36场完成结果，固定R5三场未赛对阵。原两节点验证入口继续保护PRE/POST；round4验证与服务器读取校验全六节点，不削弱旧断言。未来R5需独立版本和授权，不自动更新、推送或部署。
+
+## R5结束、八强抽签前
+
+人工核验并新增`lib/live/updates/round5/facts.json`；`pnpm live:round5:generate <新的候选目录>`离线执行100000路径，拒绝复用已有目录。候选经整数计数、模型/事实哈希校验后，将probability.json和index.json追加归档至round5目录。`pnpm live:round5:validate`只读验证归档，不执行模拟。该节点排除官方八强签表；如已知道签表，也不能导入此条件节点。asOf保存来源观察时间，不冒充未知的抽签前历史时间。后续抽签后另建唯一节点。执行tests/live-round5.mjs、完整回归、构建和产物审计后等待单独上线授权。
