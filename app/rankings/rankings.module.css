@@ -19,3 +19,5 @@
  .secondary b{color:var(--text-primary);font-weight:700;margin-left:4px}
 }
 @media(max-width:359px){.page .mobileRow{column-gap:8px}.teamLink{gap:6px}.page .metrics{width:80px!important}.page .metrics strong{font-size:28px}.mobileGpr{font-size:11px}}
+.rise{color:#237958;font-weight:700}.fall{color:#a34343;font-weight:700}.unchanged{color:var(--text-secondary)}
+.comparison{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;border-top:1px solid var(--color-border,#cad8e0);padding:12px 0 6px;margin-top:6px;font-variant-numeric:tabular-nums}.comparison>div{display:flex;flex-direction:column;min-width:0}.comparison>div+div{border-left:1px solid var(--color-border,#cad8e0);padding-left:12px}.comparison span,.comparison small{font-size:11px;line-height:1.7}.comparison strong{font-family:var(--font-number-display);font-size:28px;line-height:1.3}

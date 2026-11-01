@@ -12,7 +12,7 @@ const html=renderToStaticMarkup(React.createElement(InfoDisclosure,{label:'数�
 assert.match(html,/<details/);assert.ok(!html.includes(' open='));assert.match(html,/aria-label="数据与计算方法"/);assert.ok(html.includes('说明保留'));
 const {default:Rankings}=await import('../app/rankings/page.tsx');
 const ranking=renderToStaticMarkup(React.createElement(Rankings));
-assert.ok(ranking.includes('Riot GPR 实力榜'));assert.ok(ranking.includes('数据与计算方法'));assert.ok(ranking.includes('不是 Riot 官方夺冠预测'));assert.ok(ranking.includes('/methodology'));assert.ok(ranking.includes('暂无'));
+assert.ok(ranking.includes('Riot GPR 实力榜'));assert.ok(ranking.includes('数据与计算方法'));assert.ok(ranking.includes('本站预测仍使用冻结赛前GPR'));assert.ok(ranking.includes('/methodology'));assert.ok(ranking.includes('暂无'));
 assert.equal((ranking.match(/<tr>/g)||[]).length,20);
 const {default:Home}=await import('../app/page.tsx');const home=renderToStaticMarkup(await Home());assert.ok(home.includes('重点队伍走势'));assert.ok(home.includes('进入模拟器'));
 for(const path of execFileSync('git',['ls-tree','-r','--name-only','d2dd830','--','lib/','app/methodology/'],{encoding:'utf8'}).trim().split('\n').filter(file=>!['lib/live/view.ts','lib/live/view-server.ts','next.config.ts'].includes(file))){
