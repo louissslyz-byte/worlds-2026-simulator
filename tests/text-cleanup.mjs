@@ -48,6 +48,6 @@ const {default:TeamProfiles}=await import('../app/teams/page.tsx');const list=re
 assert.ok(!list.includes('待定种子列于最后'));for(const team of profileTeams)assert.ok(list.includes(`${team.shortName} · ${team.name} · ${team.region}`));
 const {LiveTournament}=await import('../components/live/live-tournament.tsx');
 // Source guards complement live-ui's full actual and future-node renders.
-const live=await readFile('components/live/live-tournament.tsx','utf8');assert.ok(!live.includes('较赛前'));assert.ok(live.includes('相对{nodes[0].label}变化（pp）'));assert.ok(live.includes('时间待核实'));assert.ok(live.includes('非各场开赛时间'));
+const live=await readFile('components/live/live-tournament.tsx','utf8');assert.ok(!live.includes('较赛前'));assert.ok(live.includes('相对{baselineLabel??nodes[0].label}变化（pp）'));assert.ok(live.includes('时间待核实'));assert.ok(live.includes('非各场开赛时间'));
 assert.equal(typeof LiveTournament,'function');
 console.log('U2 sources: 19 rosters/roads preserve links+scope, C9 identity caveat, accessible region context and dynamic Live baseline PASS.');

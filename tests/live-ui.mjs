@@ -29,7 +29,7 @@ assert.equal(visibleTeams(view.teams,'ALL').length,19);
 assert.equal(view.teams.filter(t=>t.status==='已淘汰').length,8);
 assert.equal(probabilityText(0),'0%');assert.equal(probabilityText(.00001),'<0.1%');assert.equal(probabilityText(1),'100.0%');
 assert.equal(deltaText(-.001),'−0.001 pp');assert.equal(deltaText(.045),'+0.045 pp');assert.equal(deltaText(0),'0 pp');
-const source=await readFile('components/live/live-tournament.tsx','utf8');assert.ok(source.includes('nodes.map('));assert.ok(source.includes('curveEvents.map('));assert.ok(source.includes('100%'));
+const source=await readFile('components/live/live-tournament.tsx','utf8');assert.ok(source.includes('nodes.map('));assert.ok(source.includes('events.map('));assert.ok(source.includes('100%'));
 const serialized=JSON.stringify(view);for(const forbidden of ['ratingInput','sourceFiles','randomSeed','/Users/','GPRScore','tournamentState'])assert.ok(!serialized.includes(forbidden));
 const client=await readFile('components/live/live-tournament.tsx','utf8');for(const forbidden of ['localStorage','runMonteCarlo','fetch(','statistics-server'])assert.ok(!client.includes(forbidden));
 assert.ok((await readFile('components/site-navigation.tsx','utf8')).includes("['/live','赛事追踪']"));

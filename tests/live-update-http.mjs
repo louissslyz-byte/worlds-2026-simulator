@@ -12,7 +12,7 @@ assert.deepEqual(actual,expected);assert.equal(actual.nodes.length,8);assert.equ
 assert.equal(actual.matches.filter(m=>m.status==='COMPLETED').length,39);assert.equal(actual.matches.filter(m=>m.round===5&&m.stage==='SWISS'&&m.winner===null&&m.scoreA===null).length,0);
 for(const team of actual.teams)assert.equal(team.points.length,8);
 const rendered=actual.teams.reduce((n,t)=>n+['swiss','knockout','champion'].reduce((sum,e)=>sum+lastEventNode(actual.nodes.length,t.eliminationNodeIndex,e==='champion'?null:t.qualificationNodes[e])+1,0),0);
-const html=await (await fetch(base+'/live')).text();assert.equal((html.match(/data-live-team=/g)||[]).length,19);assert.equal((html.match(/data-curve=/g)||[]).length,57);
+const fullHtml=await (await fetch(base+'/live')).text();assert.equal((fullHtml.match(/data-forecast-team=/g)||[]).length,8);assert.equal((fullHtml.match(/data-forecast-curve=/g)||[]).length,8);const html=fullHtml.split('aria-labelledby="knockout-forecast-title"')[0];assert.equal((html.match(/data-live-team=/g)||[]).length,19);assert.equal((html.match(/data-curve=/g)||[]).length,57);
 assert.equal((html.match(/pointer-events="none" cx=/g)||[]).length,rendered);assert.equal((html.match(/role="button"/g)||[]).length,rendered);
 let checked=2;
 for(const path of ['/','/rankings','/simulator','/simulator/new','/methodology','/teams','/teams/gen','/teams/gen/chovy']){const r=await fetch(base+path);assert.equal(r.status,200);const body=await r.text();for(const s of ['/Users/','worlds-six-regions-2026-10-14-v1','TEAM_STATS_SNAPSHOT'])assert.ok(!body.includes(s));checked++;}

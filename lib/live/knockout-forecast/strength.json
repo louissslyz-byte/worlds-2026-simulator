@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "knockout-strength-v1",
+  "gpr": {
+    "sourceUrl": "https://lolesports.com/en-US/gpr/2026/current",
+    "updatedDate": "2026-10-31",
+    "sourceDisplayTime": "10/31/26, 5:00 AM",
+    "sourceTimeZone": null,
+    "checkedOn": "2026-11-01",
+    "entries": {
+      "HLE": {
+        "rank": 1,
+        "score": 1559
+      },
+      "GEN": {
+        "rank": 1,
+        "score": 1559
+      },
+      "T1": {
+        "rank": 3,
+        "score": 1495
+      },
+      "BLG": {
+        "rank": 4,
+        "score": 1492
+      },
+      "DK": {
+        "rank": 5,
+        "score": 1459
+      },
+      "G2": {
+        "rank": 6,
+        "score": 1454
+      },
+      "LYON": {
+        "rank": 7,
+        "score": 1435
+      },
+      "KC": {
+        "rank": 8,
+        "score": 1415
+      },
+      "TES": {
+        "rank": 9,
+        "score": 1402
+      },
+      "IG": {
+        "rank": 11,
+        "score": 1392
+      },
+      "AL": {
+        "rank": 12,
+        "score": 1376
+      },
+      "TLAW": {
+        "rank": 13,
+        "score": 1364
+      },
+      "TSW": {
+        "rank": 15,
+        "score": 1334
+      },
+      "MKOI": {
+        "rank": 16,
+        "score": 1322
+      },
+      "C9": {
+        "rank": 16,
+        "score": 1322
+      },
+      "CFO": {
+        "rank": 21,
+        "score": 1301
+      },
+      "LOS": {
+        "rank": 24,
+        "score": 1258
+      },
+      "MVK": {
+        "rank": 28,
+        "score": 1250
+      },
+      "FUR": {
+        "rank": 30,
+        "score": 1237
+      }
+    }
+  },
+  "ratings": {
+    "GEN": 1877.65,
+    "HLE": 1877.65,
+    "T1": 1823.25,
+    "DK": 1792.65,
+    "AL": 1722.1,
+    "BLG": 1820.7,
+    "TES": 1744.2,
+    "IG": 1735.7,
+    "G2": 1788.4,
+    "MKOI": 1676.2,
+    "KC": 1755.25,
+    "TSW": 1686.4,
+    "CFO": 1658.35,
+    "MVK": 1615,
+    "LYON": 1772.25,
+    "TLAW": 1711.9,
+    "C9": 1676.2,
+    "LOS": 1621.8,
+    "FUR": 1603.95
+  },
+  "ratingInputSHA256": "3c017959c6cf3b13431f0978126494b70716872afc9dc8292dfb4236d034b2f6",
+  "parameters": {
+    "eloDivisor": 400,
+    "gprScale": 0.85,
+    "referenceScore": 1350,
+    "referenceRating": 1700
+  },
+  "modelVersion": "gpr-prob-v1.1",
+  "strengthVersion": "riot-gpr-2026-10-31-knockout-v1",
+  "rulesVersion": "worlds-2026-official-draw-v2",
+  "engineSourceSHA256": "9acb9dc2544401aad5ebeb9f1f36359064b100389952c211ccb3286932578191"
+}

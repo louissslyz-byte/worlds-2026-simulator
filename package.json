@@ -35,7 +35,9 @@
     "live:round5:generate": "node --import tsx scripts/generate-live-round5.mjs",
     "live:round5:validate": "node --import tsx scripts/validate-live-round5.mjs",
     "live:draw:generate": "node --import tsx scripts/generate-live-knockout-draw.mjs",
-    "live:draw:validate": "node --import tsx scripts/validate-live-knockout-draw.mjs"
+    "live:draw:validate": "node --import tsx scripts/validate-live-knockout-draw.mjs",
+    "live:knockout:generate": "node --import tsx scripts/generate-knockout-forecast.mjs",
+    "live:parallel:validate": "node --import tsx scripts/validate-knockout-forecast.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

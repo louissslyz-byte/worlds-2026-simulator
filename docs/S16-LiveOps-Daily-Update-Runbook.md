@@ -156,3 +156,11 @@ PROFILE_AUDIT_URL=http://127.0.0.1:3061 PROFILE_STATS_RELEASE=1 node --import ts
 ## 官方八强抽签后
 
 人工从LoL Esports Knockouts页面的matchTeams及destinations核验四场对阵、内部官方比赛ID、半决赛去向和计划时间，新增`updates/knockout-draw/facts.json`，绑定R5事实哈希。`pnpm live:draw:generate <新的候选目录>`固定四场签表后执行100000完整路径；`pnpm live:draw:validate`只读验证归档。不得重抽官方签表；引擎内部比赛ID使用k1-1至k1-4，官方ID保留在独立事实中。第1/2场通向同一半决赛，第3/4场通向另一场。保留此前抽签前快照，新增唯一抽签后ID。先做128路径校验，失败时停止，不用不足样本输出正式结果。最后完整回归、八节点浏览器检查、Prebuilt审计；等待独立生产授权。
+
+## 两个概率板块并行维护
+
+第二板块继续冻结2026-09-29实力；第三板块冻结独立的2026-10-31官方GPR（lib/live/knockout-forecast/strength.json），只展示最终八强的夺冠曲线。后续更新第三板块不得重新导入“当日最新”GPR覆盖已冻结输入。
+
+初始化命令：`pnpm live:knockout:generate <新的候选目录>`产生抽签前/后两份各100000次模拟，经过校验才追加归档；该命令不是自动抓取赛果或未来每日通用生成器。后续比赛日先扩展既有官方事实/条件状态入口，在第二板块追加旧实力快照；复用同一个条件状态及共享Monte Carlo，为第三板块使用已归档strength.ratings运行另100000次，并保留独立ID、种子、事实SHA、原板块节点ID、计数与文件SHA。
+
+随后向第三板块index追加文件及对应legacySnapshotId，登记load.ts中的已验证原始快照路径（未来新节点需明确登记，禁止猜路径或静默回退）。不改旧文件，不改既有GPR，不拼接两模型曲线。`pnpm live:parallel:validate`验证原板块完整历史、第三板块全部计数/模型/事实哈希以及最新进度一致性；任一板块未更新，验证和Next构建失败。再执行完整回归、浏览器和Prebuilt审计，等待人工上线授权。

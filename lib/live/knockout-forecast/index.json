@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "knockout-forecast-history-v1",
+  "strengthSHA256": "527c27a011797fc1f1870f4ccd7064be5303d64c90c3dfeed3c21f206c8d9fc9",
+  "strengthFileSHA256": "1e6a380178b642ce604017a733e8a9a4889da25a357ce0faf3feea0fe34b4001",
+  "qualifiedTeams": [
+    "BLG",
+    "DK",
+    "GEN",
+    "IG",
+    "KC",
+    "LYON",
+    "T1",
+    "TES"
+  ],
+  "snapshots": [
+    {
+      "file": "before-draw.json",
+      "sha256": "9a5112fe8a3f676c1319d96f7a0e69ff40d2f0ebb0d78be140ded8d1d069fa0c",
+      "snapshotId": "worlds-2026-knockout-new-gpr-before-draw-v1",
+      "legacySnapshotId": "worlds-2026-swiss-r5-before-knockout-draw-probability-v1"
+    },
+    {
+      "file": "after-draw.json",
+      "sha256": "659c2c2098ffbc147db39b94173ec3e3aee936e51c8802df9d2a1115c65b6967",
+      "snapshotId": "worlds-2026-knockout-new-gpr-after-draw-v1",
+      "legacySnapshotId": "worlds-2026-knockout-draw-probability-v1"
+    }
+  ]
+}

@@ -49,3 +49,4 @@
 
 .swissMatchTeams{flex-direction:row;align-items:center;gap:10px;margin:18px 0}@media(max-width:359px){.swissMatchTeams{gap:5px}}
 .knockoutSlot:has(> .match){padding:0}
+.probabilityCard[data-forecast-team] .numbers{grid-template-columns:1fr}

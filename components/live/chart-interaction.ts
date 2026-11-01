@@ -14,6 +14,8 @@ export function tooltipPosition(x:number,y:number,width:number,height:number,vie
 
 // Semantic snapshot labels from the verified index, never guessed from display text or IDs.
 export function timelineLabel(node:{kind?:string;label:string}){
+ if(node.kind==='BEFORE-DRAW')return '抽签前';
+ if(node.kind==='AFTER-DRAW')return '抽签后';
  if(node.kind==='PRE-TOURNAMENT')return '赛前';
  if(node.kind==='KNOCKOUT-DRAW-CONFIRMED')return '八强抽签后';
  if(node.kind==='POST-PLAY-IN')return '入围赛后';
