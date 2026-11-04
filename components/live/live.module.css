@@ -50,3 +50,5 @@
 .swissMatchTeams{flex-direction:row;align-items:center;gap:10px;margin:18px 0}@media(max-width:359px){.swissMatchTeams{gap:5px}}
 .knockoutSlot:has(> .match){padding:0}
 .probabilityCard[data-forecast-team] .numbers{grid-template-columns:1fr}
+.matchPrediction{color:var(--accent,#0875b5);font-size:12px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}.swissMatchTeams .identity{flex-wrap:wrap;column-gap:6px;row-gap:2px}.bracketNode .identity{gap:6px}
+@media(max-width:359px){.swissMatchTeams .identity{font-size:14px}.matchPrediction{font-size:11px}}

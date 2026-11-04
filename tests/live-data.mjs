@@ -89,11 +89,12 @@ await assert.rejects(()=>loadOfficialSnapshot('../private'));await assert.reject
 // Caller mutation cannot mutate the file or subsequent read.
 const loaded=await loadOfficialSnapshot();loaded.state.qualifiedToSwiss[0]='MVK';assert.deepEqual((await loadOfficialSnapshot()).state.qualifiedToSwiss,['KC']);assert.equal(JSON.stringify(raw),original);
 assert.equal(liveTournamentSchema.safeParse({...raw,derivedTournamentState:{}}).success,false);
-// Inspect the transitive Live boundary: only existing identities + rules constants,
+// Inspect the transitive Live boundary: match display may read frozen ratings,
 // no simulator execution, sessions, browser storage, route or remote data fetch.
 for(const name of await readdir(new URL('../lib/live/',import.meta.url))){
  if(!name.endsWith('.ts'))continue;const text=await readFile(new URL(`../lib/live/${name}`,import.meta.url),'utf8');
- assert.ok(!/from ['"][^'"]*(?:\/engine|\/monteCarlo|\/ratings|\/precomputed|\/sessionCompatibility)['"]/.test(text),name);
+ assert.ok(!/from ['"][^'"]*(?:\/engine|\/monteCarlo|\/precomputed|\/sessionCompatibility)['"]/.test(text),name);
+ if(!['match-prediction.ts','view-server.ts'].includes(name))assert.ok(!/from ['"][^'"]*\/ratings['"]/.test(text),name);
  assert.ok(!/localStorage|sessionStorage|\bfetch\s*\(|writeFile|appendFile|createWriteStream/.test(text),name);
 }
 const protectedFiles=['lib/sim/precomputedOdds.json','lib/sim/worlds2026.ts','lib/sim/engine.ts','lib/sim/draws.ts','lib/sim/monteCarlo.ts','lib/sim/types.ts','lib/sim/ratingConfig.ts','lib/sim/gprSnapshot.ts','lib/sim/teamSnapshot.ts','lib/team-profile/champion-pools.json'];

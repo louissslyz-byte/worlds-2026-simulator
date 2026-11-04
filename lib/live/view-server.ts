@@ -1,3 +1,5 @@
+import {matchPrediction} from './match-prediction';
+import {SystemRatingProvider} from '../sim/ratings';
 // Server-only filesystem adapter. Uses explicit project-relative resources so Next traces
 // immutable archives and source fingerprints without evaluating an offline generator.
 import {readFile} from 'node:fs/promises';
@@ -60,7 +62,13 @@ export async function readLiveView(projectRoot=process.cwd()){
  for(const team of view.teams){const row=draw.snapshot.teams.find(t=>t.teamId===team.id)!;team.points.push({snapshotId:draw.snapshot.snapshotId,simulationCount:100000,values:{swiss:{count:row.swissCount,probability:row.swissProbability},knockout:{count:row.knockoutCount,probability:row.knockoutProbability},champion:{count:row.championCount,probability:row.championProbability}}});}
  view.asOf=draw.facts.asOf;view.checkedAt=draw.facts.asOf;view.phaseLabel='瑞士轮结束 · 八强抽签已确认';view.pendingLabel='淘汰赛 · 官方八强签表已确认';
  view.sources.push({id:'knockout-draw',name:'LoL Esports · 官方八强签表',url:draw.facts.sourceUrl,type:'OFFICIAL'});
- for(const m of draw.ordered)view.matches.push({id:m.id,stage:'KNOCKOUT',round:1,position:m.position,a:m.a,b:m.b,bestOf:5,scoreA:null,scoreB:null,winner:null,status:'SCHEDULED',time:m.scheduledAt,date:m.scheduledAt.slice(0,10),zone:'America/Chicago'});
+ for(const m of draw.ordered)view.matches.push({id:m.id,stage:'KNOCKOUT',round:1,position:m.position,a:m.a,b:m.b,bestOf:5,prediction:null,scoreA:null,scoreB:null,winner:null,status:'SCHEDULED',time:m.scheduledAt,date:m.scheduledAt.slice(0,10),zone:'America/Chicago'});
+ const strengthBytes=await read('lib/live/knockout-forecast/strength.json');
+ const strengthIndex=JSON.parse(await read('lib/live/knockout-forecast/index.json'));
+ if(sha256(strengthBytes)!==strengthIndex.strengthFileSHA256)throw Error('Match prediction strength checksum mismatch');
+ const knockout=JSON.parse(strengthBytes);
+ const preseason=new SystemRatingProvider().getRatings();
+ for(const match of view.matches)match.prediction=matchPrediction(match,preseason,knockout.ratings,knockout.gpr.updatedDate);
  return view;
 
 }
