@@ -89,3 +89,5 @@ await import('./region-mark.mjs');
 await import('./live-round5.mjs');
 await import('./live-knockout-draw.mjs');
 await import('./knockout-forecast.mjs');
+
+await import('./live-quarterfinals.mjs');

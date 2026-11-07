@@ -11,5 +11,5 @@ for(const stage of ['PLAY_IN','SWISS','KNOCKOUT'])for(const bestOf of [1,3,5]){
  assert.deepEqual(matchPrediction({...m,scoreA:0,scoreB:3,winner:'T1'},pre,strength.ratings,strength.gpr.updatedDate),p);
 }
 assert.throws(()=>matchPrediction({stage:'SWISS',a:'TBD',b:'T1',bestOf:1},pre,strength.ratings,strength.gpr.updatedDate));
-const view=await readLiveView();assert.equal(view.matches.length,43);for(const m of view.matches){assert.ok(m.prediction);assert.ok(m.prediction.a>0&&m.prediction.a<1);assert.equal(m.prediction.a+m.prediction.b,1);assert.equal(m.prediction.basis,m.stage==='KNOCKOUT'?'2026-10-31 GPR':'赛前 GPR');}
-console.log('Match prediction: all 43 completed/scheduled matches, stage models, BO formats and result independence passed');
+const view=await readLiveView();assert.equal(view.matches.length,45);for(const m of view.matches){assert.ok(m.prediction);assert.ok(m.prediction.a>0&&m.prediction.a<1);assert.equal(m.prediction.a+m.prediction.b,1);assert.equal(m.prediction.basis,m.stage==='KNOCKOUT'?'2026-10-31 GPR':'赛前 GPR');}
+console.log('Match prediction: all 45 completed/scheduled matches, stage models, BO formats and result independence passed');

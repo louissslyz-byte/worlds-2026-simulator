@@ -21,7 +21,7 @@ export function timelineLabel(node:{kind?:string;label:string}){
  if(node.kind==='POST-PLAY-IN')return '入围赛后';
  const round=/^SWISS-R([1-5])-COMPLETE$/.exec(node.kind??'');
  if(round)return `Swiss R${round[1]} 后`;
- const stages:Record<string,string>={'QUARTERFINALS-COMPLETE':'Quarterfinals','SEMIFINALS-COMPLETE':'Semifinals','FINAL-COMPLETE':'Final'};
+ const stages:Record<string,string>={'QUARTERFINALS-COMPLETE':'八强赛后','SEMIFINALS-COMPLETE':'Semifinals','FINAL-COMPLETE':'Final'};
  return stages[node.kind??'']??node.label;
 }
 export function chartGeometry(nodeCount:number){

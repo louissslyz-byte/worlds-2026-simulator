@@ -24,6 +24,12 @@
       "sha256": "659c2c2098ffbc147db39b94173ec3e3aee936e51c8802df9d2a1115c65b6967",
       "snapshotId": "worlds-2026-knockout-new-gpr-after-draw-v1",
       "legacySnapshotId": "worlds-2026-knockout-draw-probability-v1"
+    },
+    {
+      "file": "quarterfinals.json",
+      "sha256": "e8dcc0863ca1672f98a7a2b84bd5e15c5cf79b9e8c01d183e8ae973276742c32",
+      "snapshotId": "worlds-2026-knockout-new-gpr-quarterfinals-v1",
+      "legacySnapshotId": "worlds-2026-quarterfinals-probability-v1"
     }
   ]
 }

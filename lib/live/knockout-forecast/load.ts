@@ -8,6 +8,7 @@ import {EVENTS}from'../probability/config';
 import {GprProbabilityModel}from'../../sim/gprProbability';
 import {ratingConfig,MODEL_VERSION}from'../../sim/ratingConfig';
 import {worlds2026}from'../../sim/worlds2026';
+import {assertQuarterfinalConditioning,QF_ID,QF_KIND,QF_NEW_GPR_SEED} from '../updates/quarterfinals';
 import type {LiveView}from'../view';
 const hash=z.string().regex(/^[a-f0-9]{64}$/);
 export const forecastSchema=z.object({schemaVersion:z.literal('knockout-forecast-snapshot-v1'),snapshotId:z.string(),kind:z.string(),label:z.string(),asOf:z.string().datetime(),legacySnapshotId:z.string(),factsInputSHA256:hash,strengthSHA256:hash,ratingInputSHA256:hash,rulesVersion:z.string(),modelVersion:z.string(),strengthVersion:z.string(),simulationCount:z.literal(100000),requestedCount:z.literal(100000),failedCount:z.literal(0),randomSeed:z.number().int(),rngVersion:z.string(),samplingVersion:z.string(),stateSHA256:hash,countSHA256:hash,generatedAt:z.string().datetime(),durationMs:z.number().nonnegative(),peakRssBytes:z.number().positive(),generatorCommit:z.string(),generatorSourceSHA256:hash,qualifiedTeams:z.array(z.string()).length(8),teams:z.array(probabilityTeamSchema).length(19)}).strict();
@@ -21,7 +22,31 @@ export async function loadKnockoutForecast(legacy:LiveView,root=process.cwd()){
  if(sha256(strengthBytes)!==index.strengthFileSHA256||semanticSHA256(strength)!==index.strengthSHA256||strength.parameters.gprScale!==ratingConfig.gpr.scoreScale||strength.parameters.eloDivisor!==ratingConfig.eloDivisor||strength.parameters.referenceScore!==ratingConfig.gpr.referenceScore||strength.parameters.referenceRating!==ratingConfig.gpr.referenceRating)throw Error('Knockout strength archive/config mismatch');
  for(const t of legacy.teams)if(strength.ratings[t.id]!==new GprProbabilityModel().toInternalStrength(strength.gpr.entries[t.id]?.score))throw Error('Knockout rating mapping mismatch');
  if(sha256(JSON.stringify(Object.fromEntries(Object.entries(strength.ratings).sort())))!==strength.ratingInputSHA256)throw Error('Knockout rating SHA mismatch');
- const snapshots:z.infer<typeof forecastSchema>[]=[];for(const e of index.snapshots){if(!/^[-a-z0-9]+\.json$/.test(e.file))throw Error('Unsafe forecast path');const bytes=await read(e.file);if(sha256(bytes)!==e.sha256)throw Error('Knockout snapshot file checksum mismatch');const s=validateForecast(JSON.parse(bytes),{...strength,strengthSHA256:index.strengthSHA256},index.qualifiedTeams,legacy);const legacyFiles:Record<string,string>={'worlds-2026-swiss-r5-before-knockout-draw-probability-v1':'round5','worlds-2026-knockout-draw-probability-v1':'knockout-draw'};const legacyDir=legacyFiles[s.legacySnapshotId];if(!legacyDir)throw Error('Register verified legacy facts binding before appending forecast');const original=JSON.parse(await readFile(`${root}/lib/live/updates/${legacyDir}/probability.json`,'utf8'));if(s.factsInputSHA256!==original.factsInputSHA256)throw Error('Forecast facts checksum mismatch');if(s.snapshotId!==e.snapshotId||s.legacySnapshotId!==e.legacySnapshotId||snapshots.some(p=>p.snapshotId===s.snapshotId)||snapshots.length&&Date.parse(s.asOf)<=Date.parse(snapshots.at(-1)!.asOf))throw Error('Invalid forecast chronology');snapshots.push(s);}
+ const legacyFiles:Record<string,string>={
+  'worlds-2026-swiss-r5-before-knockout-draw-probability-v1':'round5',
+  'worlds-2026-knockout-draw-probability-v1':'knockout-draw',
+  [QF_ID]:'quarterfinals',
+ };
+ const snapshots:z.infer<typeof forecastSchema>[]=[];
+ for(const entry of index.snapshots){
+  if(!/^[-a-z0-9]+\.json$/.test(entry.file))throw Error('Unsafe forecast path');
+  const bytes=await read(entry.file);
+  if(sha256(bytes)!==entry.sha256)throw Error('Knockout snapshot file checksum mismatch');
+  const snapshot=validateForecast(JSON.parse(bytes),{...strength,strengthSHA256:index.strengthSHA256},index.qualifiedTeams,legacy);
+  const legacyDir=legacyFiles[snapshot.legacySnapshotId];
+  if(!legacyDir)throw Error('Register verified legacy facts binding before appending forecast');
+  const original=JSON.parse(await readFile(root+'/lib/live/updates/'+legacyDir+'/probability.json','utf8'));
+  if(snapshot.factsInputSHA256!==original.factsInputSHA256)throw Error('Forecast facts checksum mismatch');
+  if(snapshot.legacySnapshotId===QF_ID){
+   if(snapshot.kind!==QF_KIND||snapshot.randomSeed!==QF_NEW_GPR_SEED)throw Error('Quarterfinal forecast metadata mismatch');
+   const winners=legacy.matches.filter(m=>m.stage==='KNOCKOUT'&&m.round===1&&m.status==='COMPLETED').map(m=>m.winner!);
+   assertQuarterfinalConditioning(snapshot.teams,winners);
+  }
+  if(snapshot.snapshotId!==entry.snapshotId||snapshot.legacySnapshotId!==entry.legacySnapshotId
+     ||snapshots.some(p=>p.snapshotId===snapshot.snapshotId)
+     ||snapshots.length&&Date.parse(snapshot.asOf)<=Date.parse(snapshots.at(-1)!.asOf))throw Error('Invalid forecast chronology');
+  snapshots.push(snapshot);
+ }
  if(snapshots.length<2||snapshots.at(-1)!.legacySnapshotId!==legacy.nodes.at(-1)!.id)throw Error('Both Live forecast sections must update to the same official progress');
  const ids=index.qualifiedTeams as string[];if(new Set(ids).size!==8)throw Error('Need eight unique knockout teams');
  const view:LiveView={...legacy,nodes:snapshots.map(s=>({id:s.snapshotId,kind:s.kind,label:s.label,asOf:s.asOf})),teams:legacy.teams.filter(t=>ids.includes(t.id)).map(t=>({...t,qualificationNodes:{swiss:null,knockout:null},eliminationNodeIndex:t.eliminationNodeIndex===null?null:snapshots.findIndex(s=>Date.parse(s.asOf)>=Date.parse(legacy.nodes[t.eliminationNodeIndex!].asOf)),points:snapshots.map(s=>{const row=s.teams.find(r=>r.teamId===t.id)!;return{snapshotId:s.snapshotId,simulationCount:100000,values:{swiss:{count:row.swissCount,probability:row.swissProbability},knockout:{count:row.knockoutCount,probability:row.knockoutProbability},champion:{count:row.championCount,probability:row.championProbability}}};})}))};

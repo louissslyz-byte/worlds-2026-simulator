@@ -1,0 +1,67 @@
+{
+  "snapshotId": "worlds-2026-quarterfinal-results-v1",
+  "baseFactsSHA256": "52e6bd3f7a0389c7f250d21f25c337412026dcd709fb6abc8ea6ad444d2e65a0",
+  "asOf": "2026-11-07T06:38:04.352Z",
+  "sourceUrl": "https://lolesports.com/en-SG/tournament/115660540725177488/stage/115660540725570707",
+  "evidenceSHA256": "9b978ee5e0bfb1da9d3723675cc7a121fb6c134d92f32055713930eed9759fde",
+  "quarterfinals": [
+    {
+      "id": "115660540726095097",
+      "position": "QF1",
+      "a": "DK",
+      "b": "BLG",
+      "scheduledAt": "2026-11-05T22:00:00Z",
+      "scoreA": 0,
+      "scoreB": 3,
+      "winner": "BLG"
+    },
+    {
+      "id": "115660540726095103",
+      "position": "QF2",
+      "a": "KC",
+      "b": "T1",
+      "scheduledAt": "2026-11-06T22:00:00Z",
+      "scoreA": 1,
+      "scoreB": 3,
+      "winner": "T1"
+    },
+    {
+      "id": "115660540726095109",
+      "position": "QF3",
+      "a": "TES",
+      "b": "IG",
+      "scheduledAt": "2026-11-03T22:00:00Z",
+      "scoreA": 1,
+      "scoreB": 3,
+      "winner": "IG"
+    },
+    {
+      "id": "115660540726095115",
+      "position": "QF4",
+      "a": "GEN",
+      "b": "LYON",
+      "scheduledAt": "2026-11-04T22:00:00Z",
+      "scoreA": 3,
+      "scoreB": 0,
+      "winner": "GEN"
+    }
+  ],
+  "semifinals": [
+    {
+      "id": "115660540726095121",
+      "position": "SF1",
+      "a": "BLG",
+      "b": "T1",
+      "scheduledAt": "2026-11-08T22:00:00Z",
+      "structuralId": "match_c09550107e"
+    },
+    {
+      "id": "115660540726095127",
+      "position": "SF2",
+      "a": "IG",
+      "b": "GEN",
+      "scheduledAt": "2026-11-07T22:00:00Z",
+      "structuralId": "match_c45c67b67c"
+    }
+  ]
+}

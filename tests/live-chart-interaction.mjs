@@ -10,7 +10,7 @@ import {curveEvents,curveLabels,applyOfficialEliminations,verifiedEliminationNod
 register('./tests/live-ui-loader.mjs',pathToFileURL('./'));globalThis.React=React;
 const {NodeProbabilityDetail,LiveTournament}=await import('../components/live/live-tournament.tsx');
 assert.equal(preciseProbability(0),'0.000%');assert.equal(preciseProbability(1),'100.000%');assert.equal(preciseProbability(.00001),'0.001%');
-const current=await loadLiveView();assert.equal(current.nodes.length,8);const view=structuredClone(current);view.nodes=view.nodes.slice(0,6);for(const t of view.teams){t.points=t.points.slice(0,6);if(t.eliminationNodeIndex===6)t.eliminationNodeIndex=null;if(t.qualificationNodes.knockout===6)t.qualificationNodes.knockout=null;}const original=JSON.stringify(view);
+const current=await loadLiveView();assert.equal(current.nodes.length,9);const view=structuredClone(current);view.nodes=view.nodes.slice(0,6);for(const t of view.teams){t.points=t.points.slice(0,6);if(t.eliminationNodeIndex>=6)t.eliminationNodeIndex=null;if(t.qualificationNodes.knockout===6)t.qualificationNodes.knockout=null;}const original=JSON.stringify(view);
 for(const team of view.teams)for(let i=0;i<view.nodes.length;i++){
  const node=view.nodes[i],point=team.points[i];
  const html=renderToStaticMarkup(React.createElement(NodeProbabilityDetail,{id:'detail',teamLabel:team.shortName,nodeLabel:node.label,values:point.values,onClose(){}}));
