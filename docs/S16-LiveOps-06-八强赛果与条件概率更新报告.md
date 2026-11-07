@@ -27,3 +27,11 @@
 本地 Prebuilt 树 SHA-256 `6818aef0b97ef38dca1f5a5fb873d9540cf823ba7b0c0eada9d1a360ef5b3345`。生产发布与 GitHub 同步待授权。
 
 复算命令 `node --import tsx scripts/generate-live-quarterfinals.mjs <新的仓库外候选目录>`。校验命令 `node --import tsx tests/live-quarterfinals.mjs` 和 `node --import tsx scripts/validate-knockout-forecast.mjs`。
+
+## 正式发布
+
+已按授权将经复核的同一份 Prebuilt 发布至原 Vercel 项目。产品提交 `938a7ad`，新部署 `dpl_FGen8gt3xn5f8L5xg1ocSjtKGJ3q` 为 READY，正式域名已切换。前一生产部署及回滚目标为 `dpl_Fw3H9wy9tKHRUkYtx81x7ExuoaSM`。
+
+正式域名 HTTP/RSC 验收通过。Live 响应包含四场八强比分、两场待开赛半决赛及预测胜率，两套图分别有 9 和 3 个时间节点。首页 MATCHUPS、GEN 与 Chovy 统计页返回 200。探查的环境文件、强度档案和概率归档路径均返回 404。此轮线上验证范围为 HTTP/RSC。
+
+GitHub 同步目标为 `release/s16-u2`，按既有流程使用一次性 Deploy Key 快进推送。
